@@ -1,0 +1,67 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: url("../Assets/fl.png");
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional: Add an overlay for better contrast */
+.login-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* dark overlay */
+  z-index: 1;
+}
+
+.login-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.1); /* transparent */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  animation: slideFadeIn 1s ease;
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 30px;
+    max-width: 90%;
+  }
+
+  .login-container {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .login-container {
+    padding: 5px;
+  }
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

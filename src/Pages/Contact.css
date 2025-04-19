@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-wrapper {
+  padding: 60px 20px;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+}
+
+.contact-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+
+.contact-header h1 {
+  font-size: 36px;
+  color: #0c4b65;
+}
+
+.contact-header p {
+  font-size: 16px;
+  color: #555;
+}
+
+.form-address-row {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.form-container,
+.info-container {
+  flex: 1;
+  min-width: 320px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+
+  border-top: 5px solid #0c4b65;
+  transition: all 0.3s ease;
+}
+
+.form-container:hover,
+.info-container:hover {
+  transform: translateY(-5px);
+}
+
+.enhanced-form .ant-form-item-label > label {
+  font-weight: bold;
+  color: #0c4b65;
+}
+
+.enhanced-form .ant-input,
+.enhanced-form .ant-input-textarea {
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 16px;
+}
+
+.enhanced-form .ant-input:focus,
+.enhanced-form .ant-input-textarea:focus {
+  border-color: #0c4b65;
+}
+
+.submit-button {
+  background: #0c4b65;
+  border: none;
+  border-radius: 10px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #117a8b;
+}
+
+.map-box.full-width-map {
+  width: 100%;
+  height: 400px;
+  margin-top: 60px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .form-address-row {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contact-header h1 {
+    font-size: 28px;
+  }
+
+  .form-container,
+  .info-container {
+    padding: 25px;
+  }
+}

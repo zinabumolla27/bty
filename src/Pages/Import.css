@@ -1,0 +1,74 @@
+.import-section {
+  padding: 4rem 0;
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #23bec9;
+  font-weight: 700;
+  position: relative;
+}
+
+.section-title::after {
+  content: none;
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #3498db;
+  margin: 15px auto 0;
+}
+
+.import-card {
+  background: rgb(211, 202, 202);
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.import-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon-wrapper {
+  margin-bottom: 1rem;
+}
+
+.import-icon {
+  font-size: 2rem;
+  color: #3498db;
+}
+
+.import-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .import-section {
+    padding: 2rem 0;
+  }
+
+  .import-card {
+    padding: 1rem;
+  }
+
+  .import-title {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .import-title {
+    font-size: 0.95rem;
+  }
+}

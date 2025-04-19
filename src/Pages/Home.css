@@ -1,0 +1,209 @@
+.home-background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  animation: zoomBackground 20s infinite ease-in-out;
+  transition: background-image 1s ease-in-out;
+}
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+@keyframes zoomBackground {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.main-heading {
+  font-weight: 700;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.subtitle {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.sign-up-button-container {
+  text-align: center;
+}
+
+.sign-up-button {
+  width: 200px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  background: transparent;
+  border: 2px solid rgb(44, 157, 202);
+  color: rgb(242, 243, 248);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sign-up-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-heading {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .sign-up-button {
+    width: 100%;
+  }
+}
+
+/* About BTY */
+.about-section {
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.about-label {
+  color: #d500ca;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.about-title {
+  font-weight: 700;
+  color: #22cf22;
+  line-height: 1.2;
+}
+
+.about-description {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 24px;
+  text-align: justify;
+}
+
+.learn-more-button {
+  background-color: #3b7b57;
+  border-color: #3b7b57;
+}
+
+.learn-more-button:hover {
+  background-color: #2f6547 !important;
+  border-color: #2f6547 !important;
+}
+
+/* Image Gallery */
+.image-gallery {
+  padding: 50px 20px; /* Add padding around the gallery */
+  background-color: #fff; /* Change background to white or any color you prefer */
+}
+
+.gallery-card {
+  margin: 10px; /* Add margin around each card */
+  border-radius: 8px; /* Optional: rounded corners */
+  overflow: hidden; /* Ensures images respect border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px); /* Optional: slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure cards take full height of their container */
+.ant-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-card-cover {
+  flex: 0 0 auto;
+}
+
+.ant-card-body {
+  flex: 1 1 auto;
+}
+
+.partners-title {
+  margin-bottom: 30px;
+  color: #3b7b57;
+  text-align: center;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav-arrow.left {
+  left: 20px;
+}
+
+.nav-arrow.right {
+  right: 20px;
+}
+
+/* Card Adjustments */
+.image-gallery .ant-card {
+  margin: 0 !important;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 576px) {
+  .image-gallery .ant-card {
+    height: 220px;
+  }
+}
