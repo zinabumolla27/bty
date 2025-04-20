@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/bty/static/css/main.d48bcc4a.css",
-    "main.js": "/bty/static/js/main.9b667c45.js",
+    "main.css": "/bty/static/css/main.b40854a6.css",
+    "main.js": "/bty/static/js/main.3b384912.js",
     "static/js/453.569c9e0d.chunk.js": "/bty/static/js/453.569c9e0d.chunk.js",
     "static/media/beann.jpeg": "/bty/static/media/beann.4d666a0fd035c5bbe8a9.jpeg",
     "static/media/tea3.jpeg": "/bty/static/media/tea3.ca45d6c7ad5ec8fbc158.jpeg",
@@ -55,12 +55,12 @@
     "static/media/MitmitaPepper.jpeg": "/bty/static/media/MitmitaPepper.729cb08775f718d2e555.jpeg",
     "static/media/image4.jpeg": "/bty/static/media/image4.d5e526c8b6f302a82a52.jpeg",
     "index.html": "/bty/index.html",
-    "main.d48bcc4a.css.map": "/bty/static/css/main.d48bcc4a.css.map",
-    "main.9b667c45.js.map": "/bty/static/js/main.9b667c45.js.map",
+    "main.b40854a6.css.map": "/bty/static/css/main.b40854a6.css.map",
+    "main.3b384912.js.map": "/bty/static/js/main.3b384912.js.map",
     "453.569c9e0d.chunk.js.map": "/bty/static/js/453.569c9e0d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d48bcc4a.css",
-    "static/js/main.9b667c45.js"
+    "static/css/main.b40854a6.css",
+    "static/js/main.3b384912.js"
   ]
 }
