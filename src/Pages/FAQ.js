@@ -49,14 +49,19 @@ const FAQ = () => {
     setActiveKeys(keys);
   };
 
-  const collapseItems = faqItems.map((item) => ({
+  const collapseItems = faqItems.map((item, index) => ({
     key: item.key,
-    header: <span className="faq-question">{item.question}</span>,
+    label: (
+      <div className={`faq-panel faq-panel-${index + 1}`}>
+        <span className="faq-question">{item.question}</span>
+      </div>
+    ),
     children: (
       <div className="faq-answer">
         <p>{item.answer}</p>
       </div>
     ),
+    className: "faq-panel", // for styling and animation
   }));
 
   return (
@@ -88,7 +93,7 @@ const FAQ = () => {
             }
             expandIconPosition="end"
             className="faq-accordion"
-            items={collapseItems} // Using the 'items' prop here
+            items={collapseItems} // ✅ correct usage of items + label
           />
         </div>
       </div>

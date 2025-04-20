@@ -20,6 +20,7 @@ import Cereals from "../Pages/Cereals";
 import Peppers from "../Pages/Pepper";
 import ViewContact from "../Pages/ViewContacts";
 import AddtionalServices from "../Pages/AddtionalServices";
+import ManageUsers from "../Pages/ManageUsers";
 
 function AppRoutes() {
   return (
@@ -45,6 +46,7 @@ function AppRoutes() {
       <Route path="/faq" element={<FAQ />} />
       <Route path="/viewContact" element={<ViewContact />} />
       <Route path="/addtionalservices" element={<AddtionalServices />} />
+      <Route path="/manageusers" element={<ManageUsers />} />
 
       {/* Catch-all route for unmatched routes */}
       <Route path="*" element={<div>404 - Page Not Found</div>} />

@@ -10,6 +10,11 @@ export const userTableColumns = [
     key: "lastName",
   },
   {
+    title: "Middle Name",
+    dataIndex: "middleName",
+    key: "middleName",
+  },
+  {
     title: "Email",
     dataIndex: "email",
     key: "email",

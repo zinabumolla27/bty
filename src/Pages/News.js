@@ -26,18 +26,25 @@ const newsItems = [
     date: "2025-06-15",
     category: "Export",
     icon: <ExportOutlined />,
+    fullContent: [
+      "Shipment successfully delivered.",
+      "Feedback from European markets was excellent.",
+    ], // Add fullContent here
   },
   {
     id: 2,
     title: "Ethiopian Seed Export Facility",
     description:
       "Our new seeds facility now handles large-scale cereal seed exports, enhancing supply chain efficiency and seed quality across a World.",
-    image: bbaacc, // Replace with actual image URL or path
+    image: bbaacc,
     date: "2025-05-22",
     category: "Export",
     icon: <EnvironmentOutlined />,
+    fullContent: [
+      "Facility is operational and handling larger shipments.",
+      "Efficiency and quality have improved.",
+    ], // Add fullContent here
   },
-
   {
     id: 3,
     title: "Khat Export ",
@@ -47,6 +54,10 @@ const newsItems = [
     date: "2025-04-10",
     category: "Export",
     icon: <TeamOutlined />,
+    fullContent: [
+      "High-quality khat is being exported.",
+      "We meet both regional and international market demand.",
+    ], // Add fullContent here
   },
 ];
 
@@ -166,12 +177,18 @@ const News = () => {
 
               <Divider className="modal-divider" />
 
+              {/* Safely check if fullContent exists */}
               <ul className="modal-list">
-                {selectedNews.fullContent.map((point, index) => (
-                  <li key={index} className="modal-list-item">
-                    <Paragraph>{point}</Paragraph>
-                  </li>
-                ))}
+                {selectedNews.fullContent &&
+                selectedNews.fullContent.length > 0 ? (
+                  selectedNews.fullContent.map((point, index) => (
+                    <li key={index} className="modal-list-item">
+                      <Paragraph>{point}</Paragraph>
+                    </li>
+                  ))
+                ) : (
+                  <li>No additional content available.</li>
+                )}
               </ul>
 
               <Button

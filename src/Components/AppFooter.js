@@ -159,7 +159,7 @@ const AppFooter = () => {
 
       <div className="footer-bottom">
         <Row justify="center" align="middle">
-          <Col xs={24} md={24} className="footer-bottom-col">
+          <Col xs={24} md={24} style={{ textAlign: "center" }}>
             <Text className="copyright-text">
               ©2025 BTY Trading PLC. All rights reserved.
             </Text>

@@ -147,6 +147,22 @@ const AppHeader = () => {
     },
     { key: "contact", label: "Contact Us" },
     { key: "news", label: "News" },
+    {
+      key: "manageusers",
+      label: (
+        <Space>
+          Manage Users
+          <DownOutlined />
+        </Space>
+      ),
+      children: [
+        {
+          key: "viewContact",
+          label: "View Contacts",
+        },
+      ],
+    },
+
     { key: "upload", label: "Upload" },
   ];
 

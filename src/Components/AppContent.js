@@ -1,12 +1,12 @@
-import React from 'react'
-import AppRoutes from './AppRoutes'
-import "./AppContent.css"
+import React from "react";
+import AppRoutes from "./AppRoutes";
+import "./AppContent.css";
 function AppContent() {
   return (
     <div className="appcontent">
-    <AppRoutes />
+      <AppRoutes />
     </div>
-  )
+  );
 }
 
-export default AppContent
+export default AppContent;
