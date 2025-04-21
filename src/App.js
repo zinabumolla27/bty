@@ -1,32 +1,30 @@
+import React from "react";
 import { Provider } from "react-redux";
 import { Layout } from "antd";
-import AppContent from "./Components/AppContent";
 import AppHeader from "./Components/AppHeader";
-import { store } from "./app/store";
-import "./App.css"; // Make sure you have this file
-
+import AppContent from "./Components/AppContent";
 import AppFooter from "./Components/AppFooter";
+import { store } from "./app/store";
+import "./App.css";
 
 const { Content } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <Provider store={store}>
-        <Layout style={{ minHeight: "100vh" }}>
-          <AppHeader />
-          <Content
-            style={{
-              marginTop: 64, // Matches header height
-              backgroundColor: "#fff", // Optional: set your preferred background
-            }}
-          >
-            <AppContent />
-          </Content>
-          <AppFooter />
-        </Layout>
-      </Provider>
-    </div>
+    <Provider store={store}>
+      <Layout style={{ minHeight: "100vh" }}>
+        {/* Header */}
+        <AppHeader />
+
+        {/* Main Content */}
+        <Content>
+          <AppContent />
+        </Content>
+
+        {/* Footer */}
+        <AppFooter />
+      </Layout>
+    </Provider>
   );
 }
 

@@ -1,223 +1,305 @@
 /* Base Styles */
 .company-profile-container {
-  overflow-x: hidden;
-  font-family: "Poppins", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
-  width: 100%;
-  max-width: 100%;
+  line-height: 1.6;
 }
 
-/* Hero Section */
+/* Enhanced Hero Section */
 .hero-section {
-  height: 80vh;
-  min-height: 500px;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.hero-image-container {
+  position: relative;
   width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .hero-overlay {
-  background: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0;
-  text-align: center;
-}
-
-.hero-title {
-  color: white !important;
-  font-size: 4rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 0 !important;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-  position: relative;
-  z-index: 2;
-}
-
-/* Section Styles */
-.section {
-  padding: 60px 0;
-  position: relative;
-  width: 100%;
-  margin: 0;
-}
-
-.section:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-
-.section-title {
-  font-size: 2.5rem !important;
-  margin-bottom: 30px !important;
-  position: relative;
-  display: inline-block;
-  color: #2c3e50;
-  width: 100%;
-  padding: 0 20px;
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 20px;
-  width: 60px;
-  height: 4px;
-  background: #3498db;
-  border-radius: 2px;
-}
-
-.section-text {
-  font-size: 1.1rem !important;
-  line-height: 1.8 !important;
-  margin-bottom: 20px !important;
-  color: #555;
-  text-align: justify;
-  text-justify: inter-word;
-  padding: 0 20px;
-  width: 100%;
-}
-
-/* Image and Text Columns */
-.image-col,
-.text-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 !important;
-}
-
-.section-image {
-  width: 90%;
-  height: 400px;
-  object-fit: cover;
-  transition: all 0.5s ease;
-  margin-bottom: 30px;
-  padding-top: 60px;
-}
-
-/* Content Container */
-.content-container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 15px;
-  width: 100%;
-}
-
-/* Remove antd default spacing */
-.ant-row {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-  width: 100%;
-}
-
-.ant-col {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .hero-title {
-    font-size: 3rem !important;
-  }
-
-  .section-title {
-    font-size: 2rem !important;
-  }
-
-  .section-image {
-    height: 350px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-section {
-    height: 60vh;
-    background-attachment: scroll;
-  }
-
-  .hero-title {
-    font-size: 2.5rem !important;
-  }
-
-  .section {
-    padding: 40px 0;
-  }
-
-  .section-image {
-    height: 300px;
-  }
-
-  .section-text,
-  .section-title {
-    padding: 0 15px;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero-title {
-    font-size: 2rem !important;
-  }
-
-  .section-title {
-    font-size: 1.8rem !important;
-  }
-
-  .section-text {
-    font-size: 1rem !important;
-  }
-}
-
-/* Animation Enhancements */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.floating {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Gradient Background for Odd Sections */
-.section:nth-child(odd) {
-  background: linear-gradient(135deg, #f9f9f9 0%, #eef2f5 100%);
-}
-
-/* Hover Effects */
-.section-image:hover {
-  transform: scale(1.03);
-}
-
-/* Decorative Elements */
-.hero-overlay::before {
-  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    45deg,
-    rgba(52, 152, 219, 0.3) 0%,
-    rgba(155, 89, 182, 0.3) 100%
-  );
-  z-index: 1;
+  background: rgba(34, 139, 34, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-title {
+  color: white;
+  font-size: 3.5rem !important;
+  font-weight: 700;
+  margin-bottom: 0 !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-tagline {
+  color: white;
+  font-size: 1.8rem;
+  display: block;
+  margin: 15px 0;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 300;
+}
+
+.hero-subtitle {
+  color: white;
+  font-size: 1.5rem;
+  display: block;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Section Container */
+.section-container {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  color: #228b22;
+  margin-bottom: 15px !important;
+  position: relative;
+  font-weight: 600 !important;
+}
+
+.section-divider {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #ffa500, #228b22);
+  margin-top: 10px;
+}
+
+.center-header {
+  text-align: center;
+}
+
+.center-divider {
+  margin: 10px auto 0;
+}
+
+/* Section Specific Styles */
+.about-section {
+  background-color: #fff;
+}
+
+.plans-section {
+  background-color: #f8f9fa;
+}
+
+.about-title {
+  color: #2c7be5 !important;
+}
+
+.plans-title {
+  color: #ffa500 !important;
+}
+
+/* Company Description */
+.company-description {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px !important;
+}
+
+.highlight-text {
+  color: #228b22;
+  font-weight: 600;
+}
+
+.company-image-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid #eaeaea;
+}
+
+.company-image-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.company-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 300px;
+}
+
+/* Values Section */
+.values-section {
+  background-color: #f9f9f9;
+  padding: 80px 20px !important;
+}
+
+.value-card {
+  height: 100%;
+  border-radius: 8px !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  background-color: white !important;
+}
+
+.value-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.value-title {
+  color: #228b22 !important;
+  text-align: center;
+  margin-bottom: 20px !important;
+  font-weight: 600 !important;
+}
+
+.value-description {
+  color: #555;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.values-list {
+  text-align: left;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.values-list li {
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 25px;
+  font-size: 0.95rem;
+}
+
+.values-list li::before {
+  content: "•";
+  color: #228b22;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: -1px;
+}
+
+/* Card Color Variants */
+.mission-card {
+  border-top: 4px solid #228b22 !important;
+}
+
+.vision-card {
+  border-top: 4px solid #ffa500 !important;
+}
+
+.values-card {
+  border-top: 4px solid #4169e1 !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .hero-image-container {
+    height: 350px;
+  }
+
+  .hero-title {
+    font-size: 2.8rem !important;
+  }
+
+  .hero-tagline {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .company-image {
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image-container {
+    height: 300px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem !important;
+  }
+
+  .hero-tagline {
+    font-size: 1.3rem;
+    margin: 10px 0;
+  }
+
+  .section-container {
+    padding: 40px 15px;
+  }
+
+  .company-description {
+    font-size: 1rem;
+  }
+
+  .plans-section .ant-col {
+    order: initial !important;
+  }
+
+  .company-image {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-image-container {
+    height: 250px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+
+  .value-card {
+    margin-bottom: 25px;
+  }
+
+  .values-list li {
+    font-size: 0.9rem;
+  }
 }

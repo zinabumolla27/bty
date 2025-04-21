@@ -1,232 +1,191 @@
-import React, { useEffect } from "react";
-import { Row, Col, Typography } from "antd";
-import { motion, useAnimation } from "framer-motion";
-import image1 from "../Assets/image1.jpeg";
-import image3 from "../Assets/image3.jpg";
-import backofoil from "../Assets/backofoil.jpg";
+import React from "react";
+import { Card, Row, Col, Typography } from "antd";
 import "./CompanyProfile.css";
-import Mission from "./Mission";
+import image1 from "../Assets/image1.jpeg";
 
-const { Title, Paragraph } = Typography;
+import backofoil from "../Assets/backofoil.jpg";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.6, -0.05, 0.01, 0.99],
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 1.2,
-      ease: "easeOut",
-      when: "beforeChildren",
-    },
-  },
-};
-
-const scaleUp = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const SectionWrapper = ({ children, id }) => {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (typeof window !== "undefined") {
-        const element = document.getElementById(id);
-        if (element) {
-          const elementTop = element.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-          if (elementTop < windowHeight * 0.75) {
-            controls.start("visible");
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Trigger once on mount
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [controls, id]);
-
-  return (
-    <motion.div
-      id={id}
-      initial="hidden"
-      animate={controls}
-      variants={fadeInUp}
-      style={{ width: "100%" }}
-    >
-      <div className="content-container">{children}</div>
-    </motion.div>
-  );
-};
+const { Title, Paragraph, Text } = Typography;
 
 const CompanyProfile = () => {
   return (
     <div className="company-profile-container">
-      {/* Hero Section */}
-      <motion.div
-        className="hero-section"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)), url(${image3})`,
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-      >
-        <motion.div
-          className="hero-overlay"
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-        >
-          <motion.div
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            <Title level={1} className="hero-title floating">
-              Company Profile
-            </Title>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
-          >
-            <div
-              style={{
-                height: 4,
-                width: 100,
-                background: "white",
-                margin: "20px auto",
-                borderRadius: 2,
-              }}
-            />
-          </motion.div>
-        </motion.div>
-      </motion.div>
+      {/* Enhanced Hero Section */}
+      <div className="hero-section">
+        <div className="hero-image-container">
+          <img
+            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="BTY Trading Agricultural Products"
+            className="hero-image"
+          />
+          <div className="hero-overlay">
+            <div className="hero-content">
+              <Title className="hero-title">Company Profile</Title>
 
-      {/* About Section */}
-      <SectionWrapper id="about-section">
-        <Row gutter={[0, 30]} className="section about-section" align="middle">
-          <Col xs={24} sm={24} md={12} lg={12} xl={12} className="image-col">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={scaleUp}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
+              <Text className="hero-subtitle">
+                BTY Trading PLC - Excellence in Agricultural Products Export
+              </Text>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* About Company Section */}
+      <div className="section-container about-section">
+        <Row gutter={[32, 32]} align="middle">
+          <Col xs={24} md={12}>
+            <div className="section-header">
+              <Title level={2} className="section-title about-title">
+                About BTY Trading PLC
+              </Title>
+              <div className="section-divider about-divider"></div>
+            </div>
+            <Paragraph className="company-description">
+              <Text strong className="highlight-text">
+                BTY TRADING PLC
+              </Text>
+              , established on <Text strong>December 16, 2011</Text>, is a
+              registered import-export company under the Ethiopian Ministry of
+              Trade. We specialize in exporting{" "}
+              <Text strong>oilseeds, pulses, and spices</Text> to countries like{" "}
+              <Text strong>
+                Israel, Turkey, India, Saudi Arabia, Sudan, and the UAE
+              </Text>
+              .
+            </Paragraph>
+            <Paragraph className="company-description">
+              Our products include{" "}
+              <Text strong>
+                sesame seeds, chickpeas, soybeans, green mung beans, niger
+                seeds, red kidney beans, and white pea beans
+              </Text>
+              . We also import{" "}
+              <Text strong>chemicals, cars, machinery, and steel</Text> to
+              support the growing demand in various industries.
+            </Paragraph>
+          </Col>
+          <Col xs={24} md={12}>
+            <div className="company-image-container">
+              <img
+                src={backofoil}
+                alt="BTY Trading Operations"
+                className="company-image"
+              />
+            </div>
+          </Col>
+        </Row>
+      </div>
+
+      {/* Company Plans Section */}
+      <div className="section-container plans-section">
+        <Row gutter={[32, 32]} align="middle">
+          <Col xs={24} md={12} order={2}>
+            <div className="section-header">
+              <Title level={2} className="section-title plans-title">
+                BTY Trading PLC Plans
+              </Title>
+              <div className="section-divider plans-divider"></div>
+            </div>
+            <Paragraph className="company-description">
+              We plan to <Text strong>modernize and diversify</Text> our
+              operations by establishing new departments and producing
+              exportable agricultural products. We also aim to{" "}
+              <Text strong>build warehouses across the country</Text>.
+            </Paragraph>
+            <Paragraph className="company-description">
+              Our <Text strong>long-term goal</Text> includes expanding both
+              import and export portfolios to meet international demand while
+              supporting Ethiopia's <Text strong>economic growth</Text>.
+            </Paragraph>
+          </Col>
+          <Col xs={24} md={12} order={1}>
+            <div className="company-image-container">
               <img
                 src={image1}
-                alt="About our company"
-                className="section-image"
+                alt="BTY Trading Future Plans"
+                className="company-image"
               />
-            </motion.div>
-          </Col>
-
-          <Col xs={24} sm={24} md={12} lg={12} xl={12} className="text-col">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-              style={{ width: "100%" }}
-            >
-              <Title level={2} className="section-title">
-                About Our Company
-              </Title>
-              <Paragraph className="section-text">
-                BTY TRADING PLC, established on December 16, 2011, is a
-                registered import-export company under the Ethiopian Ministry of
-                Trade. We specialize in exporting oilseeds, pulses, and spices
-                to countries like Israel, Turkey, India, Saudi Arabia, Sudan,
-                and the UAE.
-              </Paragraph>
-              <Paragraph className="section-text">
-                Our products include sesame seeds, chickpeas, soybeans, green
-                mung beans, niger seeds, red kidney beans, and white pea beans.
-                We also import chemicals, cars, machinery, and steel to support
-                the growing demand in various industries.
-              </Paragraph>
-            </motion.div>
+            </div>
           </Col>
         </Row>
-      </SectionWrapper>
+      </div>
 
-      {/* Plans Section */}
-      <SectionWrapper id="plans-section">
-        <Row gutter={[0, 30]} className="section plans-section" align="middle">
-          <Col
-            xs={24}
-            sm={24}
-            md={{ span: 12, order: 2 }}
-            lg={{ span: 12, order: 2 }}
-            xl={{ span: 12, order: 2 }}
-            className="text-col"
-          >
-            <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
-              <Title level={2} className="section-title">
-                Bty Trading Plc Plans
+      <div className="section-container values-section">
+        <div className="section-header center-header">
+          <Title level={2} className="section-title center-title">
+            Our Core Principles
+          </Title>
+          <div className="section-divider center-divider"></div>
+        </div>
+        <Row gutter={[32, 32]} justify="center">
+          <Col xs={24} sm={12} md={8}>
+            <Card className="value-card mission-card">
+              <Title level={3} className="value-title">
+                Mission
               </Title>
-              <Paragraph className="section-text">
-                We plan to modernize and diversify our operations by
-                establishing new departments and producing exportable
-                agricultural products. We also aim to build warehouses across
-                the country.
+              <Paragraph
+                className="value-description"
+                style={{ textAlign: "justify" }}
+              >
+                To bridge the gap between African agricultural producers and
+                global markets by providing reliable, efficient, and transparent
+                export and import services, while maintaining the highest
+                standards of quality and ethical business practices.
               </Paragraph>
-              <Paragraph className="section-text">
-                Our long-term goal includes expanding both import and export
-                portfolios to meet international demand while supporting
-                Ethiopia’s economic growth.
-              </Paragraph>
-            </motion.div>
+            </Card>
           </Col>
-
-          <Col
-            xs={24}
-            sm={24}
-            md={{ span: 12, order: 1 }}
-            lg={{ span: 12, order: 1 }}
-            xl={{ span: 12, order: 1 }}
-            className="image-col"
-          >
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={scaleUp}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <img src={backofoil} alt="Our plans" className="section-image" />
-            </motion.div>
+          <Col xs={24} sm={12} md={8}>
+            <Card className="value-card vision-card">
+              <Title level={3} className="value-title">
+                Vision
+              </Title>
+              <Paragraph
+                className="value-description"
+                style={{ textAlign: "justify" }}
+              >
+                BTY Trading PLC aims to become the leading exporter of
+                agricultural products and importer/supplier of industrial raw
+                materials, cars, spare parts, and machinery. With over 10 years
+                of experience in import and export, we focus on importing
+                exclusive, high-quality products from around the world and
+                distributing them nationwide.
+              </Paragraph>
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} md={8}>
+            <Card className="value-card values-card">
+              <Title level={3} className="value-title">
+                Our Values
+              </Title>
+              <Paragraph className="value-description">
+                <ul className="values-list">
+                  <li>
+                    <Text strong>Integrity:</Text> Honesty and transparency in
+                    all dealings.
+                  </li>
+                  <li>
+                    <Text strong>Quality:</Text> Uncompromising standards in our
+                    products.
+                  </li>
+                  <li>
+                    <Text strong>Sustainability:</Text> Ethical and responsible
+                    trading practices.
+                  </li>
+                  <li>
+                    <Text strong>Innovation:</Text> Continuous improvement in
+                    our processes and services.
+                  </li>
+                  <li>
+                    <Text strong>Partnership:</Text> Building strong and
+                    mutually beneficial relationships with our clients and
+                    suppliers.
+                  </li>
+                </ul>
+              </Paragraph>
+            </Card>
           </Col>
         </Row>
-      </SectionWrapper>
-
-      {/* Mission Component */}
-      <SectionWrapper id="mission-section">
-        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-          <Mission />
-        </motion.div>
-      </SectionWrapper>
+      </div>
     </div>
   );
 };

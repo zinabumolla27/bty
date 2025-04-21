@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import { Input, Button } from "antd";
 import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
-import "./SearchBar.css"; // Your custom CSS file
+import "./SearchBar.css";
 
 const SearchBar = ({ onSearch }) => {
   const [expanded, setExpanded] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = () => {
-    if (searchTerm.trim()) {
-      onSearch(searchTerm); // Call the passed function with the search term
-      setExpanded(false); // Optionally collapse after search
+    if (searchTerm.trim() !== "") {
+      if (typeof onSearch === "function") {
+        onSearch(searchTerm);
+      } else {
+        console.error("onSearch is not a function");
+      }
+      setExpanded(false);
+      setSearchTerm("");
     }
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleSearch();
     }
@@ -28,7 +33,7 @@ const SearchBar = ({ onSearch }) => {
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyDown} // Use onKeyDown instead of onKeyPress
             className="search-input"
             autoFocus
           />

@@ -31,7 +31,7 @@ const Testimonials = () => {
   return (
     <div
       style={{
-        background: "#3b7b57",
+        background: "#f9f9f9",
         padding: "60px 0",
         margin: 0,
         width: "100%",
@@ -45,8 +45,8 @@ const Testimonials = () => {
           textAlign: "center",
         }}
       >
-        <Text style={{ color: "white", fontWeight: 500 }}>Testimonials</Text>
-        <Title level={2} style={{ color: "white", marginBottom: 40 }}>
+        <Text style={{ color: "blue", fontWeight: 700 }}>Testimonials</Text>
+        <Title level={2} style={{ color: "#3b7b57", marginBottom: 40 }}>
           What Our Clients Say About BTY Trading PLC
         </Title>
 

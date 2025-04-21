@@ -1,16 +1,40 @@
 import React from "react";
-import { Form, Input, Button, Typography } from "antd";
-import "./Contact.css";
+import { Form, Input, Button, Typography, Divider } from "antd";
 import { motion } from "framer-motion";
-const { Title, Paragraph } = Typography;
+import {
+  MailOutlined,
+  PhoneOutlined,
+  MessageOutlined,
+  EnvironmentOutlined,
+  ClockCircleOutlined,
+  CloseOutlined,
+} from "@ant-design/icons";
+import "./Contact.css";
+
+const { Title, Paragraph, Text } = Typography;
 
 const Contact = () => {
   const onFinish = (values) => {
     console.log("Form submitted:", values);
   };
 
+  // Color palette
+  const colors = {
+    primary: "#4F46E5", // Indigo-600
+    primaryLight: "#6366F1", // Indigo-500
+    primaryDark: "#4338CA", // Indigo-700
+    secondary: "#10B981", // Emerald-500
+    accent: "#F59E0B", // Amber-500
+    dark: "#1F2937", // Gray-800
+    medium: "#4B5563", // Gray-600
+    light: "#F3F4F6", // Gray-100
+    white: "#FFFFFF",
+    error: "#EF4444", // Red-500
+  };
+
   return (
     <div className="contact-wrapper">
+      {/* Hero Section */}
       <motion.div
         className="contact-header"
         initial={{ opacity: 0, y: 20 }}
@@ -18,40 +42,38 @@ const Contact = () => {
         transition={{ duration: 0.6 }}
         style={{
           textAlign: "center",
-          maxWidth: "800px",
+          maxWidth: "1000px",
           margin: "0 auto",
-          padding: "40px 20px",
+          padding: "60px 20px 40px",
         }}
       >
-        {/* Main Title with Gradient Text */}
         <Title
           level={1}
           style={{
-            fontSize: "2.8rem",
-            fontWeight: 700,
+            fontSize: "3.5rem",
+            fontWeight: 800,
             marginBottom: "24px",
-            background: "linear-gradient(45deg, #3182ce, #805ad5)",
+            background: `linear-gradient(45deg, ${colors.primary}, ${colors.secondary})`,
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             color: "transparent",
             lineHeight: 1.2,
           }}
         >
-          Get in Touch
+          Connect With Us
         </Title>
 
-        {/* Decorative Divider */}
-        <div
+        <Divider
           style={{
-            width: "80px",
+            width: "100px",
             height: "4px",
-            background: "linear-gradient(90deg, #3182ce, #805ad5)",
+            background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
             margin: "0 auto 24px",
             borderRadius: "2px",
+            border: "none",
           }}
         />
 
-        {/* Animated Description Text */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -59,192 +81,478 @@ const Contact = () => {
         >
           <Paragraph
             style={{
-              fontSize: "1.1rem",
-              color: "#4a5568",
+              fontSize: "1.2rem",
+              color: colors.medium,
               lineHeight: 1.7,
               marginBottom: 0,
+              maxWidth: "800px",
+              margin: "0 auto",
             }}
           >
-            We're here to help. Whether you have questions about our services,
-            need assistance, or just want to say hello — our team is ready to
-            connect with you. Reach out and we'll respond promptly.
+            We're here to help and answer any questions you might have. Whether
+            you're interested in our services, need support, or just want to say
+            hello—our team is ready to assist you.
           </Paragraph>
         </motion.div>
 
-        {/* Floating Contact Icons (Optional) */}
-        <div
+        {/* Contact Method Chips */}
+        <motion.div
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: "24px",
-            marginTop: "32px",
+            gap: "20px",
+            marginTop: "40px",
+            flexWrap: "wrap",
           }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
         >
-          {["📩", "📞", "💬"].map((icon, index) => (
+          {[
+            {
+              icon: <MailOutlined style={{ fontSize: "20px" }} />,
+              text: "Email Us",
+              color: colors.primary,
+            },
+            {
+              icon: <PhoneOutlined style={{ fontSize: "20px" }} />,
+              text: "Call Us",
+              color: colors.secondary,
+            },
+            {
+              icon: <MessageOutlined style={{ fontSize: "20px" }} />,
+              text: "Live Chat",
+              color: colors.accent,
+            },
+          ].map((item, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -5, scale: 1.1 }}
+              whileHover={{ y: -3, scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
               style={{
-                fontSize: "28px",
-                cursor: "default",
-                opacity: 0.7,
-                transition: "opacity 0.3s",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "12px 20px",
+                borderRadius: "50px",
+                backgroundColor: `${item.color}15`,
+                border: `1px solid ${item.color}30`,
+                cursor: "pointer",
+                transition: "all 0.3s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = 1)}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = 0.7)}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = `${item.color}20`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = `${item.color}15`;
+              }}
             >
-              {icon}
+              <div style={{ color: item.color }}>{item.icon}</div>
+              <Text strong style={{ color: colors.dark }}>
+                {item.text}
+              </Text>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
 
-      <div className="form-address-row">
-        <div className="form-container">
-          <Title level={3} style={{ color: "#3498db" }}>
-            📬 Contact Form
-          </Title>
-          <Form layout="vertical" onFinish={onFinish} className="enhanced-form">
-            <Form.Item
-              name="firstName"
-              label="First Name"
-              rules={[
-                { required: true, message: "Please enter your first name" },
-              ]}
-            >
-              <Input placeholder="Enter First Name" />
-            </Form.Item>
-
-            <Form.Item name="middleName" label="Middle Name">
-              <Input placeholder=" Enter Middle Name" />
-            </Form.Item>
-
-            <Form.Item
-              name="lastName"
-              label="Last Name"
-              rules={[
-                { required: true, message: "Please enter your last name" },
-              ]}
-            >
-              <Input placeholder=" Enter Last Name" />
-            </Form.Item>
-
-            <Form.Item
-              name="email"
-              label="Email Address"
-              rules={[
-                {
-                  required: true,
-                  type: "email",
-                  message: "Enter a valid email",
-                },
-              ]}
-            >
-              <Input placeholder="Enter Your Email" />
-            </Form.Item>
-
-            <Form.Item
-              name="message"
-              label="Your Message"
-              rules={[{ required: true, message: "Message cannot be empty" }]}
-            >
-              <Input.TextArea
-                placeholder="Write your message here..."
-                rows={5}
-              />
-            </Form.Item>
-
-            <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="submit-button"
+      {/* Main Content - Centered Container */}
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 20px",
+        }}
+      >
+        <div className="form-address-row">
+          {/* Contact Form - Centered */}
+          <motion.div
+            className="form-container"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            style={{
+              flex: 1,
+              minWidth: "320px",
+              maxWidth: "600px",
+              margin: "0 auto",
+              padding: "0 20px",
+            }}
+          >
+            <div style={{ textAlign: "center", marginBottom: "32px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "12px",
+                  marginBottom: "16px",
+                }}
               >
-                Send Message
-              </Button>
-            </Form.Item>
-          </Form>
-        </div>
+                <MailOutlined
+                  style={{
+                    fontSize: "28px",
+                    color: colors.primary,
+                  }}
+                />
+                <Title
+                  level={3}
+                  style={{
+                    margin: 0,
+                    color: colors.dark,
+                    fontWeight: 600,
+                  }}
+                >
+                  Send us a message
+                </Title>
+              </div>
+              <Text style={{ color: colors.medium }}>
+                Fill out the form below and we'll get back to you as soon as
+                possible.
+              </Text>
+            </div>
 
-        <div
-          className="info-container"
-          style={{
-            fontFamily: "Arial, sans-serif",
-            maxWidth: "600px",
-            margin: "0 auto",
-          }}
-        >
-          <Title
-            level={2}
+            <Form
+              layout="vertical"
+              onFinish={onFinish}
+              className="enhanced-form"
+            >
+              <div style={{ display: "flex", gap: "16px" }}>
+                <Form.Item
+                  name="firstName"
+                  label={
+                    <Text strong style={{ color: colors.medium }}>
+                      First Name
+                    </Text>
+                  }
+                  rules={[
+                    { required: true, message: "Please enter your first name" },
+                  ]}
+                  style={{ flex: 1 }}
+                >
+                  <Input
+                    placeholder="Enter first name"
+                    style={{
+                      padding: "12px 16px",
+                      borderRadius: "8px",
+                      borderColor: `${colors.medium}30`,
+                    }}
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  name="lastName"
+                  label={
+                    <Text strong style={{ color: colors.medium }}>
+                      Last Name
+                    </Text>
+                  }
+                  rules={[
+                    { required: true, message: "Please enter your last name" },
+                  ]}
+                  style={{ flex: 1 }}
+                >
+                  <Input
+                    placeholder="Enter last name"
+                    style={{
+                      padding: "12px 16px",
+                      borderRadius: "8px",
+                      borderColor: `${colors.medium}30`,
+                    }}
+                  />
+                </Form.Item>
+              </div>
+
+              <Form.Item
+                name="email"
+                label={
+                  <Text strong style={{ color: colors.medium }}>
+                    Email Address
+                  </Text>
+                }
+                rules={[
+                  {
+                    required: true,
+                    type: "email",
+                    message: "Please enter a valid email",
+                  },
+                ]}
+              >
+                <Input
+                  placeholder="your@email.com"
+                  style={{
+                    padding: "12px 16px",
+                    borderRadius: "8px",
+                    borderColor: `${colors.medium}30`,
+                  }}
+                />
+              </Form.Item>
+
+              <Form.Item
+                name="subject"
+                label={
+                  <Text strong style={{ color: colors.medium }}>
+                    Subject
+                  </Text>
+                }
+                rules={[{ required: true, message: "Please enter a subject" }]}
+              >
+                <Input
+                  placeholder="What's this about?"
+                  style={{
+                    padding: "12px 16px",
+                    borderRadius: "8px",
+                    borderColor: `${colors.medium}30`,
+                  }}
+                />
+              </Form.Item>
+
+              <Form.Item
+                name="message"
+                label={
+                  <Text strong style={{ color: colors.medium }}>
+                    Your Message
+                  </Text>
+                }
+                rules={[{ required: true, message: "Message cannot be empty" }]}
+              >
+                <Input.TextArea
+                  placeholder="Write your message here..."
+                  rows={6}
+                  style={{
+                    padding: "12px 16px",
+                    borderRadius: "8px",
+                    borderColor: `${colors.medium}30`,
+                    resize: "vertical",
+                  }}
+                />
+              </Form.Item>
+
+              <Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="submit-button"
+                  style={{
+                    height: "48px",
+                    width: "100%",
+                    borderRadius: "8px",
+                    fontWeight: 600,
+                    fontSize: "16px",
+                    backgroundColor: colors.primary,
+                    border: "none",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  Send Message
+                </Button>
+              </Form.Item>
+            </Form>
+          </motion.div>
+
+          {/* Contact Information - Centered */}
+          <motion.div
+            className="info-container"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
             style={{
-              color: "#2c3e50",
-              marginBottom: "16px",
-              borderBottom: "2px solid #3498db",
-              paddingBottom: "8px",
+              flex: 1,
+              minWidth: "320px",
+              maxWidth: "600px",
+              margin: "0 auto",
+              padding: "0 20px",
             }}
           >
-            <span style={{ color: "#3498db" }}>BTY</span> Trading PLC
-          </Title>
+            <div style={{ textAlign: "center", marginBottom: "32px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "12px",
+                  marginBottom: "16px",
+                }}
+              >
+                <EnvironmentOutlined
+                  style={{
+                    fontSize: "28px",
+                    color: colors.secondary,
+                  }}
+                />
+                <Title
+                  level={3}
+                  style={{
+                    margin: 0,
+                    color: colors.dark,
+                    fontWeight: 600,
+                  }}
+                >
+                  Contact Information
+                </Title>
+              </div>
+              <Text style={{ color: colors.medium }}>
+                Find our office location and contact details below.
+              </Text>
+            </div>
 
-          <Paragraph
-            style={{ lineHeight: "1.6", fontSize: "16px", color: "#34495e" }}
-          >
-            <strong style={{ display: "block", marginBottom: "8px" }}>
-              <span style={{ color: "#3498db" }}>📍</span> Bole, Addis Ababa,
-              Ethiopia
-            </strong>
-            <span style={{ color: "#3498db" }}>📞</span> +251 929260805
-            <br />
-            <span style={{ color: "#3498db" }}>✉️</span> info@btytrading.com
-          </Paragraph>
+            <div style={{ marginBottom: "32px", textAlign: "center" }}>
+              <Title
+                level={4}
+                style={{
+                  color: colors.dark,
+                  fontWeight: 600,
+                  marginBottom: "16px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                }}
+              >
+                <EnvironmentOutlined style={{ color: colors.secondary }} />
+                Our Location
+              </Title>
+              <Paragraph
+                style={{
+                  color: colors.medium,
+                  lineHeight: 1.7,
+                }}
+              >
+                <Text strong style={{ color: colors.dark, display: "block" }}>
+                  BTY Trading PLC
+                </Text>
+                Bole, Addis Ababa, Ethiopia
+                <br />
+                <Text type="secondary" style={{ fontSize: "14px" }}>
+                  Near Bole Medhanealem Cathedral
+                </Text>
+              </Paragraph>
+            </div>
 
-          <Title
-            level={3}
-            style={{
-              color: "#2c3e50",
-              marginTop: "24px",
-              borderBottom: "1px solid #eee",
-              paddingBottom: "6px",
-            }}
-          >
-            <span style={{ color: "#3498db" }}>⏰</span> Working Hours
-          </Title>
-          <Paragraph
-            style={{ lineHeight: "1.6", fontSize: "16px", color: "#34495e" }}
-          >
-            <strong>Monday - Friday:</strong> 8:00 AM - 5:30 PM
-            <br />
-            <strong>Saturday:</strong> 2:00 AM - 5:30 PM
-            <br />
-            <strong>Sunday:</strong>{" "}
-            <span style={{ color: "#e74c3c" }}>Closed</span>
-          </Paragraph>
+            <div style={{ marginBottom: "32px", textAlign: "center" }}>
+              <Title
+                level={4}
+                style={{
+                  color: colors.dark,
+                  fontWeight: 600,
+                  marginBottom: "16px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                }}
+              >
+                <PhoneOutlined style={{ color: colors.primaryLight }} />
+                Contact Details
+              </Title>
+              <Paragraph
+                style={{
+                  color: colors.medium,
+                  lineHeight: 1.7,
+                }}
+              >
+                <Text strong style={{ color: colors.dark, display: "block" }}>
+                  <PhoneOutlined style={{ marginRight: "8px" }} />
+                  +251 929260805
+                </Text>
+                <Text
+                  strong
+                  style={{
+                    color: colors.dark,
+                    display: "block",
+                    marginTop: "8px",
+                  }}
+                >
+                  <MailOutlined style={{ marginRight: "8px" }} />
+                  info@btytrading.com
+                </Text>
+              </Paragraph>
+            </div>
+
+            <div style={{ textAlign: "center" }}>
+              <Title
+                level={4}
+                style={{
+                  color: colors.dark,
+                  fontWeight: 600,
+                  marginBottom: "16px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                }}
+              >
+                <ClockCircleOutlined style={{ color: colors.accent }} />
+                Working Hours
+              </Title>
+              <Paragraph
+                style={{
+                  color: colors.medium,
+                  lineHeight: 1.7,
+                }}
+              >
+                <Text strong style={{ color: colors.dark, display: "block" }}>
+                  Monday - Friday:{" "}
+                  <Text style={{ fontWeight: 400 }}>8:00 AM - 5:30 PM</Text>
+                </Text>
+                <Text
+                  strong
+                  style={{
+                    color: colors.dark,
+                    display: "block",
+                    marginTop: "4px",
+                  }}
+                >
+                  Saturday:{" "}
+                  <Text style={{ fontWeight: 400 }}>2:00 AM - 5:30 PM</Text>
+                </Text>
+                <Text
+                  strong
+                  style={{
+                    color: colors.dark,
+                    display: "block",
+                    marginTop: "4px",
+                  }}
+                >
+                  Sunday:{" "}
+                  <CloseOutlined
+                    style={{ color: colors.error, marginLeft: "4px" }}
+                  />
+                  <Text
+                    style={{
+                      fontWeight: 400,
+                      color: colors.error,
+                      marginLeft: "4px",
+                    }}
+                  >
+                    Closed
+                  </Text>
+                </Text>
+              </Paragraph>
+            </div>
+          </motion.div>
         </div>
       </div>
 
+      {/* Full-width Map Section */}
       <div
-        className="map-box"
         style={{
-          width: "100vw",
-          marginLeft: "calc(-50vw + 50%)", // Counteracts container padding
-          height: "400px", // Adjust height as needed
-          position: "relative",
-          left: 0,
-          right: 0,
+          width: "100%",
+          marginTop: "60px",
         }}
       >
         <iframe
           title="BTY Trading Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.622192751086!2d38.74381081477663!3d9.02455309352841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85330c9e8f1b%3A0x65f09fbd9945930b!2sSarbet!5e0!3m2!1sen!2set!4v1615729371626!5m2!1sen!2set"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7419884392707!2d38.787333673752336!3d8.995872489509235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8584b0f1294d%3A0x78c5c25e5067a736!2sBole%20Medhanialem%20Church!5e0!3m2!1sen!2set!4v1745237595933!5m2!1sen!2set"
           width="100%"
-          height="100%"
+          height="400"
           style={{
+            display: "block",
             border: 0,
-            display: "block", // Removes iframe default inline spacing
           }}
           allowFullScreen
-          aria-hidden="false"
-          loading="lazy" // Improves page load performance
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
         />
       </div>
     </div>

@@ -13,12 +13,12 @@ const Partners = () => {
   return (
     <div
       style={{
-        padding: "40px 20px",
-        background: "#fff",
+        padding: "60px 20px",
+        background: "#f9f9f9",
         textAlign: "center",
       }}
     >
-      <Row justify="center" gutter={[16, 16]}>
+      <Row justify="center" gutter={[24, 24]}>
         {partnerLogos.map((logo, index) => (
           <Col
             xs={12}
@@ -29,20 +29,35 @@ const Partners = () => {
             key={index}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <img
-              src={logo}
-              alt={`Partner ${index + 1}`}
+            <div
               style={{
-                width: "80px",
-                height: "80px",
-                objectFit: "contain",
-                borderRadius: "8px",
-                transition: "transform 0.3s ease",
+                background: "#fff",
+                padding: "16px",
+                borderRadius: "12px",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.05)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
               }}
-              // Add hover effect for interactivity
-              onMouseEnter={(e) => (e.target.style.transform = "scale(1.1)")}
-              onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
-            />
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.boxShadow =
+                  "0 6px 16px rgba(0, 0, 0, 0.1)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow =
+                  "0 4px 10px rgba(0, 0, 0, 0.05)";
+              }}
+            >
+              <img
+                src={logo}
+                alt={`Partner ${index + 1}`}
+                style={{
+                  width: "80px",
+                  height: "80px",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
           </Col>
         ))}
       </Row>

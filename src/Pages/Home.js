@@ -3,48 +3,56 @@ import { Typography, Button, Col, Row, Card } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Meta from "antd/es/card/Meta";
 import { useNavigate } from "react-router-dom";
-
 import bg1 from "../Assets/backofoil.jpg";
 import bg2 from "../Assets/loglog.jpg";
 import bg3 from "../Assets/image3.jpg";
-
 import image1 from "../Assets/image1.jpeg";
 import image2 from "../Assets/image2.jpeg";
 import image3 from "../Assets/image3.jpg";
 import image4 from "../Assets/image4.jpeg";
 import image5 from "../Assets/image5.jpg";
 import img6 from "../Assets/img6.jpeg";
-
 import "./Home.css";
 import Testimonials from "./Testimonals";
 import Partners from "./Partner";
+import SearchBar from "../Components/SearchBar";
 
 const { Title, Paragraph, Text } = Typography;
 
 const backgroundImages = [bg1, bg2, bg3];
 const descriptions = [
-  "High-quality sesame seeds from the best farms.",
+  "Includes White, Green, and Black.",
   "Includes Mitmita, Korerima (Ethiopian Cardamom), Berbere.",
   "Includes sesame, sunflower, soybean.",
-  "Organic sesame seeds, naturally grown.",
-  "Nutritious sesame seeds, perfect for cooking.",
-  "Sustainably farmed sesame seeds for your business.",
+  "Includes Yirgacheffe, Sidamo, Jimma.",
+  "Includes Wheat, Barley, Teff, Maize.",
+  "Includes Mitmita, Korarima.",
 ];
-const titles = ["Tea", "Spices", "OilSeeds", "Coffee", "Cereals", "Peppers"];
+const titles = [
+  "Tea Leaves",
+  "Spices",
+  "Oil Seeds",
+  "Coffee",
+  "Cereals",
+  "Peppers",
+];
 const images = [img6, image1, image2, image3, image4, image5];
 
 const Home = () => {
   const [bgIndex, setBgIndex] = useState(0);
   const navigate = useNavigate();
 
+  // This will handle the navigation to the company profile
   const handleClick = () => {
     navigate("/companyprofile");
   };
 
+  // Handle next background image
   const goNext = () => {
     setBgIndex((prev) => (prev + 1) % backgroundImages.length);
   };
 
+  // Handle previous background image
   const goPrev = () => {
     setBgIndex(
       (prev) => (prev - 1 + backgroundImages.length) % backgroundImages.length
@@ -53,15 +61,18 @@ const Home = () => {
 
   return (
     <div>
+      {/* Background Section */}
       <div
         className="home-background"
         style={{ backgroundImage: `url(${backgroundImages[bgIndex]})` }}
+        onClick={(e) => e.stopPropagation()} // Prevent background click from triggering redirection
       >
         <LeftOutlined className="nav-arrow left" onClick={goPrev} />
         <RightOutlined className="nav-arrow right" onClick={goNext} />
 
         <div className="overlay">
           <div className="content-wrapper">
+            <SearchBar /> {/* Place SearchBar here */}
             <Title
               level={1}
               className="main-heading"
@@ -69,11 +80,16 @@ const Home = () => {
             >
               BTY TRADING PLC IMPORT AND EXPORT
             </Title>
-            <Paragraph className="subtitle">
+            <Paragraph className="subtitle" style={{ color: "white" }}>
               Exporting Agricultural Products
             </Paragraph>
             <div className="sign-up-button-container">
-              <Button type="primary" size="large" className="sign-up-button">
+              <Button
+                type="primary"
+                size="large"
+                className="sign-up-button"
+                onClick={handleClick}
+              >
                 Explore
               </Button>
             </div>
@@ -81,11 +97,16 @@ const Home = () => {
         </div>
       </div>
 
+      {/* About Section */}
       <div className="about-section">
         <Row gutter={[32, 32]} align="middle" justify="center">
           <Col xs={24} md={10}>
             <Text className="about-label">About BTY TRADING</Text>
-            <Title level={1} className="about-title">
+            <Title
+              level={1}
+              className="about-title"
+              style={{ color: "#3b7b57" }}
+            >
               Ethiopia's <br /> Agricultural <br /> Products Exporter.
             </Title>
           </Col>
@@ -102,7 +123,7 @@ const Home = () => {
               type="primary"
               size="large"
               className="learn-more-button"
-              onClick={handleClick}
+              onClick={handleClick} // Add the navigation handler here as well
             >
               Learn more
             </Button>
@@ -110,13 +131,13 @@ const Home = () => {
         </Row>
       </div>
 
+      {/* Gallery Section */}
       <Row gutter={[32, 32]} justify="center">
         {images.map((img, index) => (
           <Col xs={24} sm={12} md={8} lg={8} key={index}>
             <Card
               hoverable
               className="gallery-card"
-              variant="outlined" // ✅ Using variant instead of bordered
               cover={
                 <img
                   alt="product"
@@ -135,8 +156,11 @@ const Home = () => {
         ))}
       </Row>
 
+      {/* Testimonials Section */}
       <Testimonials />
-      <Title level={2} className="partners-title">
+
+      {/* Partners Section */}
+      <Title level={2} className="partners-title" style={{ color: "green" }}>
         Our Partners
       </Title>
       <Partners />

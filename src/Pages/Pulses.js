@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button, Row, Col, Typography, Modal } from "antd";
 import pppp from "../Assets/pppp.jpg";
 import faba from "../Assets/faba.jpg";
@@ -67,6 +67,26 @@ const PulsesData = [
 const Pulses = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSeed, setSelectedSeed] = useState(null);
+  const [modalWidth, setModalWidth] = useState("50%");
+
+  useEffect(() => {
+    const updateModalWidth = () => {
+      if (window.innerWidth <= 480) {
+        setModalWidth("90%"); // for mobile devices
+      } else if (window.innerWidth <= 768) {
+        setModalWidth("70%"); // for tablets
+      } else {
+        setModalWidth("50%"); // for larger screens
+      }
+    };
+
+    window.addEventListener("resize", updateModalWidth);
+    updateModalWidth(); // Set initial width on mount
+
+    return () => {
+      window.removeEventListener("resize", updateModalWidth);
+    };
+  }, []);
 
   const showModal = (seed) => {
     setSelectedSeed(seed);
@@ -201,7 +221,7 @@ const Pulses = () => {
         onCancel={handleCancel}
         footer={null}
         centered
-        width="50%"
+        width={modalWidth}
         styles={{
           body: { padding: "30px" },
         }}

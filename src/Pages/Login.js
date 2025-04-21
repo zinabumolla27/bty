@@ -1,28 +1,23 @@
 import React from "react";
-import { Form, Input, Button, Typography, message } from "antd";
+import { Form, Input, Button, message } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import "./Login.css";
-
-const { Title } = Typography;
 
 const Login = () => {
   const onFinish = (values) => {
     message.success(`Welcome back, ${values.username}!`);
     console.log("Login Success:", values);
-    // Handle login logic here
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <Title level={2} className="login-title">
-          Welcome Back
-        </Title>
+    <div className="login-page">
+      <div className="login-content">
         <Form
           name="login"
           initialValues={{ remember: true }}
           onFinish={onFinish}
           layout="vertical"
+          className="login-form"
         >
           <Form.Item
             name="username"
@@ -32,6 +27,7 @@ const Login = () => {
               prefix={<UserOutlined />}
               placeholder="Username"
               size="large"
+              className="login-input"
             />
           </Form.Item>
 
@@ -43,11 +39,18 @@ const Login = () => {
               prefix={<LockOutlined />}
               placeholder="Password"
               size="large"
+              className="login-input"
             />
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" block size="large">
+            <Button
+              type="primary"
+              htmlType="submit"
+              block
+              size="large"
+              className="login-button"
+            >
               Log In
             </Button>
           </Form.Item>

@@ -8,13 +8,6 @@
   --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.nav-menu .ant-menu-item-selected,
-.nav-menu .ant-menu-submenu-selected {
-  color: var(--secondary-color) !important;
-  background-color: transparent !important;
-  border-bottom: 2px solid var(--secondary-color);
-}
-
 /* App Header */
 .app-header {
   position: fixed;
@@ -56,38 +49,6 @@
   height: 100%;
   z-index: 1001;
 }
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align items to the start */
-  justify-content: flex-start;
-  gap: 10px; /* Space between items */
-}
-
-.contact-item {
-  display: flex;
-  align-items: center; /* Align the icon and text */
-}
-
-.contact-text,
-.contact-link {
-  margin-left: 8px; /* Space between icon and text */
-}
-
-.contact-link {
-  color: inherit; /* Inherit text color */
-  text-decoration: none; /* Remove underline */
-}
-
-.contact-link:hover {
-  text-decoration: underline; /* Add underline on hover */
-}
-
-@media (max-width: 768px) {
-  .contact-info {
-    align-items: center; /* Center items on smaller screens */
-  }
-}
 
 .logo-container {
   display: flex;
@@ -101,7 +62,41 @@
   transform: scale(0.95);
 }
 
-/* Nav */
+/* Contact Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+}
+
+.contact-text,
+.contact-link {
+  margin-left: 8px;
+}
+
+.contact-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .contact-info {
+    align-items: center;
+  }
+}
+
+/* Navigation */
 .nav-col {
   flex-grow: 1;
   height: 100%;
@@ -137,6 +132,21 @@
 .nav-menu .ant-menu-item:hover,
 .nav-menu .ant-menu-submenu:hover {
   color: var(--secondary-color) !important;
+}
+
+/* Selected State */
+.nav-menu .ant-menu-item-selected,
+.nav-menu .ant-menu-submenu-selected {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border-bottom: none !important;
+
+  transition: var(--transition);
+}
+
+.nav-menu .ant-menu-submenu-selected .ant-menu-submenu-title,
+.nav-menu .ant-menu-submenu-selected .ant-menu-submenu-title:hover {
+  color: white !important;
 }
 
 /* Dropdown */
@@ -181,9 +191,10 @@
 
 .nav-menu .ant-menu-submenu-popup .ant-menu-item:hover {
   background: rgba(24, 144, 255, 0.05);
+  color: var(--secondary-color);
 }
 
-/* Mobile Menu Button */
+/* Mobile Menu */
 .mobile-menu-col {
   display: none;
   z-index: 1001;
@@ -200,26 +211,6 @@
   height: 48px;
   border-radius: 50%;
   transition: var(--transition);
-}
-/* Change background color of selected menu item */
-.ant-menu-item-selected {
-  background-color: #1890ff !important; /* Background color of selected menu item */
-  color: #ffffff !important; /* Text color of selected menu item */
-}
-
-/* Hover effect for selected dropdown items */
-.ant-dropdown-menu-item:hover {
-  background-color: #1890ff !important; /* Hover background color */
-  color: #ffffff !important; /* Hover text color */
-}
-
-.nav-menu .ant-menu-submenu-selected .ant-menu-submenu-title,
-.nav-menu .ant-menu-submenu-selected .ant-menu-submenu-title:hover {
-  color: #ff6b00 !important;
-}
-
-.ant-menu-submenu-open .ant-menu-item-selected {
-  color: #ffffff !important;
 }
 
 .mobile-menu-button:hover {
@@ -244,6 +235,7 @@
 .app-header.scrolled .mobile-menu {
   top: 70px;
 }
+
 .mobile-menu.visible {
   transform: translateX(0);
   opacity: 1;
@@ -284,7 +276,7 @@
   font-size: 18px;
 }
 
-/* Responsive */
+/* Responsive Breakpoints */
 @media (max-width: 1200px) {
   .nav-menu .ant-menu-item,
   .nav-menu .ant-menu-submenu {
@@ -350,7 +342,7 @@
   }
 }
 
-/* Fade In Animation */
+/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;

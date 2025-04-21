@@ -7,21 +7,18 @@ import {
   ReadOutlined,
   ExportOutlined,
   DownOutlined,
+  ImportOutlined,
 } from "@ant-design/icons";
+import { FaBuilding } from "react-icons/fa";
 import "./AppHeader.css";
 import fl from "../Assets/fl.png";
 import { useNavigate } from "react-router-dom";
-import SearchBar from "./SearchBar";
 
 const { Header } = Layout;
 
 const AppHeader = () => {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
   const navigate = useNavigate();
-
-  const handleSearch = (searchTerm) => {
-    console.log("Search Term:", searchTerm);
-  };
 
   const handleMenuClick = (item) => {
     navigate(`/${item.key}`);
@@ -47,19 +44,39 @@ const AppHeader = () => {
         {
           label: (
             <>
-              <ReadOutlined /> Company Profile
+              <ReadOutlined
+                style={{ marginRight: "8px" }}
+                size={14}
+                color="#007BFF"
+              />{" "}
+              Company Profile
             </>
           ),
           key: "CompanyProfile",
         },
         {
-          label: <>Sister Company</>,
+          label: (
+            <>
+              {" "}
+              <FaBuilding
+                style={{ marginRight: "8px" }}
+                size={14}
+                color="#007BFF"
+              />
+              Sister Company
+            </>
+          ),
           key: "SisterCompany",
         },
         {
           label: (
             <>
-              <QuestionCircleOutlined /> FAQ
+              <QuestionCircleOutlined
+                style={{ marginRight: "8px" }}
+                size={14}
+                color="#007BFF"
+              />{" "}
+              FAQ
             </>
           ),
           key: "faq",
@@ -78,7 +95,7 @@ const AppHeader = () => {
         {
           label: (
             <>
-              <ExportOutlined /> Export
+              <ExportOutlined style={{ marginRight: "8px" }} size={14} /> Export
             </>
           ),
           key: "export",
@@ -114,7 +131,17 @@ const AppHeader = () => {
           ],
         },
         {
-          label: <>Import</>,
+          label: (
+            <>
+              {" "}
+              <ImportOutlined
+                style={{ marginRight: "8px" }}
+                size={14}
+                color="#007BFF"
+              />
+              Import
+            </>
+          ),
           key: "import",
         },
         {
@@ -179,14 +206,12 @@ const AppHeader = () => {
               src={fl}
               alt="Company Logo"
               preview={false}
-              width={90}
+              width={80}
               className="logo-image"
               style={{
                 margin: "0 20px",
               }}
             />
-            {/* Pass the handleSearch function to SearchBar */}
-            <SearchBar onSearch={handleSearch} />
           </div>
         </Col>
 
@@ -217,7 +242,7 @@ const AppHeader = () => {
         }`}
       >
         <Menu
-          theme="light"
+          theme="dark"
           mode="inline"
           items={menuItems}
           onClick={handleMenuClick}

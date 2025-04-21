@@ -1,41 +1,53 @@
+/* Container for the search bar */
 .search-container {
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: all 0.3s ease;
 }
 
+/* Expanded state styling */
+.search-container.expanded {
+  margin-left: 8px;
+}
+
+/* Search input and buttons wrapper */
 .search-expanded {
   display: flex;
   align-items: center;
-  background: #fff;
+  background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 4px 8px;
 }
 
+/* Input styling */
 .search-input {
   width: 200px;
   border: none;
+  outline: none;
   box-shadow: none !important;
+  background: transparent;
 }
 
+/* Input focus styling */
 .search-input:focus {
   box-shadow: none !important;
 }
 
+/* Shared button styles */
 .search-button,
 .close-button {
   border: none;
   background: transparent;
+  cursor: pointer;
 }
 
+/* Icon button when collapsed */
 .search-icon-button {
-  font-size: 16px;
+  font-size: 18px;
   color: white;
-}
-
-/* Add animation when expanding */
-.search-container.expanded {
-  margin-left: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
