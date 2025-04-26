@@ -1,64 +1,107 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Input, Button } from "antd";
 import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
 import "./SearchBar.css";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ data }) => {
   const [expanded, setExpanded] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const searchRef = useRef(null);
 
-  const handleSearch = () => {
-    if (searchTerm.trim() !== "") {
-      if (typeof onSearch === "function") {
-        onSearch(searchTerm);
-      } else {
-        console.error("onSearch is not a function");
+  // Handle click outside to collapse
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setExpanded(false);
+        setQuery("");
+        setResults([]);
       }
-      setExpanded(false);
-      setSearchTerm("");
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Search function
+  const handleSearch = (value) => {
+    setQuery(value);
+    if (value.trim() === "") {
+      setResults([]);
+      return;
     }
+
+    const searchResults = data.filter((item) =>
+      Object.values(item).some((val) =>
+        String(val).toLowerCase().includes(value.toLowerCase())
+      )
+    );
+    setResults(searchResults);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSearch();
+  const toggleSearch = () => {
+    setExpanded(!expanded);
+    if (!expanded) {
+      setTimeout(() => {
+        document.getElementById("search-input")?.focus();
+      }, 100);
+    } else {
+      setQuery("");
+      setResults([]);
     }
   };
 
   return (
-    <div className={`search-container ${expanded ? "expanded" : ""}`}>
+    <div
+      className={`search-container ${expanded ? "expanded" : ""}`}
+      ref={searchRef}
+    >
       {expanded ? (
         <div className="search-expanded">
           <Input
+            id="search-input"
             placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleKeyDown} // Use onKeyDown instead of onKeyPress
+            prefix={<SearchOutlined />}
+            value={query}
+            onChange={(e) => handleSearch(e.target.value)}
             className="search-input"
-            autoFocus
-          />
-          <Button
-            type="text"
-            icon={<SearchOutlined />}
-            onClick={handleSearch}
-            className="search-button"
           />
           <Button
             type="text"
             icon={<CloseOutlined />}
-            onClick={() => {
-              setExpanded(false);
-              setSearchTerm("");
-            }}
-            className="close-button"
+            onClick={toggleSearch}
+            className="close-btn"
           />
+          {results.length > 0 && (
+            <div className="search-results">
+              {results.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.url || "#"}
+                  className="result-item"
+                  onClick={() => {
+                    setExpanded(false);
+                    setQuery("");
+                    setResults([]);
+                  }}
+                >
+                  <div className="result-title">{item.title || "Untitled"}</div>
+                  {item.description && (
+                    <div className="result-description">{item.description}</div>
+                  )}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <Button
           type="text"
           icon={<SearchOutlined />}
-          onClick={() => setExpanded(true)}
-          className="search-icon-button"
+          onClick={toggleSearch}
+          className="search-icon-btn"
         />
       )}
     </div>

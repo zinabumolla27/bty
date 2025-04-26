@@ -60,7 +60,9 @@ const Spices = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", margin: 0, padding: 0 }}>
+    <div
+      style={{ textAlign: "center", margin: 0, padding: 0, paddingTop: "50px" }}
+    >
       <img
         src={backspices}
         alt="Spices Banner"

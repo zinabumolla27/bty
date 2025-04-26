@@ -15,7 +15,6 @@ import img6 from "../Assets/img6.jpeg";
 import "./Home.css";
 import Testimonials from "./Testimonals";
 import Partners from "./Partner";
-import SearchBar from "../Components/SearchBar";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -72,7 +71,6 @@ const Home = () => {
 
         <div className="overlay">
           <div className="content-wrapper">
-            <SearchBar /> {/* Place SearchBar here */}
             <Title
               level={1}
               className="main-heading"

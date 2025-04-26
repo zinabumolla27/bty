@@ -6,7 +6,6 @@ import Contact from "../Pages/Contact";
 import News from "../Pages/News";
 import Upload from "../Pages/Upload";
 import CompanyProfile from "../Pages/CompanyProfile";
-import SisterCompany from "../Pages/SisterCompany";
 import FAQ from "../Pages/FAQ";
 import ServicesandProducts from "../Pages/ServicesandProducts";
 import Import from "../Pages/Import";
@@ -42,7 +41,6 @@ function AppRoutes() {
       <Route path="/news" element={<News />} />
       <Route path="/upload" element={<Upload />} />
       <Route path="/CompanyProfile" element={<CompanyProfile />} />
-      <Route path="/SisterCompany" element={<SisterCompany />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/viewContact" element={<ViewContact />} />
       <Route path="/addtionalservices" element={<AddtionalServices />} />

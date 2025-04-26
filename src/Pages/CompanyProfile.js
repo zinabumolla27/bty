@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Row, Col, Typography } from "antd";
 import "./CompanyProfile.css";
 import image1 from "../Assets/image1.jpeg";
-
 import backofoil from "../Assets/backofoil.jpg";
 
 const { Title, Paragraph, Text } = Typography;
@@ -10,7 +9,7 @@ const { Title, Paragraph, Text } = Typography;
 const CompanyProfile = () => {
   return (
     <div className="company-profile-container">
-      {/* Enhanced Hero Section */}
+      {/* Hero Section */}
       <div className="hero-section">
         <div className="hero-image-container">
           <img
@@ -20,8 +19,9 @@ const CompanyProfile = () => {
           />
           <div className="hero-overlay">
             <div className="hero-content">
-              <Title className="hero-title">Company Profile</Title>
-
+              <Title className="hero-title" style={{ color: "blue" }}>
+                Company Profile
+              </Title>
               <Text className="hero-subtitle">
                 BTY Trading PLC - Excellence in Agricultural Products Export
               </Text>
@@ -110,6 +110,7 @@ const CompanyProfile = () => {
         </Row>
       </div>
 
+      {/* Core Principles Section */}
       <div className="section-container values-section">
         <div className="section-header center-header">
           <Title level={2} className="section-title center-title">
@@ -118,46 +119,40 @@ const CompanyProfile = () => {
           <div className="section-divider center-divider"></div>
         </div>
         <Row gutter={[32, 32]} justify="center">
-          <Col xs={24} sm={12} md={8}>
+          <Col xs={24} sm={24} md={8}>
             <Card className="value-card mission-card">
               <Title level={3} className="value-title">
                 Mission
               </Title>
-              <Paragraph
-                className="value-description"
-                style={{ textAlign: "justify" }}
-              >
+              <div className="value-description">
                 To bridge the gap between African agricultural producers and
                 global markets by providing reliable, efficient, and transparent
                 export and import services, while maintaining the highest
                 standards of quality and ethical business practices.
-              </Paragraph>
+              </div>
             </Card>
           </Col>
-          <Col xs={24} sm={12} md={8}>
+          <Col xs={24} sm={24} md={8}>
             <Card className="value-card vision-card">
               <Title level={3} className="value-title">
                 Vision
               </Title>
-              <Paragraph
-                className="value-description"
-                style={{ textAlign: "justify" }}
-              >
+              <div className="value-description">
                 BTY Trading PLC aims to become the leading exporter of
                 agricultural products and importer/supplier of industrial raw
                 materials, cars, spare parts, and machinery. With over 10 years
                 of experience in import and export, we focus on importing
                 exclusive, high-quality products from around the world and
                 distributing them nationwide.
-              </Paragraph>
+              </div>
             </Card>
           </Col>
-          <Col xs={24} sm={12} md={8}>
+          <Col xs={24} sm={24} md={8}>
             <Card className="value-card values-card">
               <Title level={3} className="value-title">
                 Our Values
               </Title>
-              <Paragraph className="value-description">
+              <div className="value-description">
                 <ul className="values-list">
                   <li>
                     <Text strong>Integrity:</Text> Honesty and transparency in
@@ -181,7 +176,7 @@ const CompanyProfile = () => {
                     suppliers.
                   </li>
                 </ul>
-              </Paragraph>
+              </div>
             </Card>
           </Col>
         </Row>

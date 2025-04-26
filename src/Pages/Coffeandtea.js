@@ -18,7 +18,7 @@ const ethiopianCoffees = [
       "Grown in the Sidamo region of southern Ethiopia.",
       "Typically washed processing method.",
       "Best enjoyed as pour-over or filter coffee.",
-      "Source: Ethiopian Coffee Exporters Association",
+      "https://en.wikipedia.org/wiki/List_of_coffee_varieties",
     ],
     image: sedamo,
   },
@@ -29,7 +29,7 @@ const ethiopianCoffees = [
       "Considered one of the best coffees in the world.",
       "Often has bergamot and jasmine notes.",
       "Grown at high altitudes (1,700-2,200 meters).",
-      "Source: Ethiopian Commodity Exchange",
+      "https://en.wikipedia.org/wiki/Coffee_production_in_Ethiopia",
     ],
     image: chefe,
   },
@@ -40,7 +40,7 @@ const ethiopianCoffees = [
       "Dry-processed (natural) coffee beans.",
       "Known for its blueberry flavor notes.",
       "One of the oldest coffee varieties still in production.",
-      "Source: National Coffee Association of USA",
+      "https://en.wikipedia.org/?title=Harari_coffee&redirect=no",
     ],
     image: harer,
   },
@@ -51,7 +51,7 @@ const ethiopianCoffees = [
       "Grown in the Kaffa region (birthplace of coffee).",
       "Often used in espresso blends.",
       "Known for its chocolatey and nutty flavors.",
-      "Source: International Coffee Organization",
+      "https://www.sciencepublishinggroup.com/article/10.11648/10069189",
     ],
     image: jimmas,
   },
@@ -62,18 +62,22 @@ const ethiopianCoffees = [
       "Also known as Lekempti coffee.",
       "Grown in western Ethiopia.",
       "Often has winey and fruity characteristics.",
-      "Source: African Fine Coffees Association",
+      "https://en.wikipedia.org/wiki/Coffee_production_in_Ethiopia",
     ],
     image: beann,
   },
   {
-    title: "Black Tea",
+    title: "Tea Leaf",
     description: [
-      "Ethiopian black tea is bold and full-bodied.",
-      "Grown in the Gumaro and Wushwush regions.",
-      "Often has malty and honey-like notes.",
-      "Traditionally served with sugar and spices.",
-      "Source: Ethiopian Tea Plantation Development",
+      "Rich in Antioxidants",
+      "Boosts Heart Health",
+      "Enhances Mental Alertness",
+      "Supports Weight Management",
+      "Promotes Digestive Health",
+      "Strengthens the Immune System",
+      "Cultural and Economic Value",
+      "Environmental Benefits",
+      "https://en.wikipedia.org/wiki/The_Coffee_Bean_%26_Tea_Leaf",
     ],
     image: tea3,
   },
@@ -90,7 +94,6 @@ const Coffeandtea = () => {
 
   const handleCancel = () => {
     setIsModalOpen(false);
-    setSelectedSeed(null);
   };
 
   return (
@@ -102,16 +105,16 @@ const Coffeandtea = () => {
         minHeight: "100vh",
         overflowX: "hidden",
         paddingBottom: "50px",
+        paddingTop: "50px",
       }}
     >
-      {/* Full Width Image */}
+      {/* Full Width Image Banner */}
       <div
         style={{
-          width: "100vw",
+          width: "100%",
           height: "300px",
           overflow: "hidden",
           marginBottom: "30px",
-          borderRadius: "0px",
           boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
         }}
       >
@@ -122,26 +125,26 @@ const Coffeandtea = () => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            display: "block",
           }}
         />
       </div>
 
-      {/* Title */}
+      {/* Page Title */}
       <Title
         level={2}
         style={{
           fontWeight: "bold",
           color: "#1E3A8A",
           marginBottom: "30px",
+          padding: "0 16px",
         }}
       >
         Ethiopian Coffees & Teas
       </Title>
 
-      {/* Coffee Cards */}
-      <div style={{ maxWidth: "1200px", margin: "0 auto", paddingTop: "80px" }}>
-        <Row gutter={[32, 32]} justify="center">
+      {/* Coffee Cards Grid */}
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        <Row gutter={[24, 24]} justify="center">
           {ethiopianCoffees.map((seed, index) => (
             <Col
               key={index}
@@ -167,8 +170,7 @@ const Coffeandtea = () => {
                       src={seed.image}
                       style={{
                         height: "100%",
-                        width: "auto",
-                        maxWidth: "100%",
+                        width: "100%",
                         objectFit: "cover",
                       }}
                     />
@@ -176,20 +178,25 @@ const Coffeandtea = () => {
                 }
                 style={{
                   width: "100%",
-                  maxWidth: "320px",
-                  borderRadius: "10px",
+                  maxWidth: "350px",
+                  borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                  transition: "transform 0.3s",
+                  overflow: "hidden",
                 }}
                 bodyStyle={{
                   padding: "16px",
-                  textAlign: "center",
                 }}
               >
                 <Title level={4} style={{ marginBottom: "8px" }}>
                   {seed.title}
                 </Title>
-                <Text style={{ display: "block", marginBottom: "16px" }}>
+                <Text
+                  style={{
+                    display: "block",
+                    marginBottom: "16px",
+                    color: "#666",
+                  }}
+                >
                   {seed.description[0]}
                 </Text>
                 <Button
@@ -199,6 +206,7 @@ const Coffeandtea = () => {
                     width: "100%",
                     backgroundColor: "#4CAF50",
                     borderColor: "#4CAF50",
+                    fontWeight: 500,
                   }}
                 >
                   View Details
@@ -209,64 +217,83 @@ const Coffeandtea = () => {
         </Row>
       </div>
 
-      {/* Modal */}
+      {/* Modal for Detailed View */}
       <Modal
-        title={null}
+        title={
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "1.25rem",
+              fontWeight: 600,
+            }}
+          >
+            {selectedSeed?.title}
+          </div>
+        }
         open={isModalOpen}
         onCancel={handleCancel}
         footer={null}
         centered
-        width={Math.min(800, window.innerWidth - 40)}
+        width={800}
+        closable={true}
+        maskClosable={true}
+        style={{ top: 20 }}
+        bodyStyle={{
+          padding: "24px",
+          maxHeight: "calc(100vh - 200px)",
+          overflowY: "auto",
+        }}
       >
         {selectedSeed && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-            }}
-          >
-            <img
-              src={selectedSeed.image}
-              alt={selectedSeed.title}
+          <div style={{ textAlign: "center" }}>
+            <div
               style={{
-                width: "50%",
-                maxWidth: "200px",
-                height: "auto",
-                objectFit: "cover",
+                height: "300px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: "24px",
+                overflow: "hidden",
                 borderRadius: "8px",
-                marginBottom: "20px",
               }}
-            />
-
-            <Title level={4} style={{ marginBottom: "20px", color: "#1E40AF" }}>
-              {selectedSeed.title}
-            </Title>
+            >
+              <img
+                src={selectedSeed.image}
+                alt={selectedSeed.title}
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
 
             <ul
               style={{
                 listStyleType: "disc",
                 paddingLeft: "20px",
                 textAlign: "left",
-                maxWidth: "500px",
+                margin: 0,
               }}
             >
               {selectedSeed.description.map((item, index) => {
-                const isLink = item.toLowerCase().includes("source:");
-                const linkMatch = item.match(/Source:\s*(.+)/i);
+                const isLink = item.startsWith("http");
                 return (
-                  <li key={index} style={{ marginBottom: "10px" }}>
-                    {isLink && linkMatch ? (
+                  <li
+                    key={index}
+                    style={{
+                      marginBottom: "8px",
+                      lineHeight: "1.6",
+                    }}
+                  >
+                    {isLink ? (
                       <a
-                        href={`https://www.google.com/search?q=${encodeURIComponent(
-                          linkMatch[1]
-                        )}`}
+                        href={item}
                         target="_blank"
                         rel="noopener noreferrer"
+                        style={{ color: "#1890ff" }}
                       >
-                        {item}
+                        Learn more (External Link)
                       </a>
                     ) : (
                       item

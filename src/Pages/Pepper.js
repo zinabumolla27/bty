@@ -40,11 +40,6 @@ const Peppers = () => {
     setIsModalOpen(true);
   };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-    setSelectedItem(null);
-  };
-
   return (
     <div
       style={{
@@ -52,6 +47,7 @@ const Peppers = () => {
         margin: "0 ",
         padding: "0 ",
         paddingBottom: "50px",
+        paddingTop: "50px",
       }}
     >
       <img
@@ -168,114 +164,54 @@ const Peppers = () => {
         ))}
       </Row>
 
-      {/* Enhanced Modal */}
       <Modal
-        title={
-          <span
-            style={{
-              color: "#1E3A8A",
-              fontWeight: 600,
-              fontSize: "22px",
-              display: "block",
-              paddingBottom: "8px",
-              borderBottom: "1px solid #E2E8F0",
-            }}
-          >
-            {selectedItem?.title}
-          </span>
-        }
         open={isModalOpen}
-        onCancel={handleCancel}
         footer={null}
-        width={720}
+        width={600}
         centered
-        style={{ top: 20 }}
         styles={{
           body: {
-            padding: "0",
+            padding: "24px",
             borderRadius: "8px",
+            backgroundColor: "#F9FAFB",
           },
         }}
       >
         {selectedItem && (
           <div style={{ textAlign: "center" }}>
-            <div
+            <img
+              src={selectedItem.image}
+              alt={selectedItem.title}
               style={{
-                height: "320px",
+                width: "100%",
+                height: "200px",
+                objectFit: "cover",
+                borderRadius: "8px",
                 marginBottom: "24px",
-                borderRadius: "8px 8px 0 0",
-                overflow: "hidden",
-                backgroundColor: "#F8FAFC",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                borderBottom: "1px solid #E2E8F0",
               }}
-            >
-              <img
-                src={selectedItem.image}
-                alt={selectedItem.title}
-                style={{
-                  maxWidth: "50%",
-                  maxHeight: "90%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-
-            <div
+            />
+            <Title
+              level={3}
               style={{
-                position: "relative",
+                color: "#1E3A8A",
+                fontWeight: 700,
+                marginBottom: "16px",
+                fontSize: "24px",
               }}
             >
-              <div
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: "4px",
-                  backgroundColor: "#1E40AF",
-                  borderRadius: "0 4px 4px 0",
-                }}
-              />
-
-              <Text
-                style={{
-                  fontSize: "16px",
-                  lineHeight: 1.8,
-                  color: "#334155",
-                  textAlign: "left",
-                  display: "block",
-                  paddingLeft: "20px",
-                  margin: 0,
-                }}
-              >
-                {selectedItem.detail}
-              </Text>
-
-              <div
-                style={{
-                  marginTop: "24px",
-                  display: "flex",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <Button
-                  type="primary"
-                  onClick={handleCancel}
-                  style={{
-                    backgroundColor: "#1E40AF",
-                    borderColor: "#1E40AF",
-                    padding: "8px 24px",
-                    height: "auto",
-                    fontWeight: 500,
-                  }}
-                >
-                  Close
-                </Button>
-              </div>
-            </div>
+              {selectedItem.title}
+            </Title>
+            <Text
+              style={{
+                display: "block",
+                color: "#475569",
+                fontSize: "16px",
+                lineHeight: 1.7,
+                textAlign: "justify",
+              }}
+            >
+              {selectedItem.detail}
+            </Text>
           </div>
         )}
       </Modal>

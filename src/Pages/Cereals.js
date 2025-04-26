@@ -17,7 +17,7 @@ const Spices2 = [
     description:
       "A highly nutritious grain used in making injera and other dishes.",
     detail:
-      "While technically not a spice, teff is a staple grain in Ethiopia. It’s used primarily in making injera, the iconic Ethiopian flatbread, and is highly nutritious, rich in protein, and gluten-free.",
+      "While technically not a spice, teff is a staple grain in Ethiopia. It's used primarily in making injera, the iconic Ethiopian flatbread, and is highly nutritious, rich in protein, and gluten-free.",
     image: teff5,
   },
   {
@@ -65,7 +65,7 @@ const Spices2 = [
     description:
       "Expanding crop in Ethiopia used in various dishes, especially rice-based meals.",
     detail:
-      "Rice cultivation in Ethiopia is on the rise. It is used in making rice-based dishes, and while it’s not as widely grown, its export is growing steadily.",
+      "Rice cultivation in Ethiopia is on the rise. It is used in making rice-based dishes, and while it's not as widely grown, its export is growing steadily.",
     image: Rice,
   },
   {
@@ -96,12 +96,12 @@ const Cereals = () => {
     <div
       style={{
         maxWidth: "1400px",
-        margin: "0 ",
-        padding: "0",
+        margin: "0 auto",
+        paddingTop: "50px",
         minHeight: "100vh",
       }}
     >
-      {/* Banner Image */}
+      {/* Banner */}
       <div
         style={{
           width: "100%",
@@ -130,22 +130,25 @@ const Cereals = () => {
         style={{
           textAlign: "center",
           color: "#1E3A8A",
-          margin: "0 auto 48px",
+          marginBottom: "48px",
           fontWeight: "700",
           fontSize: "2.5rem",
         }}
       >
-        Ethiopian Cereals
+        Cereals
       </Title>
 
-      {/* Cards Grid with improved spacing */}
+      {/* Cards Grid - Modified to fix padding issues */}
       <Row
-        gutter={[
-          { xs: 24, sm: 32, md: 40, lg: 48 }, // Horizontal spacing
-          { xs: 32, sm: 40, md: 48, lg: 56 }, // Vertical spacing
-        ]}
+        gutter={[32, 40]} // Simplified gutter definition
         justify="center"
-        style={{ marginBottom: "64px" }}
+        style={{
+          marginBottom: "64px",
+          width: "100%",
+          maxWidth: "calc(100% - 32px)", // Accounts for gutter spacing
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
       >
         {Spices2.map((seed, index) => (
           <Col
@@ -155,9 +158,8 @@ const Cereals = () => {
             md={8}
             lg={6}
             style={{
-              padding: "16px", // Increased padding
-              display: "flex", // Ensures consistent card heights
-              justifyContent: "center", // Centers the card
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Card
@@ -167,7 +169,7 @@ const Cereals = () => {
                   alt={seed.title}
                   src={seed.image}
                   style={{
-                    height: "220px", // Slightly taller image
+                    height: "150px",
                     objectFit: "cover",
                     width: "100%",
                   }}
@@ -175,23 +177,17 @@ const Cereals = () => {
               }
               style={{
                 borderRadius: "12px",
-                width: "100%", // Ensures card fills column
-                margin: 0,
-                boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)", // Stronger shadow
+                width: "100%",
+                maxWidth: "320px",
+                boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
                 transition: "all 0.3s ease",
-                maxWidth: "320px", // Limits card width on larger screens
-              }}
-              bodyStyle={{
-                padding: "24px",
-                display: "flex",
-                flexDirection: "column",
-                flexGrow: 1,
+                margin: "5px", // Added margin instead of padding
               }}
             >
               <Title
                 level={3}
                 style={{
-                  marginBottom: "16px", // More space below title
+                  marginBottom: "16px",
                   textAlign: "center",
                   color: "#1E3A8A",
                   fontSize: "1.25rem",
@@ -205,7 +201,6 @@ const Cereals = () => {
                   textAlign: "center",
                   color: "#666",
                   marginBottom: "24px",
-                  flexGrow: 1,
                   fontSize: "0.95rem",
                   lineHeight: "1.6",
                 }}
@@ -231,6 +226,8 @@ const Cereals = () => {
           </Col>
         ))}
       </Row>
+
+      {/* Modal - unchanged */}
       <Modal
         title={
           <span
@@ -238,7 +235,7 @@ const Cereals = () => {
               color: "#1E3A8A",
               fontWeight: "700",
               fontSize: "1.5rem",
-              textShadow: "0px 1px 2px rgba(0,0,0,0.1)",
+              textAlign: "center",
             }}
           >
             {selectedSeed?.title}
@@ -247,29 +244,23 @@ const Cereals = () => {
         open={isModalOpen}
         onCancel={handleCancel}
         footer={null}
-        width={700}
         centered
-        bodyStyle={{
-          padding: "32px",
-          backgroundColor: "#F8FAFC",
-        }}
-        headerStyle={{
-          backgroundColor: "#F8FAFC",
-          borderBottom: "1px solid #E2E8F0",
+        width="90%"
+        style={{
+          maxWidth: "400px",
         }}
       >
         {selectedSeed && (
           <div
             style={{
               textAlign: "center",
-
               borderRadius: "12px",
             }}
           >
             <div
               style={{
-                height: "200px",
-                marginBottom: "24px",
+                height: "160px",
+                marginBottom: "16px",
                 borderRadius: "8px",
                 overflow: "hidden",
               }}
@@ -278,7 +269,7 @@ const Cereals = () => {
                 src={selectedSeed.image}
                 alt={selectedSeed.title}
                 style={{
-                  width: "50%",
+                  width: "100%",
                   height: "100%",
                   objectFit: "cover",
                 }}
@@ -288,14 +279,14 @@ const Cereals = () => {
             <p
               style={{
                 textAlign: "left",
-                fontSize: "16px",
-                lineHeight: "1.8",
+                fontSize: "14px",
+                lineHeight: "1.6",
                 color: "#334155",
                 margin: 0,
-                padding: "16px",
+                padding: "12px",
                 backgroundColor: "#F8FAFC",
                 borderRadius: "8px",
-                borderLeft: "4px solid #1E3E8A",
+                borderLeft: "4px solid #1E3A8A",
               }}
             >
               {selectedSeed.detail}

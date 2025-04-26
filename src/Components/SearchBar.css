@@ -1,53 +1,100 @@
-/* Container for the search bar */
 .search-container {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   transition: all 0.3s ease;
 }
 
-/* Expanded state styling */
-.search-container.expanded {
-  margin-left: 8px;
+.search-icon-btn {
+  color: white;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
-/* Search input and buttons wrapper */
+.search-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
 .search-expanded {
   display: flex;
   align-items: center;
-  background-color: #fff;
-  border-radius: 4px;
+  background: white;
+  border-radius: 20px;
+  padding: 5px 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  padding: 4px 8px;
+  position: relative;
+  z-index: 1001;
 }
 
-/* Input styling */
 .search-input {
+  border: none;
+  box-shadow: none !important;
   width: 200px;
-  border: none;
-  outline: none;
-  box-shadow: none !important;
-  background: transparent;
+  transition: width 0.3s ease;
 }
 
-/* Input focus styling */
 .search-input:focus {
-  box-shadow: none !important;
+  width: 250px;
 }
 
-/* Shared button styles */
-.search-button,
-.close-button {
+.close-btn {
   border: none;
   background: transparent;
-  cursor: pointer;
+  color: #666;
+  margin-left: 5px;
 }
 
-/* Icon button when collapsed */
-.search-icon-button {
-  font-size: 18px;
-  color: white;
-  background: transparent;
-  border: none;
-  cursor: pointer;
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  margin-top: 5px;
+}
+
+.result-item {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.result-item:hover {
+  background-color: #f5f5f5;
+}
+
+.result-title {
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.result-description {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-input {
+    width: 150px;
+  }
+
+  .search-input:focus {
+    width: 180px;
+  }
 }

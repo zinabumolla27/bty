@@ -76,7 +76,12 @@ const Chat = () => {
       <div style={{ textAlign: "center", marginBottom: 40 }}>
         <Title
           level={2}
-          style={{ color: "#1a5b0e", marginBottom: 12, fontWeight: 600 }}
+          style={{
+            color: "#1a5b0e",
+            marginBottom: 12,
+            fontWeight: 600,
+            paddingTop: "50px",
+          }}
         >
           <EnvironmentOutlined style={{ marginRight: 12, color: "#1a5b0e" }} />
           Premium Ethiopian Khat

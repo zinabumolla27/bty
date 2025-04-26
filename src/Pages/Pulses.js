@@ -18,7 +18,8 @@ const PulsesData = [
     detail:
       "Ethiopia grows both Desi and Kabuli chickpeas. Desi has a rough coat and is mostly used in Indian cuisine, while Kabuli has a smoother texture and is preferred in Mediterranean diets. The country exports to South Asia, the Middle East, and Europe.",
     image: chick,
-    source: "Ethiopian Pulses Exporters Association, 2023",
+    source: "Read More",
+    sourceLink: "https://en.wikipedia.org/wiki/Chickpea",
   },
   {
     title: "Lentils",
@@ -27,15 +28,17 @@ const PulsesData = [
     detail:
       "Ethiopian lentils are a key ingredient in many traditional dishes and are widely exported. Their fast cooking time and high protein content make them a global favorite.",
     image: lents,
-    source: "Ministry of Agriculture, Ethiopia, 2023",
+    source: "Read More",
+    sourceLink: "https://en.wikipedia.org/wiki/Lentil", // Example link, replace with actual link
   },
   {
-    title: "Faba Beans (Broad Beans)",
+    title: "Fava Beans (Broad Beans)",
     description: "Popular in the Middle East, used in dishes like ful medames.",
     detail:
       "Faba beans from Ethiopia are known for their size and quality. The country supplies to Egypt and Sudan, with increasing demand from Europe. They are often consumed boiled or mashed.",
     image: faba,
-    source: "International Pulse Trade Council, 2023",
+    source: "Read More",
+    sourceLink: "https://simple.wikipedia.org/wiki/Fava_bean", // Example link, replace with actual link
   },
   {
     title: "Haricot Beans (Navy/White Beans)",
@@ -44,7 +47,9 @@ const PulsesData = [
     detail:
       "Haricot beans are one of Ethiopia's most exported pulses. They're used in baked beans, stews, and salads. Their long shelf life and neutral taste make them versatile in global cuisine.",
     image: haricot,
-    source: "Ethiopian Commodity Exchange, 2023",
+    source: "Read More",
+    sourceLink:
+      "https://simple.wikipedia.org/wiki/Navy_bean#:~:text=The%20navy%20bean%2C%20haricot%2C%20pearl,an%20oval%2C%20slightly%20flattened%20shape.", // Example link, replace with actual link
   },
   {
     title: "Field Peas",
@@ -52,7 +57,8 @@ const PulsesData = [
     detail:
       "Field peas are drought-resistant and grow well in the Ethiopian highlands. Their consistent size and high yield make them attractive for international buyers.",
     image: field,
-    source: "Agricultural Transformation Agency, 2023",
+    source: "Read More",
+    sourceLink: "https://en.wikipedia.org/wiki/Field_pea", // Example link, replace with actual link
   },
   {
     title: "Soybeans",
@@ -61,6 +67,7 @@ const PulsesData = [
       "Soybeans are becoming an increasingly valuable crop in Ethiopia. With global demand rising for plant-based proteins, Ethiopian soybeans are exported to Asian and African countries.",
     image: soya1,
     source: "Ethiopian Investment Commission, 2023",
+    sourceLink: "https://en.wikipedia.org/wiki/Soybean", // Example link, replace with actual link
   },
 ];
 
@@ -72,7 +79,7 @@ const Pulses = () => {
   useEffect(() => {
     const updateModalWidth = () => {
       if (window.innerWidth <= 480) {
-        setModalWidth("90%"); // for mobile devices
+        setModalWidth("100%"); // for mobile devices
       } else if (window.innerWidth <= 768) {
         setModalWidth("70%"); // for tablets
       } else {
@@ -100,7 +107,12 @@ const Pulses = () => {
 
   return (
     <div
-      style={{ textAlign: "center", padding: 0, backgroundColor: "#F9FAFB" }}
+      style={{
+        textAlign: "center",
+        padding: 0,
+        backgroundColor: "#F9FAFB",
+        paddingTop: "50px",
+      }}
     >
       <img
         src={pppp}
@@ -286,7 +298,15 @@ const Pulses = () => {
                 marginTop: "20px",
               }}
             >
-              Source: {selectedSeed.source}
+              Source:{" "}
+              <a
+                href={selectedSeed.sourceLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#1E3A8A" }}
+              >
+                {selectedSeed.source}
+              </a>
             </Text>
           </div>
         )}
