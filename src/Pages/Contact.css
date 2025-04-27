@@ -25,6 +25,7 @@ html {
   padding: 40px 0 0;
   font-family: "Inter", sans-serif;
   background-color: var(--light);
+  padding-top: 100px;
 }
 
 /* Hero Section */

@@ -16,8 +16,8 @@
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +27,7 @@
 }
 
 .partner-logo {
-  width: 80%;
+  width: 100%;
   height: auto;
   object-fit: contain;
 }

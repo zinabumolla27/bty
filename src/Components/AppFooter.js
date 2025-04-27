@@ -4,11 +4,11 @@ import {
   MailOutlined,
   PhoneOutlined,
   FacebookFilled,
-  TwitterSquareFilled,
   LinkedinFilled,
   EnvironmentOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
+import { FaTelegramPlane } from "react-icons/fa";
 import "./AppFooter.css";
 
 const { Footer } = Layout;
@@ -31,7 +31,7 @@ const AppFooter = () => {
         { name: "Contact Us", path: "/contact" },
         { name: "About us", path: "/companyprofile" },
         { name: "FAQ", path: "/faq" },
-        { name: "SisterCompany", path: "/sistercompany" },
+        { name: "companyprofile", path: "/companyprofile" },
       ],
     },
     {
@@ -40,7 +40,7 @@ const AppFooter = () => {
         { name: "Spices", path: "/spices" },
         { name: "Cereals", path: "/cereals" },
         { name: "Pulses", path: "/pulses" },
-        { name: "Coffee and Tea", path: "/coffee-and-tea" },
+        { name: "Coffee and Tea", path: "/coffeeandtea" },
       ],
     },
   ];
@@ -48,13 +48,12 @@ const AppFooter = () => {
   const socialLinks = [
     {
       icon: <FacebookFilled />,
-      url: "https://facebook.com/btytrading",
+      url: "https://web.facebook.com/profile.php?id=61575287050660",
     },
     {
-      icon: <TwitterSquareFilled />,
-      url: "https://twitter.com/btytrading",
+      icon: <FaTelegramPlane />,
+      url: "https://t.me/btytrading",
     },
-
     {
       icon: <LinkedinFilled />,
       url: "https://linkedin.com/company/btytrading",
@@ -64,11 +63,11 @@ const AppFooter = () => {
   return (
     <Footer className="main-footer">
       <div className="footer-top">
-        <Row gutter={[32, 32]} justify="center">
+        <Row gutter={[32, 32]} justify="space-between">
           <Col xs={24} sm={24} md={8} lg={6} className="footer-col">
             <div className="footer-brand">
               <Title level={3} className="footer-logo">
-                BTY TRADING
+                BTY TRADING PLC
               </Title>
               <Text className="footer-description">
                 Global trading solutions with local expertise. Connecting
@@ -77,25 +76,28 @@ const AppFooter = () => {
 
               <div className="contact-info">
                 <div className="contact-item">
-                  <EnvironmentOutlined />
+                  <span className="icon-wrapper">
+                    <PhoneOutlined />
+                  </span>
+                  <a href="tel:+251911257609" className="contact-link">
+                    +251 911257609 | +251 911257608 | +251 911257607
+                  </a>
+                </div>
+                <div className="contact-item">
+                  <span className="icon-wrapper">
+                    <MailOutlined />
+                  </span>
+                  <a href="mailto:btyb07@gmail.com" className="contact-link">
+                    btyb07@gmail.com
+                  </a>
+                </div>
+                <div className="contact-item">
+                  <span className="icon-wrapper">
+                    <EnvironmentOutlined />
+                  </span>
                   <Text className="contact-text">
                     Bole, Addis Ababa, Ethiopia
                   </Text>
-                </div>
-                <div className="contact-item">
-                  <MailOutlined />
-                  <Link
-                    href="mailto:info@btytrading.com"
-                    className="contact-link"
-                  >
-                    info@btytrading.com
-                  </Link>
-                </div>
-                <div className="contact-item">
-                  <PhoneOutlined />
-                  <Link href="tel:+251984567890" className="contact-link">
-                    +251 956 7890
-                  </Link>
                 </div>
               </div>
             </div>
@@ -122,7 +124,7 @@ const AppFooter = () => {
                           {link.name}
                         </Link>
                       ) : (
-                        <span className="footer-link">{link.name}</span> // For links without a path
+                        <span className="footer-link">{link.name}</span>
                       )}
                     </li>
                   ))}
@@ -144,7 +146,6 @@ const AppFooter = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon"
-                    aria-label={`Follow us on ${social.icon.type.name}`}
                   >
                     {social.icon}
                   </a>

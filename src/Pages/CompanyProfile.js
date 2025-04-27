@@ -3,6 +3,16 @@ import { Card, Row, Col, Typography } from "antd";
 import "./CompanyProfile.css";
 import image1 from "../Assets/image1.jpeg";
 import backofoil from "../Assets/backofoil.jpg";
+import {
+  CheckCircleFilled,
+  CrownFilled,
+  EyeOutlined,
+  HeartFilled,
+  RocketOutlined,
+  StarOutlined,
+  TeamOutlined,
+  ToolFilled,
+} from "@ant-design/icons";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -111,75 +121,294 @@ const CompanyProfile = () => {
       </div>
 
       {/* Core Principles Section */}
-      <div className="section-container values-section">
-        <div className="section-header center-header">
-          <Title level={2} className="section-title center-title">
-            Our Core Principles
-          </Title>
-          <div className="section-divider center-divider"></div>
+      <div
+        style={{
+          padding: "60px 0",
+          background: "#f9f9f9",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            padding: "0 20px",
+          }}
+        >
+          {/* Compact Section Header */}
+          <div
+            style={{
+              textAlign: "center",
+              marginBottom: "40px",
+            }}
+          >
+            <Text
+              style={{
+                display: "block",
+                color: "#3b82f6",
+                fontWeight: 600,
+                fontSize: "14px",
+                letterSpacing: "1px",
+                marginBottom: "8px",
+              }}
+            >
+              OUR FOUNDATION
+            </Text>
+            <Title
+              level={2}
+              style={{
+                color: "#1e293b",
+                fontSize: "28px",
+                fontWeight: 700,
+                margin: 0,
+              }}
+            >
+              Core Principles
+            </Title>
+          </div>
+
+          {/* Tightly Spaced Cards */}
+          <Row gutter={[24, 24]} justify="center">
+            {/* Mission Card */}
+            <Col xs={24} sm={12} md={8}>
+              <Card
+                hoverable
+                style={{
+                  height: "100%",
+                  borderRadius: "8px",
+                  border: "none",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+                  padding: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
+                    height: "100%",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "50%",
+                      background: "rgba(59, 130, 246, 0.1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    <RocketOutlined
+                      style={{ fontSize: "20px", color: "#3b82f6" }}
+                    />
+                  </div>
+                  <Title
+                    level={3}
+                    style={{
+                      fontSize: "18px",
+                      margin: "0 0 12px 0",
+                      color: "#3b82f6",
+                    }}
+                  >
+                    Mission
+                  </Title>
+                  <Text
+                    style={{
+                      color: "#64748b",
+                      fontSize: "14px",
+                      lineHeight: "1.5",
+                      textAlign: "justify",
+                      wordWrap: "break-word",
+                      wordSpacing: "normal",
+                      hyphens: "auto",
+                      textJustify: "inter-word",
+                    }}
+                  >
+                    At BTY Trading PLC, our mission is to become the leading
+                    exporter of agricultural products and trusted supplier of
+                    industrial raw materials, vehicles, and machinery. We are
+                    committed to sourcing high-quality, exclusive products
+                    globally and ensuring efficient distribution nationwide.
+                    With a focus on reliability, innovation, and customer
+                    satisfaction, we aim to drive sustainable growth.
+                  </Text>
+                </div>
+              </Card>
+            </Col>
+
+            {/* Vision Card */}
+            <Col xs={24} sm={12} md={8}>
+              <Card
+                hoverable
+                style={{
+                  height: "100%",
+                  borderRadius: "8px",
+                  border: "none",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+                  padding: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center",
+                    height: "100%",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "50%",
+                      background: "rgba(16, 185, 129, 0.1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    <EyeOutlined
+                      style={{ fontSize: "20px", color: "#10b981" }}
+                    />
+                  </div>
+                  <Title
+                    level={3}
+                    style={{
+                      fontSize: "18px",
+                      margin: "0 0 12px 0",
+                      color: "#10b981",
+                    }}
+                  >
+                    Vision
+                  </Title>
+                  <Text
+                    style={{
+                      color: "#64748b",
+                      fontSize: "14px",
+                      lineHeight: "1.5",
+                      textAlign: "justify",
+                      wordWrap: "break-word",
+                      wordSpacing: "-0.5px",
+                      hyphens: "auto",
+                    }}
+                  >
+                    BTY Trading PLC aims to lead the market in the export of
+                    agricultural products and the import and supply of various
+                    industrial raw materials, vehicles, car spare parts, and
+                    machinery. With over 10 years of experience in the import
+                    and export sector, we are committed to sourcing
+                    high-quality, exclusive products from around the globe and
+                    distributing them across the country.
+                  </Text>
+                </div>
+              </Card>
+            </Col>
+
+            {/* Values Card */}
+            <Col xs={24} sm={12} md={8}>
+              <Card
+                hoverable
+                style={{
+                  height: "100%",
+                  borderRadius: "8px",
+                  border: "none",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+                  padding: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "100%",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "50%",
+                      background: "rgba(245, 158, 11, 0.1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    <StarOutlined
+                      style={{ fontSize: "20px", color: "#f59e0b" }}
+                    />
+                  </div>
+                  <Title
+                    level={3}
+                    style={{
+                      fontSize: "18px",
+                      margin: "0 0 12px 0",
+                      textAlign: "center",
+                      color: "#f59e0b",
+                    }}
+                  >
+                    Our Values
+                  </Title>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: 0,
+                      width: "100%",
+                    }}
+                  >
+                    {[
+                      {
+                        icon: (
+                          <CheckCircleFilled style={{ color: "#10b981" }} />
+                        ),
+                        text: "Integrity: Honest dealings",
+                      },
+                      {
+                        icon: <CrownFilled style={{ color: "#f59e0b" }} />,
+                        text: "Quality: Uncompromising standards",
+                      },
+                      {
+                        icon: <HeartFilled style={{ color: "#ef4444" }} />,
+                        text: "Sustainability: Ethical practices",
+                      },
+                      {
+                        icon: <ToolFilled style={{ color: "#3b82f6" }} />,
+                        text: "Innovation: Continuous improvement",
+                      },
+                      {
+                        icon: <TeamOutlined style={{ color: "#8b5cf6" }} />,
+                        text: "Partnership: Strong relationships",
+                      },
+                    ].map((item, i) => (
+                      <li
+                        key={i}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          marginBottom: "8px",
+                          fontSize: "14px",
+                          color: "#64748b",
+                        }}
+                      >
+                        <span style={{ marginRight: "8px" }}>{item.icon}</span>
+                        {item.text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Card>
+            </Col>
+          </Row>
         </div>
-        <Row gutter={[32, 32]} justify="center">
-          <Col xs={24} sm={24} md={8}>
-            <Card className="value-card mission-card">
-              <Title level={3} className="value-title">
-                Mission
-              </Title>
-              <div className="value-description">
-                To bridge the gap between African agricultural producers and
-                global markets by providing reliable, efficient, and transparent
-                export and import services, while maintaining the highest
-                standards of quality and ethical business practices.
-              </div>
-            </Card>
-          </Col>
-          <Col xs={24} sm={24} md={8}>
-            <Card className="value-card vision-card">
-              <Title level={3} className="value-title">
-                Vision
-              </Title>
-              <div className="value-description">
-                BTY Trading PLC aims to become the leading exporter of
-                agricultural products and importer/supplier of industrial raw
-                materials, cars, spare parts, and machinery. With over 10 years
-                of experience in import and export, we focus on importing
-                exclusive, high-quality products from around the world and
-                distributing them nationwide.
-              </div>
-            </Card>
-          </Col>
-          <Col xs={24} sm={24} md={8}>
-            <Card className="value-card values-card">
-              <Title level={3} className="value-title">
-                Our Values
-              </Title>
-              <div className="value-description">
-                <ul className="values-list">
-                  <li>
-                    <Text strong>Integrity:</Text> Honesty and transparency in
-                    all dealings.
-                  </li>
-                  <li>
-                    <Text strong>Quality:</Text> Uncompromising standards in our
-                    products.
-                  </li>
-                  <li>
-                    <Text strong>Sustainability:</Text> Ethical and responsible
-                    trading practices.
-                  </li>
-                  <li>
-                    <Text strong>Innovation:</Text> Continuous improvement in
-                    our processes and services.
-                  </li>
-                  <li>
-                    <Text strong>Partnership:</Text> Building strong and
-                    mutually beneficial relationships with our clients and
-                    suppliers.
-                  </li>
-                </ul>
-              </div>
-            </Card>
-          </Col>
-        </Row>
       </div>
     </div>
   );

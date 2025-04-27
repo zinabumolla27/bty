@@ -6,24 +6,24 @@ const { Title, Text } = Typography;
 
 const testimonials = [
   {
-    name: "Daniel Abebe",
+    name: "Emma Johnson",
     text: "BTY Trading PLC consistently delivers top-quality sesame seeds. Their service is fast, reliable, and professional.",
-    image: "https://randomuser.me/api/portraits/women/50.jpg",
+    image: "https://randomuser.me/api/portraits/women/45.jpg",
   },
   {
-    name: "Yosef Tesfaye",
-    text: "Working with BTY Trading PLC has been a game-changer. We trust them for all our oilseed import needs.",
-    image: "https://randomuser.me/api/portraits/women/50.jpg",
-  },
-  {
-    name: "Marta Alemayehu",
+    name: "Olivia Smith",
     text: "Their customer support and export quality are outstanding. Highly recommend BTY for consistent supply.",
-    image: "https://randomuser.me/api/portraits/women/50.jpg",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
-    name: "Hana Tesfaye",
+    name: "Liam Brown",
+    text: "Working with BTY Trading PLC has been a game-changer. We trust them for all our oilseed import needs.",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+  {
+    name: "Noah Davis",
     text: "The purity of BTY's sesame seeds and the smooth import process impressed us. A trusted trading partner!",
-    image: "https://randomuser.me/api/portraits/women/50.jpg",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
   },
 ];
 
@@ -61,12 +61,11 @@ const Testimonials = () => {
               style={{ display: "flex", justifyContent: "center" }}
             >
               <Card
-                variant="outlined" // ✅ Updated here
                 style={{
                   width: "100%",
                   maxWidth: 280,
                   minHeight: 300,
-                  backgroundColor: "#f9f9f9",
+                  backgroundColor: "#ffffff", // 🤍 White card background
                   borderRadius: 10,
                   padding: 20,
                   display: "flex",
@@ -74,6 +73,7 @@ const Testimonials = () => {
                   alignItems: "center",
                   justifyContent: "space-between",
                   boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+                  border: "none",
                 }}
               >
                 <Avatar

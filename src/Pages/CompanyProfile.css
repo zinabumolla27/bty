@@ -9,6 +9,9 @@
 .hero-section {
   position: relative;
   margin-bottom: 40px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .hero-image-container {

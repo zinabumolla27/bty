@@ -1,3 +1,4 @@
+/* Home.css */
 .home-background {
   background-size: cover;
   background-position: center;
@@ -8,10 +9,11 @@
   animation: zoomBackground 20s infinite ease-in-out;
   transition: background-image 1s ease-in-out;
 }
-html,
-body {
+body,
+html {
   overflow-x: hidden;
   width: 100%;
+  max-width: 100%;
 }
 
 @keyframes zoomBackground {
@@ -47,6 +49,7 @@ body {
   font-size: 36px;
   margin-bottom: 20px;
   color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .subtitle {
@@ -54,6 +57,7 @@ body {
   font-weight: bold;
   margin-bottom: 40px;
   color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .sign-up-button-container {
@@ -69,103 +73,103 @@ body {
   border: 2px solid rgb(44, 157, 202);
   color: rgb(242, 243, 248);
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .sign-up-button:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(44, 157, 202, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .main-heading {
-    font-size: 28px;
-  }
-
-  .subtitle {
-    font-size: 16px;
-  }
-
-  .sign-up-button {
-    width: 100%;
-  }
-}
-
-/* About BTY */
+/* About Section */
 .about-section {
-  padding: 60px 20px;
-  background-color: #fff;
+  padding: 80px 20px;
+  background-color: #f9f9f9;
 }
 
 .about-label {
   color: #d500ca;
-  font-weight: 500;
+  font-weight: 600;
   display: block;
   margin-bottom: 16px;
-  font-size: 14px;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 
 .about-title {
   font-weight: 700;
-
   line-height: 1.2;
+  margin-bottom: 24px;
 }
 
 .about-description {
   font-size: 16px;
-  color: #333;
+  color: #555;
   margin-bottom: 24px;
-  text-align: justify;
+  line-height: 1.6;
 }
 
 .learn-more-button {
   background-color: #3b7b57;
   border-color: #3b7b57;
+  transition: all 0.3s ease;
 }
 
 .learn-more-button:hover {
   background-color: #2f6547 !important;
   border-color: #2f6547 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Image Gallery */
-.image-gallery {
-  padding: 50px 20px; /* Add padding around the gallery */
-  background-color: #fff; /* Change background to white or any color you prefer */
+/* Gallery Section */
+.gallery-container {
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #3b7b57;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #3b7b57;
 }
 
 .gallery-card {
-  margin: 10px; /* Add margin around each card */
-  border-radius: 8px; /* Optional: rounded corners */
-  overflow: hidden; /* Ensures images respect border radius */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .gallery-card:hover {
-  transform: translateY(-5px); /* Optional: slight lift on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Ensure cards take full height of their container */
-.ant-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+.gallery-card .ant-card-meta-title {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-.ant-card-cover {
-  flex: 0 0 auto;
-}
-
-.ant-card-body {
-  flex: 1 1 auto;
-}
-
-.partners-title {
-  margin-bottom: 30px;
-  color: #3b7b57;
-  text-align: center;
+.gallery-card .ant-card-meta-description {
+  font-size: 14px;
 }
 
 /* Navigation Arrows */
@@ -178,24 +182,95 @@ body {
   cursor: pointer;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.3);
-  padding: 10px;
+  padding: 12px;
   border-radius: 50%;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
 }
 
 .nav-arrow:hover {
   background-color: rgba(0, 0, 0, 0.6);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .nav-arrow.left {
-  left: 20px;
+  left: 30px;
 }
 
 .nav-arrow.right {
-  right: 20px;
+  right: 30px;
 }
 
-/* Card Adjustments */
-.image-gallery .ant-card {
-  margin: 0 !important;
+/* Partners Section */
+.partners-title {
+  margin: 60px 0 30px;
+  color: #3b7b57;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.partners-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #3b7b57;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .main-heading {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .nav-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    padding: 8px;
+  }
+
+  .nav-arrow.left {
+    left: 15px;
+  }
+
+  .nav-arrow.right {
+    right: 15px;
+  }
+
+  .about-section {
+    padding: 50px 20px;
+  }
+
+  .gallery-container {
+    padding: 40px 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-heading {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .sign-up-button {
+    width: 160px;
+    height: 42px;
+    font-size: 14px;
+  }
 }

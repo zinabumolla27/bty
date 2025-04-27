@@ -1,3 +1,4 @@
+// Home.js
 import React, { useState } from "react";
 import { Typography, Button, Col, Row, Card } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
@@ -21,7 +22,7 @@ const { Title, Paragraph, Text } = Typography;
 const backgroundImages = [bg1, bg2, bg3];
 const descriptions = [
   "Includes White, Green, and Black.",
-  "Includes Mitmita, Korerima (Ethiopian Cardamom), Berbere.",
+  "Includes Mitmita, Korerima, Berbere.",
   "Includes sesame, sunflower, soybean.",
   "Includes Yirgacheffe, Sidamo, Jimma.",
   "Includes Wheat, Barley, Teff, Maize.",
@@ -37,21 +38,38 @@ const titles = [
 ];
 const images = [img6, image1, image2, image3, image4, image5];
 
+// Color palette for titles
+const titleColors = [
+  "#2E8B57", // Sea Green
+  "#D35400", // Pumpkin
+  "#2980B9", // Belize Hole
+  "#8E44AD", // Wisteria
+  "#16A085", // Green Sea
+  "#C0392B", // Pomegranate
+];
+
+// Color palette for descriptions
+const descriptionColors = [
+  "#27AE60", // Nephritis
+  "#E67E22", // Carrot
+  "#3498DB", // Peter River
+  "#9B59B6", // Amethyst
+  "#1ABC9C", // Turquoise
+  "#E74C3C", // Alizarin
+];
+
 const Home = () => {
   const [bgIndex, setBgIndex] = useState(0);
   const navigate = useNavigate();
 
-  // This will handle the navigation to the company profile
   const handleClick = () => {
     navigate("/companyprofile");
   };
 
-  // Handle next background image
   const goNext = () => {
     setBgIndex((prev) => (prev + 1) % backgroundImages.length);
   };
 
-  // Handle previous background image
   const goPrev = () => {
     setBgIndex(
       (prev) => (prev - 1 + backgroundImages.length) % backgroundImages.length
@@ -64,7 +82,7 @@ const Home = () => {
       <div
         className="home-background"
         style={{ backgroundImage: `url(${backgroundImages[bgIndex]})` }}
-        onClick={(e) => e.stopPropagation()} // Prevent background click from triggering redirection
+        onClick={(e) => e.stopPropagation()}
       >
         <LeftOutlined className="nav-arrow left" onClick={goPrev} />
         <RightOutlined className="nav-arrow right" onClick={goNext} />
@@ -121,7 +139,7 @@ const Home = () => {
               type="primary"
               size="large"
               className="learn-more-button"
-              onClick={handleClick} // Add the navigation handler here as well
+              onClick={handleClick}
             >
               Learn more
             </Button>
@@ -130,29 +148,45 @@ const Home = () => {
       </div>
 
       {/* Gallery Section */}
-      <Row gutter={[32, 32]} justify="center">
-        {images.map((img, index) => (
-          <Col xs={24} sm={12} md={8} lg={8} key={index}>
-            <Card
-              hoverable
-              className="gallery-card"
-              cover={
-                <img
-                  alt="product"
-                  src={img}
-                  style={{
-                    objectFit: "cover",
-                    height: "160px",
-                    width: "100%",
-                  }}
+      <div className="gallery-container">
+        <Title level={1} className="section-title" style={{ color: "#3b7b57" }}>
+          Our Products
+        </Title>
+        <Row gutter={[32, 32]} justify="center">
+          {images.map((img, index) => (
+            <Col xs={24} sm={12} md={8} lg={8} key={index}>
+              <Card
+                hoverable
+                className="gallery-card"
+                cover={
+                  <img
+                    alt="product"
+                    src={img}
+                    style={{
+                      objectFit: "cover",
+                      height: "200px",
+                      width: "100%",
+                    }}
+                  />
+                }
+              >
+                <Meta
+                  title={
+                    <span style={{ color: titleColors[index] }}>
+                      {titles[index]}
+                    </span>
+                  }
+                  description={
+                    <span style={{ color: descriptionColors[index] }}>
+                      {descriptions[index]}
+                    </span>
+                  }
                 />
-              }
-            >
-              <Meta title={titles[index]} description={descriptions[index]} />
-            </Card>
-          </Col>
-        ))}
-      </Row>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </div>
 
       {/* Testimonials Section */}
       <Testimonials />

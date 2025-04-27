@@ -24,12 +24,14 @@ const Contact = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <Title className="main-title">Connect With Us</Title>
+        <Title className="main-title" style={{ color: "#10b981" }}>
+          Connect With Us
+        </Title>
         <Divider className="title-divider" />
         <Paragraph className="hero-text">
           We're here to help and answer any questions you might have. Whether
           you're interested in our services, need support, or just want to say
-          hello—our team is ready to assist you.
+          hello our team is ready to assist you.
         </Paragraph>
 
         <div className="contact-options">
@@ -62,8 +64,15 @@ const Contact = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <div className="section-header">
-            <Title level={3} className="section-title">
+          <div
+            className="section-header"
+            style={{ backgroundColor: "#f1f5f9" }}
+          >
+            <Title
+              level={3}
+              className="section-title"
+              style={{ color: "#10b981" }}
+            >
               <MailOutlined className="title-icon" /> Send us a message
             </Title>
             <Text className="section-subtitle">
@@ -101,7 +110,7 @@ const Contact = () => {
                 { type: "email", message: "Please enter a valid email" },
               ]}
             >
-              <Input placeholder="your@email.com" className="form-input" />
+              <Input placeholder="Enter Your Email" className="form-input" />
             </Form.Item>
 
             <Form.Item
@@ -129,8 +138,15 @@ const Contact = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <div className="section-header">
-            <Title level={3} className="section-title">
+          <div
+            className="section-header"
+            style={{ backgroundColor: "#f1f5f9" }}
+          >
+            <Title
+              level={3}
+              className="section-title"
+              style={{ color: "#10b981" }}
+            >
               <EnvironmentOutlined className="title-icon" /> Contact Information
             </Title>
             <Text className="section-subtitle">
@@ -139,11 +155,15 @@ const Contact = () => {
           </div>
 
           <div className="info-block">
-            <Title level={4} className="info-title">
+            <Title
+              level={4}
+              className="info-title"
+              style={{ color: "#3b82f6" }}
+            >
               <EnvironmentOutlined className="info-icon" /> Our Location
             </Title>
             <Paragraph className="info-text">
-              <Text strong>BTV Trading PLC</Text>
+              <Text strong>BTY Trading PLC</Text>
               <br />
               Bole, Woreda 03, DAT Tower/Building, 6rd floor
               <br />
@@ -152,7 +172,11 @@ const Contact = () => {
           </div>
 
           <div className="info-block">
-            <Title level={4} className="info-title">
+            <Title
+              level={4}
+              className="info-title"
+              style={{ color: "#3b82f6" }}
+            >
               <PhoneOutlined className="info-icon" /> Contact Details
             </Title>
             <Paragraph className="info-text">
@@ -162,7 +186,11 @@ const Contact = () => {
               <br />
               <Text strong>+251 911257607</Text>
               <br />
-              <Text strong>info@btvtrading.com</Text>
+              <Text strong>
+                {" "}
+                <MailOutlined style={{ padding: "8px", color: "green" }} />
+                btyb07@gmail.com
+              </Text>
             </Paragraph>
           </div>
         </motion.div>
@@ -171,7 +199,7 @@ const Contact = () => {
       {/* Full Width Map Section */}
       <div className="map-container">
         <iframe
-          title="BTV Trading Location"
+          title="BTY Trading Location"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.697727938423!2d38.7809864737524!3d8.999936489445814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b850921741007%3A0x4f00e48587b0714!2sDat%20Tower!5e0!3m2!1sen!2set!4v1745669332798!5m2!1sen!2set"
           width="600"
           height="450"

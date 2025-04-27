@@ -18,7 +18,7 @@ const PulsesData = [
     detail:
       "Ethiopia grows both Desi and Kabuli chickpeas. Desi has a rough coat and is mostly used in Indian cuisine, while Kabuli has a smoother texture and is preferred in Mediterranean diets. The country exports to South Asia, the Middle East, and Europe.",
     image: chick,
-    source: "Read More",
+    source: "read more",
     sourceLink: "https://en.wikipedia.org/wiki/Chickpea",
   },
   {
@@ -28,7 +28,7 @@ const PulsesData = [
     detail:
       "Ethiopian lentils are a key ingredient in many traditional dishes and are widely exported. Their fast cooking time and high protein content make them a global favorite.",
     image: lents,
-    source: "Read More",
+    source: "read more",
     sourceLink: "https://en.wikipedia.org/wiki/Lentil", // Example link, replace with actual link
   },
   {
@@ -37,7 +37,7 @@ const PulsesData = [
     detail:
       "Faba beans from Ethiopia are known for their size and quality. The country supplies to Egypt and Sudan, with increasing demand from Europe. They are often consumed boiled or mashed.",
     image: faba,
-    source: "Read More",
+    source: "read more",
     sourceLink: "https://simple.wikipedia.org/wiki/Fava_bean", // Example link, replace with actual link
   },
   {
@@ -47,7 +47,7 @@ const PulsesData = [
     detail:
       "Haricot beans are one of Ethiopia's most exported pulses. They're used in baked beans, stews, and salads. Their long shelf life and neutral taste make them versatile in global cuisine.",
     image: haricot,
-    source: "Read More",
+    source: "read more",
     sourceLink:
       "https://simple.wikipedia.org/wiki/Navy_bean#:~:text=The%20navy%20bean%2C%20haricot%2C%20pearl,an%20oval%2C%20slightly%20flattened%20shape.", // Example link, replace with actual link
   },
@@ -57,7 +57,7 @@ const PulsesData = [
     detail:
       "Field peas are drought-resistant and grow well in the Ethiopian highlands. Their consistent size and high yield make them attractive for international buyers.",
     image: field,
-    source: "Read More",
+    source: "read more",
     sourceLink: "https://en.wikipedia.org/wiki/Field_pea", // Example link, replace with actual link
   },
   {
@@ -66,7 +66,7 @@ const PulsesData = [
     detail:
       "Soybeans are becoming an increasingly valuable crop in Ethiopia. With global demand rising for plant-based proteins, Ethiopian soybeans are exported to Asian and African countries.",
     image: soya1,
-    source: "Ethiopian Investment Commission, 2023",
+    source: "read more",
     sourceLink: "https://en.wikipedia.org/wiki/Soybean", // Example link, replace with actual link
   },
 ];

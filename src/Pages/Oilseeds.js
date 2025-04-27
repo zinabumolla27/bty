@@ -102,7 +102,7 @@ const Oilseeds = () => {
       style={{
         backgroundColor: "#F9FAFB",
         paddingBottom: "40px",
-        paddingTop: "80px",
+        paddingTop: "50px",
       }}
     >
       {/* Hero Section */}

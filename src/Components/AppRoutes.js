@@ -31,7 +31,7 @@ function AppRoutes() {
       <Route path="/import" element={<Import />} />
       <Route path="/export" element={<Export />} />
       <Route path="/oilseeds" element={<Oilseeds />} />
-      <Route path="/coffeantea" element={<Coffeandtea />} />
+      <Route path="/coffeeandtea" element={<Coffeandtea />} />
       <Route path="/pulses" element={<Pulses />} />
       <Route path="/spices" element={<Spices />} />
       <Route path="/chat" element={<Chat />} />

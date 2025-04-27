@@ -23,8 +23,8 @@ const Chat = () => {
       region: "Harar",
       exporter: "BTY Trading PLC",
       source: {
-        name: "Ethiopian Agricultural Exporters Association",
-        url: "https://www.ethiopianagriculture.org/khat-exports",
+        name: "Learn more about Khat",
+        url: "https://en.wikipedia.org/wiki/Khat",
       },
     },
     {
@@ -36,8 +36,8 @@ const Chat = () => {
       region: "Sidama",
       exporter: "BTY Trading PLC",
       source: {
-        name: "Southern Agricultural Research Institute",
-        url: "https://www.sari.gov.et/khat-research",
+        name: "Learn more about Khat",
+        url: "https://en.wikipedia.org/wiki/Khat",
       },
     },
     {
@@ -49,8 +49,8 @@ const Chat = () => {
       region: "Eastern Ethiopia",
       exporter: "BTY Trading PLC",
       source: {
-        name: "Awaday Khat Traders Union",
-        url: "https://www.awadaykhat.com",
+        name: "Learn more about Khat",
+        url: "https://en.wikipedia.org/wiki/Khat",
       },
     },
   ];
