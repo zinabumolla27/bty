@@ -9,7 +9,7 @@ const { Content } = Layout;
 
 function App() {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout>
       <AppHeader />
       <Content>
         <AppContent />

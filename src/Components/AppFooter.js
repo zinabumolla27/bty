@@ -4,7 +4,6 @@ import {
   MailOutlined,
   PhoneOutlined,
   FacebookFilled,
-  LinkedinFilled,
   EnvironmentOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
@@ -17,7 +16,7 @@ const { Text, Title } = Typography;
 const AppFooter = () => {
   const footerLinks = [
     {
-      title: "Services",
+      title: "SERVICES",
       links: [
         { name: "Agricultural" },
         { name: "Manufacturing" },
@@ -26,7 +25,7 @@ const AppFooter = () => {
       ],
     },
     {
-      title: "About",
+      title: "ABOUT",
       links: [
         { name: "Contact Us", path: "/contact" },
         { name: "About us", path: "/companyprofile" },
@@ -35,13 +34,17 @@ const AppFooter = () => {
       ],
     },
     {
-      title: "Products",
+      title: "PRODUCTS",
       links: [
         { name: "Spices", path: "/spices" },
         { name: "Cereals", path: "/cereals" },
         { name: "Pulses", path: "/pulses" },
         { name: "Coffee and Tea", path: "/coffeeandtea" },
       ],
+    },
+    {
+      title: "FOLLOW US",
+      links: [], // Empty links array for the social icons
     },
   ];
 
@@ -54,41 +57,38 @@ const AppFooter = () => {
       icon: <FaTelegramPlane />,
       url: "https://t.me/btytrading",
     },
-    {
-      icon: <LinkedinFilled />,
-      url: "https://linkedin.com/company/btytrading",
-    },
   ];
 
   return (
     <Footer className="main-footer">
       <div className="footer-top">
-        <Row gutter={[32, 32]} justify="space-between">
-          <Col xs={24} sm={24} md={8} lg={6} className="footer-col">
+        <Row gutter={[32, 32]} justify="space-between" align="top">
+          {/* Brand/Contact Column */}
+          <Col xs={24} sm={24} md={6} lg={5} className="footer-col">
             <div className="footer-brand">
               <Title level={3} className="footer-logo">
                 BTY TRADING PLC
               </Title>
-              <Text className="footer-description">
-                Global trading solutions with local expertise. Connecting
-                markets since 2010.
-              </Text>
 
               <div className="contact-info">
                 <div className="contact-item">
                   <span className="icon-wrapper">
                     <PhoneOutlined />
                   </span>
-                  <a href="tel:+251911257609" className="contact-link">
-                    +251 911257609 | +251 911257608 | +251 911257607
-                  </a>
+                  <Text className="contact-text">
+                    +251 911257609 | +251
+                    <br />
+                    911257608 | +251
+                    <br />
+                    911257607
+                  </Text>
                 </div>
                 <div className="contact-item">
                   <span className="icon-wrapper">
                     <MailOutlined />
                   </span>
                   <a href="mailto:btyb07@gmail.com" className="contact-link">
-                    btyb07@gmail.com
+                    byb07@gmail.com
                   </a>
                 </div>
                 <div className="contact-item">
@@ -103,11 +103,12 @@ const AppFooter = () => {
             </div>
           </Col>
 
+          {/* Other Sections */}
           {footerLinks.map((section, index) => (
             <Col
-              xs={24}
+              xs={12}
               sm={12}
-              md={8}
+              md={6}
               lg={4}
               key={index}
               className="footer-col"
@@ -116,43 +117,38 @@ const AppFooter = () => {
                 <Title level={4} className="footer-section-title">
                   {section.title}
                 </Title>
-                <ul className="footer-links">
-                  {section.links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      {link.path ? (
-                        <Link to={link.path} className="footer-link">
-                          {link.name}
-                        </Link>
-                      ) : (
-                        <span className="footer-link">{link.name}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                {section.links.length > 0 ? (
+                  <ul className="footer-links">
+                    {section.links.map((link, linkIndex) => (
+                      <li key={linkIndex}>
+                        {link.path ? (
+                          <Link to={link.path} className="footer-link">
+                            {link.name}
+                          </Link>
+                        ) : (
+                          <span className="footer-link">{link.name}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="social-links">
+                    {socialLinks.map((social, index) => (
+                      <a
+                        key={index}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-icon"
+                      >
+                        {social.icon}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </Col>
           ))}
-
-          <Col xs={24} sm={12} md={8} lg={6} className="footer-col">
-            <div className="footer-section follow-us-section">
-              <Title level={4} className="footer-section-title">
-                Follow Us
-              </Title>
-              <div className="social-links">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon"
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </Col>
         </Row>
       </div>
 

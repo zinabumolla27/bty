@@ -4,7 +4,6 @@ import backspices from "../Assets/backspices.jpeg";
 import berbere from "../Assets/Berbere.webp";
 import korerima from "../Assets/korerima.webp";
 import mitmita from "../Assets/mitmita.jpg";
-
 import turmeric from "../Assets/turmeric.jpg";
 
 const { Title } = Typography;
@@ -115,7 +114,8 @@ const Spices = () => {
                   height: "100%",
                   transition: "transform 0.2s",
                 }}
-                bodyStyle={{ flex: 1 }}
+                // Replace deprecated bodyStyle with styles.body
+                styles={{ body: { flex: 1 } }}
               >
                 <Card.Meta
                   title={

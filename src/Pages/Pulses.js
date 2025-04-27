@@ -170,7 +170,7 @@ const Pulses = () => {
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   overflow: "hidden",
                 }}
-                bodyStyle={{ padding: "20px" }}
+                styles={{ body: { padding: "20px" } }} // ✅ fixed here
               >
                 <Card.Meta
                   title={
@@ -237,7 +237,11 @@ const Pulses = () => {
         styles={{
           body: { padding: "30px" },
         }}
-        style={{ maxWidth: "800px" }}
+        style={{
+          maxWidth: "800px",
+          borderRadius: "10px",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+        }}
       >
         {selectedSeed && (
           <div style={{ textAlign: "center" }}>

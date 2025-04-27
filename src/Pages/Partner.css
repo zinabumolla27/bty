@@ -127,9 +127,9 @@
 
 @media (max-width: 576px) {
   .partner-card {
-    width: 80px;
-    height: 80px;
-    padding: 10px;
+    width: 90%;
+    height: auto; /* Optional: let height adjust naturally */
+    padding: 20px;
   }
 
   .member-card {
@@ -138,9 +138,10 @@
     padding: 20px 15px;
   }
 
-  .member-logo {
-    margin-right: 0;
-    margin-bottom: 15px;
+  .member-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 15px;
   }
 
   .member-name {

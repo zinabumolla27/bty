@@ -40,6 +40,11 @@ const Peppers = () => {
     setIsModalOpen(true);
   };
 
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    setSelectedItem(null);
+  };
+
   return (
     <div
       style={{
@@ -74,7 +79,7 @@ const Peppers = () => {
           textAlign: "center",
         }}
       >
-        Ethiopian Peppers & Spices
+        Peppers & Spices
       </Title>
 
       <Row gutter={[32, 32]} justify="center">
@@ -169,6 +174,7 @@ const Peppers = () => {
         footer={null}
         width={600}
         centered
+        onCancel={handleCancel}
         styles={{
           body: {
             padding: "24px",

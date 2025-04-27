@@ -5,105 +5,87 @@
   align-items: center;
   min-height: 100vh;
   background: url("/home/hmeressa/Documents/Bty-trading/bty/src/Assets/logback.png")
-    no-repeat center center fixed;
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    no-repeat center center/cover;
 }
 
 .login-content {
   width: 100%;
   max-width: 400px;
   padding: 2rem;
-  background: rgba(240, 234, 234, 0.95);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3); /* transparent dark */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  transform: translateY(0);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.login-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .login-form {
   margin-top: 1.5rem;
 }
 
+/* Input fields */
 .login-input {
   border-radius: 8px;
   padding: 12px 16px;
+  background: transparent; /* completely transparent */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff; /* white text when typing */
   transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
 }
 
-.login-input:hover {
-  border-color: #a0aec0;
-}
-
+.login-input:hover,
 .login-input:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+  background: transparent; /* no white background on hover/focus */
+  border-color: #ffffff;
+  box-shadow: none;
+  color: #ffffff;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* slightly softer white placeholder */
 }
 
 .login-input .ant-input-prefix {
-  color: #a0aec0;
+  color: rgba(255, 255, 255, 0.7);
   margin-right: 8px;
 }
 
+/* Transparent Button */
 .login-button {
-  border-radius: 8px;
+  background: transparent; /* no color */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
   height: 48px;
   font-weight: 600;
-  background: linear-gradient(to right, #667eea, #764ba2);
-  border: none;
-  transition: all 0.3s ease;
+  border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
 .login-button:hover {
-  background: linear-gradient(to right, #5a6fd1, #6a4299);
+  background: rgba(255, 255, 255, 0.1); /* slight hover effect */
+  border-color: white;
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .login-button:active {
   transform: translateY(0);
 }
 
-/* Floating label effect */
+/* Form labels */
 .ant-form-item-label {
   padding-bottom: 4px !important;
 }
 
 .ant-form-item-label label {
-  color: #4a5568 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
   font-weight: 500 !important;
-  transition: all 0.3s ease !important;
 }
 
-.ant-form-item:focus-within .ant-form-item-label label {
-  color: #667eea !important;
-  transform: translateY(-2px);
-}
-
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 480px) {
   .login-content {
     margin: 0 1rem;
@@ -112,29 +94,5 @@
 
   .login-button {
     height: 44px;
-  }
-}
-
-/* Animation for form elements */
-.ant-form-item {
-  animation: fadeInUp 0.5s ease forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.ant-form-item:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.ant-form-item:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.ant-form-item:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

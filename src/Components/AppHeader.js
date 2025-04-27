@@ -187,7 +187,7 @@ const AppHeader = () => {
 
           <Col className="nav-col">
             <Menu
-              theme="dark"
+              theme="light"
               mode="horizontal"
               items={menuItems}
               className="nav-menu"

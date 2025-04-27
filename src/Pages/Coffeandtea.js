@@ -139,7 +139,7 @@ const Coffeandtea = () => {
           padding: "0 16px",
         }}
       >
-        Ethiopian Coffees & Teas
+        Coffees & Teas
       </Title>
 
       {/* Coffee Cards Grid */}
@@ -183,8 +183,10 @@ const Coffeandtea = () => {
                   boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                   overflow: "hidden",
                 }}
-                bodyStyle={{
-                  padding: "16px",
+                styles={{
+                  body: {
+                    padding: "16px",
+                  },
                 }}
               >
                 <Title level={4} style={{ marginBottom: "8px" }}>
@@ -238,10 +240,12 @@ const Coffeandtea = () => {
         closable={true}
         maskClosable={true}
         style={{ top: 20 }}
-        bodyStyle={{
-          padding: "24px",
-          maxHeight: "calc(100vh - 200px)",
-          overflowY: "auto",
+        styles={{
+          body: {
+            padding: "24px",
+            maxHeight: "calc(100vh - 200px)",
+            overflowY: "auto",
+          },
         }}
       >
         {selectedSeed && (
@@ -284,6 +288,7 @@ const Coffeandtea = () => {
                     style={{
                       marginBottom: "8px",
                       lineHeight: "1.6",
+                      padding: 0, // Explicit padding to avoid mixing shorthand
                     }}
                   >
                     {isLink ? (

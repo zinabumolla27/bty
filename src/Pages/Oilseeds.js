@@ -44,7 +44,6 @@ const oilseeds = [
     ],
     image: sunflowerseed,
   },
-
   {
     title: "Flaxseeds (Linseeds)",
     description: [
@@ -148,8 +147,8 @@ const Oilseeds = () => {
             <Col
               key={index}
               xs={24}
-              sm={12}
-              md={8}
+              sm={24}
+              md={12}
               lg={6}
               style={{ display: "flex", justifyContent: "center" }}
             >
@@ -157,7 +156,8 @@ const Oilseeds = () => {
                 hoverable
                 onClick={() => showModal(seed)}
                 style={{
-                  width: "260px",
+                  width: "100%", // Changed to 90% width
+                  maxWidth: "300px", // Added max-width for larger screens
                   borderRadius: "12px",
                   overflow: "hidden",
                   boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
@@ -225,13 +225,15 @@ const Oilseeds = () => {
         open={isModalOpen}
         onCancel={handleCancel}
         footer={null}
-        width={400} // smaller width
+        width={400}
         centered
-        bodyStyle={{
-          padding: "16px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+        styles={{
+          body: {
+            padding: "16px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          },
         }}
       >
         {selectedSeed && (

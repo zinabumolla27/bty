@@ -6,30 +6,28 @@ body,
   padding: 0;
   width: 100%;
   min-height: 100vh;
+  background: #fff; /* White background */
 }
 
 /* Full width layout */
 .full-width-layout {
-  width: 100% !important;
-  max-width: 100% !important;
+  width: 100%;
   min-height: 100vh;
 }
 
 /* Content area styling */
 .full-width-content {
-  width: 100% !important;
-  max-width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  padding: 0;
+  margin: 0;
 }
 
 /* Ant Design overrides */
 .ant-layout {
-  width: 100% !important;
-  background: transparent !important;
+  width: 100%;
+  background: #fff; /* Set to a background color of your choice */
 }
 
 .ant-layout-content {
-  padding: 0 !important;
-  margin: 0 !important;
+  padding: 0;
+  margin: 0;
 }

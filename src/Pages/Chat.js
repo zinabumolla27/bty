@@ -106,8 +106,8 @@ const Chat = () => {
 
       <Row
         gutter={[
-          { xs: 16, sm: 16, md: 24, lg: 24, xl: 24 }, // Horizontal spacing
-          { xs: 16, sm: 16, md: 24, lg: 24, xl: 24 }, // Vertical spacing
+          { xs: 16, sm: 16, md: 24, lg: 24, xl: 24 },
+          { xs: 16, sm: 16, md: 24, lg: 24, xl: 24 },
         ]}
         justify="center"
       >
@@ -121,94 +121,98 @@ const Chat = () => {
             xl={8}
             style={{
               display: "flex",
-              padding: "12px", // Increased padding for better gap
-              marginBottom: "20px", // Add margin-bottom to create space between cards
+              marginBottom: "20px",
             }}
           >
-            <Card
-              hoverable
-              style={{
-                borderRadius: 8,
-                border: "1px solid #e8e8e8",
-                height: "100%",
-                transition: "all 0.3s ease",
-                width: "100%",
-              }}
-              cover={
-                item.image ? (
+            <div style={{ flex: 1, padding: "12px" }}>
+              <Card
+                hoverable
+                cover={
                   <Image
                     alt={item.name}
                     src={item.image}
-                    height={220}
+                    fallback={fallbackImage}
                     style={{
+                      height: 220,
                       objectFit: "cover",
                       borderTopLeftRadius: 8,
                       borderTopRightRadius: 8,
                     }}
-                    fallback={fallbackImage}
                     preview={false}
                   />
-                ) : (
-                  fallbackImage
-                )
-              }
-              bodyStyle={{ padding: 20 }}
-            >
-              <Title level={4} style={{ color: "#1a5b0e", marginBottom: 12 }}>
-                {item.name}
-              </Title>
-
-              <Paragraph
-                style={{ color: "#555", marginBottom: 16, lineHeight: 1.6 }}
+                }
+                styles={{
+                  wrapper: {
+                    borderRadius: 8,
+                    border: "1px solid #e8e8e8",
+                    height: "100%",
+                    transition: "all 0.3s ease",
+                    width: "100%",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+                  },
+                  body: {
+                    padding: 20,
+                  },
+                }}
               >
-                {item.description}
-              </Paragraph>
+                <Title level={4} style={{ color: "#1a5b0e", marginBottom: 12 }}>
+                  {item.name}
+                </Title>
 
-              <Divider
-                style={{ margin: "16px 0", backgroundColor: "#f0f0f0" }}
-              />
-
-              <Row gutter={16} style={{ marginBottom: 12 }}>
-                <Col span={10}>
-                  <Text strong style={{ color: "#333" }}>
-                    <EnvironmentOutlined style={{ marginRight: 8 }} />
-                    Region:
-                  </Text>
-                </Col>
-                <Col span={14}>
-                  <Text>{item.region}</Text>
-                </Col>
-              </Row>
-
-              <Row gutter={16} style={{ marginBottom: 16 }}>
-                <Col span={10}>
-                  <Text strong style={{ color: "#333" }}>
-                    <ExportOutlined style={{ marginRight: 8 }} />
-                    Exporter:
-                  </Text>
-                </Col>
-                <Col span={14}>
-                  <Text>{item.exporter}</Text>
-                </Col>
-              </Row>
-
-              <div style={{ marginTop: 16 }}>
-                <Text
-                  type="secondary"
-                  style={{ display: "flex", alignItems: "center" }}
+                <Paragraph
+                  style={{ color: "#555", marginBottom: 16, lineHeight: 1.6 }}
                 >
-                  <LinkOutlined style={{ color: "#1a5b0e", marginRight: 8 }} />
-                  <a
-                    href={item.source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "#1a5b0e", textDecoration: "underline" }}
+                  {item.description}
+                </Paragraph>
+
+                <Divider
+                  style={{ margin: "16px 0", backgroundColor: "#f0f0f0" }}
+                />
+
+                <Row gutter={16} style={{ marginBottom: 12 }}>
+                  <Col span={10}>
+                    <Text strong style={{ color: "#333" }}>
+                      <EnvironmentOutlined style={{ marginRight: 8 }} />
+                      Region:
+                    </Text>
+                  </Col>
+                  <Col span={14}>
+                    <Text>{item.region}</Text>
+                  </Col>
+                </Row>
+
+                <Row gutter={16} style={{ marginBottom: 16 }}>
+                  <Col span={10}>
+                    <Text strong style={{ color: "#333" }}>
+                      <ExportOutlined style={{ marginRight: 8 }} />
+                      Exporter:
+                    </Text>
+                  </Col>
+                  <Col span={14}>
+                    <Text>{item.exporter}</Text>
+                  </Col>
+                </Row>
+
+                <div style={{ marginTop: 16 }}>
+                  <Text
+                    type="secondary"
+                    style={{ display: "flex", alignItems: "center" }}
                   >
-                    {item.source.name}
-                  </a>
-                </Text>
-              </div>
-            </Card>
+                    <LinkOutlined
+                      style={{ color: "#1a5b0e", marginRight: 8 }}
+                    />
+                    <a
+                      href={item.source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "#1a5b0e", textDecoration: "underline" }}
+                    >
+                      {item.source.name}
+                    </a>
+                  </Text>
+                </div>
+              </Card>
+            </div>
           </Col>
         ))}
       </Row>
