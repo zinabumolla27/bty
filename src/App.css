@@ -6,25 +6,22 @@ body,
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  background: #fff; /* White background */
+  background: #fff;
 }
 
-/* Full width layout */
 .full-width-layout {
   width: 100%;
   min-height: 100vh;
 }
 
-/* Content area styling */
 .full-width-content {
   padding: 0;
   margin: 0;
 }
 
-/* Ant Design overrides */
 .ant-layout {
   width: 100%;
-  background: #fff; /* Set to a background color of your choice */
+  background: #fff;
 }
 
 .ant-layout-content {

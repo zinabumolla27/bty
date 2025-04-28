@@ -59,6 +59,14 @@ const AppFooter = () => {
     },
   ];
 
+  // Scroll to the top of the page
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Ensures smooth scroll to the top
+    });
+  };
+
   return (
     <Footer className="main-footer">
       <div className="footer-top">
@@ -122,7 +130,11 @@ const AppFooter = () => {
                     {section.links.map((link, linkIndex) => (
                       <li key={linkIndex}>
                         {link.path ? (
-                          <Link to={link.path} className="footer-link">
+                          <Link
+                            to={link.path}
+                            className="footer-link"
+                            onClick={handleScrollToTop} // Trigger scroll on click
+                          >
                             {link.name}
                           </Link>
                         ) : (
