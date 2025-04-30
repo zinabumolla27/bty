@@ -250,7 +250,7 @@ const Pulses = () => {
               alt={selectedSeed.title}
               style={{
                 width: "20%",
-                maxHeight: "300px",
+                maxHeight: "100px",
                 objectFit: "contain",
                 borderRadius: "8px",
                 marginBottom: "25px",

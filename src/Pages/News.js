@@ -116,13 +116,13 @@ const News = () => {
     <section className="news-section">
       <div className="news-container">
         <div className="news-header">
-          <Text className="section-subtitle">Company Updates</Text>
-          <Title level={2} className="section-title">
+          <Title
+            level={2}
+            className="section-title"
+            style={{ color: "#3b82f6" }}
+          >
             Latest News
           </Title>
-          <Paragraph className="section-description">
-            Our recent milestones and developments in global trade
-          </Paragraph>
         </div>
 
         <div className="news-grid">

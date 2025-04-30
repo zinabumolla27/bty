@@ -4,6 +4,7 @@ import AppHeader from "./Components/AppHeader";
 import AppContent from "./Components/AppContent";
 import AppFooter from "./Components/AppFooter";
 import "./App.css";
+import SocialIcons from "./Pages/SocialIcons";
 
 const { Content } = Layout;
 
@@ -13,6 +14,7 @@ function App() {
       <AppHeader />
       <Content>
         <AppContent />
+        <SocialIcons />
       </Content>
       <AppFooter />
     </Layout>

@@ -69,14 +69,12 @@ const ethiopianCoffees = [
   {
     title: "Tea Leaf",
     description: [
-      "Rich in Antioxidants",
       "Boosts Heart Health",
       "Enhances Mental Alertness",
       "Supports Weight Management",
       "Promotes Digestive Health",
       "Strengthens the Immune System",
-      "Cultural and Economic Value",
-      "Environmental Benefits",
+
       "https://en.wikipedia.org/wiki/The_Coffee_Bean_%26_Tea_Leaf",
     ],
     image: tea3,
@@ -236,7 +234,7 @@ const Coffeandtea = () => {
         onCancel={handleCancel}
         footer={null}
         centered
-        width={800}
+        width={600}
         closable={true}
         maskClosable={true}
         style={{ top: 20 }}
@@ -252,7 +250,8 @@ const Coffeandtea = () => {
           <div style={{ textAlign: "center" }}>
             <div
               style={{
-                height: "300px",
+                height: "100px",
+
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",

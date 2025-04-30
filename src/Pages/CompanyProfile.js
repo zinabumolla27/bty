@@ -140,7 +140,7 @@ const CompanyProfile = () => {
             <Title
               level={2}
               style={{
-                color: "#1e293b",
+                color: "#10b981",
                 fontSize: "28px",
                 fontWeight: 700,
                 margin: 0,
@@ -164,7 +164,7 @@ const CompanyProfile = () => {
                   background:
                     "linear-gradient(to bottom right, #f8fafc, #f0f9ff)",
                 }}
-                bodyStyle={{ padding: "20px" }}
+                styles={{ body: { padding: "20px" } }}
               >
                 <div style={{ textAlign: "center" }}>
                   <RocketOutlined
@@ -204,7 +204,7 @@ const CompanyProfile = () => {
                   background:
                     "linear-gradient(to bottom right, #f0fdf4, #ecfdf5)",
                 }}
-                bodyStyle={{ padding: "20px" }}
+                styles={{ body: { padding: "20px" } }}
               >
                 <div style={{ textAlign: "center" }}>
                   <EyeOutlined style={{ fontSize: "40px", color: "#10b981" }} />
@@ -241,7 +241,7 @@ const CompanyProfile = () => {
                   background:
                     "linear-gradient(to bottom right, #fffbeb, #fef3c7)",
                 }}
-                bodyStyle={{ padding: "20px" }}
+                styles={{ body: { padding: "20px" } }}
               >
                 <div style={{ textAlign: "center" }}>
                   <StarOutlined

@@ -18,7 +18,7 @@ import Spices from "../Pages/Spices";
 import Cereals from "../Pages/Cereals";
 import Peppers from "../Pages/Pepper";
 import ViewContact from "../Pages/ViewContacts";
-import AddtionalServices from "../Pages/AddtionalServices";
+import Services from "../Pages/Services";
 import ManageUsers from "../Pages/ManageUsers";
 
 function AppRoutes() {
@@ -43,7 +43,7 @@ function AppRoutes() {
       <Route path="/CompanyProfile" element={<CompanyProfile />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/viewContact" element={<ViewContact />} />
-      <Route path="/addtionalservices" element={<AddtionalServices />} />
+      <Route path="/services" element={<Services />} />
       <Route path="/manageusers" element={<ManageUsers />} />
 
       {/* Catch-all route for unmatched routes */}

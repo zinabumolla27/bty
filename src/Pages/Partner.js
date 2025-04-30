@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "antd";
 import { motion } from "framer-motion";
-import cbee from "../Assets/cbee.png";
+import cb from "../Assets/cb.jpeg";
 import ab from "../Assets/ab.jpg";
 import abay from "../Assets/abay.png";
 import am from "../Assets/am.png";
@@ -11,7 +11,7 @@ import adcham from "../Assets/adcham.png";
 import "./Partner.css"; // Import the CSS file
 
 const partnerLogos = [
-  { src: cbee, alt: "Commercial Bank of Ethiopia" },
+  { src: cb, alt: "Commercial Bank of Ethiopia" },
   { src: ab, alt: "Bank of Abyssinia" },
   { src: am, alt: "Amhara Bank" },
   { src: abay, alt: "Abay Bank" },

@@ -9,7 +9,7 @@ import {
   ImportOutlined,
   DownOutlined,
 } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom"; // ✅ Import useLocation
 import fl from "../Assets/fl.png";
 import "./AppHeader.css";
 import SearchBar from "./SearchBar";
@@ -21,7 +21,9 @@ const AppHeader = () => {
   const [isClosing, setIsClosing] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation(); // ✅ Hook for pathname changes
 
+  // ✅ Scroll detection effect
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
@@ -35,6 +37,11 @@ const AppHeader = () => {
       document.removeEventListener("scroll", handleScroll);
     };
   }, [scrolled]);
+
+  // ✅ Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const handleMenuClick = (item) => {
     setIsClosing(true);
@@ -89,7 +96,6 @@ const AppHeader = () => {
           ),
           key: "companyprofile",
         },
-
         {
           label: (
             <>
@@ -107,7 +113,7 @@ const AppHeader = () => {
           Services & Products <DownOutlined className="dropdown-icon" />
         </span>
       ),
-      key: "services",
+      key: "servicesandproducts",
       children: [
         {
           label: (
@@ -137,8 +143,8 @@ const AppHeader = () => {
           key: "import",
         },
         {
-          label: "Additional Services",
-          key: "additional-services",
+          label: " Services",
+          key: "services",
           children: [
             { label: "Mining and Quarrying", key: "mining" },
             { label: "Manufacturing", key: "manufacturing" },
@@ -192,7 +198,7 @@ const AppHeader = () => {
               items={menuItems}
               className="nav-menu"
               onClick={handleMenuClick}
-              selectedKeys={[window.location.pathname.substring(1)]}
+              selectedKeys={[location.pathname.substring(1)]} // ✅ Use location hook
               overflowedIndicator={<MenuOutlined />}
             />
           </Col>
@@ -219,7 +225,7 @@ const AppHeader = () => {
           mode="inline"
           items={menuItems}
           onClick={handleMenuClick}
-          selectedKeys={[window.location.pathname.substring(1)]}
+          selectedKeys={[location.pathname.substring(1)]} // ✅ Use location here too
           style={{ height: "100%" }}
         />
       </div>

@@ -2,7 +2,7 @@
   "name": "bty",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zinabumolla27.github.io/",
+  "homepage": "https://zinabumolla27.github.io/bty",
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
     "@reduxjs/toolkit": "^2.6.1",

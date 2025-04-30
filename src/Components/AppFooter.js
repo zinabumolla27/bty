@@ -22,15 +22,15 @@ const AppFooter = () => {
         { name: "Manufacturing" },
         { name: "Transportation" },
         { name: "Construction" },
+        { name: "Mining and Quarrying" },
       ],
     },
     {
       title: "ABOUT",
       links: [
         { name: "Contact Us", path: "/contact" },
-        { name: "About us", path: "/companyprofile" },
-        { name: "FAQ", path: "/faq" },
         { name: "companyprofile", path: "/companyprofile" },
+        { name: "FAQ", path: "/faq" },
       ],
     },
     {
@@ -40,6 +40,7 @@ const AppFooter = () => {
         { name: "Cereals", path: "/cereals" },
         { name: "Pulses", path: "/pulses" },
         { name: "Coffee and Tea", path: "/coffeeandtea" },
+        { name: " Oilseeds", path: "/oilseeds" },
       ],
     },
     {
