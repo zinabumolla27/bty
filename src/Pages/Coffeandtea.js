@@ -40,7 +40,7 @@ const ethiopianCoffees = [
       "Dry-processed (natural) coffee beans.",
       "Known for its blueberry flavor notes.",
       "One of the oldest coffee varieties still in production.",
-      "https://en.wikipedia.org/?title=Harari_coffee&redirect=no",
+      "https://en.wikipedia.org/wiki/Coffee_production_in_Ethiopia",
     ],
     image: harer,
   },

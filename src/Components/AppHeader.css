@@ -1,6 +1,7 @@
 :root {
   --primary-color: #2563eb;
   --secondary-color: #f59e0b;
+  --third-color: #2f6547;
   --text-color: #ffffff;
   --text-dark: #1e293b;
   --text-light: #64748b;
@@ -21,7 +22,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--bg-gradient);
+  background: var(--third-color);
   box-shadow: var(--shadow);
   height: 80px;
   padding: 0;
@@ -31,7 +32,7 @@
 
 .app-header.scrolled {
   height: 70px;
-  background: rgba(30, 64, 175, 0.95);
+  background: rgba(59, 50, 70, 0.95);
   backdrop-filter: blur(10px);
 }
 
@@ -114,13 +115,12 @@
 /* Selected State */
 .nav-menu .ant-menu-item-selected,
 .nav-menu .ant-menu-submenu-selected {
-  background-color: var(--secondary-color) !important;
-  color: var(--text-dark) !important;
+  color: var(--text-color) !important;
 }
 
 .nav-menu .ant-menu-submenu-selected .ant-menu-submenu-title,
 .nav-menu .ant-menu-submenu-selected .ant-menu-submenu-title:hover {
-  color: var(--text-dark) !important;
+  color: var(--text-color) !important;
 }
 
 /* Dropdown */
@@ -144,6 +144,11 @@
   padding-top: 8px;
 }
 
+.ant-menu-item:hover {
+  background-color: #1890ff !important;
+  color: white !important;
+}
+
 .nav-menu .ant-menu-submenu-popup .ant-menu {
   padding: 8px 0;
   border-radius: var(--border-radius);
@@ -158,11 +163,6 @@
   transition: var(--transition);
   color: var(--text-dark);
   animation: fadeIn 0.3s ease-out forwards;
-}
-
-.nav-menu .ant-menu-submenu-popup .ant-menu-item:hover {
-  background: rgba(245, 158, 11, 0.1) !important;
-  color: var(--secondary-color) !important;
 }
 
 /* Mobile Menu */

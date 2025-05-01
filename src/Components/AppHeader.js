@@ -12,7 +12,7 @@ import {
 import { useNavigate, useLocation } from "react-router-dom"; // ✅ Import useLocation
 import fl from "../Assets/fl.png";
 import "./AppHeader.css";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 
 const { Header } = Layout;
 
@@ -146,11 +146,11 @@ const AppHeader = () => {
           label: " Services",
           key: "services",
           children: [
-            { label: "Mining and Quarrying", key: "mining" },
-            { label: "Manufacturing", key: "manufacturing" },
-            { label: "Construction", key: "construction" },
-            { label: "Agriculture", key: "agriculture" },
-            { label: "Transportation", key: "transportation" },
+            { label: "Mining and Quarrying", key: "#" },
+            { label: "Manufacturing", key: "#1" },
+            { label: "Construction", key: "#2" },
+            { label: "Agriculture", key: "#3" },
+            { label: "Transportation", key: "#4" },
           ],
         },
       ],
@@ -181,14 +181,21 @@ const AppHeader = () => {
                 preview={false}
                 width={80}
                 className="logo-image"
-                style={{ margin: "0 20px" }}
+                style={{ margin: "0 " }}
               />
               <span
                 className="brand-name"
-                style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}
-              ></span>
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                }}
+              >
+                Bty Trading Plc <br />
+                Import & Export
+              </span>
             </div>
-            <SearchBar />
+            {/* <SearchBar /> */}
           </Col>
 
           <Col className="nav-col">

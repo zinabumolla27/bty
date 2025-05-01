@@ -156,6 +156,7 @@ html {
 .title-icon {
   font-size: 1.5em;
   color: var(--primary);
+  align-items: flex-start;
 }
 
 .section-subtitle {
