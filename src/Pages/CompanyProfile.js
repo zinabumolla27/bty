@@ -28,10 +28,19 @@ const CompanyProfile = () => {
         />
         <div className="hero-overlay">
           <div className="hero-content">
-            <Title className="hero-title" style={{ color: "blue" }}>
+            <Title
+              className="hero-title"
+              style={{
+                color: "#1a365d",
+                fontfamily: "'Poppins', sans-serif",
+              }}
+            >
               Company Profile
             </Title>
-            <Text className="hero-subtitle">
+            <Text
+              className="hero-subtitle"
+              style={{ color: "#f0f0f0", fontFamily: "'Poppins', sans-serif" }}
+            >
               BTY Trading PLC - Excellence in Agricultural Products Export
             </Text>
           </div>
@@ -39,37 +48,97 @@ const CompanyProfile = () => {
       </div>
 
       {/* About Company Section */}
-      <div className="section-container about-section">
+      <div
+        className="section-container about-section"
+        style={{ backgroundColor: "#f9f9f9" }}
+      >
         <Row gutter={[32, 32]} align="middle">
           <Col xs={24} md={12}>
             <div className="section-header">
-              <Title level={2} className="section-title about-title">
+              <Title
+                level={2}
+                className="section-title about-title"
+                style={{
+                  color: "#1a365d",
+                  fontFamily: "'Montserrat', sans-serif",
+                }}
+              >
                 About BTY Trading PLC
               </Title>
               <div className="section-divider about-divider"></div>
             </div>
-            <Paragraph className="company-description">
-              <Text strong className="highlight-text">
+            <Paragraph
+              className="company-description"
+              style={{ color: "#4a5568", fontFamily: "'Poppins', sans-serif" }}
+            >
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
                 BTY TRADING PLC
               </Text>
-              , established on <Text strong>December 16, 2011</Text>, is a
-              registered import-export company under the Ethiopian Ministry of
-              Trade. We specialize in exporting{" "}
-              <Text strong>oilseeds, pulses, and spices</Text> to countries like{" "}
-              <Text strong>
+              , established on{" "}
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                December 16, 2011
+              </Text>
+              , is a registered import-export company under the Ethiopian
+              Ministry of Trade. We specialize in exporting{" "}
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                oilseeds, pulses, and spices
+              </Text>{" "}
+              to countries like{" "}
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
                 Israel, Turkey, India, Saudi Arabia, Sudan, and the UAE
               </Text>
               .
             </Paragraph>
-            <Paragraph className="company-description">
+            <Paragraph
+              className="company-description"
+              style={{ color: "#4a5568", fontFamily: "'Poppins', sans-serif" }}
+            >
               Our products include{" "}
-              <Text strong>
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
                 sesame seeds, chickpeas, soybeans, green mung beans, niger
                 seeds, red kidney beans, and white pea beans
               </Text>
               . We also import{" "}
-              <Text strong>chemicals, cars, machinery, and steel</Text> to
-              support growing industrial demand.
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                chemicals, cars, machinery, and steel
+              </Text>{" "}
+              to support growing industrial demand.
             </Paragraph>
           </Col>
           <Col xs={24} md={12}>
@@ -89,21 +158,71 @@ const CompanyProfile = () => {
         <Row gutter={[32, 32]} align="middle">
           <Col xs={24} md={12} order={2}>
             <div className="section-header">
-              <Title level={2} className="section-title plans-title">
+              <Title
+                level={2}
+                className="section-title plans-title"
+                style={{
+                  color: "#1a365d",
+                  fontFamily: "'Montserrat', sans-serif",
+                }}
+              >
                 BTY Trading PLC Plans
               </Title>
               <div className="section-divider plans-divider"></div>
             </div>
-            <Paragraph className="company-description">
-              We plan to <Text strong>modernize and diversify</Text> our
-              operations by establishing new departments and producing
+            <Paragraph
+              className="company-description"
+              style={{ color: "#4a5568", fontFamily: "'Poppins', sans-serif" }}
+            >
+              We plan to{" "}
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                modernize and diversify
+              </Text>{" "}
+              our operations by establishing new departments and producing
               exportable agricultural products. We aim to{" "}
-              <Text strong>build warehouses across the country</Text>.
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                build warehouses across the country
+              </Text>
+              .
             </Paragraph>
-            <Paragraph className="company-description">
-              Our <Text strong>long-term goal</Text> includes expanding both
-              import and export portfolios to meet international demand and
-              support Ethiopia's <Text strong>economic growth</Text>.
+            <Paragraph
+              className="company-description"
+              style={{ color: "#4a5568", fontFamily: "'Poppins', sans-serif" }}
+            >
+              Our{" "}
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                long-term goal
+              </Text>{" "}
+              includes expanding both import and export portfolios to meet
+              international demand and support Ethiopia's{" "}
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                economic growth
+              </Text>
+              .
             </Paragraph>
           </Col>
           <Col xs={24} md={12} order={1}>
@@ -119,7 +238,7 @@ const CompanyProfile = () => {
       </div>
 
       {/* Core Principles Section */}
-      <div style={{ padding: "60px 0", background: "#f9f9f9" }}>
+      <div style={{ padding: "60px 0", background: "#f7fafc" }}>
         <div
           style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}
         >
@@ -128,11 +247,12 @@ const CompanyProfile = () => {
             <Text
               style={{
                 display: "block",
-                color: "#3b82f6",
+                color: "#4299e1",
                 fontWeight: 600,
                 fontSize: "14px",
                 letterSpacing: "1px",
                 marginBottom: "8px",
+                fontFamily: "'Montserrat', sans-serif",
               }}
             >
               OUR FOUNDATION
@@ -140,10 +260,11 @@ const CompanyProfile = () => {
             <Title
               level={2}
               style={{
-                color: "#10b981",
+                color: "#1a365d",
                 fontSize: "28px",
                 fontWeight: 700,
                 margin: 0,
+                fontFamily: "'Montserrat', sans-serif",
               }}
             >
               Core Principles
@@ -159,10 +280,9 @@ const CompanyProfile = () => {
                 style={{
                   height: "100%",
                   borderRadius: "12px",
-                  borderTop: "4px solid #3b82f6",
-                  boxShadow: "0 6px 16px rgba(59, 130, 246, 0.12)",
+                  borderTop: "4px solid #3182ce",
                   background:
-                    "linear-gradient(to bottom right, #f8fafc, #f0f9ff)",
+                    "linear-gradient(to bottom right, #f8fafc, #e0f2fe, #bae6fd)",
                 }}
                 styles={{ body: { padding: "20px" } }}
               >
@@ -172,15 +292,20 @@ const CompanyProfile = () => {
                   />
                   <Title
                     level={3}
-                    style={{ marginTop: "16px", color: "#1e40af" }}
+                    style={{
+                      marginTop: "16px",
+                      color: "#3b82f6",
+                      fontFamily: "'Montserrat', sans-serif",
+                    }}
                   >
                     Mission
                   </Title>
                   <Text
                     style={{
-                      color: "#475569",
+                      color: "#4a5568",
                       fontSize: "15px",
                       lineHeight: "1.6",
+                      fontFamily: "'Poppins', sans-serif",
                     }}
                   >
                     Lead in exporting agricultural products and supplying
@@ -199,10 +324,9 @@ const CompanyProfile = () => {
                 style={{
                   height: "100%",
                   borderRadius: "12px",
-                  borderTop: "4px solid #10b981",
-                  boxShadow: "0 6px 16px rgba(16, 185, 129, 0.12)",
+                  borderTop: "4px solid #38b2ac",
                   background:
-                    "linear-gradient(to bottom right, #f0fdf4, #ecfdf5)",
+                    "linear-gradient(to bottom right, #f8fafc, #f0f9ff)",
                 }}
                 styles={{ body: { padding: "20px" } }}
               >
@@ -210,15 +334,22 @@ const CompanyProfile = () => {
                   <EyeOutlined style={{ fontSize: "40px", color: "#10b981" }} />
                   <Title
                     level={3}
-                    style={{ marginTop: "16px", color: "#065f46" }}
+                    style={{
+                      marginTop: "16px",
+                      color: "#065f46",
+                      fontFamily: "'Montserrat', sans-serif",
+                    }}
                   >
                     Vision
                   </Title>
                   <Text
                     style={{
-                      color: "#475569",
+                      color: "#4a5568",
                       fontSize: "15px",
                       lineHeight: "1.6",
+                      fontFamily: "'Poppins', sans-serif",
+                      background:
+                        "linear-gradient(to bottom right, #f0fdf4, #ecfdf5)",
                     }}
                   >
                     To be a market leader in sourcing and distributing
@@ -236,8 +367,7 @@ const CompanyProfile = () => {
                 style={{
                   height: "100%",
                   borderRadius: "12px",
-                  borderTop: "4px solid #f59e0b",
-                  boxShadow: "0 6px 16px rgba(245, 158, 11, 0.12)",
+                  borderTop: "4px solid #d69e2e",
                   background:
                     "linear-gradient(to bottom right, #fffbeb, #fef3c7)",
                 }}
@@ -249,40 +379,49 @@ const CompanyProfile = () => {
                   />
                   <Title
                     level={3}
-                    style={{ marginTop: "16px", color: "#92400e" }}
+                    style={{
+                      marginTop: "16px",
+                      color: "#92400e",
+                      fontFamily: "'Montserrat', sans-serif",
+                    }}
                   >
                     Our Values
                   </Title>
                   <ul
-                    style={{ padding: 0, margin: "16px 0", listStyle: "none" }}
+                    style={{
+                      padding: 0,
+                      margin: "16px 0",
+                      listStyle: "none",
+                      fontFamily: "'Poppins', sans-serif",
+                    }}
                   >
-                    <li>
+                    <li style={{ color: "#4a5568" }}>
                       <CheckCircleFilled
-                        style={{ color: "#3b82f6", marginRight: "8px" }}
+                        style={{ color: "#3182ce", marginRight: "8px" }}
                       />
                       Integrity
                     </li>
-                    <li>
+                    <li style={{ color: "#4a5568" }}>
                       <HeartFilled
-                        style={{ color: "#f43f5e", marginRight: "8px" }}
+                        style={{ color: "#e53e3e", marginRight: "8px" }}
                       />
                       Passion
                     </li>
-                    <li>
+                    <li style={{ color: "#4a5568" }}>
                       <ToolFilled
-                        style={{ color: "#10b981", marginRight: "8px" }}
+                        style={{ color: "#38b2ac", marginRight: "8px" }}
                       />
                       Innovation
                     </li>
-                    <li>
+                    <li style={{ color: "#4a5568" }}>
                       <TeamOutlined
-                        style={{ color: "#6366f1", marginRight: "8px" }}
+                        style={{ color: "#805ad5", marginRight: "8px" }}
                       />
                       Teamwork
                     </li>
-                    <li>
+                    <li style={{ color: "#4a5568" }}>
                       <CrownFilled
-                        style={{ color: "#f59e0b", marginRight: "8px" }}
+                        style={{ color: "#d69e2e", marginRight: "8px" }}
                       />
                       Leadership
                     </li>

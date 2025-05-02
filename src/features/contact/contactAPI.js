@@ -1,4 +1,4 @@
-const API_BASE = "http://10.134.114.87:3000/api/v1/contact";
+const API_BASE = "http://localhost:3001/api/v1/contact";
 
 export const fetchContactsAPI = async () => {
   const res = await fetch(API_BASE);
@@ -11,6 +11,8 @@ export const addContactAPI = async (data) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
+  console.log("values after apibb", res);
+
   return res.json();
 };
 

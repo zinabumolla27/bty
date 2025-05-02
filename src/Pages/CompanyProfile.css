@@ -1,6 +1,7 @@
-/* Base Styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap");
+
 .company-profile-container {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #333;
   line-height: 1.6;
   overflow-x: hidden; /* Prevent horizontal scroll */
@@ -8,6 +9,15 @@
   width: 100%;
   margin: 0;
   padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
 }
 
 /* General Reset for Images */
@@ -44,6 +54,7 @@ img {
   align-items: center;
   justify-content: center;
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
 .hero-content {
@@ -74,6 +85,7 @@ img {
   font-size: 1.5rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   display: block;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Section Container */
@@ -86,6 +98,7 @@ img {
 .section-header {
   margin-bottom: 30px;
   text-align: center;
+  background-color: #dacfcfa2;
 }
 
 .section-title {

@@ -45,7 +45,6 @@ export const userTableColumns = [
     key: "actions",
     render: (text, record) => (
       <>
-        <button onClick={""}>Edit</button>
         <button onClick={""} style={{ marginLeft: 8 }}>
           Delete
         </button>

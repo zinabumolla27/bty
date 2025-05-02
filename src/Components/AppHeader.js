@@ -164,7 +164,7 @@ const AppHeader = () => {
         </span>
       ),
       key: "manage-users",
-      children: [{ key: "view-contacts", label: "View Contacts" }],
+      children: [{ key: "viewContact", label: "View Contacts" }],
     },
     { key: "upload", label: "Upload" },
   ];
@@ -174,28 +174,57 @@ const AppHeader = () => {
       <div className="header-container">
         <Row className="header-row" align="middle" justify="space-between">
           <Col className="logo-col">
-            <div className="logo-container" onClick={handleLogoClick}>
+            <div
+              className="logo-container"
+              onClick={handleLogoClick}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                cursor: "pointer",
+                padding: "8px 0", // Minimal padding
+              }}
+            >
               <Image
                 src={fl}
                 alt="Company Logo"
                 preview={false}
                 width={80}
                 className="logo-image"
-                style={{ margin: "0 " }}
-              />
-              <span
-                className="brand-name"
                 style={{
-                  color: "white",
-                  fontWeight: "bold",
-                  fontSize: "15px",
+                  margin: "0",
+                  transition: "transform 0.3s ease",
+                  ":hover": {
+                    transform: "scale(1.05)",
+                  },
                 }}
-              >
-                Bty Trading Plc <br />
-                Import & Export
-              </span>
+              />
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <span
+                  style={{
+                    color: "white",
+                    fontWeight: "700",
+                    fontSize: "18px",
+                    lineHeight: "1.2",
+                    letterSpacing: "0.5px",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  Bty Trading Plc
+                </span>
+                <span
+                  style={{
+                    color: "rgba(255,255,255,0.85)",
+                    fontWeight: "500",
+                    fontSize: "14px",
+                    lineHeight: "1.3",
+                    letterSpacing: "0.3px",
+                  }}
+                >
+                  Import & Export
+                </span>
+              </div>
             </div>
-            {/* <SearchBar /> */}
           </Col>
 
           <Col className="nav-col">

@@ -6,6 +6,7 @@ import {
   updateContactAPI,
 } from "./contactAPI";
 
+// Async Thunks for API calls
 export const fetchContacts = createAsyncThunk(
   "contact/fetchContacts",
   fetchContactsAPI
@@ -42,14 +43,22 @@ const contactSlice = createSlice({
         state.error = action.error.message;
       })
 
+      // Add new contact to the list
       .addCase(addContact.fulfilled, (state, action) => {
         state.list.push(action.payload);
       })
+
+      // Handle deletion
       .addCase(deleteContact.fulfilled, (state, action) => {
-        state.list = state.list.filter((c) => c.id !== action.payload.id);
+        const deletedId = action.payload; // Assuming payload is the deleted contact's ID
+        state.list = state.list.filter((contact) => contact.id !== deletedId);
       })
+
+      // Handle updating contact
       .addCase(updateContact.fulfilled, (state, action) => {
-        const index = state.list.findIndex((c) => c.id === action.payload.id);
+        const index = state.list.findIndex(
+          (contact) => contact.id === action.payload.id
+        );
         if (index !== -1) state.list[index] = action.payload;
       });
   },

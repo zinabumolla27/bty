@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, message } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import "./Login.css";
+import { authUserAPI } from "../features/auth/auth";
 
 const Login = () => {
-  const onFinish = (values) => {
-    message.success(`Welcome back, ${values.username}!`);
-    console.log("Login Success:", values);
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false); // 👈 Loading state
+
+  const onFinish = async (values) => {
+    setLoading(true);
+    try {
+      await authUserAPI(values);
+      message.success("✅ Message sent successfully!");
+      form.resetFields();
+    } catch (error) {
+      console.error("API error:", error);
+      message.error("❌ Failed to send message. Please try again.");
+    } finally {
+      setLoading(false); // 👈 Stop loading
+    }
   };
 
   return (
@@ -45,13 +58,13 @@ const Login = () => {
 
           <Form.Item>
             <Button
+              size="large"
               type="primary"
               htmlType="submit"
-              block
-              size="large"
               className="login-button"
+              loading={loading}
             >
-              Log In
+              {loading ? "Sending..." : " Login"}
             </Button>
           </Form.Item>
         </Form>

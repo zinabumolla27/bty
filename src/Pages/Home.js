@@ -1,5 +1,5 @@
 // Home.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Typography, Button, Col, Row, Card } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Meta from "antd/es/card/Meta";
@@ -21,12 +21,12 @@ const { Title, Paragraph, Text } = Typography;
 
 const backgroundImages = [bg1, bg2, bg3];
 const descriptions = [
-  "Includes White, Green, and Black.",
-  "Includes Mitmita, Korerima, Berbere.",
-  "Includes sesame, sunflower, soybean.",
-  "Includes Yirgacheffe, Sidamo, Jimma.",
-  "Includes Wheat, Barley, Teff, Maize.",
-  "Includes Mitmita, Korarima.",
+  "Premium quality White, Green, and Black tea leaves sourced from Ethiopia's finest gardens.",
+  "Authentic Ethiopian spices including Mitmita, Korerima, and Berbere with rich flavors.",
+  "Organic sesame, sunflower, and soybean oils cold-pressed for maximum nutrition.",
+  "Single-origin Yirgacheffe, Sidamo, and Jimma coffee beans with distinctive profiles.",
+  "Nutritious Wheat, Barley, Teff, and Maize cultivated in Ethiopia's fertile highlands.",
+  "Hand-picked Mitmita and Korarima peppers with perfect heat and aroma.",
 ];
 const titles = [
   "Tea Leaves",
@@ -38,29 +38,86 @@ const titles = [
 ];
 const images = [img6, image1, image2, image3, image4, image5];
 
-// Color palette for titles
+// Premium color palette with smooth transitions
 const titleColors = [
-  "#2E8B57", // Sea Green
-  "#D35400", // Pumpkin
-  "#2980B9", // Belize Hole
-  "#8E44AD", // Wisteria
-  "#16A085", // Green Sea
-  "#C0392B", // Pomegranate
+  "#1a936f", // Sage
+  "#c75146", // Terra Cotta
+  "#114b5f", // Teal
+  "#6b2737", // Wine
+  "#114b5f", // Honey
+  "#540b0e", // Burgundy
 ];
 
-// Color palette for descriptions
 const descriptionColors = [
-  "#27AE60", // Nephritis
-  "#E67E22", // Carrot
-  "#3498DB", // Peter River
-  "#9B59B6", // Amethyst
-  "#1ABC9C", // Turquoise
-  "#E74C3C", // Alizarin
+  "#88d498", // Light Sage
+  "#114b5f", // Peach
+  "#1b9aaa", // Aqua
+  "#ee6c4d", // Coral
+  "#114b5f", // Butter
+  "#9e2a2b", // Red
 ];
+
+// Font styles
+const fontStyles = {
+  mainHeading: {
+    fontFamily: "'Playfair Display', serif",
+    fontWeight: 900,
+    letterSpacing: "1px",
+  },
+  subtitle: {
+    fontFamily: "'Montserrat', sans-serif",
+    fontWeight: 300,
+    letterSpacing: "2px",
+  },
+  sectionTitle: {
+    fontFamily: "'Playfair Display', serif",
+    fontWeight: 700,
+  },
+  cardTitle: {
+    fontFamily: "'Lora', serif",
+    fontWeight: 600,
+  },
+  cardDescription: {
+    fontFamily: "'Open Sans', sans-serif",
+  },
+};
 
 const Home = () => {
   const [bgIndex, setBgIndex] = useState(0);
+  const [animatedText, setAnimatedText] = useState(false);
+  const [cardHover, setCardHover] = useState(Array(images.length).fill(false));
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Trigger animation after component mounts
+    setAnimatedText(true);
+
+    // Preload fonts
+    const link1 = document.createElement("link");
+    link1.href =
+      "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap";
+    link1.rel = "stylesheet";
+
+    const link2 = document.createElement("link");
+    link2.href =
+      "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap";
+    link2.rel = "stylesheet";
+
+    const link3 = document.createElement("link");
+    link3.href =
+      "https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap";
+    link3.rel = "stylesheet";
+
+    const link4 = document.createElement("link");
+    link4.href =
+      "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap";
+    link4.rel = "stylesheet";
+
+    document.head.appendChild(link1);
+    document.head.appendChild(link2);
+    document.head.appendChild(link3);
+    document.head.appendChild(link4);
+  }, []);
 
   const handleClick = () => {
     navigate("/companyprofile");
@@ -76,6 +133,12 @@ const Home = () => {
     );
   };
 
+  const handleCardHover = (index, isHovering) => {
+    const newHoverState = [...cardHover];
+    newHoverState[index] = isHovering;
+    setCardHover(newHoverState);
+  };
+
   return (
     <div>
       {/* Background Section */}
@@ -88,25 +151,46 @@ const Home = () => {
         <RightOutlined className="nav-arrow right" onClick={goNext} />
 
         <div className="overlay">
-          <div className="content-wrapper">
+          <div
+            className={`content-wrapper ${animatedText ? "animate-in" : ""}`}
+          >
             <Title
               level={1}
               className="main-heading"
-              style={{ color: "white" }}
+              style={{
+                color: "#ffffff",
+                ...fontStyles.mainHeading,
+                textShadow: "0 2px 10px rgba(0,0,0,0.5)",
+              }}
             >
-              BTY TRADING PLC IMPORT AND EXPORT
+              <span className="text-gradient">BTY TRADING PLC</span>
+              <br />
+              <span style={{ fontSize: "0.8em" }}>IMPORT AND EXPORT</span>
             </Title>
-            <Paragraph className="subtitle" style={{ color: "white" }}>
-              Exporting Agricultural Products
+            <Paragraph
+              className="subtitle"
+              style={{
+                color: "rgba(255, 255, 255, 0.9)",
+                ...fontStyles.subtitle,
+                textShadow: "0 1px 3px rgb(248, 253, 253)",
+              }}
+            >
+              Exporting Ethiopia's Finest Agricultural Products Worldwide
             </Paragraph>
             <div className="sign-up-button-container">
               <Button
                 type="primary"
                 size="large"
-                className="sign-up-button"
+                className="sign-up-button pulse"
                 onClick={handleClick}
+                style={{
+                  background:
+                    "linear-gradient(135deg, #1a936f 0%, #114b5f 100%)",
+                  border: "none",
+                  boxShadow: "0 4px 15px rgba(26, 147, 111, 0.4)",
+                }}
               >
-                Explore
+                Explore Our Products
               </Button>
             </div>
           </div>
@@ -116,32 +200,48 @@ const Home = () => {
       {/* About Section */}
       <div className="about-section">
         <Row gutter={[32, 32]} align="middle" justify="center">
-          <Col xs={24} md={10}>
+          <Col xs={24} md={10} className="about-col-left">
             <Text className="about-label">About BTY TRADING</Text>
             <Title
               level={1}
               className="about-title"
-              style={{ color: "#3b7b57" }}
+              style={{
+                color: "#1a936f",
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 700,
+              }}
             >
               Ethiopia's <br /> Agricultural <br /> Products Exporter.
             </Title>
           </Col>
-          <Col xs={24} md={10}>
-            <Paragraph className="about-description">
-              BTY TRADING PLC, established on December 16, 2011 G.C. is a
-              licensed import-export company registered with the Ethiopian
-              Ministry of Trade. It exports oil seeds, pulses, and spices
-              worldwide, while also importing chemicals, cars, machinery, and
-              steel. The company supports 14 permanent staff and over 120
-              temporary employees.
+          <Col xs={24} md={10} className="about-col-right">
+            <Paragraph
+              className="about-description"
+              style={{
+                fontFamily: "'Open Sans', sans-serif",
+                textAlign: "justify",
+                textjustify: "interword",
+              }}
+            >
+              BTY TRADING PLC, established in 2011, is a premier import-export
+              company specializing in Ethiopia's finest agricultural products.
+              We combine traditional farming wisdom with modern export standards
+              to deliver exceptional quality oil seeds, pulses, and spices to
+              global markets. Our operations support sustainable agriculture and
+              provide livelihoods for hundreds of local workers.
             </Paragraph>
             <Button
               type="primary"
               size="large"
               className="learn-more-button"
               onClick={handleClick}
+              style={{
+                background: "linear-gradient(135deg, #114b5f 0%, #1a936f 100%)",
+                border: "none",
+                boxShadow: "0 4px 15px rgba(17, 75, 95, 0.3)",
+              }}
             >
-              Learn more
+              Discover Our Story
             </Button>
           </Col>
         </Row>
@@ -149,35 +249,58 @@ const Home = () => {
 
       {/* Gallery Section */}
       <div className="gallery-container">
-        <Title level={1} className="section-title" style={{ color: "#3b7b57" }}>
+        <Title
+          level={1}
+          className="section-title"
+          style={{
+            color: "#1a936f",
+            ...fontStyles.sectionTitle,
+          }}
+        >
           Our Products
         </Title>
         <Row gutter={[32, 32]} justify="center">
           {images.map((img, index) => (
-            <Col xs={24} sm={12} md={8} lg={8} key={index}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              key={index}
+              className="product-col"
+              onMouseEnter={() => handleCardHover(index, true)}
+              onMouseLeave={() => handleCardHover(index, false)}
+            >
               <Card
                 hoverable
-                className="gallery-card"
+                className={`gallery-card ${cardHover[index] ? "hovered" : ""}`}
                 cover={
-                  <img
-                    alt="product"
-                    src={img}
-                    style={{
-                      objectFit: "cover",
-                      height: "200px",
-                      width: "100%",
-                    }}
-                  />
+                  <div className="card-image-container">
+                    <img alt="product" src={img} className="card-image" />
+                    <div className="card-image-overlay"></div>
+                  </div>
                 }
               >
                 <Meta
                   title={
-                    <span style={{ color: titleColors[index] }}>
+                    <span
+                      style={{
+                        color: titleColors[index],
+                        ...fontStyles.cardTitle,
+                        transition: "all 0.5s ease",
+                      }}
+                    >
                       {titles[index]}
                     </span>
                   }
                   description={
-                    <span style={{ color: descriptionColors[index] }}>
+                    <span
+                      style={{
+                        color: descriptionColors[index],
+                        ...fontStyles.cardDescription,
+                        transition: "all 0.5s ease",
+                      }}
+                    >
                       {descriptions[index]}
                     </span>
                   }
@@ -192,7 +315,14 @@ const Home = () => {
       <Testimonials />
 
       {/* Partners Section */}
-      <Title level={2} className="partners-title" style={{ color: "green" }}>
+      <Title
+        level={2}
+        className="partners-title"
+        style={{
+          color: "#1a936f",
+          fontFamily: "'Playfair Display', serif",
+        }}
+      >
         Our Partners
       </Title>
       <Partners />

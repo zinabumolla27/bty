@@ -1,5 +1,5 @@
-import React from "react";
-import { Form, Input, Button, Typography, Divider } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, Typography, Divider, message } from "antd";
 import { motion } from "framer-motion";
 import {
   MailOutlined,
@@ -7,12 +7,26 @@ import {
   EnvironmentOutlined,
 } from "@ant-design/icons";
 import "./Contact.css";
+import { addContactAPI } from "../features/contact/contactAPI";
 
 const { Title, Paragraph, Text } = Typography;
 
 const Contact = () => {
-  const onFinish = (values) => {
-    console.log("Form submitted:", values);
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+
+  const onFinish = async (values) => {
+    setLoading(true);
+    try {
+      await addContactAPI(values);
+      message.success("✅ Message sent successfully!");
+      form.resetFields();
+    } catch (error) {
+      console.error("API error:", error);
+      message.error("❌ Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -24,14 +38,12 @@ const Contact = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <Title className="main-title" style={{ color: "#10b981" }}>
-          Connect With Us
-        </Title>
+        <Title className="main-title">Get In Touch</Title>
         <Divider className="title-divider" />
         <Paragraph className="hero-text">
           We're here to help and answer any questions you might have. Whether
           you're interested in our services, need support, or just want to say
-          hello our team is ready to assist you.
+          hello - our team is ready to assist you.
         </Paragraph>
 
         <div className="contact-options">
@@ -39,6 +51,7 @@ const Contact = () => {
             className="contact-option email-option"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => (window.location.href = "mailto:btyb07@gmail.com")}
           >
             <MailOutlined className="option-icon" />
             <Text strong>Email Us</Text>
@@ -48,6 +61,7 @@ const Contact = () => {
             className="contact-option phone-option"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => (window.location.href = "tel:+251911257609")}
           >
             <PhoneOutlined className="option-icon" />
             <Text strong>Call Us</Text>
@@ -55,52 +69,55 @@ const Contact = () => {
         </div>
       </motion.div>
 
-      {/* Main Content */}
-      <div className="content-grid">
+      {/* Main Content - Centered Boxes */}
+      <div className="centered-boxes-container">
         {/* Contact Form */}
         <motion.div
-          className="form-section"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          className="centered-box form-box"
+          style={{ backgroundColor: "#f1f5f9" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <div
-            className="section-header"
-            style={{ backgroundColor: "#f1f5f9" }}
-          >
-            <Title
-              level={3}
-              className="section-title"
-              style={{ color: "#10b981" }}
-            >
-              <MailOutlined className="title-icon" /> Send us a message
+          <div className="box-header">
+            <Title level={3} className="box-title" style={{ color: "#10b981" }}>
+              <MailOutlined className="box-icon" /> Send us a message
             </Title>
-            <Text className="section-subtitle">
+            <Text className="box-subtitle">
               Fill out the form below and we'll get back to you as soon as
               possible.
             </Text>
           </div>
 
-          <Form layout="vertical" onFinish={onFinish} className="contact-form">
-            <Form.Item
-              name="firstName"
-              label={<Text className="form-label">First Name</Text>}
-              rules={[
-                { required: true, message: "Please enter your first name" },
-              ]}
-            >
-              <Input placeholder="Enter first name" className="form-input" />
-            </Form.Item>
+          <Form
+            form={form}
+            layout="vertical"
+            onFinish={onFinish}
+            className="contact-form"
+          >
+            <div className="form-row">
+              <Form.Item
+                name="firstName"
+                label={<Text className="form-label">First Name</Text>}
+                rules={[
+                  { required: true, message: "Please enter your first name" },
+                ]}
+                className="form-item-half"
+              >
+                <Input placeholder="Enter first name" className="form-input" />
+              </Form.Item>
 
-            <Form.Item
-              name="lastName"
-              label={<Text className="form-label">Last Name</Text>}
-              rules={[
-                { required: true, message: "Please enter your last name" },
-              ]}
-            >
-              <Input placeholder="Enter last name" className="form-input" />
-            </Form.Item>
+              <Form.Item
+                name="lastName"
+                label={<Text className="form-label">Last Name</Text>}
+                rules={[
+                  { required: true, message: "Please enter your last name" },
+                ]}
+                className="form-item-half"
+              >
+                <Input placeholder="Enter last name" className="form-input" />
+              </Form.Item>
+            </div>
 
             <Form.Item
               name="email"
@@ -110,7 +127,15 @@ const Contact = () => {
                 { type: "email", message: "Please enter a valid email" },
               ]}
             >
-              <Input placeholder="Enter Your Email" className="form-input" />
+              <Input placeholder="Enter your email" className="form-input" />
+            </Form.Item>
+
+            <Form.Item
+              name="subject"
+              label={<Text className="form-label">Subject</Text>}
+              rules={[{ required: true, message: "Please enter your subject" }]}
+            >
+              <Input placeholder="Enter subject" className="form-input" />
             </Form.Item>
 
             <Form.Item
@@ -125,78 +150,94 @@ const Contact = () => {
               />
             </Form.Item>
 
-            <Button type="primary" htmlType="submit" className="submit-button">
-              Send Message
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="submit-button"
+              loading={loading}
+            >
+              {loading ? "Sending..." : "Send Message"}
             </Button>
           </Form>
         </motion.div>
 
         {/* Contact Info */}
         <motion.div
-          className="info-section"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
+          className="centered-box info-box"
+          style={{ backgroundColor: "#f1f5f9" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <div
-            className="section-header"
-            style={{ backgroundColor: "#f1f5f9" }}
-          >
-            <Title
-              level={3}
-              className="section-title"
-              style={{ color: "#10b981" }}
-            >
-              <EnvironmentOutlined className="title-icon" /> Contact Information
+          <div className="box-header">
+            <Title level={3} className="box-title" style={{ color: "#10b981" }}>
+              <EnvironmentOutlined className="box-icon" /> Contact Information
             </Title>
-            <Text className="section-subtitle">
+            <Text className="box-subtitle">
               Find our office location and contact details below.
             </Text>
           </div>
 
-          <div className="info-block">
-            <Title
-              level={4}
-              className="info-title"
-              style={{ color: "#3b82f6" }}
-            >
-              <EnvironmentOutlined className="info-icon" /> Our Location
-            </Title>
-            <Paragraph className="info-text">
-              <Text strong>BTY Trading PLC</Text>
-              <br />
-              Bole, Woreda 03, DAT Tower/Building, 6rd floor
-              <br />
-              Addis Ababa, Ethiopia
-            </Paragraph>
-          </div>
+          <div className="info-content">
+            <div className="info-section">
+              <div className="info-icon-container">
+                <EnvironmentOutlined className="info-icon" />
+              </div>
+              <div className="info-details">
+                <Title
+                  level={4}
+                  className="info-title"
+                  style={{ color: "#2563eb" }}
+                >
+                  Our Location
+                </Title>
+                <Paragraph className="info-text">
+                  <Text strong>BTY Trading PLC</Text>
+                  <br />
+                  Bole, Woreda 03, DAT Tower/Building, 6th floor
+                  <br />
+                  Addis Ababa, Ethiopia
+                </Paragraph>
+              </div>
+            </div>
 
-          <div className="info-block">
-            <Title
-              level={4}
-              className="info-title"
-              style={{ color: "#3b82f6" }}
-            >
-              <PhoneOutlined className="info-icon" /> Contact Details
-            </Title>
-            <Paragraph className="info-text">
-              <Text strong>+251 911257609</Text>
-              <br />
-              <Text strong>+251 911257608</Text>
-              <br />
-              <Text strong>+251 911257607</Text>
-              <br />
-              <Text strong>
-                {" "}
-                <MailOutlined style={{ padding: "8px", color: "green" }} />
-                btyb07@gmail.com
-              </Text>
-            </Paragraph>
+            <div className="info-section">
+              <div className="info-icon-container">
+                <PhoneOutlined className="info-icon" />
+              </div>
+              <div className="info-details">
+                <Title
+                  level={4}
+                  className="info-title"
+                  style={{ color: "2563eb" }}
+                >
+                  Contact Details
+                </Title>
+                <div className="contact-methods">
+                  <div className="contact-method">
+                    <PhoneOutlined />
+                    <Text strong>+251 911257609</Text>
+                  </div>
+                  <div className="contact-method">
+                    <PhoneOutlined />
+                    <Text strong>+251 911257608</Text>
+                  </div>
+                  <div className="contact-method">
+                    <PhoneOutlined />
+                    <Text strong>+251 911257607</Text>
+                  </div>
+                  <div className="contact-method">
+                    <MailOutlined />
+                    <Text strong>btyb07@gmail.com</Text>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Full Width Map Section */}
+      {/* Map Section */}
       <div className="map-container">
         <iframe
           title="BTY Trading Location"
