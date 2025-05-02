@@ -5,7 +5,7 @@
   align-items: center;
   min-height: 100vh;
   background: url("/home/hmeressa/Documents/Bty-trading/bty/src/Assets/coco.jpg")
-    no-repeat center center/cover;
+    no-repeat center center / cover;
 }
 
 .login-content {
@@ -13,13 +13,14 @@
   max-width: 400px;
   padding: 2rem;
   border-radius: 16px;
-  background: rgba(0, 0, 0, 0.3); /* transparent dark */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Form styles */
 .login-form {
   margin-top: 1.5rem;
 }
@@ -28,32 +29,38 @@
 .login-input {
   border-radius: 8px;
   padding: 12px 16px;
-  background: transparent; /* completely transparent */
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #ffffff; /* white text when typing */
-  transition: all 0.3s ease;
+  color: #ffffff;
 }
 
 .login-input:hover,
 .login-input:focus {
-  background: transparent; /* no white background on hover/focus */
+  background: transparent;
   border-color: #ffffff;
   box-shadow: none;
   color: #ffffff;
 }
 
+/* Placeholder text color */
 .login-input::placeholder {
-  color: rgba(255, 255, 255, 0.7); /* slightly softer white placeholder */
+  color: rgba(255, 255, 255, 0.7);
 }
 
+/* Prefix icon color */
 .login-input .ant-input-prefix {
   color: rgba(255, 255, 255, 0.7);
-  margin-right: 8px;
 }
 
-/* Transparent Button */
+/* Centered button */
+.ant-form-item:last-child {
+  display: flex;
+  justify-content: center;
+}
+
+/* Button styles */
 .login-button {
-  background: transparent; /* no color */
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: white;
   height: 48px;
@@ -63,10 +70,11 @@
   letter-spacing: 1px;
   transition: all 0.3s ease;
   width: 100%;
+  max-width: 200px;
 }
 
 .login-button:hover {
-  background: rgba(255, 255, 255, 0.1); /* slight hover effect */
+  background: rgba(255, 255, 255, 0.1);
   border-color: white;
   color: white;
   transform: translateY(-2px);
@@ -82,7 +90,7 @@
 }
 
 .ant-form-item-label label {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   font-weight: 500 !important;
 }
 

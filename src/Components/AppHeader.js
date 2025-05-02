@@ -208,6 +208,7 @@ const AppHeader = () => {
                     lineHeight: "1.2",
                     letterSpacing: "0.5px",
                     transition: "all 0.3s ease",
+                    fontStyle: "italic",
                   }}
                 >
                   Bty Trading Plc
@@ -219,6 +220,7 @@ const AppHeader = () => {
                     fontSize: "14px",
                     lineHeight: "1.3",
                     letterSpacing: "0.3px",
+                    fontStyle: "italic",
                   }}
                 >
                   Import & Export
