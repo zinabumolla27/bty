@@ -12,7 +12,6 @@ import {
 import { useNavigate, useLocation } from "react-router-dom"; // ✅ Import useLocation
 import fl from "../Assets/fl.png";
 import "./AppHeader.css";
-// import SearchBar from "./SearchBar";
 
 const { Header } = Layout;
 
@@ -44,6 +43,10 @@ const AppHeader = () => {
   }, [location.pathname]);
 
   const handleMenuClick = (item) => {
+    if (item.key.startsWith("#")) {
+      return;
+    }
+
     setIsClosing(true);
     setTimeout(() => {
       navigate(`/${item.key}`);
@@ -51,7 +54,6 @@ const AppHeader = () => {
       setIsClosing(false);
     }, 300);
   };
-
   const handleLogoClick = () => {
     if (mobileMenuVisible) {
       setIsClosing(true);

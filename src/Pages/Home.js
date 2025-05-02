@@ -220,7 +220,13 @@ const Home = () => {
               style={{
                 fontFamily: "'Open Sans', sans-serif",
                 textAlign: "justify",
-                textjustify: "interword",
+                textJustify: "inter-character",
+
+                wordSpacing: "-0.1em",
+                letterSpacing: "0.01em",
+                lineHeight: "1.6",
+                margin: 0,
+                padding: 0,
               }}
             >
               BTY TRADING PLC, established in 2011, is a premier import-export
