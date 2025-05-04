@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Form, Input, Button, Typography, Divider, message } from "antd";
+import React, { useEffect, useState } from "react";
+import { Form, Input, Button, Typography, Divider, notification } from "antd";
 import { motion } from "framer-motion";
 import {
   MailOutlined,
@@ -7,31 +7,45 @@ import {
   EnvironmentOutlined,
 } from "@ant-design/icons";
 import "./Contact.css";
-import { addContactAPI } from "../features/contact/contactAPI";
+import { connect, useDispatch } from "react-redux";
+import {
+  addContact,
+  resetContactCreatedValue,
+} from "../features/contact/contactSlice";
 
 const { Title, Paragraph, Text } = Typography;
+const Context = React.createContext({ name: "Default" });
 
-const Contact = () => {
+const Contact = (props) => {
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
+  const { loading, contactCreated } = props;
+  const [api, contextHolder] = notification.useNotification();
 
-  const onFinish = async (values) => {
-    setLoading(true);
-    try {
-      await addContactAPI(values);
-      message.success("✅ Message sent successfully!");
-      form.resetFields();
-    } catch (error) {
-      console.error("API error:", error);
-      message.error("❌ Failed to send message. Please try again.");
-    } finally {
-      setLoading(false);
+  useEffect(() => {
+    if (contactCreated) {
+      openNotification("bottomLeft");
+      dispatch(resetContactCreatedValue());
     }
+  }, [contactCreated]);
+
+  const openNotification = (placement) => {
+    api.info({
+      message: `Thank You`,
+      description:
+        "Thank you for reaching out! 🙌We've received your message and will get back to you as soon as possible.In the meantime, feel free to explore more on our website",
+      placement,
+    });
+  };
+
+  const dispatch = useDispatch();
+  const onFinish = async (values) => {
+    form.resetFields();
+    dispatch(addContact(values));
   };
 
   return (
     <div className="contact-container">
-      {/* Hero Section */}
+      {contextHolder}
       <motion.div
         className="hero-section"
         initial={{ opacity: 0, y: 20 }}
@@ -109,7 +123,7 @@ const Contact = () => {
               name="lastName"
               label={<Text className="form-label">Last Name</Text>}
               rules={[
-                { required: true, message: "Please enter your last name" },
+                { required: false, message: "Please enter your last name" },
               ]}
             >
               <Input placeholder="Enter last name" className="form-input" />
@@ -127,9 +141,11 @@ const Contact = () => {
             </Form.Item>
 
             <Form.Item
-              name="subject"
-              label={<Text className="form-label">Subject</Text>}
-              rules={[{ required: true, message: "Please enter your subject" }]}
+              name="phone"
+              label={<Text className="form-label">Phone Number</Text>}
+              rules={[
+                { required: false, message: "Please enter your subject" },
+              ]}
             >
               <Input placeholder="Enter subject" className="form-input" />
             </Form.Item>
@@ -250,5 +266,11 @@ const Contact = () => {
     </div>
   );
 };
-
-export default Contact;
+const mapStateToProps = ({ contact }) => {
+  const { loading, contactCreated } = contact;
+  return {
+    loading,
+    contactCreated,
+  };
+};
+export default connect(mapStateToProps, {})(Contact);

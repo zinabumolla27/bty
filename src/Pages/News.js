@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, forwardRef } from "react";
 import { Card, Typography, Button, Modal, Tag, Divider } from "antd";
 import { CalendarOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -9,53 +9,15 @@ import { fetchUploadedFiles } from "../features/upload/UploadSlice";
 
 const { Title, Paragraph, Text } = Typography;
 
-const NewsCard = ({ item, onClick }) => (
-  <Card
-    hoverable
-    className="news-card"
-    onClick={onClick}
-    cover={
-      <div className="news-image-container">
-        <img
-          alt={item.title}
-          src={item.filePath}
-          className="news-image"
-          loading="lazy"
-        />
-        <Tag icon={item.icon} className="news-tag">
-          {item.category}
-        </Tag>
-      </div>
-    }
-  >
-    <div className="news-content">
-      <Text className="news-date">
-        <CalendarOutlined />{" "}
-        {new Date(item?.createdAt).toISOString().split("T")[0]}
-      </Text>
-      <Title level={4} className="news-title">
-        {item.title}
-      </Title>
-      <Paragraph className="news-description">{item.description}</Paragraph>
-      <div className="news-cta">
-        <Text strong>
-          Read more <ArrowRightOutlined />
-        </Text>
-      </div>
-    </div>
-  </Card>
-);
-
 const News = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedNews, setSelectedNews] = useState(null);
+  const ref = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // Fetch uploaded files from Redux store
   const { files, loading, error } = useSelector((state) => state.uploadFile);
-  console.log("files", files.data);
-
   useEffect(() => {
     // Dispatch the action to fetch files on component mount
     dispatch(fetchUploadedFiles());
@@ -64,6 +26,67 @@ const News = () => {
   const openModal = (item) => {
     setSelectedNews(item);
     setModalVisible(true);
+  };
+
+  const handleModalDismiss = () => {
+    setModalVisible(false);
+    ref.current.pause();
+  };
+
+  const NewsCard = (item) => {
+    return (
+      <Card
+        hoverable
+        className="news-card"
+        cover={
+          <div className="news-image-container">
+            {item.fileType == "video" ? (
+              <video
+                ref={ref}
+                width="100%"
+                height="240px"
+                controls
+                muted
+                poster="thumbnail.jpg"
+              >
+                <source src={item.filePath} type="video/mp4" />
+              </video>
+            ) : (
+              <img
+                alt={item.title}
+                src={item.filePath}
+                className="news-image"
+                loading="lazy"
+              />
+            )}
+
+            <Tag icon={item.icon} className="news-tag">
+              {item.category}
+            </Tag>
+          </div>
+        }
+      >
+        <div className="news-content">
+          <Text className="news-date">
+            <CalendarOutlined />{" "}
+            {new Date(item?.createdAt).toISOString().split("T")[0]}
+          </Text>
+          <Title level={4} className="news-title">
+            {item.title}
+          </Title>
+          <Paragraph className="news-description">
+            {item.description.length > 100
+              ? item.description.substring(0, 100) + "...."
+              : item.description}
+          </Paragraph>
+          <div className="news-cta" onClick={() => openModal(item)}>
+            <Text strong>
+              Read more <ArrowRightOutlined />
+            </Text>
+          </div>
+        </div>
+      </Card>
+    );
   };
 
   return (
@@ -79,35 +102,7 @@ const News = () => {
           </Title>
         </div>
 
-        <div className="news-grid">
-          {files?.data?.map((item) => (
-            <NewsCard
-              key={item.id}
-              item={item}
-              onClick={() => openModal(item)}
-            />
-          ))}
-        </div>
-
-        {/* Optional: Render uploaded files */}
-        <div className="uploaded-files">
-          <Title level={3}>Uploaded Files</Title>
-          {loading && <Text>Loading files...</Text>}
-          {error && <Text type="danger">Error loading files</Text>}
-          <ul>
-            {files && files.length > 0 ? (
-              files.map((file, index) => (
-                <li key={index}>
-                  <a href={file.url} target="_blank" rel="noopener noreferrer">
-                    {file.name}
-                  </a>
-                </li>
-              ))
-            ) : (
-              <Text>No files uploaded yet.</Text>
-            )}
-          </ul>
-        </div>
+        <div className="news-grid">{files.map((item) => NewsCard(item))}</div>
 
         <Button type="text" className="view-all-button">
           View All News <ArrowRightOutlined />
@@ -116,19 +111,32 @@ const News = () => {
 
       <Modal
         open={modalVisible}
-        onCancel={() => setModalVisible(false)}
+        onCancel={handleModalDismiss}
         footer={null}
         className="news-modal"
-        width={800}
+        width={window.innerWidth * 0.8}
       >
         {selectedNews && (
           <div className="modal-content">
             <div className="modal-image-container">
-              <img
-                src={selectedNews.image}
-                alt={selectedNews.title}
-                className="modal-image"
-              />
+              {selectedNews.fileType == "video" ? (
+                <video
+                  width="100%"
+                  height="240px"
+                  controls
+                  muted
+                  poster="thumbnail.jpg"
+                >
+                  <source src={selectedNews.filePath} type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  alt={selectedNews.title}
+                  src={selectedNews.filePath}
+                  className="news-image"
+                  loading="lazy"
+                />
+              )}
             </div>
 
             <div className="modal-body">
@@ -138,32 +146,19 @@ const News = () => {
 
               <Text className="modal-date">
                 <CalendarOutlined />{" "}
-                {new Date(selectedNews.date).toLocaleDateString("en-US", {
+                {new Date(selectedNews.createdAt).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}
               </Text>
 
+              <Text>{selectedNews.description}</Text>
               <Title level={3} className="modal-title">
                 {selectedNews.title}
               </Title>
 
               <Divider className="modal-divider" />
-
-              {/* Safely check if fullContent exists */}
-              <ul className="modal-list">
-                {selectedNews.fullContent &&
-                selectedNews.fullContent.length > 0 ? (
-                  selectedNews.fullContent.map((point, index) => (
-                    <li key={index} className="modal-list-item">
-                      <Paragraph>{point}</Paragraph>
-                    </li>
-                  ))
-                ) : (
-                  <li>No additional content available.</li>
-                )}
-              </ul>
 
               <Button
                 type="primary"

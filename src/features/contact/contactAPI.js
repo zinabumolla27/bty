@@ -11,8 +11,6 @@ export const addContactAPI = async (data) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  console.log("values after apibb", res);
-
   return res.json();
 };
 

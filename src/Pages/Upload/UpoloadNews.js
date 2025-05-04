@@ -1,17 +1,53 @@
-import React, { useState } from "react";
-import { Row, Col, Button, Upload, message, Form } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { uploadFile } from "../../features/upload/UploadSlice";
+import React, { useEffect, useState } from "react";
+import {
+  Row,
+  Col,
+  Button,
+  Upload,
+  message,
+  Form,
+  Popconfirm,
+  Table,
+  Typography,
+} from "antd";
+import {
+  CaretDownOutlined,
+  CaretUpOutlined,
+  LogoutOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
+import { connect, useDispatch, useSelector } from "react-redux";
+import {
+  deletedUploadedNews,
+  fetchUploadedFiles,
+  updateUploadList,
+  uploadFile,
+} from "../../features/upload/UploadSlice";
 import TextArea from "antd/es/input/TextArea";
+import { uploadFilesAPI } from "../../features/upload/fileUpload";
 
-const UploadNews = () => {
+const UploadNews = (props) => {
+  const { loading, files, deleting, uploading } = props;
+  const { Text } = Typography;
   const [setNewsList] = useState([]);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const [fileList, setFileList] = useState([]);
+  const [messageApi, contextHolder] = message.useMessage();
+  const [collapsableDescription, setCollabpsableDescription] = useState({});
 
-  const { loading } = useSelector((state) => state.uploadFile); // Including error to handle failures
+  useEffect(() => {
+    dispatch(fetchUploadedFiles());
+  }, []);
+
+  useEffect(() => {
+    const initialState = files.reduce((acc, row) => {
+      acc[row.id] = false;
+      return acc;
+    }, {});
+
+    setCollabpsableDescription(initialState);
+  }, [files]);
 
   const handleFileChange = ({ fileList }) => {
     setFileList(fileList);
@@ -24,34 +60,143 @@ const UploadNews = () => {
     }
 
     const formData = new FormData();
+    const uploadedBy =
+      JSON.parse(localStorage.getItem("user")).firstName +
+      " " +
+      JSON.parse(localStorage.getItem("user")).lastName;
     formData.append("description", values.description);
     formData.append("file", fileList[0].originFileObj);
-
+    formData.append("uploadedBy", uploadedBy);
     try {
-      const resultAction = await dispatch(uploadFile(formData));
-      if (uploadFile.fulfilled.match(resultAction)) {
-        message.success("File uploaded successfully!");
-        setNewsList((prev) => [...prev, resultAction.payload]);
+      const result = await uploadFilesAPI(formData);
+      if (result.code === 201) {
+        dispatch(updateUploadList(result.data));
+        success("File uploaded successfully!");
         form.resetFields();
         setFileList([]);
       } else {
-        message.error("Upload failed: " + resultAction.payload);
+        error("Upload failed");
       }
     } catch (error) {
       message.error("Unexpected error occurred.");
     }
   };
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem("token");
-  //   window.location.reload();
-  // };
+  const error = (message) => {
+    messageApi.open({
+      type: "error",
+      content: message,
+    });
+  };
+
+  const success = (message) => {
+    messageApi.open({
+      type: "success",
+      content: message,
+    });
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+
+  const updateCollapsibleCols = (id, prevValue) => {
+    setCollabpsableDescription((prev) => {
+      return {
+        ...prev,
+        [id]: !prevValue, // use [id] to dynamically set the key
+      };
+    });
+  };
+
+  const UploadedNewsColumn = [
+    {
+      title: "Uploaded By",
+      dataIndex: "uploadedBy",
+      key: "uploaded_by",
+      sorter: (a, b) => a.uploadedBy.localeCompare(b.uploadedBy), // Enable sorting
+    },
+    {
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+      sorter: (a, b) => a.description.localeCompare(b.description), // Enable sorting
+      render: (_, row) => {
+        return (
+          <Text>
+            {collapsableDescription[row.id] ? _ : _.substring(0, 100) + "  "}
+            {_.length > 100 && !collapsableDescription[row.id] ? (
+              <CaretDownOutlined
+                style={{ fontSize: "20px" }}
+                onClick={() =>
+                  updateCollapsibleCols(row.id, collapsableDescription[row.id])
+                }
+              ></CaretDownOutlined>
+            ) : _.length > 100 && collapsableDescription[row.id] ? (
+              <CaretUpOutlined
+                style={{ fontSize: "20px" }}
+                onClick={() =>
+                  updateCollapsibleCols(row.id, collapsableDescription[row.id])
+                }
+              ></CaretUpOutlined>
+            ) : (
+              <></>
+            )}
+          </Text>
+        );
+      },
+    },
+    {
+      title: "Uploaded At",
+      dataIndex: "createdAt",
+      key: "uploaded_at",
+      render: (text) => new Date(text).toLocaleDateString(),
+      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt), // Sorting by date
+    },
+    {
+      title: "Actions",
+      key: "actions",
+      render: (text, record) => {
+        return (
+          <Popconfirm
+            title="Delete ? "
+            placement="bottomLeft"
+            description="Are you sure to delete this?"
+            onConfirm={() => confirm(record.id)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button
+              style={{ marginLeft: 8 }}
+              type="primary"
+              danger
+              loading={deleting}
+            >
+              Delete
+            </Button>
+          </Popconfirm>
+        );
+      },
+    },
+  ];
+
+  const confirm = (id) => {
+    dispatch(deletedUploadedNews(id)); // Dispatch delete action
+  };
 
   return (
     <div
       className="file-upload-container"
       style={{ maxWidth: "800px", margin: "100px auto" }}
     >
+      {contextHolder}
+      <Button
+        style={{ float: "right", type: "primary" }}
+        onClick={handleLogout}
+      >
+        {" "}
+        Logout{" "}
+      </Button>
       <Form
         form={form}
         onFinish={handleSubmit}
@@ -126,7 +271,7 @@ const UploadNews = () => {
               type="primary"
               htmlType="submit"
               size="large"
-              loading={loading} // Make sure the submit button reflects loading state as well
+              loading={uploading} // Make sure the submit button reflects loading state as well
               style={{
                 width: "200px",
                 height: "40px",
@@ -134,13 +279,32 @@ const UploadNews = () => {
                 fontWeight: "500",
               }}
             >
-              {loading ? "Uploading..." : "Submit News"}
+              {uploading ? "Uploading..." : "Submit News"}
             </Button>
           </Col>
         </Row>
       </Form>
+
+      <Table
+        style={{ marginTop: "40px" }}
+        columns={UploadedNewsColumn} // Assuming userTableColumns is defined for your table structure
+        dataSource={files} // Displaying contact list in table
+        loading={loading} // Display loading indicator when fetching data
+        rowKey="id" // Assuming your contacts have unique 'id' field
+        pagination={{ pageSize: 10 }} // Adding pagination with a page size of 10
+        bordered
+      />
     </div>
   );
 };
 
-export default UploadNews;
+const mapStateToProps = ({ uploadFile }) => {
+  const { loading, files, uploading, deleting } = uploadFile;
+  return {
+    loading,
+    files,
+    uploading,
+    deleting,
+  };
+};
+export default connect(mapStateToProps, {})(UploadNews);

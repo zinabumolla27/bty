@@ -7,13 +7,20 @@ import { authUserAPI } from "../features/auth/auth";
 const Login = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false); // 👈 Loading state
+  const [messageApi, contextHolder] = message.useMessage();
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      await authUserAPI(values);
-      message.success("✅ Message sent successfully!");
-      form.resetFields();
+      let response = await authUserAPI(values);
+      if (response.token) {
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("user", JSON.stringify(response.user));
+        window.location.reload();
+      } else {
+        error(response.message);
+        setLoading(false); // 👈 Stop loading
+      }
     } catch (error) {
       console.error("API error:", error);
       message.error("❌ Failed to send message. Please try again.");
@@ -22,8 +29,16 @@ const Login = () => {
     }
   };
 
+  const error = (message) => {
+    messageApi.open({
+      type: "error",
+      content: message,
+    });
+  };
+
   return (
     <div className="login-page">
+      {contextHolder}
       <div className="login-content">
         <Form
           name="login"
@@ -33,7 +48,7 @@ const Login = () => {
           className="login-form"
         >
           <Form.Item
-            name="username"
+            name="email"
             rules={[{ required: true, message: "Please input your username!" }]}
           >
             <Input
@@ -64,7 +79,7 @@ const Login = () => {
               className="login-button"
               loading={loading}
             >
-              {loading ? "Sending..." : " Login"}
+              {loading ? "Authenticating..." : " Login"}
             </Button>
           </Form.Item>
         </Form>

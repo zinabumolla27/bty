@@ -7,6 +7,5 @@ export const authUserAPI = async (data) => {
     body: JSON.stringify(data),
   });
 
-  console.log("res", res);
-  return res;
+  return res.json();
 };

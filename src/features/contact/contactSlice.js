@@ -26,8 +26,13 @@ const contactSlice = createSlice({
     list: [],
     loading: false,
     error: null,
+    contactCreated: false,
   },
-  reducers: {},
+  reducers: {
+    resetContactCreatedValue: (state) => {
+      state.contactCreated = !state.contactCreated;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, (state) => {
@@ -39,11 +44,17 @@ const contactSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.list = [];
       })
-
+      .addCase(addContact.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(addContact.fulfilled, (state, action) => {
-        state.list.push(action.payload);
+        state.loading = false;
+        state.contactCreated = true;
+      })
+      .addCase(addContact.rejected, (state, action) => {
+        state.loading = false;
       })
 
       .addCase(deleteContact.fulfilled, (state, action) => {
@@ -60,4 +71,5 @@ const contactSlice = createSlice({
   },
 });
 
+export const { resetContactCreatedValue } = contactSlice.actions;
 export default contactSlice.reducer;
