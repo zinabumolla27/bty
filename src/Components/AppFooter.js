@@ -18,7 +18,7 @@ const AppFooter = () => {
     {
       title: "SERVICES",
       links: [
-        { name: "Agricultural" },
+        { name: "Agricultur" },
         { name: "Manufacturing" },
         { name: "Transportation" },
         { name: "Construction" },
@@ -97,7 +97,7 @@ const AppFooter = () => {
                     <MailOutlined />
                   </span>
                   <a href="mailto:btyb07@gmail.com" className="contact-link">
-                    byb07@gmail.com
+                    btyb07@gmail.com
                   </a>
                 </div>
                 <div className="contact-item">

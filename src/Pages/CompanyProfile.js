@@ -306,6 +306,7 @@ const CompanyProfile = () => {
                       fontSize: "15px",
                       lineHeight: "1.6",
                       fontFamily: "'Poppins', sans-serif",
+                      textAlign: "left",
                     }}
                   >
                     Lead in exporting agricultural products and supplying
@@ -348,6 +349,7 @@ const CompanyProfile = () => {
                       fontSize: "15px",
                       lineHeight: "1.6",
                       fontFamily: "'Poppins', sans-serif",
+                      textAlign: "left",
                       background:
                         "linear-gradient(to bottom right, #f0fdf4, #ecfdf5)",
                     }}
@@ -368,6 +370,7 @@ const CompanyProfile = () => {
                   height: "100%",
                   borderRadius: "12px",
                   borderTop: "4px solid #d69e2e",
+                  textAlign: "left",
                   background:
                     "linear-gradient(to bottom right, #fffbeb, #fef3c7)",
                 }}

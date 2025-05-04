@@ -21,43 +21,41 @@ const { Title, Paragraph, Text } = Typography;
 
 const backgroundImages = [bg1, bg2, bg3];
 const descriptions = [
-  "Premium quality White, Green, and Black tea leaves sourced from Ethiopia's finest gardens.",
-  "Authentic Ethiopian spices including Mitmita, Korerima, and Berbere with rich flavors.",
   "Organic sesame, sunflower, and soybean oils cold-pressed for maximum nutrition.",
-  "Single-origin Yirgacheffe, Sidamo, and Jimma coffee beans with distinctive profiles.",
   "Nutritious Wheat, Barley, Teff, and Maize cultivated in Ethiopia's fertile highlands.",
+  "Authentic  spices including Mitmita, Korerima, and Berbere with rich flavors.",
+  "Single-origin Yirgacheffe, Sidamo, and Jimma coffee beans with distinctive profiles.",
   "Hand-picked Mitmita and Korarima peppers with perfect heat and aroma.",
+  "Premium quality White, Green, and Black tea leaves sourced from Ethiopia's finest gardens.",
 ];
 const titles = [
-  "Tea Leaves",
-  "Spices",
   "Oil Seeds",
-  "Coffee",
   "Cereals",
+  "Spices",
+  "Coffee",
   "Peppers",
+  "Tea Leaves",
 ];
-const images = [img6, image1, image2, image3, image4, image5];
+const images = [image2, image4, image1, image3, image5, img6];
 
-// Premium color palette with smooth transitions
 const titleColors = [
-  "#1a936f", // Sage
-  "#c75146", // Terra Cotta
-  "#114b5f", // Teal
-  "#6b2737", // Wine
-  "#114b5f", // Honey
-  "#540b0e", // Burgundy
+  "#1a936f",
+  "#c75146",
+  "#114b5f",
+  "#6b2737",
+  "#114b5f",
+  "#540b0e",
 ];
 
 const descriptionColors = [
-  "#88d498", // Light Sage
-  "#114b5f", // Peach
-  "#1b9aaa", // Aqua
-  "#ee6c4d", // Coral
-  "#114b5f", // Butter
-  "#9e2a2b", // Red
+  "#88d498",
+  "#114b5f",
+  "#1b9aaa",
+  "#ee6c4d",
+  "#114b5f",
+  "#9e2a2b",
 ];
 
-// Font styles
 const fontStyles = {
   mainHeading: {
     fontFamily: "'Playfair Display', serif",
@@ -89,10 +87,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Trigger animation after component mounts
     setAnimatedText(true);
 
-    // Preload fonts
     const link1 = document.createElement("link");
     link1.href =
       "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap";
@@ -141,7 +137,6 @@ const Home = () => {
 
   return (
     <div>
-      {/* Background Section */}
       <div
         className="home-background"
         style={{ backgroundImage: `url(${backgroundImages[bgIndex]})` }}
@@ -197,7 +192,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* About Section */}
       <div className="about-section">
         <Row gutter={[32, 32]} align="middle" justify="center">
           <Col xs={24} md={10} className="about-col-left">
@@ -220,13 +214,7 @@ const Home = () => {
               style={{
                 fontFamily: "'Open Sans', sans-serif",
                 textAlign: "justify",
-                textJustify: "inter-character",
-
-                wordSpacing: "-0.1em",
-                letterSpacing: "0.01em",
                 lineHeight: "1.6",
-                margin: 0,
-                padding: 0,
               }}
             >
               BTY TRADING PLC, established in 2011, is a premier import-export

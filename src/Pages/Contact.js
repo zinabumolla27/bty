@@ -95,29 +95,25 @@ const Contact = () => {
             onFinish={onFinish}
             className="contact-form"
           >
-            <div className="form-row">
-              <Form.Item
-                name="firstName"
-                label={<Text className="form-label">First Name</Text>}
-                rules={[
-                  { required: true, message: "Please enter your first name" },
-                ]}
-                className="form-item-half"
-              >
-                <Input placeholder="Enter first name" className="form-input" />
-              </Form.Item>
+            <Form.Item
+              name="firstName"
+              label={<Text className="form-label">First Name</Text>}
+              rules={[
+                { required: true, message: "Please enter your first name" },
+              ]}
+            >
+              <Input placeholder="Enter first name" className="form-input" />
+            </Form.Item>
 
-              <Form.Item
-                name="lastName"
-                label={<Text className="form-label">Last Name</Text>}
-                rules={[
-                  { required: true, message: "Please enter your last name" },
-                ]}
-                className="form-item-half"
-              >
-                <Input placeholder="Enter last name" className="form-input" />
-              </Form.Item>
-            </div>
+            <Form.Item
+              name="lastName"
+              label={<Text className="form-label">Last Name</Text>}
+              rules={[
+                { required: true, message: "Please enter your last name" },
+              ]}
+            >
+              <Input placeholder="Enter last name" className="form-input" />
+            </Form.Item>
 
             <Form.Item
               name="email"

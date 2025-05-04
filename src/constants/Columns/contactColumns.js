@@ -120,20 +120,25 @@ export const ContactTableColumns = [
     render: (text, record) => {
       const dispatch = useDispatch();
 
-      const handleDelete = async () => {
+      const handleDelete = () => {
         const confirmDelete = window.confirm(
           "Are you sure you want to delete this contact?"
         );
         if (confirmDelete) {
-          await dispatch(deleteContact(record.id)); // Dispatch delete action
+          dispatch(deleteContact(record.id)); // Dispatch delete action
         }
       };
 
       return (
         <>
-          <button onClick={handleDelete} style={{ marginLeft: 8 }}>
+          <Button
+            onClick={handleDelete}
+            style={{ marginLeft: 8 }}
+            type="primary"
+            danger
+          >
             Delete
-          </button>
+          </Button>
         </>
       );
     },

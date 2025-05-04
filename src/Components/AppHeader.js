@@ -10,7 +10,7 @@ import {
   DownOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom"; // ✅ Import useLocation
-import fl from "../Assets/fl.png";
+import mlogo from "../Assets/mlogo.png";
 import "./AppHeader.css";
 
 const { Header } = Layout;
@@ -188,7 +188,7 @@ const AppHeader = () => {
               }}
             >
               <Image
-                src={fl}
+                src={mlogo}
                 alt="Company Logo"
                 preview={false}
                 width={80}

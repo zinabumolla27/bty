@@ -99,7 +99,7 @@ const Oilseeds = () => {
   return (
     <div
       style={{
-        backgroundColor: "#F9FAFB",
+        backgroundColor: "#f9f9f9",
         paddingBottom: "40px",
         paddingTop: "50px",
       }}
