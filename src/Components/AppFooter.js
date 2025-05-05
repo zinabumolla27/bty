@@ -25,14 +25,7 @@ const AppFooter = () => {
         { name: "Mining and Quarrying" },
       ],
     },
-    {
-      title: "ABOUT",
-      links: [
-        { name: "Contact Us", path: "/contact" },
-        { name: "companyprofile", path: "/companyprofile" },
-        { name: "FAQ", path: "/faq" },
-      ],
-    },
+
     {
       title: "PRODUCTS",
       links: [
@@ -41,6 +34,14 @@ const AppFooter = () => {
         { name: "Pulses", path: "/pulses" },
         { name: "Coffee and Tea", path: "/coffeeandtea" },
         { name: " Oilseeds", path: "/oilseeds" },
+      ],
+    },
+    {
+      title: "ABOUT",
+      links: [
+        { name: "Contact Us", path: "/contact" },
+        { name: "companyprofile", path: "/companyprofile" },
+        { name: "FAQ", path: "/faq" },
       ],
     },
     {

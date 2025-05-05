@@ -15,38 +15,37 @@ import "./Import.css";
 const Import = () => {
   const importCategories = [
     {
-      title: "Import of Fruits, Vegetables & Cereals",
-      icon: <FaAppleAlt className="import-icon" />,
-    },
-    {
-      title:
-        "Import Trade in Basic Chemicals used for Industry and Chemical Products",
+      title: " Basic Chemicals used for Industry and Chemical Products",
       icon: <FaFlask className="import-icon" />,
     },
     {
-      title: "Import trade in human health medical supplies and equipment",
+      title: " human health medical supplies and equipment",
       icon: <FaHospital className="import-icon" />,
     },
     {
-      title: "Import trade in material metal and non-metal scraps",
+      title: " material metal and non-metal scraps",
       icon: <FaRecycle className="import-icon" />,
     },
     {
-      title: "Import of sporting goods and equipments",
+      title: " sporting goods and equipments",
       icon: <FaFootballBall className="import-icon" />,
     },
     {
-      title: "Import trade in communication, computer and related equipments",
+      title: " communication, computer and related equipments",
       icon: <FaLaptop className="import-icon" />,
     },
     {
-      title: "Import trade in electrical equipments and appliances",
+      title: " electrical equipments and appliances",
       icon: <FaPlug className="import-icon" />,
     },
     {
       title:
-        "Importing of vehicles, vehicles spare parts, regulatory equipments and jewelry/décor supplies",
+        " vehicles, vehicles spare parts, regulatory equipments and jewelry/décor supplies",
       icon: <FaCar className="import-icon" />,
+    },
+    {
+      title: " Fruits, Vegetables & Cereals",
+      icon: <FaAppleAlt className="import-icon" />,
     },
   ];
 

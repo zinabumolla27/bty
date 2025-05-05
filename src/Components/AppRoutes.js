@@ -16,7 +16,6 @@ import Pulses from "../Pages/Pulses";
 import Chat from "../Pages/Chat";
 import Spices from "../Pages/Spices";
 import Cereals from "../Pages/Cereals";
-import Peppers from "../Pages/Pepper";
 import ViewContact from "../Pages/ViewContacts";
 import Services from "../Pages/Services";
 import ManageUsers from "../Pages/ManageUsers";
@@ -36,7 +35,6 @@ function AppRoutes() {
       <Route path="/spices" element={<Spices />} />
       <Route path="/chat" element={<Chat />} />
       <Route path="/cereals" element={<Cereals />} />
-      <Route path="/peppers" element={<Peppers />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/news" element={<News />} />
       <Route path="/upload" element={<Upload />} />

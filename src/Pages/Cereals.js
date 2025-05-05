@@ -6,7 +6,6 @@ import Maize from "../Assets/Maize .jpg";
 import bbaacc from "../Assets/bbaacc.jpg";
 import Oats from "../Assets/Oats.jpg";
 import teff5 from "../Assets/teff5.webp";
-import Rice from "../Assets/Rice.jpg";
 import Millets from "../Assets/Millets.jpg";
 
 const { Title } = Typography;
@@ -59,22 +58,6 @@ const Spices2 = [
     detail:
       "Though less commonly grown, oats are becoming increasingly popular in Ethiopia for both human consumption (such as porridge) and as animal feed.",
     image: Oats,
-  },
-  {
-    title: "Rice",
-    description:
-      "Expanding crop in Ethiopia used in various dishes, especially rice-based meals.",
-    detail:
-      "Rice cultivation in Ethiopia is on the rise. It is used in making rice-based dishes, and while it's not as widely grown, its export is growing steadily.",
-    image: Rice,
-  },
-  {
-    title: "Millets",
-    description:
-      "Finger millet and other varieties are widely grown for both food and brewing.",
-    detail:
-      "Millets, especially finger millet, are an important crop in Ethiopia. They are used in food products, fermented beverages like t'ella, and as animal feed.",
-    image: Millets,
   },
 ];
 
@@ -156,7 +139,7 @@ const Cereals = () => {
             xs={24}
             sm={12}
             md={8}
-            lg={6}
+            lg={8}
             style={{
               display: "flex",
               justifyContent: "center",

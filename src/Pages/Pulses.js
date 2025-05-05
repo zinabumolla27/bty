@@ -4,13 +4,45 @@ import pppp from "../Assets/pppp.jpg";
 import faba from "../Assets/faba.jpg";
 import haricot from "../Assets/haricot.jpg";
 import field from "../Assets/field.webp";
-import soya1 from "../Assets/soya1.jpg";
+import beean from "../Assets/beean.jpg";
 import chick from "../Assets/chick.jpg";
 import lents from "../Assets/lents.jpg";
+import greenMung from "../Assets/greenMung.jpg";
+import kidneyBeans from "../Assets/kidneyBeans.png";
+import pintoBeans from "../Assets/pintoBeans.jpg";
 
 const { Title, Text } = Typography;
 
 const PulsesData = [
+  {
+    title: "Green Mung Beans",
+    description: "Used in soups, salads, and snacks.",
+    detail:
+      "Green Mung Beans are widely grown in Ethiopia and are a popular pulse for their high protein and fiber content. They are commonly used in various traditional dishes and snacks.",
+    image: greenMung,
+  },
+  {
+    title: "Kidney Beans",
+    description:
+      "High in protein and commonly used in stews, soups, and salads.",
+    detail:
+      "Kidney beans are rich in protein and essential nutrients. They are a staple in many cuisines and are valued for their meaty texture and ability to absorb flavors in various dishes.",
+    image: kidneyBeans,
+  },
+  {
+    title: "Pinto Beans",
+    description: "Recognized for their speckled appearance and hearty flavor.",
+    detail:
+      "Pinto beans are widely used in soups, stews, and salads. Their creamy texture and rich taste make them a versatile ingredient in many traditional and modern recipes.",
+    image: pintoBeans,
+  },
+  {
+    title: "Beans",
+    description: "Used in a variety of dishes, including soups and stews.",
+    detail:
+      "Ethiopia is known for producing a variety of beans, including green mung beans, kidney beans, pinto beans, and Kabuli chickpeas. These beans are in high demand worldwide for their versatility in cooking and nutritional value.",
+    image: beean,
+  },
   {
     title: "Chickpeas (Desi & Kabuli)",
     description:
@@ -18,8 +50,6 @@ const PulsesData = [
     detail:
       "Ethiopia grows both Desi and Kabuli chickpeas. Desi has a rough coat and is mostly used in Indian cuisine, while Kabuli has a smoother texture and is preferred in Mediterranean diets. The country exports to South Asia, the Middle East, and Europe.",
     image: chick,
-    source: "read more",
-    sourceLink: "https://en.wikipedia.org/wiki/Chickpea",
   },
   {
     title: "Lentils",
@@ -28,46 +58,31 @@ const PulsesData = [
     detail:
       "Ethiopian lentils are a key ingredient in many traditional dishes and are widely exported. Their fast cooking time and high protein content make them a global favorite.",
     image: lents,
-    source: "read more",
-    sourceLink: "https://en.wikipedia.org/wiki/Lentil", // Example link, replace with actual link
   },
   {
     title: "Fava Beans (Broad Beans)",
-    description: "Popular in the Middle East, used in dishes like ful medames.",
+    description:
+      "Versatile legume used in traditional dishes like ful medames.",
     detail:
-      "Faba beans from Ethiopia are known for their size and quality. The country supplies to Egypt and Sudan, with increasing demand from Europe. They are often consumed boiled or mashed.",
+      "Fava beans are known for their large size and high quality. They are commonly consumed boiled, mashed, or used in stews and salads. Their rich flavor and nutritional value make them a popular ingredient in various cuisines.",
     image: faba,
-    source: "read more",
-    sourceLink: "https://simple.wikipedia.org/wiki/Fava_bean", // Example link, replace with actual link
   },
+
   {
     title: "Haricot Beans (Navy/White Beans)",
-    description:
-      "Common in canned products, Ethiopia exports white and red varieties.",
+    description: "Commonly used in canned products, stews, and salads.",
     detail:
-      "Haricot beans are one of Ethiopia's most exported pulses. They're used in baked beans, stews, and salads. Their long shelf life and neutral taste make them versatile in global cuisine.",
+      "Haricot beans are popular for their long shelf life and mild flavor. They are widely used in baked beans, soups, and various savory dishes. Their soft texture and versatility make them a staple in kitchens around the world.",
     image: haricot,
-    source: "read more",
-    sourceLink:
-      "https://simple.wikipedia.org/wiki/Navy_bean#:~:text=The%20navy%20bean%2C%20haricot%2C%20pearl,an%20oval%2C%20slightly%20flattened%20shape.", // Example link, replace with actual link
   },
+
   {
     title: "Field Peas",
-    description: "Exported to India and the Gulf; used in dals and soups.",
+    description:
+      "Widely used in dals, soups, and stews for their earthy flavor.",
     detail:
-      "Field peas are drought-resistant and grow well in the Ethiopian highlands. Their consistent size and high yield make them attractive for international buyers.",
+      "Field peas are known for their drought resistance and high yield. Their uniform size and nutritional value make them a preferred ingredient in various traditional dishes across different cultures.",
     image: field,
-    source: "read more",
-    sourceLink: "https://en.wikipedia.org/wiki/Field_pea", // Example link, replace with actual link
-  },
-  {
-    title: "Soybeans",
-    description: "Used for oil production, soy-based food, and animal feed.",
-    detail:
-      "Soybeans are becoming an increasingly valuable crop in Ethiopia. With global demand rising for plant-based proteins, Ethiopian soybeans are exported to Asian and African countries.",
-    image: soya1,
-    source: "read more",
-    sourceLink: "https://en.wikipedia.org/wiki/Soybean", // Example link, replace with actual link
   },
 ];
 
@@ -170,7 +185,7 @@ const Pulses = () => {
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   overflow: "hidden",
                 }}
-                styles={{ body: { padding: "20px" } }} // ✅ fixed here
+                styles={{ body: { padding: "20px" } }}
               >
                 <Card.Meta
                   title={
@@ -292,26 +307,6 @@ const Pulses = () => {
                   </li>
                 ))}
             </ul>
-            <Text
-              type="secondary"
-              style={{
-                display: "block",
-                fontSize: "14px",
-                fontStyle: "italic",
-                textAlign: "left",
-                marginTop: "20px",
-              }}
-            >
-              Source:{" "}
-              <a
-                href={selectedSeed.sourceLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "#1E3A8A" }}
-              >
-                {selectedSeed.source}
-              </a>
-            </Text>
           </div>
         )}
       </Modal>

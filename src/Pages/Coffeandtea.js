@@ -18,7 +18,6 @@ const ethiopianCoffees = [
       "Grown in the Sidamo region of southern Ethiopia.",
       "Typically washed processing method.",
       "Best enjoyed as pour-over or filter coffee.",
-      "https://en.wikipedia.org/wiki/List_of_coffee_varieties",
     ],
     image: sedamo,
   },
@@ -297,7 +296,7 @@ const Coffeandtea = () => {
                         rel="noopener noreferrer"
                         style={{ color: "#1890ff" }}
                       >
-                        Learn more (External Link)
+                        Learn more
                       </a>
                     ) : (
                       item

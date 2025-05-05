@@ -5,42 +5,76 @@ import berbere from "../Assets/Berbere.webp";
 import korerima from "../Assets/korerima.webp";
 import mitmita from "../Assets/mitmita.jpg";
 import turmeric from "../Assets/turmeric.jpg";
+import garlic from "../Assets/garlic.jpg"; // Add image for garlic
+import blackCumin from "../Assets/blackCumin.jpeg"; // Add image for black cumin
+import ginger from "../Assets/ginger.jpg"; // Add image for ginger
+import fenugreek1 from "../Assets/fenugreek1.jpeg"; // Add image for fenugreek
 
 const { Title } = Typography;
 
 const Spices2 = [
   {
-    title: "Berbere",
+    title: "Chili Pepper",
     description:
       "A signature spice blend made of chili, garlic, ginger, and other spices.",
     detail:
-      "Berbere is an essential part of Ethiopian cuisine. It’s a spicy blend of dried red chilies, garlic, ginger, coriander, and other spices. It’s commonly used in stews and meats, especially in dishes like Doro Wat.",
+      "Chili pepper is a core spice used in many dishes, adding heat and a rich depth of flavor. It’s often combined with garlic, ginger, and coriander in spice blends. Commonly used in sauces, stews, and marinades, it can vary in intensity from mild to very hot.",
     image: berbere,
   },
   {
-    title: "Korerima (Ethiopian Cardamom)",
+    title: "Cardamom",
     description:
       "Known for its intense, warm aroma and used in both sweet and savory dishes.",
     detail:
-      "Korerima is often used in Ethiopian coffee ceremonies and in stews, providing a rich, aromatic flavor. It is a common ingredient in Berbere spice mixes.",
+      "Cardamom adds a rich, aromatic flavor and is often used in both savory stews and sweet desserts, as well as in beverages like coffee. Its fragrant and slightly citrusy taste is also found in many traditional spice blends.",
     image: korerima,
   },
   {
-    title: "Mitmita",
+    title: "Chili Hot",
     description:
       "A fiery spice blend with bird's eye chili peppers, cloves, and other spices.",
     detail:
-      "Mitmita is an essential Ethiopian seasoning, known for its heat and intense flavor. It’s typically used to spice up dishes like Kitfo and other stews.",
+      "Chili hot spices provide an intense heat and flavor to dishes, commonly used to spice up meats and stews for a bold kick. It’s often used in fiery sauces or to add heat to dishes like grilled meats or soups.",
     image: mitmita,
   },
-
   {
     title: "Turmeric",
-    description:
-      "A warm, slightly bitter spice used in Ethiopian stews and rice dishes.",
+    description: "A warm, slightly bitter spice used in stews and rice dishes.",
     detail:
-      "Turmeric is essential in many Ethiopian dishes, adding both color and flavor. It’s particularly used in Kik Alicha and various types of stews.",
+      "Turmeric adds both color and flavor, commonly used in various dishes to bring out warmth and a mild bitterness. Known for its vibrant yellow color, it’s often a key ingredient in curry blends and rice dishes.",
     image: turmeric,
+  },
+  {
+    title: "Garlic",
+    description:
+      "A pungent spice widely used for flavoring dishes and in spice mixes.",
+    detail:
+      "Garlic is a staple ingredient that adds savory depth to many dishes and is often used in combination with other spices like ginger and chili. Its strong, pungent flavor is present in everything from soups to meat dishes and pasta.",
+    image: garlic,
+  },
+  {
+    title: "Black Cumin",
+    description:
+      "A spice known for its warm, slightly bitter flavor and used in both savory and sweet dishes.",
+    detail:
+      "Black cumin offers a smoky, slightly bitter taste, commonly found in spice blends and known for its potential health benefits. It’s frequently used in savory dishes such as curries and meat stews, but also appears in some sweet pastries.",
+    image: blackCumin,
+  },
+  {
+    title: "Ginger",
+    description:
+      "A spicy, aromatic root commonly used in both savory and sweet dishes.",
+    detail:
+      "Ginger is a versatile spice used to add a warm, spicy kick to stews, spice mixes, and beverages. It pairs well with garlic and other spices and is essential in many desserts, teas, and Asian cuisines.",
+    image: ginger,
+  },
+  {
+    title: "Fenugreek",
+    description:
+      "A slightly bitter, aromatic herb often used in spice blends and stews.",
+    detail:
+      "Fenugreek is used to bring complexity to dishes, often included in spice mixes and stews for its distinctive flavor. It has a mildly bitter taste and is known for its use in curry powders and sauces.",
+    image: fenugreek1,
   },
 ];
 

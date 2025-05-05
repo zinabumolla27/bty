@@ -11,37 +11,47 @@ const FAQ = () => {
       key: "1",
       question: "What does BTY Trading PLC specialize in?",
       answer:
-        "BTY Trading PLC specializes in importing and exporting high-quality sesame and agricultural products. We ensure timely delivery and adherence to international trade standards.",
+        "BTY Trading PLC specializes in exporting agricultural products including Oil Seeds, Spices, Pulses, khat, Coffee and Tea Leaf and cereals. We also import a wide range of goods such as basic chemicals used for industry, chemical products, human health medical supplies and equipment, metal and non-metal scraps, sporting goods and equipment, communication and computer-related equipment, electrical equipment and appliances, vehicles and spare parts, regulatory equipment, jewelry, décor supplies, and more.",
     },
+
     {
       key: "2",
       question: "How competitive are your prices?",
       answer:
-        "We provide competitive pricing for bulk shipments and ensure that our products meet global market standards. Whether you're a distributor or wholesaler, we are equipped to fulfill large orders.",
+        "Our prices are highly competitive, reflecting the quality and reliability of our products. We strive to offer excellent value for businesses of all sizes, ensuring affordability without compromising standards.",
     },
+
     {
       key: "3",
-      question: "Do you ship internationally?",
+      question: "Do you offer cleaning services?",
       answer:
-        "Yes, we offer worldwide shipping to various countries. Our logistics partners ensure efficient and secure transport to destinations across the globe.",
+        "Yes, we offer cleaning services specifically for oilseeds, cereals, and spices to ensure quality and export readiness.",
     },
     {
       key: "4",
-      question: "What is the focus of BTY Trading PLC in sesame seed export?",
+      question: "What is the focus of BTY Trading PLC export?",
       answer:
-        "We focus on high-quality sesame seeds and have established a solid reputation for providing top-tier sesame with consistent quality. Our sesame seeds are sourced from trusted farms with strict quality control standards.",
+        "BTY Trading PLC focuses on exporting a wide range of high-quality agricultural products, including oilseeds, coffee, tea leaves, khat, spices, pulses, and cereals. We are committed to delivering consistently superior products sourced from trusted farms with strict quality control standards.",
     },
+
     {
       key: "5",
-      question: "Do you offer different quantities for sesame seeds?",
+      question: "Do you offer different quantities for your products?",
       answer:
-        "Yes, we do. Our sesame seeds are available in various quantities, from small to bulk orders, tailored to meet the needs of our clients. We also offer custom packaging if required.",
+        "Yes, we do. Our agricultural products, including sesame seeds, coffee, tea leaves, khat, spices, pulses, and cereals, are available in various quantities, from small to bulk orders, tailored to meet the needs of our clients. We also offer custom packaging if required.",
     },
+
     {
       key: "6",
-      question: "Where are your sesame seeds exported?",
+      question: "Where are your products exported?",
       answer:
-        "Our sesame seeds are exported globally to markets in the Middle East, Asia, Europe, and North America. We adhere to the highest standards to meet international market requirements.",
+        "Our products are exported to several international markets including Israel, China, Singapore, Vietnam, Pakistan, Hong Kong, Turkey, India, Saudi Arabia, Sudan, and the UAE.",
+    },
+    {
+      key: "7",
+      question: "What are the services offered by BTY Trading PLC?",
+      answer:
+        "BTY Trading PLC offers a wide range of services, including Mining and Quarrying, Manufacturing, Construction, Agriculture, Transportation, Cleaning Services for oilseeds, cereals, and spices, as well as Wholesale Trade.",
     },
   ];
 

@@ -23,9 +23,9 @@ const backgroundImages = [bg1, bg2, bg3];
 const descriptions = [
   "Organic sesame, sunflower, and soybean oils cold-pressed for maximum nutrition.",
   "Nutritious Wheat, Barley, Teff, and Maize cultivated in Ethiopia's fertile highlands.",
-  "Authentic  spices including Mitmita, Korerima, and Berbere with rich flavors.",
+  "Authentic  spices including Chili, Cardamom, and Pepper with rich flavors.",
   "Single-origin Yirgacheffe, Sidamo, and Jimma coffee beans with distinctive profiles.",
-  "Hand-picked Mitmita and Korarima peppers with perfect heat and aroma.",
+  "Hand-picked Chili and  peppers with perfect heat and aroma.",
   "Premium quality White, Green, and Black tea leaves sourced from Ethiopia's finest gardens.",
 ];
 const titles = [

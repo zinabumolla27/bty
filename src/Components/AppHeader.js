@@ -132,7 +132,6 @@ const AppHeader = () => {
             { label: "Pulses", key: "pulses" },
             { label: "Spices", key: "spices" },
             { label: "Cereals", key: "cereals" },
-            { label: "Peppers", key: "peppers" },
           ],
         },
         {
@@ -153,6 +152,10 @@ const AppHeader = () => {
             { label: "Construction", key: "#2" },
             { label: "Agriculture", key: "#3" },
             { label: "Transportation", key: "#4" },
+            {
+              label: "Cleaning Service for (oilseed, Cereals, Spices)",
+              key: "#5",
+            },
           ],
         },
       ],

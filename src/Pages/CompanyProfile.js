@@ -74,7 +74,7 @@ const CompanyProfile = () => {
               <Text
                 strong
                 style={{
-                  color: "#2b6cb0",
+                  color: "#10b981",
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
@@ -84,7 +84,7 @@ const CompanyProfile = () => {
               <Text
                 strong
                 style={{
-                  color: "#2b6cb0",
+                  color: "#10b981",
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
@@ -99,7 +99,7 @@ const CompanyProfile = () => {
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
-                oilseeds, pulses, and spices
+                oilseeds, pulses, spices, Coffee and Tea,Chat and ,Cereals
               </Text>{" "}
               to countries like{" "}
               <Text
@@ -109,7 +109,8 @@ const CompanyProfile = () => {
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
-                Israel, Turkey, India, Saudi Arabia, Sudan, and the UAE
+                Israel, China, Singapore, Vietnam, Pakistan, Hong Kong, Turkey,
+                India, Saudi Arabia, Sudan, and the UAE
               </Text>
               .
             </Paragraph>
@@ -169,61 +170,71 @@ const CompanyProfile = () => {
                 BTY Trading PLC Plans
               </Title>
               <div className="section-divider plans-divider"></div>
+
+              <Paragraph
+                className="company-description"
+                style={{
+                  color: "#4a5568",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                We aim to{" "}
+                <Text
+                  strong
+                  style={{
+                    color: "#2b6cb0",
+                    fontFamily: "'Poppins', sans-serif",
+                  }}
+                >
+                  modernize, diversify, and scale up
+                </Text>{" "}
+                our operations by investing in high-quality agricultural
+                production, expanding our product portfolio, and enhancing
+                logistics infrastructure—including{" "}
+                <Text
+                  strong
+                  style={{
+                    color: "#2b6cb0",
+                    fontFamily: "'Poppins', sans-serif",
+                  }}
+                >
+                  building strategic warehouses across the country
+                </Text>
+                .
+              </Paragraph>
+
+              <Paragraph
+                className="company-description"
+                style={{
+                  color: "#4a5568",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                Our{" "}
+                <Text
+                  strong
+                  style={{
+                    color: "#2b6cb0",
+                    fontFamily: "'Poppins', sans-serif",
+                  }}
+                >
+                  long-term vision
+                </Text>{" "}
+                is to become a key player in international trade by increasing
+                the range and volume of our exportable goods, exploring new
+                global markets, and contributing significantly to{" "}
+                <Text
+                  strong
+                  style={{
+                    color: "#2b6cb0",
+                    fontFamily: "'Poppins', sans-serif",
+                  }}
+                >
+                  Ethiopia's sustainable economic development
+                </Text>
+                .
+              </Paragraph>
             </div>
-            <Paragraph
-              className="company-description"
-              style={{ color: "#4a5568", fontFamily: "'Poppins', sans-serif" }}
-            >
-              We plan to{" "}
-              <Text
-                strong
-                style={{
-                  color: "#2b6cb0",
-                  fontFamily: "'Poppins', sans-serif",
-                }}
-              >
-                modernize and diversify
-              </Text>{" "}
-              our operations by establishing new departments and producing
-              exportable agricultural products. We aim to{" "}
-              <Text
-                strong
-                style={{
-                  color: "#2b6cb0",
-                  fontFamily: "'Poppins', sans-serif",
-                }}
-              >
-                build warehouses across the country
-              </Text>
-              .
-            </Paragraph>
-            <Paragraph
-              className="company-description"
-              style={{ color: "#4a5568", fontFamily: "'Poppins', sans-serif" }}
-            >
-              Our{" "}
-              <Text
-                strong
-                style={{
-                  color: "#2b6cb0",
-                  fontFamily: "'Poppins', sans-serif",
-                }}
-              >
-                long-term goal
-              </Text>{" "}
-              includes expanding both import and export portfolios to meet
-              international demand and support Ethiopia's{" "}
-              <Text
-                strong
-                style={{
-                  color: "#2b6cb0",
-                  fontFamily: "'Poppins', sans-serif",
-                }}
-              >
-                economic growth
-              </Text>
-              .
-            </Paragraph>
           </Col>
           <Col xs={24} md={12} order={1}>
             <div className="company-image-container">
