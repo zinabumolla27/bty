@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button, Typography, Divider, notification } from "antd";
 import { motion } from "framer-motion";
 import {
@@ -147,7 +147,10 @@ const Contact = (props) => {
                 { required: false, message: "Please enter your subject" },
               ]}
             >
-              <Input placeholder="Enter subject" className="form-input" />
+              <Input
+                placeholder="Enter Your Phone Number"
+                className="form-input"
+              />
             </Form.Item>
 
             <Form.Item

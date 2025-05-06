@@ -13,6 +13,7 @@ import image3 from "../Assets/image3.jpg";
 import image4 from "../Assets/image4.jpeg";
 import image5 from "../Assets/image5.jpg";
 import img6 from "../Assets/img6.jpeg";
+import mlogo from "../Assets/mlogo.png";
 import "./Home.css";
 import Testimonials from "./Testimonals";
 import Partners from "./Partner";
@@ -48,6 +49,43 @@ const titleColors = [
 ];
 
 const descriptionColors = [
+  "#88d498",
+  "#114b5f",
+  "#1b9aaa",
+  "#ee6c4d",
+  "#114b5f",
+  "#9e2a2b",
+];
+//Services
+const descriptions1 = [
+  "Professional cleaning services  for Oilseeds, Spices, and Cereals .",
+  "We provides wholesale food and beverage supply to retailers and service providers.",
+  "Extraction and processing of minerals and natural resources using sustainable methods.",
+  "Integrated transportation logistics and modern agricultural practices supporting local farmers.",
+  "Importing chemicals, medical supplies, scraps, electronics, computers, and sporting goods.",
+  "Quality construction materials and local manufacturing services.",
+];
+
+const titles1 = [
+  "Cleaning Services",
+  "Wholesale Trade",
+  "Mining and Quarrying",
+  "Transportation and Agriculture ",
+  "Import Services",
+  "Manufacturing and Construction",
+];
+const images1 = [mlogo, mlogo, mlogo, mlogo, mlogo, mlogo];
+
+const titleColors1 = [
+  "#1a936f",
+  "#c75146",
+  "#114b5f",
+  "#6b2737",
+  "#114b5f",
+  "#540b0e",
+];
+
+const descriptionColors1 = [
   "#88d498",
   "#114b5f",
   "#1b9aaa",
@@ -296,6 +334,68 @@ const Home = () => {
                       }}
                     >
                       {descriptions[index]}
+                    </span>
+                  }
+                />
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </div>
+      <div className="gallery-container">
+        <Title
+          level={1}
+          className="section-title"
+          style={{
+            color: "#1a936f",
+            ...fontStyles.sectionTitle,
+          }}
+        >
+          Our Services
+        </Title>
+        <Row gutter={[32, 32]} justify="center">
+          {images1.map((images1, index) => (
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              key={index}
+              className="product-col"
+              onMouseEnter={() => handleCardHover(index, true)}
+              onMouseLeave={() => handleCardHover(index, false)}
+            >
+              <Card
+                hoverable
+                className={`gallery-card ${cardHover[index] ? "hovered" : ""}`}
+                cover={
+                  <div className="card-image-container">
+                    <img alt="product" src={images1} className="card-image" />
+                    <div className="card-image-overlay"></div>
+                  </div>
+                }
+              >
+                <Meta
+                  title={
+                    <span
+                      style={{
+                        color: titleColors1[index],
+                        ...fontStyles.cardTitle,
+                        transition: "all 0.5s ease",
+                      }}
+                    >
+                      {titles1[index]}
+                    </span>
+                  }
+                  description={
+                    <span
+                      style={{
+                        color: descriptionColors1[index],
+                        ...fontStyles.cardDescription,
+                        transition: "all 0.5s ease",
+                      }}
+                    >
+                      {descriptions1[index]}
                     </span>
                   }
                 />
