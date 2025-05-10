@@ -13,15 +13,13 @@ import {
 import {
   CaretDownOutlined,
   CaretUpOutlined,
-  LogoutOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import {
   deletedUploadedNews,
   fetchUploadedFiles,
   updateUploadList,
-  uploadFile,
 } from "../../features/upload/UploadSlice";
 import TextArea from "antd/es/input/TextArea";
 import { uploadFilesAPI } from "../../features/upload/fileUpload";
@@ -29,7 +27,6 @@ import { uploadFilesAPI } from "../../features/upload/fileUpload";
 const UploadNews = (props) => {
   const { loading, files, deleting, uploading } = props;
   const { Text } = Typography;
-  const [setNewsList] = useState([]);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const [fileList, setFileList] = useState([]);
@@ -38,20 +35,17 @@ const UploadNews = (props) => {
 
   useEffect(() => {
     dispatch(fetchUploadedFiles());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const initialState = files.reduce((acc, row) => {
       acc[row.id] = false;
       return acc;
     }, {});
-
     setCollabpsableDescription(initialState);
   }, [files]);
 
-  const handleFileChange = ({ fileList }) => {
-    setFileList(fileList);
-  };
+  const handleFileChange = ({ fileList }) => setFileList(fileList);
 
   const handleSubmit = async (values) => {
     if (fileList.length === 0) {
@@ -60,13 +54,12 @@ const UploadNews = (props) => {
     }
 
     const formData = new FormData();
-    const uploadedBy =
-      JSON.parse(localStorage.getItem("user")).firstName +
-      " " +
-      JSON.parse(localStorage.getItem("user")).lastName;
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const uploadedBy = `${user.firstName || ""} ${user.lastName || ""}`;
     formData.append("description", values.description);
     formData.append("file", fileList[0].originFileObj);
     formData.append("uploadedBy", uploadedBy);
+
     try {
       const result = await uploadFilesAPI(formData);
       if (result.code === 201) {
@@ -77,36 +70,29 @@ const UploadNews = (props) => {
       } else {
         error("Upload failed");
       }
-    } catch (error) {
+    } catch (err) {
       message.error("Unexpected error occurred.");
     }
   };
 
-  const error = (message) => {
-    messageApi.open({
-      type: "error",
-      content: message,
-    });
+  const error = (msg) => {
+    messageApi.open({ type: "error", content: msg });
   };
 
-  const success = (message) => {
-    messageApi.open({
-      type: "success",
-      content: message,
-    });
+  const success = (msg) => {
+    messageApi.open({ type: "success", content: msg });
   };
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
   };
 
   const updateCollapsibleCols = (id, prevValue) => {
-    setCollabpsableDescription((prev) => {
-      return {
-        ...prev,
-        [id]: !prevValue, // use [id] to dynamically set the key
-      };
-    });
+    setCollabpsableDescription((prev) => ({
+      ...prev,
+      [id]: !prevValue,
+    }));
   };
 
   const UploadedNewsColumn = [
@@ -114,34 +100,30 @@ const UploadNews = (props) => {
       title: "Uploaded By",
       dataIndex: "uploadedBy",
       key: "uploaded_by",
-      sorter: (a, b) => a.uploadedBy.localeCompare(b.uploadedBy), // Enable sorting
+      sorter: (a, b) => a.uploadedBy.localeCompare(b.uploadedBy),
     },
     {
       title: "Description",
       dataIndex: "description",
       key: "description",
-      sorter: (a, b) => a.description.localeCompare(b.description), // Enable sorting
+      sorter: (a, b) => a.description.localeCompare(b.description),
       render: (_, row) => {
+        const isExpanded = collapsableDescription[row.id];
         return (
           <Text>
-            {collapsableDescription[row.id] ? _ : _.substring(0, 100) + "  "}
-            {_.length > 100 && !collapsableDescription[row.id] ? (
-              <CaretDownOutlined
-                style={{ fontSize: "20px" }}
-                onClick={() =>
-                  updateCollapsibleCols(row.id, collapsableDescription[row.id])
-                }
-              ></CaretDownOutlined>
-            ) : _.length > 100 && collapsableDescription[row.id] ? (
-              <CaretUpOutlined
-                style={{ fontSize: "20px" }}
-                onClick={() =>
-                  updateCollapsibleCols(row.id, collapsableDescription[row.id])
-                }
-              ></CaretUpOutlined>
-            ) : (
-              <></>
-            )}
+            {isExpanded ? _ : `${_.substring(0, 100)}  `}
+            {_.length > 100 &&
+              (isExpanded ? (
+                <CaretUpOutlined
+                  style={{ fontSize: "20px" }}
+                  onClick={() => updateCollapsibleCols(row.id, isExpanded)}
+                />
+              ) : (
+                <CaretDownOutlined
+                  style={{ fontSize: "20px" }}
+                  onClick={() => updateCollapsibleCols(row.id, isExpanded)}
+                />
+              ))}
           </Text>
         );
       },
@@ -151,62 +133,54 @@ const UploadNews = (props) => {
       dataIndex: "createdAt",
       key: "uploaded_at",
       render: (text) => new Date(text).toLocaleDateString(),
-      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt), // Sorting by date
+      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
     },
     {
       title: "Actions",
       key: "actions",
-      render: (text, record) => {
-        return (
-          <Popconfirm
-            title="Delete ? "
-            placement="bottomLeft"
-            description="Are you sure to delete this?"
-            onConfirm={() => confirm(record.id)}
-            okText="Yes"
-            cancelText="No"
+      render: (_, record) => (
+        <Popconfirm
+          title="Delete?"
+          description="Are you sure to delete this?"
+          placement="bottomLeft"
+          onConfirm={() => confirm(record.id)}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button
+            type="primary"
+            danger
+            loading={deleting}
+            style={{ marginLeft: 8 }}
           >
-            <Button
-              style={{ marginLeft: 8 }}
-              type="primary"
-              danger
-              loading={deleting}
-            >
-              Delete
-            </Button>
-          </Popconfirm>
-        );
-      },
+            Delete
+          </Button>
+        </Popconfirm>
+      ),
     },
   ];
 
   const confirm = (id) => {
-    dispatch(deletedUploadedNews(id)); // Dispatch delete action
+    dispatch(deletedUploadedNews(id));
   };
 
   return (
     <div
       className="file-upload-container"
-      style={{ maxWidth: "800px", margin: "100px auto" }}
+      style={{ width: "100%", marginTop: "100px", padding: "0 24px" }}
     >
       {contextHolder}
-      <Button
-        style={{ float: "right", type: "primary" }}
-        onClick={handleLogout}
-      >
-        {" "}
-        Logout{" "}
+      <Button style={{ float: "right" }} type="primary" onClick={handleLogout}>
+        Logout
       </Button>
+
       <Form
         form={form}
         onFinish={handleSubmit}
         layout="vertical"
-        validateMessages={{
-          required: "This field is required",
-        }}
+        validateMessages={{ required: "This field is required" }}
       >
         <Row gutter={[24, 16]}>
-          {/* File Upload Section */}
           <Col span={24}>
             <Form.Item
               label="Media Upload"
@@ -220,11 +194,11 @@ const UploadNews = (props) => {
                 accept="image/*,video/*"
                 maxCount={1}
                 listType="picture"
-                showUploadList={false} // Hide the file list preview
+                showUploadList={false}
               >
                 <Button
                   icon={<UploadOutlined />}
-                  loading={loading} // Make sure this reflects the loading state
+                  loading={loading}
                   block
                   size="large"
                 >
@@ -234,21 +208,17 @@ const UploadNews = (props) => {
               <div
                 style={{ fontSize: "12px", color: "#888", marginTop: "8px" }}
               >
-                Max file size: 10MB. Supported formats: JPG, PNG, MP4
+                Max file size: 500MB. Supported formats: JPG, PNG, MP4
               </div>
             </Form.Item>
           </Col>
 
-          {/* Description Input */}
-          <Col md={12} sm={8} lg={24}>
+          <Col span={24}>
             <Form.Item
               name="description"
               label="Description"
               rules={[
-                {
-                  required: true,
-                  message: "Please provide a description",
-                },
+                { required: true, message: "Please provide a description" },
                 {
                   max: 500,
                   message: "Description cannot exceed 500 characters",
@@ -256,7 +226,7 @@ const UploadNews = (props) => {
               ]}
             >
               <TextArea
-                placeholder="Enter a detailed description for your media"
+                placeholder="Enter a detailed description for your file"
                 rows={5}
                 showCount
                 maxLength={500}
@@ -265,13 +235,12 @@ const UploadNews = (props) => {
             </Form.Item>
           </Col>
 
-          {/* Submit Button */}
           <Col span={24} style={{ textAlign: "center", marginTop: "16px" }}>
             <Button
               type="primary"
               htmlType="submit"
               size="large"
-              loading={uploading} // Make sure the submit button reflects loading state as well
+              loading={uploading}
               style={{
                 width: "200px",
                 height: "40px",
@@ -286,12 +255,12 @@ const UploadNews = (props) => {
       </Form>
 
       <Table
-        style={{ marginTop: "40px" }}
-        columns={UploadedNewsColumn} // Assuming userTableColumns is defined for your table structure
-        dataSource={files} // Displaying contact list in table
-        loading={loading} // Display loading indicator when fetching data
-        rowKey="id" // Assuming your contacts have unique 'id' field
-        pagination={{ pageSize: 10 }} // Adding pagination with a page size of 10
+        style={{ marginTop: "40px", width: "100%" }}
+        columns={UploadedNewsColumn}
+        dataSource={files}
+        loading={loading}
+        rowKey="id"
+        pagination={{ pageSize: 10 }}
         bordered
       />
     </div>
@@ -300,11 +269,7 @@ const UploadNews = (props) => {
 
 const mapStateToProps = ({ uploadFile }) => {
   const { loading, files, uploading, deleting } = uploadFile;
-  return {
-    loading,
-    files,
-    uploading,
-    deleting,
-  };
+  return { loading, files, uploading, deleting };
 };
-export default connect(mapStateToProps, {})(UploadNews);
+
+export default connect(mapStateToProps)(UploadNews);

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, forwardRef } from "react";
-import { Card, Typography, Button, Modal, Tag, Divider } from "antd";
+import React, { useState, useEffect, useRef } from "react";
+import { Card, Typography, Modal, Tag, Divider } from "antd";
 import { CalendarOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,8 +18,8 @@ const News = () => {
 
   // Fetch uploaded files from Redux store
   const { files, loading, error } = useSelector((state) => state.uploadFile);
+
   useEffect(() => {
-    // Dispatch the action to fetch files on component mount
     dispatch(fetchUploadedFiles());
   }, [dispatch]);
 
@@ -30,7 +30,9 @@ const News = () => {
 
   const handleModalDismiss = () => {
     setModalVisible(false);
-    ref.current.pause();
+    if (ref.current) {
+      ref.current.pause();
+    }
   };
 
   const NewsCard = (item) => {
@@ -40,7 +42,7 @@ const News = () => {
         className="news-card"
         cover={
           <div className="news-image-container">
-            {item.fileType == "video" ? (
+            {item.fileType === "video" ? (
               <video
                 ref={ref}
                 width="100%"
@@ -59,7 +61,6 @@ const News = () => {
                 loading="lazy"
               />
             )}
-
             <Tag icon={item.icon} className="news-tag">
               {item.category}
             </Tag>
@@ -102,11 +103,13 @@ const News = () => {
           </Title>
         </div>
 
-        <div className="news-grid">{files.map((item) => NewsCard(item))}</div>
-
-        <Button type="text" className="view-all-button">
-          View All News <ArrowRightOutlined />
-        </Button>
+        <div className="news-grid">
+          {files.map((item) => (
+            <React.Fragment key={item.id || item.filePath}>
+              {NewsCard(item)}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
 
       <Modal
@@ -119,7 +122,7 @@ const News = () => {
         {selectedNews && (
           <div className="modal-content">
             <div className="modal-image-container">
-              {selectedNews.fileType == "video" ? (
+              {selectedNews.fileType === "video" ? (
                 <video
                   width="100%"
                   height="240px"
@@ -153,20 +156,12 @@ const News = () => {
                 })}
               </Text>
 
-              <Text>{selectedNews.description}</Text>
               <Title level={3} className="modal-title">
                 {selectedNews.title}
               </Title>
 
               <Divider className="modal-divider" />
-
-              <Button
-                type="primary"
-                className="modal-button"
-                onClick={() => navigate(selectedNews.cta?.link || "/news")}
-              >
-                {selectedNews.cta?.text || "Learn More"}
-              </Button>
+              <Text>{selectedNews.description}</Text>
             </div>
           </div>
         )}

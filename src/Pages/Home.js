@@ -14,6 +14,7 @@ import image4 from "../Assets/image4.jpeg";
 import image5 from "../Assets/image5.jpg";
 import img6 from "../Assets/img6.jpeg";
 import mlogo from "../Assets/mlogo.png";
+import clean from "../Assets/clean.jpg";
 import "./Home.css";
 import Testimonials from "./Testimonals";
 import Partners from "./Partner";
@@ -74,7 +75,7 @@ const titles1 = [
   "Import Services",
   "Manufacturing and Construction",
 ];
-const images1 = [mlogo, mlogo, mlogo, mlogo, mlogo, mlogo];
+const images1 = [clean, clean, mlogo, mlogo, mlogo, mlogo];
 
 const titleColors1 = [
   "#1a936f",
