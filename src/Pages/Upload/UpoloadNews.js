@@ -32,7 +32,8 @@ const UploadNews = (props) => {
   const [fileList, setFileList] = useState([]);
   const [messageApi, contextHolder] = message.useMessage();
   const [collapsableDescription, setCollabpsableDescription] = useState({});
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
   useEffect(() => {
     dispatch(fetchUploadedFiles());
   }, [dispatch]);
@@ -54,11 +55,15 @@ const UploadNews = (props) => {
     }
 
     const formData = new FormData();
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-    const uploadedBy = `${user.firstName || ""} ${user.lastName || ""}`;
+    const uploadedBy =
+      JSON.parse(localStorage.getItem("user")).firstName +
+      " " +
+      JSON.parse(localStorage.getItem("user")).lastName;
+    const uploadedById = JSON.parse(localStorage.getItem("user")).id;
     formData.append("description", values.description);
     formData.append("file", fileList[0].originFileObj);
     formData.append("uploadedBy", uploadedBy);
+    formData.append("uploadedById", uploadedById);
 
     try {
       const result = await uploadFilesAPI(formData);
@@ -81,11 +86,6 @@ const UploadNews = (props) => {
 
   const success = (msg) => {
     messageApi.open({ type: "success", content: msg });
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
   };
 
   const updateCollapsibleCols = (id, prevValue) => {
@@ -137,26 +137,30 @@ const UploadNews = (props) => {
     },
     {
       title: "Actions",
+      dataIndex: "uploadedById",
       key: "actions",
-      render: (_, record) => (
-        <Popconfirm
-          title="Delete?"
-          description="Are you sure to delete this?"
-          placement="bottomLeft"
-          onConfirm={() => confirm(record.id)}
-          okText="Yes"
-          cancelText="No"
-        >
-          <Button
-            type="primary"
-            danger
-            loading={deleting}
-            style={{ marginLeft: 8 }}
+      render: (_, record) => {
+        return (
+          <Popconfirm
+            title="Delete ? "
+            placement="bottomLeft"
+            description="Are you sure to delete this?"
+            onConfirm={() => confirm(record.id)}
+            okText="Yes"
+            cancelText="No"
           >
-            Delete
-          </Button>
-        </Popconfirm>
-      ),
+            <Button
+              disabled={user.id != _ && user.role == "moderator"}
+              style={{ marginLeft: 8 }}
+              type="primary"
+              danger
+              loading={deleting}
+            >
+              Delete
+            </Button>
+          </Popconfirm>
+        );
+      },
     },
   ];
 
@@ -170,10 +174,6 @@ const UploadNews = (props) => {
       style={{ width: "100%", marginTop: "100px", padding: "0 24px" }}
     >
       {contextHolder}
-      <Button style={{ float: "right" }} type="primary" onClick={handleLogout}>
-        Logout
-      </Button>
-
       <Form
         form={form}
         onFinish={handleSubmit}

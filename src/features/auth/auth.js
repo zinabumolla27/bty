@@ -7,5 +7,14 @@ export const authUserAPI = async (data) => {
     body: JSON.stringify(data),
   });
 
-  return res.json();
+  if (!res.ok) {
+    const errorData = await res
+      .json()
+      .catch(() => ({ message: "Unknown error" }));
+    throw new Error(errorData.message || "Failed to authenticate");
+  }
+
+  // Only call .json() once and return it
+  const json = await res.json();
+  return json;
 };

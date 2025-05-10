@@ -3,11 +3,13 @@ import { Form, Input, Button, message } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import "./Login.css";
 import { authUserAPI } from "../features/auth/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false); // 👈 Loading state
   const [messageApi, contextHolder] = message.useMessage();
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     setLoading(true);
@@ -15,15 +17,15 @@ const Login = () => {
       let response = await authUserAPI(values);
       if (response.token) {
         localStorage.setItem("token", response.token);
+        console.log("first", localStorage.getItem("token"));
         localStorage.setItem("user", JSON.stringify(response.user));
-        window.location.reload();
+        navigate(`/home`);
       } else {
         error(response.message);
         setLoading(false); // 👈 Stop loading
       }
-    } catch (error) {
-      console.error("API error:", error);
-      message.error("❌ Failed to send message. Please try again.");
+    } catch (err) {
+      error("UnAuthenticated");
     } finally {
       setLoading(false); // 👈 Stop loading
     }

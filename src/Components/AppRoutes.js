@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "../Pages/Home";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
@@ -18,9 +18,14 @@ import Spices from "../Pages/Spices";
 import Cereals from "../Pages/Cereals";
 import ViewContact from "../Pages/ViewContacts";
 import Services from "../Pages/Services";
-import ManageUsers from "../Pages/ManageUsers";
+import CreateUsers from "../Pages/CreateUsers";
+import ViewUsers from "../Pages/ViewUsers";
+import Login from "../Pages/Login";
+import ProtectedRoute from "./ProtectedRoute";
 
 function AppRoutes() {
+  const token = localStorage.getItem("token");
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -37,14 +42,51 @@ function AppRoutes() {
       <Route path="/cereals" element={<Cereals />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/news" element={<News />} />
-      <Route path="/upload" element={<Upload />} />
       <Route path="/CompanyProfile" element={<CompanyProfile />} />
       <Route path="/faq" element={<FAQ />} />
-      <Route path="/viewContact" element={<ViewContact />} />
       <Route path="/services" element={<Services />} />
-      <Route path="/manageusers" element={<ManageUsers />} />
 
-      {/* Catch-all route for unmatched routes */}
+      {/* Redirect logged-in users to /home if they try to visit /login */}
+      <Route
+        path="/login"
+        element={token ? <Navigate to="/home" replace /> : <Login />}
+      />
+
+      {/* Admin Protected Routes */}
+      <Route
+        path="/upload"
+        element={
+          <ProtectedRoute role="adminOrmoderator" route="upload">
+            <Upload />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/createUsers"
+        element={
+          <ProtectedRoute role="admin">
+            <CreateUsers />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/viewUsers"
+        element={
+          <ProtectedRoute role="admin">
+            <ViewUsers />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/viewContact"
+        element={
+          <ProtectedRoute role="admin">
+            <ViewContact />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Catch-all route for unmatched paths */}
       <Route path="*" element={<div>404 - Page Not Found</div>} />
     </Routes>
   );

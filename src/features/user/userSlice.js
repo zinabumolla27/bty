@@ -17,8 +17,13 @@ const userSlice = createSlice({
     list: [],
     loading: false,
     error: null,
+    userCreated: false,
   },
-  reducers: {},
+  reducers: {
+    resetUserCreatedValue: (state, action) => {
+      state.userCreated = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
@@ -35,9 +40,10 @@ const userSlice = createSlice({
 
       .addCase(addUser.fulfilled, (state, action) => {
         state.list.push(action.payload);
+        state.userCreated = true;
       })
       .addCase(deleteUser.fulfilled, (state, action) => {
-        state.list = state.list.filter((u) => u.id !== action.payload.id);
+        state.list = state.list.filter((user) => user.id !== action.payload.id);
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         const index = state.list.findIndex((u) => u.id === action.payload.id);
@@ -46,4 +52,5 @@ const userSlice = createSlice({
   },
 });
 
+export const { resetUserCreatedValue } = userSlice.actions;
 export default userSlice.reducer;

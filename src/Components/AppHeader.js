@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Image, Row, Col } from "antd";
+import { Layout, Menu, Image, Row, Col, Typography } from "antd";
 import {
   MenuOutlined,
   CloseOutlined,
@@ -8,19 +8,24 @@ import {
   ExportOutlined,
   ImportOutlined,
   DownOutlined,
+  LoginOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom"; // ✅ Import useLocation
 import mlogo from "../Assets/mlogo.png";
 import "./AppHeader.css";
+import Title from "antd/es/skeleton/Title";
 
 const { Header } = Layout;
 
 const AppHeader = () => {
+  const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user")); // ✅ parse string to objec
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation(); // ✅ Hook for pathname changes
+  const { Text } = Typography;
 
   // ✅ Scroll detection effect
   useEffect(() => {
@@ -42,17 +47,26 @@ const AppHeader = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  const handleMenuClick = (item) => {
-    if (item.key.startsWith("#")) {
-      return;
-    }
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user");
+  //   navigate("/login");
+  // };
 
-    setIsClosing(true);
-    setTimeout(() => {
-      navigate(`/${item.key}`);
-      setMobileMenuVisible(false);
-      setIsClosing(false);
-    }, 300);
+  const handleMenuClick = (item) => {
+    if (item.key == "logout") {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      // window.location.reload();
+      navigate(`/login`);
+    } else {
+      setIsClosing(true);
+      setTimeout(() => {
+        navigate(`/${item.key}`);
+        setMobileMenuVisible(false);
+        setIsClosing(false);
+      }, 300);
+    }
   };
   const handleLogoClick = () => {
     if (mobileMenuVisible) {
@@ -162,16 +176,35 @@ const AppHeader = () => {
     },
     { key: "contact", label: "Contact Us" },
     { key: "news", label: "News" },
+    token &&
+      user?.role === "admin" && {
+        label: (
+          <span>
+            Manage Users <DownOutlined className="dropdown-icon" />
+          </span>
+        ),
+        key: "manage-users",
+        children: [
+          { key: "createUsers", label: "Create Users" },
+          { key: "viewContact", label: "View Contacts" },
+          { key: "viewUsers", label: "View Users" },
+        ],
+      },
+    token &&
+      (user?.role === "admin" || user?.role === "moderator") && {
+        key: "upload",
+        label: "Upload",
+      },
+
     {
       label: (
-        <span>
-          Manage Users <DownOutlined className="dropdown-icon" />
-        </span>
+        <>
+          <LoginOutlined style={{ marginRight: 8 }} />
+          {token ? "Logout" : "Login"}
+        </>
       ),
-      key: "manage-users",
-      children: [{ key: "viewContact", label: "View Contacts" }],
+      key: token ? "logout" : "login",
     },
-    { key: "upload", label: "Upload" },
   ];
 
   return (
@@ -233,6 +266,12 @@ const AppHeader = () => {
               </div>
             </div>
           </Col>
+
+          <span
+            style={{ color: "white", marginLeft: "100px", fontWeight: "bold" }}
+          >
+            {user ? user?.firstName + " " + user?.lastName : ""}
+          </span>
 
           <Col className="nav-col">
             <Menu

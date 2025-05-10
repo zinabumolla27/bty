@@ -1,4 +1,4 @@
-const USER_API = "http://192.168.58.87:3000/api/v1/users";
+const USER_API = "http://localhost:3001/api/v1/users";
 
 export const fetchUsersAPI = async () => {
   const res = await fetch(USER_API);
