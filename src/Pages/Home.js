@@ -13,11 +13,15 @@ import image3 from "../Assets/image3.jpg";
 import image4 from "../Assets/image4.jpeg";
 import image5 from "../Assets/image5.jpg";
 import img6 from "../Assets/img6.jpeg";
-import mlogo from "../Assets/mlogo.png";
 import clean from "../Assets/clean.jpg";
 import "./Home.css";
 import Testimonials from "./Testimonals";
 import Partners from "./Partner";
+import mining from "../Assets/mining.jpg";
+import trans from "../Assets/trans.jpg";
+import cons from "../Assets/cons.jpg";
+import immm from "../Assets/immm.jpg";
+import fab from "../Assets/fab.png";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -75,7 +79,7 @@ const titles1 = [
   "Import Services",
   "Manufacturing and Construction",
 ];
-const images1 = [clean, clean, mlogo, mlogo, mlogo, mlogo];
+const images1 = [clean, fab, mining, trans, immm, cons];
 
 const titleColors1 = [
   "#1a936f",

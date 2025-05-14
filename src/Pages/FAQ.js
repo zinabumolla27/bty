@@ -11,34 +11,35 @@ const FAQ = () => {
       key: "1",
       question: "What does BTY Trading PLC specialize in?",
       answer:
-        "BTY Trading PLC specializes in exporting agricultural products including Oil Seeds, Spices, Pulses, khat, Coffee and Tea Leaf and cereals. We also import a wide range of goods such as basic chemicals used for industry, chemical products, human health medical supplies and equipment, metal and non-metal scraps, sporting goods and equipment, communication and computer-related equipment, electrical equipment and appliances, vehicles and spare parts, regulatory equipment, jewelry, décor supplies, and more.",
+        "BTY Trading PLC specializes in exporting agricultural products such as oil seeds, spices, pulses, khat, coffee, tea leaves, and cereals. We also import a wide range of goods including industrial chemicals, medical supplies and equipment, metal and non-metal scraps, sporting goods, communication and computer equipment, electrical appliances, vehicles and spare parts, regulatory equipment, jewelry, décor supplies, and more.",
     },
 
     {
       key: "2",
       question: "How competitive are your prices?",
       answer:
-        "Our prices are highly competitive, reflecting the quality and reliability of our products. We strive to offer excellent value for businesses of all sizes, ensuring affordability without compromising standards.",
+        "Our prices are very competitive and reflect the quality and reliability of our products. We aim to offer excellent value for businesses of all sizes, ensuring affordability without compromising on standards.",
     },
 
     {
       key: "3",
       question: "Do you offer cleaning services?",
       answer:
-        "Yes, we offer cleaning services specifically for oilseeds, cereals, and spices to ensure quality and export readiness.",
+        "Yes, we provide cleaning services specifically for oilseeds, cereals, and spices to ensure high quality and export readiness.",
     },
+
     {
       key: "4",
       question: "What is the focus of BTY Trading PLC export?",
       answer:
-        "BTY Trading PLC focuses on exporting a wide range of high-quality agricultural products, including oilseeds, coffee, tea leaves, khat, spices, pulses, and cereals. We are committed to delivering consistently superior products sourced from trusted farms with strict quality control standards.",
+        "BTY Trading PLC focuses on exporting a wide range of high-quality agricultural products, including oilseeds, coffee, tea leaves, khat, spices, pulses, and cereals. We are committed to delivering consistently superior products sourced from trusted farms under strict quality control standards.",
     },
 
     {
       key: "5",
       question: "Do you offer different quantities for your products?",
       answer:
-        "Yes, we do. Our agricultural products, including sesame seeds, coffee, tea leaves, khat, spices, pulses, and cereals, are available in various quantities, from small to bulk orders, tailored to meet the needs of our clients. We also offer custom packaging if required.",
+        "Yes, we do. Our agricultural products, including sesame seeds, coffee, tea leaves, khat, spices, pulses, and cereals, are available in various quantities, from small to bulk orders. We also offer custom packaging if needed.",
     },
 
     {
@@ -47,11 +48,12 @@ const FAQ = () => {
       answer:
         "Our products are exported to several international markets including Israel, China, Singapore, Vietnam, Pakistan, Hong Kong, Turkey, India, Saudi Arabia, Sudan, and the UAE.",
     },
+
     {
       key: "7",
       question: "What are the services offered by BTY Trading PLC?",
       answer:
-        "BTY Trading PLC offers a wide range of services, including Mining and Quarrying, Manufacturing, Construction, Agriculture, Transportation, Cleaning Services for oilseeds, cereals, and spices, as well as Wholesale Trade.",
+        "BTY Trading PLC offers a wide range of services including mining and quarrying, manufacturing, construction, agriculture, transportation, cleaning services for oilseeds, cereals, and spices, as well as wholesale trade.",
     },
   ];
 

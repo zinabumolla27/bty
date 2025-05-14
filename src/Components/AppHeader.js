@@ -65,7 +65,7 @@ const AppHeader = () => {
         navigate(`/${item.key}`);
         setMobileMenuVisible(false);
         setIsClosing(false);
-      }, 300);
+      }, 20);
     }
   };
   const handleLogoClick = () => {
@@ -126,7 +126,8 @@ const AppHeader = () => {
     {
       label: (
         <span>
-          Services & Products <DownOutlined className="dropdown-icon" />
+          Products & Services
+          <DownOutlined className="dropdown-icon" />
         </span>
       ),
       key: "servicesandproducts",
@@ -267,11 +268,11 @@ const AppHeader = () => {
             </div>
           </Col>
 
-          <span
+          {/* <span
             style={{ color: "white", marginLeft: "100px", fontWeight: "bold" }}
           >
             {user ? user?.firstName + " " + user?.lastName : ""}
-          </span>
+          </span> */}
 
           <Col className="nav-col">
             <Menu

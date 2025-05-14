@@ -69,7 +69,10 @@ const CompanyProfile = () => {
             </div>
             <Paragraph
               className="company-description"
-              style={{ color: "#4a5568", fontFamily: "'Poppins', sans-serif" }}
+              style={{
+                color: "#4a5568",
+                fontFamily: "'Poppins', sans-serif",
+              }}
             >
               <Text
                 strong
@@ -84,7 +87,6 @@ const CompanyProfile = () => {
               <Text
                 strong
                 style={{
-                  color: "#10b981",
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >

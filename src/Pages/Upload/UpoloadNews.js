@@ -171,7 +171,7 @@ const UploadNews = (props) => {
   return (
     <div
       className="file-upload-container"
-      style={{ width: "100%", marginTop: "100px", padding: "0 24px" }}
+      style={{ width: "100%", marginTop: "100px" }}
     >
       {contextHolder}
       <Form
