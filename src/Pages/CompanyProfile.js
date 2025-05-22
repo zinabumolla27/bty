@@ -73,6 +73,8 @@ const CompanyProfile = () => {
                 color: "#4a5568",
                 fontFamily: "'Poppins', sans-serif",
                 textAlign: "justify",
+                textJustify: "inter-word",
+                hyphens: "auto",
               }}
             >
               <Text
@@ -119,7 +121,12 @@ const CompanyProfile = () => {
             </Paragraph>
             <Paragraph
               className="company-description"
-              style={{ color: "#4a5568", fontFamily: "'Poppins', sans-serif" }}
+              style={{
+                color: "#4a5568",
+                fontFamily: "'Poppins', sans-serif",
+                textAlign: "justify",
+                textJustify: "inter-word",
+              }}
             >
               Our products include{" "}
               <Text
@@ -128,6 +135,8 @@ const CompanyProfile = () => {
                   color: "#2b6cb0",
                   fontFamily: "'Poppins', sans-serif",
                   textAlign: "justify",
+                  hyphens: "auto",
+                  textJustify: "inter-word",
                 }}
               >
                 sesame seeds, chickpeas, soybeans, green mung beans, niger
@@ -181,6 +190,8 @@ const CompanyProfile = () => {
                   color: "#4a5568",
                   fontFamily: "'Poppins', sans-serif",
                   textAlign: "justify",
+                  hyphens: "auto",
+                  textjustify: "inter-word",
                   paddingTop: "10px",
                 }}
               >
@@ -215,6 +226,8 @@ const CompanyProfile = () => {
                   color: "#4a5568",
                   fontFamily: "'Poppins', sans-serif",
                   textAlign: "justify",
+                  hyphens: "auto",
+                  textjustify: "inter-word",
                 }}
               >
                 Our{" "}

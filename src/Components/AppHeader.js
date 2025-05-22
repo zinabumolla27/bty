@@ -166,7 +166,7 @@ const AppHeader = () => {
             { label: "Agriculture", key: "#3" },
             { label: "Transportation", key: "#4" },
             {
-              label: "Cleaning Service for (oilseed, Cereals, Spices)",
+              label: "Cleaning Service",
               key: "#5",
             },
           ],
