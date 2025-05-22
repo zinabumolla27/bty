@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Image, Row, Col, Typography } from "antd";
+import { Layout, Menu, Image, Row, Col } from "antd";
 import {
   MenuOutlined,
   CloseOutlined,
@@ -13,7 +13,6 @@ import {
 import { useNavigate, useLocation } from "react-router-dom"; // ✅ Import useLocation
 import mlogo from "../Assets/mlogo.png";
 import "./AppHeader.css";
-import Title from "antd/es/skeleton/Title";
 
 const { Header } = Layout;
 
@@ -25,7 +24,6 @@ const AppHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation(); // ✅ Hook for pathname changes
-  const { Text } = Typography;
 
   // ✅ Scroll detection effect
   useEffect(() => {
@@ -54,7 +52,7 @@ const AppHeader = () => {
   // };
 
   const handleMenuClick = (item) => {
-    if (item.key == "logout") {
+    if (item.key === "logout") {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       // window.location.reload();
@@ -228,7 +226,7 @@ const AppHeader = () => {
                 src={mlogo}
                 alt="Company Logo"
                 preview={false}
-                width={80}
+                width={60}
                 className="logo-image"
                 style={{
                   margin: "0",

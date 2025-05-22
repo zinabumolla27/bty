@@ -8,10 +8,10 @@ import bg1 from "../Assets/backofoil.jpg";
 import bg2 from "../Assets/loglog.jpg";
 import bg3 from "../Assets/image3.jpg";
 import image1 from "../Assets/image1.jpeg";
-import image2 from "../Assets/image2.jpeg";
+import oio from "../Assets/oio.jpeg";
 import image3 from "../Assets/image3.jpg";
-import image4 from "../Assets/image4.jpeg";
-import image5 from "../Assets/image5.jpg";
+import cer from "../Assets/cer.png";
+import pppp from "../Assets/pppp.jpeg";
 import img6 from "../Assets/img6.jpeg";
 import clean from "../Assets/clean.jpg";
 import "./Home.css";
@@ -42,7 +42,7 @@ const titles = [
   "Peppers",
   "Tea Leaves",
 ];
-const images = [image2, image4, image1, image3, image5, img6];
+const images = [oio, cer, image1, image3, pppp, img6];
 
 const titleColors = [
   "#1a936f",
@@ -57,9 +57,9 @@ const descriptionColors = [
   "#88d498",
   "#114b5f",
   "#1b9aaa",
-  "#ee6c4d",
   "#114b5f",
-  "#9e2a2b",
+  "#114b5f",
+  "#114b5f",
 ];
 //Services
 const descriptions1 = [
@@ -94,9 +94,9 @@ const descriptionColors1 = [
   "#88d498",
   "#114b5f",
   "#1b9aaa",
-  "#ee6c4d",
   "#114b5f",
-  "#9e2a2b",
+  "#114b5f",
+  "#114b5f",
 ];
 
 const fontStyles = {

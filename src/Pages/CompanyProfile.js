@@ -72,6 +72,7 @@ const CompanyProfile = () => {
               style={{
                 color: "#4a5568",
                 fontFamily: "'Poppins', sans-serif",
+                textAlign: "justify",
               }}
             >
               <Text
@@ -126,6 +127,7 @@ const CompanyProfile = () => {
                 style={{
                   color: "#2b6cb0",
                   fontFamily: "'Poppins', sans-serif",
+                  textAlign: "justify",
                 }}
               >
                 sesame seeds, chickpeas, soybeans, green mung beans, niger
@@ -178,6 +180,8 @@ const CompanyProfile = () => {
                 style={{
                   color: "#4a5568",
                   fontFamily: "'Poppins', sans-serif",
+                  textAlign: "justify",
+                  paddingTop: "10px",
                 }}
               >
                 We aim to{" "}
@@ -188,11 +192,11 @@ const CompanyProfile = () => {
                     fontFamily: "'Poppins', sans-serif",
                   }}
                 >
-                  modernize, diversify, and scale up
+                  modernize, diversify, and and grow
                 </Text>{" "}
-                our operations by investing in high-quality agricultural
-                production, expanding our product portfolio, and enhancing
-                logistics infrastructure—including{" "}
+                our business by focusing on high-quality agricultural
+                production, expanding our product range, and improving our
+                logistics network including{" "}
                 <Text
                   strong
                   style={{
@@ -210,6 +214,7 @@ const CompanyProfile = () => {
                 style={{
                   color: "#4a5568",
                   fontFamily: "'Poppins', sans-serif",
+                  textAlign: "justify",
                 }}
               >
                 Our{" "}
@@ -222,9 +227,9 @@ const CompanyProfile = () => {
                 >
                   long-term vision
                 </Text>{" "}
-                is to become a key player in international trade by increasing
-                the range and volume of our exportable goods, exploring new
-                global markets, and contributing significantly to{" "}
+                is to become a leading player in global trade by increasing the
+                variety and volume of our exports, entering new international
+                markets, and making a strong contribution to{" "}
                 <Text
                   strong
                   style={{
@@ -232,7 +237,7 @@ const CompanyProfile = () => {
                     fontFamily: "'Poppins', sans-serif",
                   }}
                 >
-                  Ethiopia's sustainable economic development
+                  Ethiopia's sustainable economic growth
                 </Text>
                 .
               </Paragraph>
@@ -319,7 +324,6 @@ const CompanyProfile = () => {
                       fontSize: "15px",
                       lineHeight: "1.6",
                       fontFamily: "'Poppins', sans-serif",
-                      textAlign: "left",
                     }}
                   >
                     Lead in exporting agricultural products and supplying
