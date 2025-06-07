@@ -15,7 +15,12 @@ function App() {
   const location = useLocation();
 
   // Define routes where the footer and social icons should be hidden
-  const noFooterRoutes = ["/upload", "/viewContact"];
+  const noFooterRoutes = [
+    "/upload",
+    "/viewContact",
+    "/viewUsers",
+    "/createUsers",
+  ];
 
   const hideFooter = noFooterRoutes.includes(location.pathname);
 

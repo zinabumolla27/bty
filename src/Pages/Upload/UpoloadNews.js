@@ -34,6 +34,7 @@ const UploadNews = (props) => {
   const [collapsableDescription, setCollabpsableDescription] = useState({});
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
+
   useEffect(() => {
     dispatch(fetchUploadedFiles());
   }, [dispatch]);
@@ -150,7 +151,7 @@ const UploadNews = (props) => {
             cancelText="No"
           >
             <Button
-              disabled={user.id != _ && user.role == "moderator"}
+              disabled={user.id !== _ && user.role === "moderator"}
               style={{ marginLeft: 8 }}
               type="primary"
               danger
