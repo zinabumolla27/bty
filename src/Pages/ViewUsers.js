@@ -10,8 +10,31 @@ import {
   Popconfirm,
 } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import Highlighter from "react-highlight-words";
-import { fetchUsers, deleteUser } from "../features/user/userSlice"; // Update paths as needed
+import { fetchUsers, deleteUser } from "../features/user/userSlice";
+
+// ✅ Custom Highlighter (replaces `react-highlight-words`)
+const Highlighter = ({ text = "", searchWords = [] }) => {
+  if (!searchWords.length || !text) return text;
+
+  const regex = new RegExp(`(${searchWords.join("|")})`, "gi");
+  const parts = text.split(regex);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        searchWords.some(
+          (word) => word.toLowerCase() === part.toLowerCase()
+        ) ? (
+          <mark key={index} style={{ backgroundColor: "#ffc069", padding: 0 }}>
+            {part}
+          </mark>
+        ) : (
+          <span key={index}>{part}</span>
+        )
+      )}
+    </>
+  );
+};
 
 const ViewUsers = () => {
   const dispatch = useDispatch();
@@ -89,9 +112,7 @@ const ViewUsers = () => {
       searchedColumn === dataIndex ? (
         <Highlighter
           searchWords={[searchText]}
-          autoEscape
-          textToHighlight={text ? text.toString() : ""}
-          highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
+          text={text ? text.toString() : ""}
         />
       ) : (
         text

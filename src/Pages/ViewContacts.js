@@ -1,18 +1,48 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Table, Card, Breadcrumb, Space } from "antd"; // Importing the new components
-import { Input, Button, Popconfirm } from "antd";
+import {
+  Table,
+  Card,
+  Breadcrumb,
+  Space,
+  Input,
+  Button,
+  Popconfirm,
+} from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import Highlighter from "react-highlight-words";
-import { deleteContact } from "../features/contact/contactSlice";
-import { fetchContacts } from "../features/contact/contactSlice";
+import { deleteContact, fetchContacts } from "../features/contact/contactSlice";
+
+// ✅ Custom Highlighter component (React 19 compatible)
+const Highlighter = ({ text = "", searchWords = [] }) => {
+  if (!searchWords.length || !text) return text;
+
+  const regex = new RegExp(`(${searchWords.join("|")})`, "gi");
+  const parts = text.split(regex);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        searchWords.some(
+          (word) => word.toLowerCase() === part.toLowerCase()
+        ) ? (
+          <mark key={index} style={{ backgroundColor: "#ffc069", padding: 0 }}>
+            {part}
+          </mark>
+        ) : (
+          <span key={index}>{part}</span>
+        )
+      )}
+    </>
+  );
+};
 
 const ViewContact = () => {
   const dispatch = useDispatch();
-  const { list, loading, error } = useSelector((state) => state.contact); // Accessing contact slice from Redux store
+  const { list, loading, error } = useSelector((state) => state.contact);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -25,16 +55,15 @@ const ViewContact = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchContacts()); // Dispatching the fetchContacts action to load data
+    dispatch(fetchContacts());
   }, [dispatch]);
 
-  // Handling error display if any
   if (error) {
     return <div>Error: {error}</div>;
   }
 
   const confirm = (id) => {
-    dispatch(deleteContact(id)); // Dispatch delete action
+    dispatch(deleteContact(id));
   };
 
   const getColumnSearchProps = (dataIndex) => ({
@@ -44,11 +73,7 @@ const ViewContact = () => {
       confirm,
       clearFilters,
     }) => (
-      <div
-        style={{
-          padding: 8,
-        }}
-      >
+      <div style={{ padding: 8 }}>
         <Input
           ref={searchInput}
           placeholder={`Search ${dataIndex}`}
@@ -57,10 +82,7 @@ const ViewContact = () => {
             setSelectedKeys(e.target.value ? [e.target.value] : [])
           }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          style={{
-            marginBottom: 8,
-            display: "block",
-          }}
+          style={{ marginBottom: 8, display: "block" }}
         />
         <Space>
           <Button
@@ -68,53 +90,38 @@ const ViewContact = () => {
             onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
             icon={<SearchOutlined />}
             size="small"
-            style={{
-              width: 90,
-            }}
+            style={{ width: 90 }}
           >
-            {"Search"}
+            Search
           </Button>
           <Button
             onClick={() => clearFilters && handleReset(clearFilters)}
             size="small"
-            style={{
-              width: 100,
-            }}
+            style={{ width: 100 }}
           >
-            {"Reset"}
+            Reset
           </Button>
           <Button
             type="link"
             size="small"
-            style={{
-              width: 110,
-            }}
+            style={{ width: 110 }}
             onClick={() => {
-              confirm({
-                closeDropdown: false,
-              });
+              confirm({ closeDropdown: false });
               setSearchText(selectedKeys[0]);
               setSearchedColumn(dataIndex);
             }}
           >
-            {"Filter"}
+            Filter
           </Button>
         </Space>
       </div>
     ),
     filterIcon: (filtered) => (
-      <SearchOutlined
-        style={{
-          color: filtered ? "#1890ff" : undefined,
-        }}
-      />
+      <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
     ),
     onFilter: (value, record) =>
       typeof record[dataIndex] === "string"
-        ? record[dataIndex]
-            .toString()
-            .toLowerCase()
-            .includes(value.toLowerCase())
+        ? record[dataIndex].toLowerCase().includes(value.toLowerCase())
         : false,
     filterDropdownProps: {
       onOpenChange: (visible) => {
@@ -126,13 +133,8 @@ const ViewContact = () => {
     render: (text) =>
       searchedColumn === dataIndex ? (
         <Highlighter
-          highlightStyle={{
-            backgroundColor: "#ffc069",
-            padding: 0,
-          }}
           searchWords={[searchText]}
-          autoEscape
-          textToHighlight={text ? text.toString() : ""}
+          text={text ? text.toString() : ""}
         />
       ) : (
         text
@@ -144,85 +146,79 @@ const ViewContact = () => {
       title: "First Name",
       dataIndex: "firstName",
       key: "firstName",
-      sorter: (a, b) => a.firstName.localeCompare(b.firstName), // Enable sorting
+      sorter: (a, b) => a.firstName.localeCompare(b.firstName),
       ...getColumnSearchProps("firstName"),
       filterIcon: (filtered) => (
         <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
       ),
       onFilter: (value, record) =>
-        record.firstName.toLowerCase().includes(value.toLowerCase()), // Filter logic
+        record.firstName.toLowerCase().includes(value.toLowerCase()),
     },
     {
       title: "Last Name",
       dataIndex: "lastName",
       key: "lastName",
-      sorter: (a, b) => a.lastName.localeCompare(b.lastName), // Enable sorting
+      sorter: (a, b) => a.lastName.localeCompare(b.lastName),
       ...getColumnSearchProps("lastName"),
       filterIcon: (filtered) => (
         <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
       ),
       onFilter: (value, record) =>
-        record.lastName.toLowerCase().includes(value.toLowerCase()), // Filter logic
+        record.lastName.toLowerCase().includes(value.toLowerCase()),
     },
     {
       title: "Email",
       dataIndex: "email",
       key: "email",
-      sorter: (a, b) => a.email.localeCompare(b.email), // Enable sorting
+      sorter: (a, b) => a.email.localeCompare(b.email),
       ...getColumnSearchProps("email"),
       filterIcon: (filtered) => (
         <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
       ),
       onFilter: (value, record) =>
-        record.email.toLowerCase().includes(value.toLowerCase()), // Filter logic
+        record.email.toLowerCase().includes(value.toLowerCase()),
     },
     {
       title: "Phone Number",
       dataIndex: "phone",
       key: "phone",
-      sorter: (a, b) => a.subject.localeCompare(b.subject), // Enable sorting
+      sorter: (a, b) => a.subject.localeCompare(b.subject),
     },
     {
       title: "Message",
       dataIndex: "message",
       key: "message",
-      sorter: (a, b) => a.message.localeCompare(b.message), // Enable sorting
+      sorter: (a, b) => a.message.localeCompare(b.message),
     },
     {
       title: "Created At",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (text) => new Date(text).toLocaleDateString(),
-      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt), // Sorting by date
+      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
     },
     {
       title: "Actions",
       key: "actions",
-      render: (text, record) => {
-        return (
-          <Popconfirm
-            title="Delete ? "
-            placement="bottomLeft"
-            description="Are you sure to delete this?"
-            onConfirm={() => confirm(record.id)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button style={{ marginLeft: 8 }} type="primary" danger>
-              Delete
-            </Button>
-          </Popconfirm>
-        );
-      },
+      render: (text, record) => (
+        <Popconfirm
+          title="Delete?"
+          placement="bottomLeft"
+          description="Are you sure to delete this?"
+          onConfirm={() => confirm(record.id)}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button style={{ marginLeft: 8 }} type="primary" danger>
+            Delete
+          </Button>
+        </Popconfirm>
+      ),
     },
   ];
 
   return (
-    <Card
-      title="View Contacts" // Card title
-      bordered={false} // Optional border for the card
-      style={{ margin: 20 }}
-    >
+    <Card title="View Contacts" bordered={false} style={{ margin: 20 }}>
       <Breadcrumb style={{ marginBottom: 16 }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>Contacts</Breadcrumb.Item>
@@ -230,11 +226,11 @@ const ViewContact = () => {
       </Breadcrumb>
 
       <Table
-        columns={ContactTableColumns} // Assuming userTableColumns is defined for your table structure
-        dataSource={list} // Displaying contact list in table
-        loading={loading} // Display loading indicator when fetching data
-        rowKey="id" // Assuming your contacts have unique 'id' field
-        pagination={{ pageSize: 10 }} // Adding pagination with a page size of 10
+        columns={ContactTableColumns}
+        dataSource={list}
+        loading={loading}
+        rowKey="id"
+        pagination={{ pageSize: 10 }}
         bordered
       />
     </Card>
