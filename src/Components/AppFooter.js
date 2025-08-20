@@ -86,11 +86,13 @@ const AppFooter = () => {
                     <PhoneOutlined />
                   </span>
                   <Text className="contact-text">
-                    +251 911257609 | +251
+                    +251 911257609
                     <br />
-                    911257608 | +251
+                    +251 911257608
                     <br />
-                    911257607
+                    +251 911257607
+                    <br />
+                    LP: 011263218
                   </Text>
                 </div>
                 <div className="contact-item">

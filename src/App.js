@@ -20,6 +20,8 @@ function App() {
     "/viewContact",
     "/viewUsers",
     "/createUsers",
+    "/login",
+
   ];
 
   const hideFooter = noFooterRoutes.includes(location.pathname);

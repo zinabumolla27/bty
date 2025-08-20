@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Form, Input, Button, message } from "antd";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Form, Input, Button, message, Avatar } from "antd";
+import {  LockOutlined, UserOutlined } from "@ant-design/icons";
 import "./Login.css";
 import { authUserAPI } from "../features/auth/auth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [form] = Form.useForm();
   const [loading, setLoading] = useState(false); // 👈 Loading state
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
@@ -42,6 +41,26 @@ const Login = () => {
     <div className="login-page">
       {contextHolder}
       <div className="login-content">
+        <div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 16,
+    marginBottom: 24,
+    color: "white",
+  }}
+>
+  <div style={{ width: 90, height: 2, backgroundColor: "white" }} />
+
+  <Avatar
+    size={64}
+    icon={<UserOutlined style={{ color: "white" }} />}
+    style={{ backgroundColor: "blue" }}
+  />
+
+  <div style={{ width: 90, height: 2, backgroundColor: "white" }} />
+</div>
         <Form
           name="login"
           initialValues={{ remember: true }}
@@ -49,19 +68,21 @@ const Login = () => {
           layout="vertical"
           className="login-form"
         >
-          <Form.Item
+          <Form.Item 
+            label={<span style={{ color: "white" }}>Email</span>}
             name="email"
             rules={[{ required: true, message: "Please input your username!" }]}
           >
             <Input
               prefix={<UserOutlined />}
-              placeholder="Username"
+              placeholder="Email"
               size="large"
               className="login-input"
             />
           </Form.Item>
 
           <Form.Item
+            label={<span style={{ color: "white" }}>Password</span>}
             name="password"
             rules={[{ required: true, message: "Please input your password!" }]}
           >

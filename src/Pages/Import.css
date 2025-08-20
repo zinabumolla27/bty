@@ -1,6 +1,8 @@
 .import-section {
   padding-top: 100px;
   background-color: #f9f9f9;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .section-title {
@@ -37,7 +39,7 @@
 }
 
 .icon-wrapper {
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
 }
 
 .import-icon {

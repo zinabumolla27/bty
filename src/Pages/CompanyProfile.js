@@ -95,7 +95,7 @@ const CompanyProfile = () => {
               >
                 December 16, 2011
               </Text>
-              , is a registered import-export company under the Ethiopian
+              , is a registered import export company under the Ethiopian
               Ministry of Trade. We specialize in exporting{" "}
               <Text
                 strong
@@ -104,7 +104,7 @@ const CompanyProfile = () => {
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
-                oilseeds, pulses, spices, Coffee and Tea,Chat and ,Cereals
+                oilseeds, pulses, spices, Coffee and Tea, Chat and Cereals
               </Text>{" "}
               to countries like{" "}
               <Text
@@ -379,7 +379,6 @@ const CompanyProfile = () => {
                       fontSize: "15px",
                       lineHeight: "1.6",
                       fontFamily: "'Poppins', sans-serif",
-                      textAlign: "left",
                       background:
                         "linear-gradient(to bottom right, #f0fdf4, #ecfdf5)",
                     }}

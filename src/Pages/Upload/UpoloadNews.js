@@ -225,6 +225,7 @@ const UploadNews = (props) => {
                   message: "Description cannot exceed 500 characters",
                 },
               ]}
+              
             >
               <TextArea
                 placeholder="Enter a detailed description for your file"

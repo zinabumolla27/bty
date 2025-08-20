@@ -148,7 +148,6 @@ const Spices = () => {
                   height: "100%",
                   transition: "transform 0.2s",
                 }}
-                // Replace deprecated bodyStyle with styles.body
                 styles={{ body: { flex: 1 } }}
               >
                 <Card.Meta

@@ -32,7 +32,7 @@ const descriptions = [
   "Authentic  spices including Chili, Cardamom, and Pepper with rich flavors.",
   "Single-origin Yirgacheffe, Sidamo, and Jimma coffee beans with distinctive profiles.",
   "Hand-picked Chili and  peppers with perfect heat and aroma.",
-  "Premium quality White, Green, and Black tea leaves sourced from Ethiopia's finest gardens.",
+  "White, Green, and Black tea leaves sourced from Ethiopia's finest gardens.",
 ];
 const titles = [
   "Oil Seeds",
@@ -45,18 +45,18 @@ const titles = [
 const images = [oio, cer, image1, image3, pppp, img6];
 
 const titleColors = [
-  "#1a936f",
-  "#c75146",
   "#114b5f",
-  "#6b2737",
   "#114b5f",
-  "#540b0e",
+  "#114b5f",
+  "#114b5f",
+  "#114b5f",
+  "#114b5f",
 ];
 
 const descriptionColors = [
-  "#88d498",
   "#114b5f",
-  "#1b9aaa",
+  "#114b5f",
+  "#114b5f",
   "#114b5f",
   "#114b5f",
   "#114b5f",
@@ -65,10 +65,10 @@ const descriptionColors = [
 const descriptions1 = [
   "Professional cleaning services  for Oilseeds, Spices, and Cereals .",
   "We provides wholesale food and beverage supply to retailers and service providers.",
-  "Extraction and processing of minerals and natural resources using sustainable methods.",
+  "Extraction and processing of minerals and natural resources sustainably.",
   "Integrated transportation logistics and modern agricultural practices supporting local farmers.",
   "Importing chemicals, medical supplies, scraps, electronics, computers, and sporting goods.",
-  "Quality construction materials and local manufacturing services.",
+  " Quality construction materials and local manufacturing deliver efficient, and timely building solutions.",
 ];
 
 const titles1 = [
@@ -82,18 +82,18 @@ const titles1 = [
 const images1 = [clean, fab, mining, trans, immm, cons];
 
 const titleColors1 = [
-  "#1a936f",
-  "#c75146",
   "#114b5f",
-  "#6b2737",
   "#114b5f",
-  "#540b0e",
+  "#114b5f",
+  "#114b5f",
+  "#114b5f",
+  "#114b5f",
 ];
 
 const descriptionColors1 = [
-  "#88d498",
   "#114b5f",
-  "#1b9aaa",
+  "#114b5f",
+  "#114b5f",
   "#114b5f",
   "#114b5f",
   "#114b5f",
@@ -258,14 +258,15 @@ const Home = () => {
                 fontFamily: "'Open Sans', sans-serif",
                 textAlign: "justify",
                 lineHeight: "1.6",
+                color: "#333",
               }}
             >
-              BTY TRADING PLC, established in 2011, is a premier import-export
-              company specializing in Ethiopia's finest agricultural products.
+              BTY TRADING PLC, established in 2011, is a premier import export
+              company specializing in Ethiopia’s finest agricultural products.
               We combine traditional farming wisdom with modern export standards
               to deliver exceptional quality oil seeds, pulses, and spices to
               global markets. Our operations support sustainable agriculture and
-              provide livelihoods for hundreds of local workers.
+              provide livelihoods for many local workers.
             </Paragraph>
             <Button
               type="primary"

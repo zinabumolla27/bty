@@ -230,6 +230,7 @@ const AppHeader = () => {
                 className="logo-image"
                 style={{
                   margin: "0",
+                  marginLeft: "8px",
                   transition: "transform 0.3s ease",
                   ":hover": {
                     transform: "scale(1.05)",
