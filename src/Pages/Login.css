@@ -5,18 +5,15 @@
   align-items: center;
   padding-top: 50px;
   min-height: 100vh;
-  background: url("../Assets/mlogo.png") no-repeat center center fixed;
-  
-
+  background: url("../Assets/loback.png") repeat center center fixed;
+  background-size: 400px;
 }
-
 .login-content {
   width: 100%;
   max-width: 350px;
   padding: 2rem;
   border-radius: 16px;
   background: rgba(0, 0, 0, 0.4);
- 
 }
 
 /* Form styles */
@@ -34,7 +31,6 @@
   display: flex;
   justify-content: center;
 }
-
 
 /* Button styles */
 .login-button {

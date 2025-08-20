@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Form, Input, Button, message, Avatar } from "antd";
-import {  LockOutlined, UserOutlined } from "@ant-design/icons";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import "./Login.css";
+import mlogo from "../Assets/mlogo.png";
 import { authUserAPI } from "../features/auth/auth";
 import { useNavigate } from "react-router-dom";
-
-const Login = () => {
+function Login() {
   const [loading, setLoading] = useState(false); // 👈 Loading state
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
@@ -42,25 +42,21 @@ const Login = () => {
       {contextHolder}
       <div className="login-content">
         <div
-  style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 16,
-    marginBottom: 24,
-    color: "white",
-  }}
->
-  <div style={{ width: 90, height: 2, backgroundColor: "white" }} />
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 16,
+            marginBottom: 24,
+            color: "white",
+          }}
+        >
+          <div style={{ width: 90, height: 2, backgroundColor: "white" }} />
 
-  <Avatar
-    size={64}
-    icon={<UserOutlined style={{ color: "white" }} />}
-    style={{ backgroundColor: "blue" }}
-  />
+          <Avatar size={64} src={mlogo} />
 
-  <div style={{ width: 90, height: 2, backgroundColor: "white" }} />
-</div>
+          <div style={{ width: 90, height: 2, backgroundColor: "white" }} />
+        </div>
         <Form
           name="login"
           initialValues={{ remember: true }}
@@ -68,7 +64,7 @@ const Login = () => {
           layout="vertical"
           className="login-form"
         >
-          <Form.Item 
+          <Form.Item
             label={<span style={{ color: "white" }}>Email</span>}
             name="email"
             rules={[{ required: true, message: "Please input your username!" }]}
@@ -109,6 +105,6 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Login;
