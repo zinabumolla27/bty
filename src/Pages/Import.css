@@ -1,76 +1,73 @@
+/* Section container */
 .import-section {
+  padding: 40px 20px;
   padding-top: 100px;
-  background-color: #f9f9f9;
-  margin: 0 auto;
-  width: 90%;
-}
-
-.section-title {
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  min-height: 100vh;
+  box-sizing: border-box;
   text-align: center;
-  margin-bottom: 3rem;
-  color: #23bec9;
-  font-weight: 700;
-  position: relative;
 }
 
-.section-title::after {
-  content: none;
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #3498db;
-  margin: 15px auto 0;
-}
-
-.import-card {
-  background: rgb(211, 202, 202);
-  border-radius: 8px;
-  padding: 1.5rem;
-  height: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  text-align: center;
-  border: 1px solid #eee;
-}
-
-.import-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.icon-wrapper {
-  margin-bottom: 15px;
-}
-
-.import-icon {
+/* Heading at the top */
+.import-heading {
   font-size: 2rem;
-  color: #3498db;
+  font-weight: bold;
+  background: linear-gradient(to right, #f95738, #ff9a3c);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  margin-bottom: 30px;
 }
 
-.import-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #333;
-  margin: 0;
+/* Container for all cards */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual card styling */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #1f92d9;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #0f0e0e;
 }
 
 /* Responsive adjustments */
-@media (max-width: 767.98px) {
-  .import-section {
-    padding: 4rem 0;
-  }
-
-  .import-card {
-    padding: 1rem;
-  }
-
-  .import-title {
-    font-size: 0.9rem;
+@media (max-width: 992px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .import-title {
-    font-size: 0.95rem;
+@media (max-width: 576px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+  .import-heading {
+    font-size: 1.5rem;
+    padding: 8px 15px;
   }
 }

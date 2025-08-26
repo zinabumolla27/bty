@@ -41,6 +41,18 @@ function Login() {
     <div className="login-page">
       {contextHolder}
       <div className="login-content">
+        <p
+          style={{
+            display: "block",
+            width: "100%",
+            fontWeight: "bold",
+            textAlign: "center",
+            fontSize: "16px",
+            color: "blue",
+          }}
+        >
+          Login Credentials !
+        </p>
         <div
           style={{
             display: "flex",
@@ -51,11 +63,11 @@ function Login() {
             color: "white",
           }}
         >
-          <div style={{ width: 90, height: 2, backgroundColor: "white" }} />
+          <div style={{ width: 90, height: 2, backgroundColor: "blue" }} />
 
           <Avatar size={64} src={mlogo} />
 
-          <div style={{ width: 90, height: 2, backgroundColor: "white" }} />
+          <div style={{ width: 90, height: 2, backgroundColor: "blue" }} />
         </div>
         <Form
           name="login"

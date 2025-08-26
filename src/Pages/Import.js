@@ -1,70 +1,54 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
-import {
-  FaAppleAlt,
-  FaFlask,
-  FaHospital,
-  FaRecycle,
-  FaFootballBall,
-  FaLaptop,
-  FaPlug,
-  FaCar,
-} from "react-icons/fa";
 import "./Import.css";
 
-const Import = () => {
-  const importCategories = [
-    {
-      title: " Basic Chemicals used for Industry and Chemical Products",
-      icon: <FaFlask className="import-icon" />,
-    },
-    {
-      title: " human health medical supplies and equipment",
-      icon: <FaHospital className="import-icon" />,
-    },
-    {
-      title: " material metal and non-metal scraps",
-      icon: <FaRecycle className="import-icon" />,
-    },
-    {
-      title: " sporting goods and equipments",
-      icon: <FaFootballBall className="import-icon" />,
-    },
-    {
-      title: " communication, computer and related equipments",
-      icon: <FaLaptop className="import-icon" />,
-    },
-    {
-      title: " electrical equipments and appliances",
-      icon: <FaPlug className="import-icon" />,
-    },
-    {
-      title:
-        " vehicles, vehicles spare parts, regulatory equipments and jewelry/décor supplies",
-      icon: <FaCar className="import-icon" />,
-    },
-    {
-      title: " Fruits, Vegetables & Cereals",
-      icon: <FaAppleAlt className="import-icon" />,
-    },
-  ];
+const cardData = [
+  {
+    title: "Basic Chemicals",
+    description: "High-quality chemicals for industrial and lab use.",
+  },
+  {
+    title: "Medical Supplies",
+    description: "Essential medical products and hospital equipment.",
+  },
+  {
+    title: "Metal Scraps",
+    description: "Recyclable metal scraps for manufacturing and reuse.",
+  },
+  {
+    title: "Sporting Goods",
+    description: "Equipment and gear for all types of sports.",
+  },
+  {
+    title: "Computers & Communication",
+    description: "Latest computers, gadgets, and communication tools.",
+  },
+  {
+    title: "Electrical Equipments",
+    description: "Reliable electrical tools and machinery for industries.",
+  },
+  {
+    title: "Vehicles & Spare Parts",
+    description: "Automobiles, parts, and accessories for various vehicles.",
+  },
+  {
+    title: "Fruits & Cereals",
+    description: "Fresh fruits, grains, and cereals imported from top farms.",
+  },
+];
 
+const Import = () => {
   return (
-    <section className="import-section">
-      <div className="import-wrapper">
-        <h2 className="section-title">Our Import Services</h2>
-        <Row className="g-4 justify-content-center mx-0">
-          {importCategories.map((category, index) => (
-            <Col key={index} xs={12} sm={6} md={4} lg={3}>
-              <div className="import-card">
-                <div className="icon-wrapper">{category.icon}</div>
-                <h3 className="import-title">{category.title}</h3>
-              </div>
-            </Col>
-          ))}
-        </Row>
+    <div className="import-section">
+      <p className="import-heading">Our Imports</p>
+      <div className="card-container">
+        {cardData.map((card, index) => (
+          <div key={index} className="card">
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 

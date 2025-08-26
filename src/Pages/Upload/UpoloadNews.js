@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../UpoloasNews.css";
 import {
   Row,
   Col,
@@ -175,96 +176,101 @@ const UploadNews = (props) => {
       style={{ width: "100%", marginTop: "100px" }}
     >
       {contextHolder}
-      <Form
-        form={form}
-        onFinish={handleSubmit}
-        layout="vertical"
-        validateMessages={{ required: "This field is required" }}
-      >
-        <Row gutter={[24, 16]}>
-          <Col span={24}>
-            <Form.Item
-              label="Media Upload"
-              required
-              tooltip="Supports images (JPG, PNG) and videos (MP4)"
-            >
-              <Upload
-                fileList={fileList}
-                beforeUpload={() => false}
-                onChange={handleFileChange}
-                accept="image/*,video/*"
-                maxCount={1}
-                listType="picture"
-                showUploadList={false}
-              >
-                <Button
-                  icon={<UploadOutlined />}
-                  loading={loading}
-                  block
-                  size="large"
+      <div style={{ width: "100%", marginBottom: "40px" }}>
+        <Form
+          form={form}
+          onFinish={handleSubmit}
+          layout="vertical"
+          validateMessages={{ required: "This field is required" }}
+        >
+          <div>
+            <Row gutter={[16, 16]} style={{ width: "100%" }}>
+              <Col xs={24} sm={24} md={24}>
+                <Form.Item
+                  label={<span style={{ color: "#111" }}>Media Upload</span>}
+                  required
+                  tooltip="Supports images (JPG, JPEG, PNG, GIF, SVG, WebP) and videos (MP4)"
                 >
-                  {loading ? "Uploading..." : "Click to Upload Image or Video"}
+                  <Upload
+                    fileList={fileList}
+                    beforeUpload={() => false}
+                    onChange={handleFileChange}
+                    accept="image/*,video/*"
+                    maxCount={1}
+                    listType="picture"
+                    showUploadList={false}
+                  >
+                    <Button
+                      icon={<UploadOutlined />}
+                      loading={loading}
+                      size="large"
+                    >
+                      {loading ? "Uploading..." : " Upload Image or Video"}
+                    </Button>
+                  </Upload>
+                  <div
+                    style={{
+                      fontSize: "12px",
+                      color: "#888",
+                      marginTop: "8px",
+                    }}
+                  >
+                    Max file size: 500MB. Supported formats: JPG, JPEG, PNG,
+                    GIF, SVG, WebP, MP4
+                  </div>
+                </Form.Item>
+              </Col>
+
+              <Col xs={24} sm={24} md={24}>
+                <Form.Item
+                  name="description"
+                  label={<span style={{ color: "#111" }}>Description</span>}
+                  rules={[
+                    { required: true, message: "Please provide a description" },
+                    {
+                      max: 10000,
+                      message: "Description cannot exceed 10000 characters",
+                    },
+                  ]}
+                >
+                  <TextArea
+                    placeholder="Enter a detailed description for your file"
+                    rows={5}
+                    showCount
+                    maxLength={10000}
+                  />
+                </Form.Item>
+              </Col>
+
+              <Col span={24} style={{ textAlign: "center", marginTop: "16px" }}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  size="large"
+                  loading={uploading}
+                  style={{
+                    borderRadius: "4px",
+                    fontWeight: "500",
+                  }}
+                >
+                  {uploading ? "Uploading..." : "Submit News"}
                 </Button>
-              </Upload>
-              <div
-                style={{ fontSize: "12px", color: "#888", marginTop: "8px" }}
-              >
-                Max file size: 500MB. Supported formats: JPG, PNG, MP4
-              </div>
-            </Form.Item>
-          </Col>
-
-          <Col span={24}>
-            <Form.Item
-              name="description"
-              label="Description"
-              rules={[
-                { required: true, message: "Please provide a description" },
-                {
-                  max: 500,
-                  message: "Description cannot exceed 500 characters",
-                },
-              ]}
-              
-            >
-              <TextArea
-                placeholder="Enter a detailed description for your file"
-                rows={5}
-                showCount
-                maxLength={500}
-                style={{ resize: "vertical" }}
-              />
-            </Form.Item>
-          </Col>
-
-          <Col span={24} style={{ textAlign: "center", marginTop: "16px" }}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              size="large"
-              loading={uploading}
-              style={{
-                width: "200px",
-                height: "40px",
-                borderRadius: "4px",
-                fontWeight: "500",
-              }}
-            >
-              {uploading ? "Uploading..." : "Submit News"}
-            </Button>
-          </Col>
-        </Row>
-      </Form>
-
-      <Table
-        style={{ marginTop: "40px", width: "100%" }}
-        columns={UploadedNewsColumn}
-        dataSource={files}
-        loading={loading}
-        rowKey="id"
-        pagination={{ pageSize: 10 }}
-        bordered
-      />
+              </Col>
+            </Row>
+          </div>
+        </Form>
+      </div>
+      <div>
+        <Table
+          style={{ marginTop: "40px", width: "100%" }}
+          columns={UploadedNewsColumn}
+          dataSource={files}
+          loading={loading}
+          rowKey="id"
+          pagination={{ pageSize: 10 }}
+          bordered
+        />
+      </div>
     </div>
   );
 };
