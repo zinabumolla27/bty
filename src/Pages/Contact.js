@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { Form, Input, Button, Typography, Divider, notification } from "antd";
 import { motion } from "framer-motion";
+import { PhoneOutlined } from "@ant-design/icons";
 import {
   MailOutlined,
-  PhoneOutlined,
   EnvironmentOutlined,
+  PhoneFilled,
 } from "@ant-design/icons";
 import "./Contact.css";
 import { connect, useDispatch } from "react-redux";
@@ -12,6 +13,7 @@ import {
   addContact,
   resetContactCreatedValue,
 } from "../features/contact/contactSlice";
+import { FaPhoneAlt } from "react-icons/fa";
 
 const { Title, Paragraph, Text } = Typography;
 const Context = React.createContext({ name: "Default" });
@@ -230,16 +232,28 @@ const Contact = (props) => {
                 </Title>
                 <div className="contact-methods">
                   <div className="contact-method">
-                    <PhoneOutlined />
-                    <Text strong>+251 911257609</Text>
+                    <Text strong>
+                      {" "}
+                      <PhoneFilled />
+                      +251 911257609
+                    </Text>
                   </div>
                   <div className="contact-method">
-                    <PhoneOutlined />
-                    <Text strong>+251 911257608</Text>
+                    <Text strong>
+                      {" "}
+                      <PhoneFilled />
+                      +251 911257608
+                    </Text>
                   </div>
                   <div className="contact-method">
-                    <PhoneOutlined />
-                    <Text strong>+251 911257607</Text>
+                    <Text strong>
+                      {" "}
+                      <PhoneFilled />
+                      +251 911257607
+                    </Text>
+                  </div>
+                  <div className="contact-method">
+                    <Text strong>☎️ 011263218</Text>
                   </div>
                   <div className="contact-method">
                     <MailOutlined />

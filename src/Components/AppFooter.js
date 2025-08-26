@@ -92,7 +92,7 @@ const AppFooter = () => {
                     <br />
                     +251 911257607
                     <br />
-                    LP: 011263218
+                    ☎️ 011263218
                   </Text>
                 </div>
                 <div className="contact-item">
