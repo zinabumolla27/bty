@@ -55,10 +55,19 @@
   color: #0f0e0e;
 }
 
+/* Make last card bigger */
+.card-large {
+  grid-column: 1 / -1;
+}
+
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .card-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-large {
+    grid-column: span 2;
   }
 }
 
@@ -66,8 +75,13 @@
   .card-container {
     grid-template-columns: 1fr;
   }
+
   .import-heading {
     font-size: 1.5rem;
     padding: 8px 15px;
+  }
+
+  .card-large {
+    grid-column: span 1;
   }
 }

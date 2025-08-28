@@ -53,7 +53,7 @@ const FAQ = () => {
       key: "7",
       question: "What are the services offered by BTY Trading PLC?",
       answer:
-        "BTY Trading PLC offers a wide range of services including mining and quarrying, manufacturing, construction, agriculture, transportation, cleaning services for oilseeds, cereals, and spices, as well as wholesale trade.",
+        "BTY Trading PLC offers a wide range of services including mining and quarrying, manufacturing, construction, agriculture, transportation as well as wholesale trade, cleaning services for oilseeds, cereals, and spices.",
     },
   ];
 

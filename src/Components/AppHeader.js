@@ -145,6 +145,7 @@ const AppHeader = () => {
             { label: "Pulses", key: "pulses" },
             { label: "Spices", key: "spices" },
             { label: "Cereals", key: "cereals" },
+            { label: "Minerals", key: "minerals" },
           ],
         },
         {
@@ -160,15 +161,15 @@ const AppHeader = () => {
           label: " Services",
           key: "services",
           children: [
+            {
+              label: "CleaningService",
+              key: "cleaningservice",
+            },
             { label: "Mining and Quarrying", key: "#" },
             { label: "Manufacturing", key: "#1" },
             { label: "Construction", key: "#2" },
             { label: "Agriculture", key: "#3" },
             { label: "Transportation", key: "#4" },
-            {
-              label: "Cleaning Service",
-              key: "#5",
-            },
           ],
         },
       ],
@@ -242,20 +243,20 @@ const AppHeader = () => {
                   style={{
                     color: "white",
                     fontWeight: "700",
-                    fontSize: "18px",
+                    fontSize: "23px",
                     lineHeight: "1.2",
                     letterSpacing: "0.5px",
                     transition: "all 0.3s ease",
                     fontStyle: "italic",
                   }}
                 >
-                  Bty Trading Plc
+                  BTY Trading Plc
                 </span>
                 <span
                   style={{
                     color: "rgba(255,255,255,0.85)",
-                    fontWeight: "500",
-                    fontSize: "14px",
+                    fontWeight: "700",
+                    fontSize: "18px",
                     lineHeight: "1.3",
                     letterSpacing: "0.3px",
                     fontStyle: "italic",

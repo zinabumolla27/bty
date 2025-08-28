@@ -34,6 +34,12 @@ const cardData = [
     title: "Fruits & Cereals",
     description: "Fresh fruits, grains, and cereals imported from top farms.",
   },
+  {
+    title:
+      "Industrial, Agricultural, Construction Machinery, and Other Related Works",
+    description:
+      "Importing high-quality industrial, agricultural, and construction machinery, along with related equipment, ensuring reliability and compliance with international standards.",
+  },
 ];
 
 const Import = () => {
@@ -42,7 +48,12 @@ const Import = () => {
       <p className="import-heading">Our Imports</p>
       <div className="card-container">
         {cardData.map((card, index) => (
-          <div key={index} className="card">
+          <div
+            key={index}
+            className={`card ${
+              index === cardData.length - 1 ? "card-large" : ""
+            }`}
+          >
             <h3>{card.title}</h3>
             <p>{card.description}</p>
           </div>

@@ -140,7 +140,9 @@ const CompanyProfile = () => {
                 }}
               >
                 sesame seeds, chickpeas, soybeans, green mung beans, niger
-                seeds, red kidney beans, and white pea beans
+                seeds, red kidney beans, white pea beans, Export trade in
+                minerals and mineral products and Export trade in metals,
+                non-metalic, metalic minerals and scraps.
               </Text>
               . We also import{" "}
               <Text

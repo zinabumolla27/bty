@@ -22,6 +22,8 @@ import CreateUsers from "../Pages/CreateUsers";
 import ViewUsers from "../Pages/ViewUsers";
 import Login from "../Pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import Minerals from "../Pages/Minerals";
+import CleaningService from "../Pages/CleaningService";
 
 function AppRoutes() {
   const token = localStorage.getItem("token");
@@ -45,6 +47,8 @@ function AppRoutes() {
       <Route path="/CompanyProfile" element={<CompanyProfile />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/minerals" element={<Minerals />} />
+      <Route path="/cleaningservice" element={<CleaningService />} />
 
       {/* Redirect logged-in users to /home if they try to visit /login */}
       <Route

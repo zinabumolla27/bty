@@ -6,6 +6,9 @@ import ab from "../Assets/ab.jpg";
 import abay from "../Assets/abay.png";
 import am from "../Assets/am.png";
 import buna from "../Assets/buna.png";
+import awash from "../Assets/awash.jpg";
+import dashn from "../Assets/dashn.png";
+import oromia from "../Assets/oromia.jpg";
 import ep from "../Assets/ep.jpg";
 import adcham from "../Assets/adcham.png";
 import "./Partner.css";
@@ -16,6 +19,9 @@ const partnerLogos = [
   { src: am, alt: "Amhara Bank" },
   { src: abay, alt: "Abay Bank" },
   { src: buna, alt: "Buna Bank" },
+  { src: awash, alt: "awash Bank" },
+  { src: dashn, alt: "dashn Bank" },
+  { src: oromia, alt: "Buna Bank" },
 ];
 
 const memberLogos = [

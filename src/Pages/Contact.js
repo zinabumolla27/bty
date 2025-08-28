@@ -13,7 +13,6 @@ import {
   addContact,
   resetContactCreatedValue,
 } from "../features/contact/contactSlice";
-import { FaPhoneAlt } from "react-icons/fa";
 
 const { Title, Paragraph, Text } = Typography;
 const Context = React.createContext({ name: "Default" });
@@ -279,6 +278,34 @@ const Contact = (props) => {
           referrerPolicy="no-referrer-when-downgrade"
           className="full-width-map"
         />
+      </div>
+      <div
+        style={{
+          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+          fontWeight: "bold",
+          fontSize: "40px",
+          background: "linear-gradient(90deg, #396285ff, #5aafb4ff)", // gradient from light to darker blue
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          paddingTop: "30px",
+          paddingBottom: "20px",
+          textAlign: "center",
+        }}
+      >
+        Location of Our Warehouse and Cleaning Facility{" "}
+      </div>
+
+      <div className="map-container" style={{ width: "100%", height: "450px" }}>
+        <iframe
+          title="Warehouse Location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.2249659360077!2d37.45154697358012!3d12.487380425312457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1643310035f5918f%3A0xfc87d539d47a8bbd!2zQlRZIFRyYWRpbmcgcGxjIENsZWFuaW5nIC8g4Ymi4Ymy4YuL4YutIOGJteGIrOGLsuGKleGMjSDhioMv4Yuo4YmwL-GLqOGMjS_hiJvhiIXhiaDhiK0g4Yib4Ymg4Yyg4Yiq4Yur!5e1!3m2!1sen!2set!4v1756368682728!5m2!1sen!2set"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
   );
