@@ -14,6 +14,14 @@ const CleaningServices = () => {
     { text: "Oilseed purification & quality control", color: "#4facfe" },
     { text: "Cereal cleaning & safety standardization", color: "#6a11cb" },
     { text: "Spice purification & contamination removal", color: "#f093fb" },
+    { text: "Cleaning of pulses and oil seeds/crops", color: "#f9d423" },
+    { text: "More than 6000 m² warehouse", color: "#fc4a1a" },
+    {
+      text: "More than 15,000 m² open space with enough parking",
+      color: "#00c6ff",
+    },
+    { text: "Skilled manpower", color: "#7f00ff" },
+    { text: "Secure and accessible", color: "#ff6a00" },
   ];
 
   // Responsive values
@@ -25,7 +33,6 @@ const CleaningServices = () => {
   const imageHeight = windowWidth > 768 ? "400px" : "250px";
   const mapHeight = windowWidth > 768 ? "450px" : "300px";
   const serviceFlexDirection = windowWidth > 768 ? "row" : "column";
-  const serviceAlignItems = windowWidth > 768 ? "flex-start" : "center";
   const serviceTextAlign = windowWidth > 768 ? "left" : "center";
 
   return (
@@ -90,10 +97,10 @@ const CleaningServices = () => {
         }}
       >
         BTY Trading PLC provides specialized cleaning services for oilseeds,
-        cereals, and spices, ensuring the highest quality processing and hygiene
-        for agricultural products. Our advanced techniques maintain purity and
-        compliance with international standards, helping clients achieve premium
-        quality results for their agricultural products.
+        cereals, pulses, and spices, ensuring the highest quality processing and
+        hygiene for agricultural products. Our advanced techniques maintain
+        purity and compliance with international standards, helping clients
+        achieve premium quality results for their agricultural products.
       </p>
 
       {/* Services List */}
@@ -105,7 +112,7 @@ const CleaningServices = () => {
           justifyContent: "center",
           gap: "20px",
           marginTop: "40px",
-          maxWidth: "800px",
+          maxWidth: "900px",
           marginLeft: "auto",
           marginRight: "auto",
         }}
