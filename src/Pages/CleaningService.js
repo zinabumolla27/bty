@@ -101,11 +101,10 @@ const CleaningServices = () => {
         style={{
           display: "flex",
           flexDirection: serviceFlexDirection,
-          alignItems: serviceAlignItems,
+          flexWrap: "wrap",
           justifyContent: "center",
           gap: "20px",
           marginTop: "40px",
-          flexWrap: "wrap",
           maxWidth: "800px",
           marginLeft: "auto",
           marginRight: "auto",
@@ -118,7 +117,8 @@ const CleaningServices = () => {
               display: "flex",
               alignItems: "center",
               textAlign: serviceTextAlign,
-              flex: windowWidth > 768 ? "1 1 0" : "unset",
+              minWidth: windowWidth > 768 ? "250px" : "100%",
+              flex: "1 1 auto",
               justifyContent: windowWidth > 768 ? "flex-start" : "center",
             }}
           >
@@ -139,7 +139,13 @@ const CleaningServices = () => {
             >
               ✓
             </div>
-            <span style={{ fontSize: "1.1rem", color: "#2d3748" }}>
+            <span
+              style={{
+                fontSize: windowWidth > 768 ? "1.1rem" : "1rem",
+                color: "#2d3748",
+                wordBreak: "break-word",
+              }}
+            >
               {item.text}
             </span>
           </div>

@@ -283,7 +283,7 @@ const Contact = (props) => {
         style={{
           fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
           fontWeight: "bold",
-          fontSize: "40px",
+          fontSize: "20px",
           background: "linear-gradient(90deg, #396285ff, #5aafb4ff)", // gradient from light to darker blue
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",

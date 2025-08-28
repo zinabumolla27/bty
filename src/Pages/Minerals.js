@@ -8,14 +8,14 @@ const mineralsData = [
     title: "Export Trade in Metals, Non-Metallic, Metallic Minerals and Scraps",
     description:
       "Trade and export of metals, non-metallic minerals, metallic minerals, and scraps to global markets.",
-    color: "#4ECDC4", // red-ish
+    color: "#4ECDC4",
   },
   {
     id: 2,
     title: "Export Trade in Minerals and Mineral Products",
     description:
       "Export of various minerals and mineral-based products, ensuring quality and compliance with international standards.",
-    color: "#4ECDC4", // teal
+    color: "#4ECDC4",
   },
 ];
 
@@ -32,7 +32,7 @@ const Minerals = () => {
           textAlign: "center",
           marginBottom: "40px",
           fontSize: "2em",
-          color: "#11dee9ff",
+          color: "#11c9e9ff",
         }}
       >
         Minerals Export Categories

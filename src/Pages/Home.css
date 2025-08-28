@@ -425,27 +425,6 @@ body {
   right: 40px;
 }
 
-/* Partners Section */
-.partners-title {
-  margin: 0px 0 0px;
-  font-size: 2.2rem;
-  text-align: center;
-  position: relative;
-  padding-bottom: 15px;
-  background-color: #f9f9f9;
-}
-
-.partners-title::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #1a936f, #114b5f);
-}
-
 /* Responsive Styles */
 @media (max-width: 992px) {
   .main-heading {

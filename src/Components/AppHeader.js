@@ -162,7 +162,7 @@ const AppHeader = () => {
           key: "services",
           children: [
             {
-              label: "CleaningService",
+              label: "Cleaning Service",
               key: "cleaningservice",
             },
             { label: "Mining and Quarrying", key: "#" },

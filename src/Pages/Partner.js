@@ -19,9 +19,9 @@ const partnerLogos = [
   { src: am, alt: "Amhara Bank" },
   { src: abay, alt: "Abay Bank" },
   { src: buna, alt: "Buna Bank" },
-  { src: awash, alt: "awash Bank" },
-  { src: dashn, alt: "dashn Bank" },
-  { src: oromia, alt: "Buna Bank" },
+  { src: awash, alt: "Awash Bank" },
+  { src: dashn, alt: "Dashen Bank" },
+  { src: oromia, alt: "Oromia Bank" },
 ];
 
 const memberLogos = [
@@ -38,16 +38,27 @@ const memberLogos = [
 const Partners = () => {
   return (
     <div className="partners-container">
-      {/* Partner Logos */}
-      <Row justify="center" gutter={[24, 24]} className="partner-logos-row">
+      <p
+        style={{
+          fontSize: "24px",
+          fontWeight: "bold",
+          marginBottom: "30px",
+          color: "#116cd4ff",
+          textTransform: "uppercase",
+          letterSpacing: "1px",
+        }}
+      >
+        Our Partners
+      </p>{" "}
+      <Row justify="start" gutter={[12, 12]} className="partner-logos-row">
         {partnerLogos.map((logo, index) => (
           <Col
             key={index}
             xs={12}
             sm={8}
             md={6}
-            lg={4}
-            xl={4}
+            lg={6}
+            xl={6}
             className="partner-col"
           >
             <motion.div
@@ -71,7 +82,6 @@ const Partners = () => {
           </Col>
         ))}
       </Row>
-
       {/* Member Section */}
       <div className="member-section">
         <motion.h3

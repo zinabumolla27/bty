@@ -37,15 +37,15 @@ const Testimonials = () => {
   return (
     <div
       style={{
-        background: "#f8f9fa",
-        padding: "60px 0",
+        background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+        padding: "30px 0",
         width: "100%",
         position: "relative",
       }}
     >
       <div
         style={{
-          maxWidth: 1200,
+          maxWidth: "1200px",
           margin: "0 auto",
           padding: "0 20px",
           textAlign: "center",

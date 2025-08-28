@@ -196,9 +196,9 @@ const Home = () => {
               level={1}
               className="main-heading"
               style={{
-                color: "#ffffff",
+                color: "white",
                 ...fontStyles.mainHeading,
-                textShadow: "0 2px 10px rgba(0,0,0,0.5)",
+                textShadow: "0 2px 10px rgba(0, 0, 0, 0.63)",
               }}
             >
               <span className="text-gradient">BTY TRADING PLC</span>
@@ -211,6 +211,7 @@ const Home = () => {
                 color: "rgba(255, 255, 255, 0.9)",
                 ...fontStyles.subtitle,
                 textShadow: "0 1px 3px rgb(248, 253, 253)",
+                fontWeight: "bold",
               }}
             >
               Exporting Ethiopia's Finest Agricultural Products Worldwide
@@ -256,7 +257,7 @@ const Home = () => {
               className="about-description"
               style={{
                 fontFamily: "'Open Sans', sans-serif",
-                textAlign: "justify",
+                textAlign: "left",
                 lineHeight: "1.6",
                 color: "#333",
               }}
@@ -411,20 +412,8 @@ const Home = () => {
         </Row>
       </div>
 
-      {/* Testimonials Section */}
       <Testimonials />
 
-      {/* Partners Section */}
-      <Title
-        level={2}
-        className="partners-title"
-        style={{
-          color: "#1a936f",
-          fontFamily: "'Playfair Display', serif",
-        }}
-      >
-        Our Partners
-      </Title>
       <Partners />
     </div>
   );
