@@ -257,9 +257,11 @@ const Home = () => {
               className="about-description"
               style={{
                 fontFamily: "'Open Sans', sans-serif",
-                textAlign: "left",
+                textAlign: "justify",
                 lineHeight: "1.6",
                 color: "#333",
+                hyphens: "auto",
+                textJustify: "inter-word",
               }}
             >
               BTY TRADING PLC, established in 2011, is a premier import export
