@@ -45,22 +45,15 @@ const titles = [
 const images = [oio, cer, image1, image3, pppp, img6];
 
 const titleColors = [
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
+  "#1a936f",
+  "#1a936f",
+  "#1a936f",
+  "#1a936f",
+  "#1a936f",
+  "#1a936f",
 ];
 
-const descriptionColors = [
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-];
+const descriptionColors = ["#555", "#555", "#555", "#555", "#555", "#555"];
 //Services
 const descriptions1 = [
   "Professional cleaning services  for Oilseeds, Spices, and Cereals .",
@@ -82,22 +75,15 @@ const titles1 = [
 const images1 = [clean, fab, mining, trans, immm, cons];
 
 const titleColors1 = [
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
+  "#1a936f",
+  "#1a936f",
+  "#1a936f",
+  "#1a936f",
+  "#1a936f",
+  "#1a936f",
 ];
 
-const descriptionColors1 = [
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-  "#114b5f",
-];
+const descriptionColors1 = ["#555", "#555", "#555", "#555", "#555", "#555"];
 
 const fontStyles = {
   mainHeading: {
@@ -198,7 +184,7 @@ const Home = () => {
               style={{
                 color: "white",
                 ...fontStyles.mainHeading,
-                textShadow: "0 2px 10px rgba(0, 0, 0, 0.63)",
+                textShadow: "0 2px 10px rgba(0, 0, 0, 0.7)",
               }}
             >
               <span className="text-gradient">BTY TRADING PLC</span>
@@ -208,9 +194,9 @@ const Home = () => {
             <Paragraph
               className="subtitle"
               style={{
-                color: "rgba(255, 255, 255, 0.9)",
+                color: "rgba(255, 255, 255, 0.95)",
                 ...fontStyles.subtitle,
-                textShadow: "0 1px 3px rgb(248, 253, 253)",
+                textShadow: "0 1px 5px rgba(0, 0, 0, 0.5)",
                 fontWeight: "bold",
               }}
             >
@@ -226,7 +212,7 @@ const Home = () => {
                   background:
                     "linear-gradient(135deg, #1a936f 0%, #114b5f 100%)",
                   border: "none",
-                  boxShadow: "0 4px 15px rgba(26, 147, 111, 0.4)",
+                  boxShadow: "0 4px 20px rgba(26, 147, 111, 0.6)",
                 }}
               >
                 Explore Our Products
@@ -259,13 +245,13 @@ const Home = () => {
                 fontFamily: "'Open Sans', sans-serif",
                 textAlign: "justify",
                 lineHeight: "1.6",
-                color: "#333",
-                hyphens: "auto",
+                color: "#444",
+                // hyphens: "auto",
                 textJustify: "inter-word",
               }}
             >
               BTY TRADING PLC, established in 2011, is a premier import export
-              company specializing in Ethiopia’s finest agricultural products.
+              company specializing in Ethiopia's finest agricultural products.
               We combine traditional farming wisdom with modern export standards
               to deliver exceptional quality oil seeds, pulses, and spices to
               global markets. Our operations support sustainable agriculture and
@@ -279,7 +265,7 @@ const Home = () => {
               style={{
                 background: "linear-gradient(135deg, #114b5f 0%, #1a936f 100%)",
                 border: "none",
-                boxShadow: "0 4px 15px rgba(17, 75, 95, 0.3)",
+                boxShadow: "0 4px 15px rgba(17, 75, 95, 0.4)",
               }}
             >
               Discover Our Story
