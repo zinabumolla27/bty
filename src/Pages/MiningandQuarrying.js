@@ -12,6 +12,7 @@ export default function MiningandQuarrying() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // ✅ Responsive grid
   const cols = width >= 1200 ? 4 : width >= 900 ? 3 : width >= 640 ? 2 : 1;
 
   const palette = {
@@ -39,20 +40,20 @@ export default function MiningandQuarrying() {
     hero: {
       position: "relative",
       borderRadius: 20,
-      padding: "40px 28px",
+      padding: width < 640 ? "28px 18px" : "40px 28px", // ✅ smaller on mobile
       background: `linear-gradient(135deg, ${palette.surface} 0%, ${palette.card} 100%)`,
       border: `1px solid ${palette.border}`,
       boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
       textAlign: "center",
     },
     heroTitle: {
-      fontSize: "2.5rem",
+      fontSize: width < 480 ? "1.8rem" : width < 768 ? "2rem" : "2.5rem", // ✅ scales nicely
       fontWeight: 800,
       marginBottom: "16px",
       lineHeight: 1.2,
     },
     heroText: {
-      fontSize: "1.1rem",
+      fontSize: width < 480 ? "0.95rem" : "1.1rem",
       lineHeight: 1.7,
       color: palette.subtext,
       maxWidth: "850px",
@@ -64,8 +65,10 @@ export default function MiningandQuarrying() {
       textAlign: "center",
     },
     image: {
-      width: "100%", // 👈 medium size
-      height: "350px",
+      width: "100%",
+      height: "auto", // ✅ keeps proportions
+      maxHeight: width < 640 ? "220px" : "350px", // ✅ smaller on phones
+      objectFit: "cover",
       borderRadius: 16,
       border: `2px solid ${palette.border}`,
       boxShadow: "0 8px 25px rgba(0,0,0,0.3)",
@@ -138,7 +141,7 @@ export default function MiningandQuarrying() {
           </p>
         </section>
 
-        {/* 👇 Medium Image in the middle */}
+        {/* Image */}
         <section style={styles.imageSection}>
           <img src={mining} alt="Mining and Quarrying" style={styles.image} />
         </section>
