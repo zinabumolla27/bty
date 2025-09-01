@@ -8,37 +8,39 @@ const cardData = [
   },
   {
     title: "Medical Supplies",
-    description: "Essential medical products and hospital equipment.",
+    description: "Human Health Medical Supplies and Equipment.",
   },
   {
-    title: "Metal Scraps",
-    description: "Recyclable metal scraps for manufacturing and reuse.",
+    title: "Metal and Non-Metal Scraps",
+    description:
+      "Recyclable metal and Non-Metal scraps for manufacturing and reuse.",
   },
   {
     title: "Sporting Goods",
-    description: "Equipment and gear for all types of sports.",
+    description: "Sporting Goods and Equipments for all types of Sports.",
   },
   {
-    title: "Computers & Communication",
-    description: "Latest computers, gadgets, and communication tools.",
+    title: " Communication & Computers ",
+    description: "Latest Communication, Computers and Related Equipments.",
   },
   {
     title: "Electrical Equipments",
-    description: "Reliable electrical tools and machinery for industries.",
+    description: "Lates and Reliable electrical Equipments and Appliances.",
   },
   {
     title: "Vehicles & Spare Parts",
-    description: "Automobiles, parts, and accessories for various vehicles.",
+    description:
+      "Differnt Types of Vehicles, Vehicle Spre Parts, Regulatory Equipments and Decore.",
   },
   {
-    title: "Fruits & Cereals",
-    description: "Fresh fruits, grains, and cereals imported from top farms.",
+    title: "Fruits & Vegetables",
+    description: "Different Types of Fruits and Vegtables.",
   },
   {
     title:
       "Industrial, Agricultural, Construction Machinery, and Other Related Works",
     description:
-      "Importing high-quality industrial, agricultural, and construction machinery, along with related equipment, ensuring reliability and compliance with international standards.",
+      "High-quality Industrial, Agricultural, and Construction Machinery, along with related equipment, ensuring reliability and compliance with international standards.",
   },
 ];
 

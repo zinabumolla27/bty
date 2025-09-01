@@ -22,10 +22,12 @@ import trans from "../Assets/trans.jpg";
 import cons from "../Assets/cons.jpg";
 import immm from "../Assets/immm.jpg";
 import fab from "../Assets/fab.png";
+import bg4 from "../Assets/bg4.jpg";
+import bg0 from "../Assets/bg0.png";
 
 const { Title, Paragraph, Text } = Typography;
 
-const backgroundImages = [bg1, bg2, bg3];
+const backgroundImages = [bg0, bg1, bg2, bg3, bg4];
 const descriptions = [
   "Organic sesame, sunflower, and soybean oils cold-pressed for maximum nutrition.",
   "Nutritious Wheat, Barley, Teff, and Maize cultivated in Ethiopia's fertile highlands.",

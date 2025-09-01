@@ -5,33 +5,20 @@ import "./CleaningServices.css";
 const CleaningServices = () => {
   const services = [
     {
-      text: "Oilseed purification & quality control",
-      color: "#4facfe",
-      icon: "🔍",
-    },
-    {
-      text: "Cereal cleaning & safety standardization",
-      color: "#6a11cb",
-      icon: "🌾",
-    },
-    {
-      text: "Spice purification & contamination removal",
-      color: "#f093fb",
-      icon: "🌶️",
-    },
-    {
-      text: "Cleaning of pulses and oil seeds/crops",
+      text: "Cleaning of pulses, oil seed/scrops and Spices",
       color: "#f9d423",
       icon: "🥜",
     },
-    { text: "More than 6000 m² warehouse", color: "#fc4a1a", icon: "🏭" },
     {
-      text: "More than 15,000 m² open space with enough parking",
-      color: "#00c6ff",
-      icon: "🅿️",
+      text: "Provide Secure Storage For Items after Cleaning",
+      color: "#43e97b",
+      icon: "🏢",
     },
-    { text: "Skilled manpower", color: "#7f00ff", icon: "👨‍🔧" },
-    { text: "Secure and accessible", color: "#ff6a00", icon: "🔒" },
+    {
+      text: " Quality Control",
+      color: "#4facfe",
+      icon: "🔍",
+    },
   ];
 
   return (
@@ -57,6 +44,24 @@ const CleaningServices = () => {
           maintain purity and compliance with international standards, helping
           clients achieve premium quality results for their agricultural
           products.
+        </p>
+        <p>
+          <ul
+            style={{
+              listStyleType: "disc",
+              paddingLeft: "20px",
+              lineHeight: "1.8",
+            }}
+          >
+            <li>
+              More than <strong>6,000 m²</strong> modern warehouse.
+            </li>
+            <li>
+              Over <strong>15,000 m²</strong> open space with ample parking.
+            </li>
+            <li>Skilled and experienced manpower.</li>
+            <li>Secure and easily accessible facilities.</li>
+          </ul>
         </p>
       </div>
 

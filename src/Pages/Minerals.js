@@ -4,7 +4,7 @@ import { Row, Col, Card } from "antd";
 const mineralsData = [
   {
     id: 1,
-    title: "Export Trade in Metals, Non-Metallic, Metallic Minerals and Scraps",
+    title: "Metals, Non-Metallic, Metallic Minerals and Scraps",
     description:
       "Trade and export of metals, non-metallic minerals, metallic minerals, and scraps to global markets.",
     color: "#1a73e8",
@@ -13,7 +13,7 @@ const mineralsData = [
   },
   {
     id: 2,
-    title: "Export Trade in Minerals and Mineral Products",
+    title: "Minerals and Mineral Products",
     description:
       "Export of various minerals and mineral-based products, ensuring quality and compliance with international standards.",
     color: "#34a853",

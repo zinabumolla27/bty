@@ -84,19 +84,18 @@ const CompanyProfile = () => {
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
-                BTY TRADING PLC
+                BTY TRADING PLC ,{" "}
+                <span style={{ color: "black" }}>established on </span>
               </Text>
-              , established on{" "}
               <Text
                 strong
                 style={{
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
-                December 16, 2011
+                December 16, 2011 , is a registered import export company under
+                the Ethiopian Ministry of Trade. We specialize in exporting{" "}
               </Text>
-              , is a registered import export company under the Ethiopian
-              Ministry of Trade. We specialize in exporting{" "}
               <Text
                 strong
                 style={{
@@ -104,9 +103,9 @@ const CompanyProfile = () => {
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
-                oilseeds, pulses, spices, Coffee and Tea, Chat and Cereals
+                Oilseeds, Pulses, Spices, Coffee and Tea, Chat and Cereals to
+                countries like{" "}
               </Text>{" "}
-              to countries like{" "}
               <Text
                 strong
                 style={{
@@ -128,23 +127,21 @@ const CompanyProfile = () => {
                 textJustify: "inter-word",
               }}
             >
-              Our products include{" "}
               <Text
                 strong
                 style={{
                   color: "#2b6cb0",
                   fontFamily: "'Poppins', sans-serif",
                   textAlign: "justify",
-                  hyphens: "auto",
                   textJustify: "inter-word",
                 }}
               >
-                sesame seeds, chickpeas, soybeans, green mung beans, niger
-                seeds, red kidney beans, white pea beans, Export trade in
-                minerals and mineral products and Export trade in metals,
-                non-metalic, metalic minerals and scraps.
+                <span style={{ color: "black" }}>Our products include</span>{" "}
+                Sesame Seeds, Chickpeas, Soybeans, Green Mung Beans, Niger
+                Seeds, Red Kidney Beans, White Pea Beans, Export Trade in
+                Minerals and Mineral Products and Export Trade in Metals,
+                Non-Metalic, Metalic Minerals and Scraps
               </Text>
-              . We also import{" "}
               <Text
                 strong
                 style={{
@@ -152,9 +149,12 @@ const CompanyProfile = () => {
                   fontFamily: "'Poppins', sans-serif",
                 }}
               >
+                <span style={{ color: "black" }}> . We also import </span>
                 chemicals, cars, machinery, and steel
+                <span style={{ color: "black" }}>
+                  to support growing industrial demand.
+                </span>
               </Text>{" "}
-              to support growing industrial demand.
             </Paragraph>
           </Col>
           <Col xs={24} md={12}>
@@ -207,9 +207,11 @@ const CompanyProfile = () => {
                 >
                   modernize, diversify, and and grow
                 </Text>{" "}
-                our business by focusing on high-quality agricultural
-                production, expanding our product range, and improving our
-                logistics network including{" "}
+                <span style={{ fontFamily: " sans-serif" }}>
+                  our business by focusing on high-quality agricultural
+                  production, expanding our product range, and improving our
+                  logistics network including{" "}
+                </span>
                 <Text
                   strong
                   style={{
@@ -242,9 +244,11 @@ const CompanyProfile = () => {
                 >
                   long-term vision
                 </Text>{" "}
-                is to become a leading player in global trade by increasing the
-                variety and volume of our exports, entering new international
-                markets, and making a strong contribution to{" "}
+                <span style={{ fontFamily: " sans-serif" }}>
+                  is to become a leading player in global trade by increasing
+                  the variety and volume of our exports, entering new
+                  international markets, and making a strong contribution to{" "}
+                </span>
                 <Text
                   strong
                   style={{

@@ -165,11 +165,11 @@ const AppHeader = () => {
               label: "Cleaning Service",
               key: "cleaningservice",
             },
-            { label: "Mining and Quarrying", key: "#" },
-            { label: "Manufacturing", key: "#1" },
-            { label: "Construction", key: "#2" },
-            { label: "Agriculture", key: "#3" },
-            { label: "Transportation", key: "#4" },
+            { label: "Mining and Quarrying", key: "miningandquarrying" },
+            { label: "Manufacturing", key: "manufacturing" },
+            { label: "Construction", key: "construction" },
+            { label: "Agriculture", key: "agriculture" },
+            { label: "Transportation", key: "transportation" },
           ],
         },
       ],
@@ -242,12 +242,12 @@ const AppHeader = () => {
                 <span
                   style={{
                     color: "white",
-                    fontWeight: "700",
+                    fontWeight: "600",
                     fontSize: "23px",
                     lineHeight: "1.2",
                     letterSpacing: "0.5px",
                     transition: "all 0.3s ease",
-                    fontStyle: "italic",
+                    // fontStyle: "italic",
                   }}
                 >
                   BTY Trading Plc
@@ -255,11 +255,11 @@ const AppHeader = () => {
                 <span
                   style={{
                     color: "rgba(255,255,255,0.85)",
-                    fontWeight: "700",
+                    fontWeight: "600",
                     fontSize: "18px",
                     lineHeight: "1.3",
                     letterSpacing: "0.3px",
-                    fontStyle: "italic",
+                    // fontStyle: "italic",
                   }}
                 >
                   Import & Export

@@ -24,6 +24,11 @@ import Login from "../Pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import Minerals from "../Pages/Minerals";
 import CleaningService from "../Pages/CleaningService";
+import MiningandQuarrying from "../Pages/MiningandQuarrying";
+import Manufacturing from "../Pages/Manufacturing";
+import Construction from "../Pages/Construction";
+import Agriculture from "../Pages/Agriculture";
+import Transportation from "../Pages/Transportation";
 
 function AppRoutes() {
   const token = localStorage.getItem("token");
@@ -49,6 +54,11 @@ function AppRoutes() {
       <Route path="/services" element={<Services />} />
       <Route path="/minerals" element={<Minerals />} />
       <Route path="/cleaningservice" element={<CleaningService />} />
+      <Route path="/miningandquarrying" element={<MiningandQuarrying />} />
+      <Route path="/manufacturing" element={<Manufacturing />} />
+      <Route path="/construction" element={<Construction />} />
+      <Route path="/agriculture" element={<Agriculture />} />
+      <Route path="/transportation" element={<Transportation />} />
 
       {/* Redirect logged-in users to /home if they try to visit /login */}
       <Route
