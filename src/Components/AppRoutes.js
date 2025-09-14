@@ -29,6 +29,8 @@ import Manufacturing from "../Pages/Manufacturing";
 import Construction from "../Pages/Construction";
 import Agriculture from "../Pages/Agriculture";
 import Transportation from "../Pages/Transportation";
+import ForgotPasswordEmail from "../Pages/ForgotPasswordEmail";
+import ForgotPasswordForm from "../Pages/ForgotPasswordForm";
 
 function AppRoutes() {
   const token = localStorage.getItem("token");
@@ -59,7 +61,8 @@ function AppRoutes() {
       <Route path="/construction" element={<Construction />} />
       <Route path="/agriculture" element={<Agriculture />} />
       <Route path="/transportation" element={<Transportation />} />
-
+      <Route path="/forgot-password" element={<ForgotPasswordEmail />} />
+      <Route path="/rest-password" element={<ForgotPasswordForm />} />
       {/* Redirect logged-in users to /home if they try to visit /login */}
       <Route
         path="/login"

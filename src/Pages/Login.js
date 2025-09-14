@@ -21,12 +21,12 @@ function Login() {
         navigate(`/home`);
       } else {
         error(response.message);
-        setLoading(false); // 👈 Stop loading
+        setLoading(false);
       }
     } catch (err) {
       error("UnAuthenticated");
     } finally {
-      setLoading(false); // 👈 Stop loading
+      setLoading(false);
     }
   };
 
@@ -111,6 +111,18 @@ function Login() {
               loading={loading}
             >
               {loading ? "Authenticating..." : " Login"}
+            </Button>
+          </Form.Item>
+
+          {/* Forgot Password link */}
+          <Form.Item>
+            <Button
+              type="link"
+              className="forgot-password"
+              onClick={() => navigate("/forgot-password")}
+              block
+            >
+              Forgot Password?
             </Button>
           </Form.Item>
         </Form>

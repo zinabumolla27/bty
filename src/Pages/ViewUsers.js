@@ -8,9 +8,15 @@ import {
   Input,
   Button,
   Popconfirm,
+  Modal,
+  Form,
 } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
-import { fetchUsers, deleteUser } from "../features/user/userSlice";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
+import { fetchUsers, deleteUser, updateUser } from "../features/user/userSlice";
 
 // ✅ Custom Highlighter (replaces `react-highlight-words`)
 const Highlighter = ({ text = "", searchWords = [] }) => {
@@ -42,11 +48,16 @@ const ViewUsers = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
+  const [form] = Form.useForm();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingUser, setEditingUser] = useState(null);
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
+  // 🔎 Table search handlers
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -56,10 +67,6 @@ const ViewUsers = () => {
   const handleReset = (clearFilters) => {
     clearFilters();
     setSearchText("");
-  };
-
-  const confirmDelete = (id) => {
-    dispatch(deleteUser(id));
   };
 
   const getColumnSearchProps = (dataIndex) => ({
@@ -119,6 +126,36 @@ const ViewUsers = () => {
       ),
   });
 
+  // 🗑 Delete handler
+  const confirmDelete = (id) => {
+    dispatch(deleteUser(id));
+  };
+
+  // ✏️ Edit handler
+  const editUser = (user) => {
+    setEditingUser(user);
+    form.setFieldsValue(user); // prefill modal form
+    setIsModalOpen(true);
+  };
+
+  const handleUpdate = (values) => {
+    if (!editingUser?.id) return;
+
+    const { password, confirmPassword, ...rest } = values;
+    console.log("update values", password, confirmPassword, rest);
+
+    const payload = {
+      ...editingUser,
+      ...rest,
+      ...(password ? { password } : {}), // only include password if provided
+    };
+
+    console.log("update payload", payload);
+
+    dispatch(updateUser({ id: editingUser.id, data: payload }));
+    setIsModalOpen(false);
+  };
+
   const userTableColumns = [
     {
       title: "First Name",
@@ -168,17 +205,22 @@ const ViewUsers = () => {
     {
       title: "Actions",
       key: "actions",
-      render: (text, record) => (
-        <Popconfirm
-          title="Are you sure to delete this user?"
-          onConfirm={() => confirmDelete(record.id)}
-          okText="Yes"
-          cancelText="No"
-        >
-          <Button type="primary" danger>
-            Delete
-          </Button>
-        </Popconfirm>
+      render: (_, record) => (
+        <Space>
+          <Popconfirm
+            title="Are you sure to delete this user?"
+            onConfirm={() => confirmDelete(record.id)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <DeleteOutlined style={{ color: "red", cursor: "pointer" }} />
+          </Popconfirm>
+
+          <EditOutlined
+            style={{ color: "blue", cursor: "pointer" }}
+            onClick={() => editUser(record)}
+          />
+        </Space>
       ),
     },
   ];
@@ -188,22 +230,86 @@ const ViewUsers = () => {
   }
 
   return (
-    <Card title="View Users" style={{ margin: 20 }} bordered={false}>
-      <Breadcrumb style={{ marginBottom: 16 }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>Users</Breadcrumb.Item>
-        <Breadcrumb.Item>View</Breadcrumb.Item>
-      </Breadcrumb>
+    <>
+      {/* ✏️ Edit User Modal */}
+      <Modal
+        title="Edit User"
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        footer={[
+          <Button key="cancel" onClick={() => setIsModalOpen(false)}>
+            Cancel
+          </Button>,
+          <Button key="submit" type="primary" onClick={() => form.submit()}>
+            Update
+          </Button>,
+        ]}
+      >
+        <Form form={form} layout="vertical" onFinish={handleUpdate}>
+          <Form.Item
+            label="First Name"
+            name="firstName"
+            rules={[{ required: true, message: "Please enter the first name" }]}
+          >
+            <Input placeholder="Enter user first name" />
+          </Form.Item>
 
-      <Table
-        columns={userTableColumns}
-        dataSource={list}
-        loading={loading}
-        rowKey="id"
-        pagination={{ pageSize: 10 }}
-        bordered
-      />
-    </Card>
+          <Form.Item
+            label="Last Name"
+            name="lastName"
+            rules={[{ required: true, message: "Please enter the last name" }]}
+          >
+            <Input placeholder="Enter user last name" />
+          </Form.Item>
+
+          <Form.Item
+            label="New Password"
+            name="password"
+            rules={[
+              { min: 6, message: "Password must be at least 6 characters" },
+            ]}
+          >
+            <Input.Password placeholder="Enter new password" />
+          </Form.Item>
+
+          <Form.Item
+            label="Confirm New Password"
+            name="confirmPassword"
+            dependencies={["password"]} // ✅ Fix here
+            rules={[
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error("Passwords do not match!"));
+                },
+              }),
+            ]}
+          >
+            <Input.Password placeholder="Confirm new password" />
+          </Form.Item>
+        </Form>
+      </Modal>
+
+      {/* 📋 Users Table */}
+      <Card title="View Users" style={{ margin: 20 }} bordered={false}>
+        <Breadcrumb style={{ marginBottom: 16 }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>Users</Breadcrumb.Item>
+          <Breadcrumb.Item>View</Breadcrumb.Item>
+        </Breadcrumb>
+
+        <Table
+          columns={userTableColumns}
+          dataSource={list}
+          loading={loading}
+          rowKey="id"
+          pagination={{ pageSize: 10 }}
+          bordered
+        />
+      </Card>
+    </>
   );
 };
 
