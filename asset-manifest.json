@@ -1,11 +1,10 @@
 {
   "files": {
-    "main.css": "/bty/static/css/main.39bcd547.css",
-    "main.js": "/bty/static/js/main.0d7f9715.js",
+    "main.css": "/bty/static/css/main.64ed5de4.css",
+    "main.js": "/bty/static/js/main.41b23a52.js",
     "static/js/453.f8d25e99.chunk.js": "/bty/static/js/453.f8d25e99.chunk.js",
     "static/media/immm.jpg": "/bty/static/media/immm.cc28a43f04516bdb43d0.jpg",
     "static/media/bg0.png": "/bty/static/media/bg0.eb8da6d3fb13bd7902ad.png",
-    "static/media/loback.png": "/bty/static/media/loback.eef93bec38a74f281263.png",
     "static/media/kidneyBeans.png": "/bty/static/media/kidneyBeans.a9b150b4c0fd27864fac.png",
     "static/media/beann.jpeg": "/bty/static/media/beann.4d666a0fd035c5bbe8a9.jpeg",
     "static/media/trans.jpg": "/bty/static/media/trans.68d2db43f8a8aff2425a.jpg",
@@ -71,12 +70,12 @@
     "static/media/teff5.webp": "/bty/static/media/teff5.9994b2c5c35bb7a97e59.webp",
     "static/media/fab.png": "/bty/static/media/fab.fe48b4da69211635c398.png",
     "index.html": "/bty/index.html",
-    "main.39bcd547.css.map": "/bty/static/css/main.39bcd547.css.map",
-    "main.0d7f9715.js.map": "/bty/static/js/main.0d7f9715.js.map",
+    "main.64ed5de4.css.map": "/bty/static/css/main.64ed5de4.css.map",
+    "main.41b23a52.js.map": "/bty/static/js/main.41b23a52.js.map",
     "453.f8d25e99.chunk.js.map": "/bty/static/js/453.f8d25e99.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.39bcd547.css",
-    "static/js/main.0d7f9715.js"
+    "static/css/main.64ed5de4.css",
+    "static/js/main.41b23a52.js"
   ]
 }
