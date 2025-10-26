@@ -7,16 +7,42 @@ import {
   requestPasswordResetAPI,
   resetPasswordAPI,
 } from "./userAPI";
+import { message } from "antd";
 
 // ✅ User CRUD
 export const fetchUsers = createAsyncThunk("user/fetchUsers", fetchUsersAPI);
 export const addUser = createAsyncThunk("user/addUser", addUserAPI);
 export const deleteUser = createAsyncThunk("user/deleteUser", deleteUserAPI);
 export const updateUser = createAsyncThunk("user/updateUser", updateUserAPI);
+
 export const requestPasswordReset = createAsyncThunk(
-  "user/requestPasswordReset",
-  requestPasswordResetAPI
+  "/requestPasswordReset",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await requestPasswordResetAPI(data);
+      const code = response.code;
+      if (code !== 200) {
+        return rejectWithValue(
+          { code: code, error: response.message } || {
+            error: "Error sending email",
+          }
+        );
+      }
+
+      return {
+        code: code,
+        message: response.message,
+      };
+    } catch (err) {
+      return rejectWithValue(
+        { code: err.response.status, error: err.response?.data.errors } || {
+          error: "Error sending email",
+        }
+      );
+    }
+  }
 );
+
 export const resetPassword = createAsyncThunk(
   "user/resetPassword",
   resetPasswordAPI
@@ -31,6 +57,8 @@ const userSlice = createSlice({
     userCreated: false,
     resetSuccess: null,
     resetError: null,
+    isEmailSent: false,
+    resetLoading: false,
   },
   reducers: {
     resetUserCreatedValue: (state) => {
@@ -73,9 +101,18 @@ const userSlice = createSlice({
         const index = state.list.findIndex((u) => u.id === action.payload.id);
         if (index !== -1) state.list[index] = action.payload;
       })
+      .addCase(requestPasswordReset.pending, (state, action) => {
+        state.resetLoading = true;
+      })
       .addCase(requestPasswordReset.fulfilled, (state, action) => {
-        state.loading = false;
+        state.resetLoading = false;
+        state.isEmailSent = true;
         state.resetSuccess = action.payload.message;
+      })
+      .addCase(requestPasswordReset.rejected, (state, action) => {
+        state.resetLoading = false;
+        state.isEmailSent = false;
+        state.resetError = action.payload.error;
       })
       .addCase(resetPassword.fulfilled, (state, action) => {
         state.loading = false;

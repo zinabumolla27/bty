@@ -36,26 +36,30 @@ export const updateUserAPI = async ({ id, data }) => {
 };
 
 export const requestPasswordResetAPI = async (email) => {
-  const res = await fetch(`${AUTH_USER_API}/forgot-password`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email }),
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to request password reset");
+  try {
+    const res = await fetch(`${AUTH_USER_API}/forgot-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return data;
+  } catch (error) {
+    console.error("Error in requestPasswordResetAPI:", error);
+    throw error;
   }
-  return res.json(); // { success: true, message: "Verification code sent" }
 };
 
 // 2. Reset password
-export const resetPasswordAPI = async ({ email, code, password }) => {
+export const resetPasswordAPI = async (data) => {
+  console.log("first", data);
   const res = await fetch(`${AUTH_USER_API}/reset-password`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, code, password }),
+    body: JSON.stringify(data),
   });
 
+  console.log("firstfirst", res);
   if (!res.ok) {
     throw new Error("Failed to reset password");
   }

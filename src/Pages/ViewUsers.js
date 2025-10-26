@@ -231,7 +231,6 @@ const ViewUsers = () => {
 
   return (
     <>
-      {/* ✏️ Edit User Modal */}
       <Modal
         title="Edit User"
         open={isModalOpen}
@@ -247,7 +246,7 @@ const ViewUsers = () => {
       >
         <Form form={form} layout="vertical" onFinish={handleUpdate}>
           <Form.Item
-            label="First Name"
+            label={<span style={{ color: "black" }}>First Name</span>}
             name="firstName"
             rules={[{ required: true, message: "Please enter the first name" }]}
           >
@@ -255,7 +254,7 @@ const ViewUsers = () => {
           </Form.Item>
 
           <Form.Item
-            label="Last Name"
+            label={<span style={{ color: "black" }}>Last Name</span>}
             name="lastName"
             rules={[{ required: true, message: "Please enter the last name" }]}
           >
@@ -263,7 +262,7 @@ const ViewUsers = () => {
           </Form.Item>
 
           <Form.Item
-            label="New Password"
+            label={<span style={{ color: "black" }}>New Password</span>}
             name="password"
             rules={[
               { min: 6, message: "Password must be at least 6 characters" },
@@ -273,9 +272,9 @@ const ViewUsers = () => {
           </Form.Item>
 
           <Form.Item
-            label="Confirm New Password"
+            label={<span style={{ color: "black" }}>Confirm New Password</span>}
             name="confirmPassword"
-            dependencies={["password"]} // ✅ Fix here
+            dependencies={["password"]}
             rules={[
               ({ getFieldValue }) => ({
                 validator(_, value) {

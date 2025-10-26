@@ -198,7 +198,7 @@ const UploadNews = (props) => {
                     accept="image/*,video/*"
                     maxCount={1}
                     listType="picture"
-                    showUploadList={false}
+                    showUploadList={true}
                   >
                     <Button
                       icon={<UploadOutlined />}

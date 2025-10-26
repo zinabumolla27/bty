@@ -6,7 +6,7 @@ import mlogo from "../Assets/mlogo.png";
 import { authUserAPI } from "../features/auth/auth";
 import { useNavigate } from "react-router-dom";
 function Login() {
-  const [loading, setLoading] = useState(false); // 👈 Loading state
+  const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
 
@@ -41,18 +41,6 @@ function Login() {
     <div className="login-page">
       {contextHolder}
       <div className="login-content">
-        <p
-          style={{
-            display: "block",
-            width: "100%",
-            fontWeight: "bold",
-            textAlign: "center",
-            fontSize: "16px",
-            color: "blue",
-          }}
-        >
-          Login Credentials !
-        </p>
         <div
           style={{
             display: "flex",
@@ -113,10 +101,9 @@ function Login() {
               {loading ? "Authenticating..." : " Login"}
             </Button>
           </Form.Item>
-
-          {/* Forgot Password link */}
           <Form.Item>
             <Button
+              style={{ color: "white" }}
               type="link"
               className="forgot-password"
               onClick={() => navigate("/forgot-password")}

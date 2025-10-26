@@ -27,7 +27,7 @@ import bg0 from "../Assets/bg0.png";
 
 const { Title, Paragraph, Text } = Typography;
 
-const backgroundImages = [bg0, bg1, bg2, bg3, bg4];
+const backgroundImages = [bg4, bg0, bg1, bg2, bg3, bg4];
 const descriptions = [
   "Organic sesame, sunflower, and soybean oils cold-pressed for maximum nutrition.",
   "Nutritious Wheat, Barley, Teff, and Maize cultivated in Ethiopia's fertile highlands.",
@@ -196,7 +196,7 @@ const Home = () => {
             <Paragraph
               className="subtitle"
               style={{
-                color: "rgba(255, 255, 255, 0.95)",
+                color: "rgba(26, 227, 220, 0.95)",
                 ...fontStyles.subtitle,
                 textShadow: "0 1px 5px rgba(0, 0, 0, 0.5)",
                 fontWeight: "bold",

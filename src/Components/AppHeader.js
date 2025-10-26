@@ -25,7 +25,6 @@ const AppHeader = () => {
   const navigate = useNavigate();
   const location = useLocation(); // ✅ Hook for pathname changes
 
-  // ✅ Scroll detection effect
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;

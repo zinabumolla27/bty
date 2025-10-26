@@ -62,7 +62,7 @@ function AppRoutes() {
       <Route path="/agriculture" element={<Agriculture />} />
       <Route path="/transportation" element={<Transportation />} />
       <Route path="/forgot-password" element={<ForgotPasswordEmail />} />
-      <Route path="/rest-password" element={<ForgotPasswordForm />} />
+      <Route path="/reset-password" element={<ForgotPasswordForm />} />
       {/* Redirect logged-in users to /home if they try to visit /login */}
       <Route
         path="/login"

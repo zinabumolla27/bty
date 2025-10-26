@@ -5,7 +5,6 @@
   align-items: center;
   padding-top: 50px;
   min-height: 100vh;
-  background: url("../Assets/loback.png") repeat center center fixed;
   background-size: 400px;
 }
 .login-content {
@@ -13,7 +12,7 @@
   max-width: 350px;
   padding: 2rem;
   border-radius: 16px;
-  background: rgba(250, 251, 251, 0.4);
+  background-color: #51a5c4;
 }
 
 /* Form styles */
@@ -44,7 +43,6 @@
   letter-spacing: 1px;
   transition: all 0.3s ease;
   width: 100%;
-  max-width: 200px;
 }
 
 .login-button:hover {

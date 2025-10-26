@@ -30,12 +30,6 @@
   transition: var(--transition);
 }
 
-.app-header.scrolled {
-  height: 70px;
-  background: rgba(59, 50, 70, 0.95);
-  backdrop-filter: blur(10px);
-}
-
 /* Container and Layout */
 .header-container {
   max-width: 100%;

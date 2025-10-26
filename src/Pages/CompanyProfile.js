@@ -156,6 +156,29 @@ const CompanyProfile = () => {
                 </span>
               </Text>{" "}
             </Paragraph>
+            <Paragraph
+              className="company-description"
+              style={{
+                color: "#4a5568",
+                fontFamily: "'Poppins', sans-serif",
+                textAlign: "justify",
+                textJustify: "inter-word",
+              }}
+            >
+              <Text
+                strong
+                style={{
+                  color: "#2b6cb0",
+                  fontFamily: "'Poppins', sans-serif",
+                  textAlign: "justify",
+                  textJustify: "inter-word",
+                }}
+              >
+                <span style={{ color: "black" }}>Our Services include</span>{" "}
+                Cleaning Services, Mining & Quarrying, Manufacturing,
+                Construction, Agriculture Services, Transportation Services
+              </Text>
+            </Paragraph>
           </Col>
           <Col xs={24} md={12}>
             <div className="company-image-container">

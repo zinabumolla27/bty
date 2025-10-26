@@ -21,7 +21,7 @@ function App() {
     "/viewUsers",
     "/createUsers",
     "/login",
-
+    "/ForgotPasswordForm",
   ];
 
   const hideFooter = noFooterRoutes.includes(location.pathname);
