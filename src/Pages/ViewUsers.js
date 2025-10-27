@@ -142,15 +142,12 @@ const ViewUsers = () => {
     if (!editingUser?.id) return;
 
     const { password, confirmPassword, ...rest } = values;
-    console.log("update values", password, confirmPassword, rest);
 
     const payload = {
       ...editingUser,
       ...rest,
       ...(password ? { password } : {}), // only include password if provided
     };
-
-    console.log("update payload", payload);
 
     dispatch(updateUser({ id: editingUser.id, data: payload }));
     setIsModalOpen(false);
@@ -231,6 +228,7 @@ const ViewUsers = () => {
 
   return (
     <>
+      {/* Edit User Modal */}
       <Modal
         title="Edit User"
         open={isModalOpen}
@@ -243,48 +241,108 @@ const ViewUsers = () => {
             Update
           </Button>,
         ]}
+        // ✅ Fixed and responsive modal styling
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          margin: 0,
+          padding: 0,
+          width: "90vw", // responsive width
+          maxWidth: "500px",
+          zIndex: 2000,
+        }}
+        bodyStyle={{
+          maxHeight: "70vh",
+          overflowY: "auto",
+          padding: "16px",
+        }}
+        maskStyle={{
+          backgroundColor: "rgba(0,0,0,0.45)",
+        }}
+        destroyOnClose
+        centered
       >
-        <Form form={form} layout="vertical" onFinish={handleUpdate}>
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={handleUpdate}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px",
+            width: "100%",
+          }}
+        >
           <Form.Item
-            label={<span style={{ color: "black" }}>First Name</span>}
+            label={
+              <span style={{ color: "black", fontWeight: 500 }}>
+                First Name
+              </span>
+            }
             name="firstName"
             rules={[{ required: true, message: "Please enter the first name" }]}
+            style={{ marginBottom: 12 }}
           >
             <Input placeholder="Enter user first name" />
           </Form.Item>
 
           <Form.Item
-            label={<span style={{ color: "black" }}>Last Name</span>}
+            label={
+              <span style={{ color: "black", fontWeight: 500 }}>Last Name</span>
+            }
             name="lastName"
             rules={[{ required: true, message: "Please enter the last name" }]}
+            style={{ marginBottom: 12 }}
           >
             <Input placeholder="Enter user last name" />
           </Form.Item>
 
           <Form.Item
-            label={<span style={{ color: "black" }}>New Password</span>}
+            label={
+              <span style={{ color: "black", fontWeight: 500 }}>
+                New Password
+              </span>
+            }
             name="password"
             rules={[
+              { required: true, message: "Please enter the new password" },
               { min: 6, message: "Password must be at least 6 characters" },
             ]}
+            hasFeedback
+            style={{ marginBottom: 12 }}
           >
             <Input.Password placeholder="Enter new password" />
           </Form.Item>
 
           <Form.Item
-            label={<span style={{ color: "black" }}>Confirm New Password</span>}
+            label={
+              <span style={{ color: "black", fontWeight: 500 }}>
+                Confirm New Password
+              </span>
+            }
             name="confirmPassword"
             dependencies={["password"]}
+            hasFeedback
             rules={[
+              { required: true, message: "Please confirm your password" },
               ({ getFieldValue }) => ({
                 validator(_, value) {
-                  if (!value || getFieldValue("password") === value) {
-                    return Promise.resolve();
+                  const password = getFieldValue("password");
+                  if (!value) {
+                    return Promise.reject(
+                      new Error("Please confirm your password")
+                    );
                   }
-                  return Promise.reject(new Error("Passwords do not match!"));
+                  if (password && password !== value) {
+                    return Promise.reject(new Error("Passwords do not match!"));
+                  }
+                  return Promise.resolve();
                 },
               }),
             ]}
+            style={{ marginBottom: 0 }}
           >
             <Input.Password placeholder="Confirm new password" />
           </Form.Item>
@@ -292,8 +350,13 @@ const ViewUsers = () => {
       </Modal>
 
       {/* 📋 Users Table */}
-      <Card title="View Users" style={{ margin: 20 }} bordered={false}>
-        <Breadcrumb style={{ marginBottom: 16 }}>
+      <Card
+        title="View Users"
+        style={{ margin: 20, overflowX: "auto" }} // responsive
+        bodyStyle={{ padding: 10 }}
+        bordered={false}
+      >
+        <Breadcrumb style={{ marginBottom: 16, fontSize: "14px" }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>Users</Breadcrumb.Item>
           <Breadcrumb.Item>View</Breadcrumb.Item>
@@ -304,8 +367,14 @@ const ViewUsers = () => {
           dataSource={list}
           loading={loading}
           rowKey="id"
-          pagination={{ pageSize: 10 }}
+          pagination={{
+            pageSize: 10,
+            showSizeChanger: true,
+            responsive: true,
+          }}
           bordered
+          scroll={{ x: "max-content" }} // allow horizontal scroll
+          style={{ overflowX: "auto" }}
         />
       </Card>
     </>

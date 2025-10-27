@@ -1,5 +1,5 @@
-const USER_API = "http://localhost:3001/api/v1/users";
-const AUTH_USER_API = "http://localhost:3001/api/v1/auth";
+const USER_API = "https://backend.btytradingplc.com/api/v1/users";
+const AUTH_USER_API = "https://backend.btytradingplc.com/api/v1/auth";
 
 export const fetchUsersAPI = async () => {
   const res = await fetch(USER_API);

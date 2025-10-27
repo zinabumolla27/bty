@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../UpoloasNews.css";
+import "../UpoloadNews.css";
 import {
   Row,
   Col,

@@ -1,5 +1,5 @@
 export const uploadFilesAPI = async (formData) => {
-  const res = await fetch("http://localhost:3001/api/v1/upload", {
+  const res = await fetch("https://backend.btytradingplc.com/api/v1/upload", {
     method: "POST",
     body: formData, // Do NOT set headers manually b/c axios knows the data type by default
   });
@@ -9,7 +9,7 @@ export const uploadFilesAPI = async (formData) => {
 };
 
 export const getUploadedFilesAPI = async () => {
-  const res = await fetch("http://localhost:3001/api/v1/upload");
+  const res = await fetch("https://backend.btytradingplc.com/api/v1/upload");
 
   if (!res.ok) throw new Error("Failed to fetch uploaded files");
 
@@ -17,9 +17,12 @@ export const getUploadedFilesAPI = async () => {
 };
 
 export const deleteNews = async (id) => {
-  const res = await fetch("http://localhost:3001/api/v1/upload/" + id, {
-    method: "DELETE",
-  });
+  const res = await fetch(
+    "https://backend.btytradingplc.com/api/v1/upload/" + id,
+    {
+      method: "DELETE",
+    }
+  );
 
   if (!res.ok) throw new Error("Failed to fetch uploaded files");
 

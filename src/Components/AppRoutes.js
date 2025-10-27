@@ -38,7 +38,6 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/servicesandproducts" element={<ServicesandProducts />} />
       <Route path="/import" element={<Import />} />
@@ -51,7 +50,7 @@ function AppRoutes() {
       <Route path="/cereals" element={<Cereals />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/news" element={<News />} />
-      <Route path="/CompanyProfile" element={<CompanyProfile />} />
+      <Route path="/companyProfile" element={<CompanyProfile />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/services" element={<Services />} />
       <Route path="/minerals" element={<Minerals />} />
@@ -66,7 +65,7 @@ function AppRoutes() {
       {/* Redirect logged-in users to /home if they try to visit /login */}
       <Route
         path="/login"
-        element={token ? <Navigate to="/home" replace /> : <Login />}
+        element={token ? <Navigate to="/" replace /> : <Login />}
       />
 
       {/* Admin Protected Routes */}
@@ -104,7 +103,44 @@ function AppRoutes() {
       />
 
       {/* Catch-all route for unmatched paths */}
-      <Route path="*" element={<div>404 - Page Not Found</div>} />
+      <Route
+        path="*"
+        element={
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+              flexDirection: "column",
+              textAlign: "center",
+              backgroundColor: "#f9f9f9",
+            }}
+          >
+            <h1
+              style={{ fontSize: "3rem", marginBottom: "10px", color: "#333" }}
+            >
+              404
+            </h1>
+            <p style={{ color: "#666", fontSize: "1.2rem" }}>
+              Sorry, the page you are looking for does not exist.
+            </p>
+            <a
+              href="/"
+              style={{
+                marginTop: "20px",
+                textDecoration: "none",
+                background: "#1890ff",
+                color: "#fff",
+                padding: "10px 20px",
+                borderRadius: "5px",
+              }}
+            >
+              Go Home
+            </a>
+          </div>
+        }
+      />
     </Routes>
   );
 }

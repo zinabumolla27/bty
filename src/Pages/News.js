@@ -97,10 +97,32 @@ const News = () => {
           <Title
             level={2}
             className="section-title"
-            style={{ color: "#3b82f6" }}
+            style={{ color: "#335e72ff" }}
           >
-            Latest News
+            Bty Trading Plc News
           </Title>
+          <p
+            style={{
+              maxWidth: "850px",
+              margin: "20px auto 60px",
+              fontSize: "18px",
+              color: "#333333",
+              lineHeight: "1.9",
+              letterSpacing: "0.5px",
+              padding: "0 15px",
+              fontWeight: "400",
+              textAlign: "center",
+              backgroundColor: "#c7d1d8ff",
+              borderRadius: "12px",
+              boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+            }}
+          >
+            Stay informed with the latest updates, announcements, and
+            achievements from{" "}
+            <strong style={{ color: "#1e40af" }}>BTY Trading PLC</strong>. We
+            regularly share company insights, export–import news, and industry
+            trends to keep you up to date with our progress and innovations.
+          </p>
         </div>
 
         <div className="news-grid">

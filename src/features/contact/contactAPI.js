@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:3001/api/v1/contact";
+const API_BASE = "https://backend.btytradingplc.com/api/v1/contact";
 
 export const fetchContactsAPI = async () => {
   const res = await fetch(API_BASE);

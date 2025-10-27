@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Layout, Menu, Image, Row, Col } from "antd";
 import {
   MenuOutlined,
@@ -10,7 +10,7 @@ import {
   DownOutlined,
   LoginOutlined,
 } from "@ant-design/icons";
-import { useNavigate, useLocation } from "react-router-dom"; // ✅ Import useLocation
+import { useNavigate, useLocation } from "react-router-dom";
 import mlogo from "../Assets/mlogo.png";
 import "./AppHeader.css";
 
@@ -18,43 +18,52 @@ const { Header } = Layout;
 
 const AppHeader = () => {
   const token = localStorage.getItem("token");
-  const user = JSON.parse(localStorage.getItem("user")); // ✅ parse string to objec
+  const user = JSON.parse(localStorage.getItem("user"));
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ Hook for pathname changes
+  const location = useLocation();
+  const mobileMenuRef = useRef(null);
 
+  // ✅ Scroll listener
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
+      if (isScrolled !== scrolled) setScrolled(isScrolled);
+    };
+    document.addEventListener("scroll", handleScroll, { passive: true });
+    return () => document.removeEventListener("scroll", handleScroll);
+  }, [scrolled]);
+
+  // ✅ Detect clicks outside the mobile menu
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (
+        mobileMenuVisible &&
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target)
+      ) {
+        setIsClosing(true);
+        setTimeout(() => {
+          setMobileMenuVisible(false);
+          setIsClosing(false);
+        }, 200);
       }
     };
-
-    document.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrolled]);
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, [mobileMenuVisible]);
 
   // ✅ Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("user");
-  //   navigate("/login");
-  // };
-
   const handleMenuClick = (item) => {
     if (item.key === "logout") {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      // window.location.reload();
       navigate(`/login`);
     } else {
       setIsClosing(true);
@@ -65,6 +74,7 @@ const AppHeader = () => {
       }, 20);
     }
   };
+
   const handleLogoClick = () => {
     if (mobileMenuVisible) {
       setIsClosing(true);
@@ -73,9 +83,7 @@ const AppHeader = () => {
         setMobileMenuVisible(false);
         setIsClosing(false);
       }, 300);
-    } else {
-      navigate("/");
-    }
+    } else navigate("/");
   };
 
   const toggleMobileMenu = () => {
@@ -85,13 +93,11 @@ const AppHeader = () => {
         setMobileMenuVisible(false);
         setIsClosing(false);
       }, 300);
-    } else {
-      setMobileMenuVisible(true);
-    }
+    } else setMobileMenuVisible(true);
   };
 
   const menuItems = [
-    { key: "home", label: "Home" },
+    { key: " ", label: "Home" },
     {
       label: (
         <span>
@@ -160,10 +166,7 @@ const AppHeader = () => {
           label: " Services",
           key: "services",
           children: [
-            {
-              label: "Cleaning Service",
-              key: "cleaningservice",
-            },
+            { label: "Cleaning Service", key: "cleaningservice" },
             { label: "Mining and Quarrying", key: "miningandquarrying" },
             { label: "Manufacturing", key: "manufacturing" },
             { label: "Construction", key: "construction" },
@@ -194,7 +197,6 @@ const AppHeader = () => {
         key: "upload",
         label: "Upload",
       },
-
     {
       label: (
         <>
@@ -219,7 +221,7 @@ const AppHeader = () => {
                 alignItems: "center",
                 gap: "12px",
                 cursor: "pointer",
-                padding: "8px 0", // Minimal padding
+                padding: "8px 0",
               }}
             >
               <Image
@@ -232,9 +234,6 @@ const AppHeader = () => {
                   margin: "0",
                   marginLeft: "8px",
                   transition: "transform 0.3s ease",
-                  ":hover": {
-                    transform: "scale(1.05)",
-                  },
                 }}
               />
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -245,8 +244,6 @@ const AppHeader = () => {
                     fontSize: "23px",
                     lineHeight: "1.2",
                     letterSpacing: "0.5px",
-                    transition: "all 0.3s ease",
-                    // fontStyle: "italic",
                   }}
                 >
                   BTY Trading Plc
@@ -258,7 +255,6 @@ const AppHeader = () => {
                     fontSize: "18px",
                     lineHeight: "1.3",
                     letterSpacing: "0.3px",
-                    // fontStyle: "italic",
                   }}
                 >
                   Import & Export
@@ -267,12 +263,6 @@ const AppHeader = () => {
             </div>
           </Col>
 
-          {/* <span
-            style={{ color: "white", marginLeft: "100px", fontWeight: "bold" }}
-          >
-            {user ? user?.firstName + " " + user?.lastName : ""}
-          </span> */}
-
           <Col className="nav-col">
             <Menu
               theme="light"
@@ -280,7 +270,7 @@ const AppHeader = () => {
               items={menuItems}
               className="nav-menu"
               onClick={handleMenuClick}
-              selectedKeys={[location.pathname.substring(1)]} // ✅ Use location hook
+              selectedKeys={[location.pathname.substring(1)]}
               overflowedIndicator={<MenuOutlined />}
             />
           </Col>
@@ -297,8 +287,9 @@ const AppHeader = () => {
         </Row>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ✅ Mobile Menu */}
       <div
+        ref={mobileMenuRef}
         className={`mobile-menu ${mobileMenuVisible ? "visible" : ""} ${
           isClosing ? "closing" : ""
         }`}
@@ -307,7 +298,7 @@ const AppHeader = () => {
           mode="inline"
           items={menuItems}
           onClick={handleMenuClick}
-          selectedKeys={[location.pathname.substring(1)]} // ✅ Use location here too
+          selectedKeys={[location.pathname.substring(1)]}
           style={{ height: "100%" }}
         />
       </div>

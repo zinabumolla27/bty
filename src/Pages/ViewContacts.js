@@ -12,7 +12,7 @@ import {
 import { SearchOutlined } from "@ant-design/icons";
 import { deleteContact, fetchContacts } from "../features/contact/contactSlice";
 
-// ✅ Custom Highlighter component (React 19 compatible)
+// ✅ Custom Highlighter component
 const Highlighter = ({ text = "", searchWords = [] }) => {
   if (!searchWords.length || !text) return text;
 
@@ -43,6 +43,12 @@ const ViewContact = () => {
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
 
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  if (error) return <div>Error: {error}</div>;
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -54,15 +60,7 @@ const ViewContact = () => {
     setSearchText("");
   };
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  const confirm = (id) => {
+  const confirmDelete = (id) => {
     dispatch(deleteContact(id));
   };
 
@@ -84,27 +82,27 @@ const ViewContact = () => {
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{ marginBottom: 8, display: "block" }}
         />
-        <Space>
+        <Space wrap>
           <Button
             type="primary"
             onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
             icon={<SearchOutlined />}
             size="small"
-            style={{ width: 90 }}
+            style={{ width: "100%", maxWidth: 90 }}
           >
             Search
           </Button>
           <Button
             onClick={() => clearFilters && handleReset(clearFilters)}
             size="small"
-            style={{ width: 100 }}
+            style={{ width: "100%", maxWidth: 100 }}
           >
             Reset
           </Button>
           <Button
             type="link"
             size="small"
-            style={{ width: 110 }}
+            style={{ width: "100%", maxWidth: 110 }}
             onClick={() => {
               confirm({ closeDropdown: false });
               setSearchText(selectedKeys[0]);
@@ -125,9 +123,7 @@ const ViewContact = () => {
         : false,
     filterDropdownProps: {
       onOpenChange: (visible) => {
-        if (visible) {
-          setTimeout(() => searchInput.current?.select(), 100);
-        }
+        if (visible) setTimeout(() => searchInput.current?.select(), 100);
       },
     },
     render: (text) =>
@@ -148,11 +144,6 @@ const ViewContact = () => {
       key: "firstName",
       sorter: (a, b) => a.firstName.localeCompare(b.firstName),
       ...getColumnSearchProps("firstName"),
-      filterIcon: (filtered) => (
-        <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
-      ),
-      onFilter: (value, record) =>
-        record.firstName.toLowerCase().includes(value.toLowerCase()),
     },
     {
       title: "Last Name",
@@ -160,11 +151,6 @@ const ViewContact = () => {
       key: "lastName",
       sorter: (a, b) => a.lastName.localeCompare(b.lastName),
       ...getColumnSearchProps("lastName"),
-      filterIcon: (filtered) => (
-        <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
-      ),
-      onFilter: (value, record) =>
-        record.lastName.toLowerCase().includes(value.toLowerCase()),
     },
     {
       title: "Email",
@@ -172,23 +158,16 @@ const ViewContact = () => {
       key: "email",
       sorter: (a, b) => a.email.localeCompare(b.email),
       ...getColumnSearchProps("email"),
-      filterIcon: (filtered) => (
-        <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
-      ),
-      onFilter: (value, record) =>
-        record.email.toLowerCase().includes(value.toLowerCase()),
     },
     {
       title: "Phone Number",
       dataIndex: "phone",
       key: "phone",
-      sorter: (a, b) => a.subject.localeCompare(b.subject),
     },
     {
       title: "Message",
       dataIndex: "message",
       key: "message",
-      sorter: (a, b) => a.message.localeCompare(b.message),
     },
     {
       title: "Created At",
@@ -205,11 +184,15 @@ const ViewContact = () => {
           title="Delete?"
           placement="bottomLeft"
           description="Are you sure to delete this?"
-          onConfirm={() => confirm(record.id)}
+          onConfirm={() => confirmDelete(record.id)}
           okText="Yes"
           cancelText="No"
         >
-          <Button style={{ marginLeft: 8 }} type="primary" danger>
+          <Button
+            style={{ marginLeft: 8, width: "100%", maxWidth: 100 }}
+            type="primary"
+            danger
+          >
             Delete
           </Button>
         </Popconfirm>
@@ -218,8 +201,13 @@ const ViewContact = () => {
   ];
 
   return (
-    <Card title="View Contacts" bordered={false} style={{ margin: 20 }}>
-      <Breadcrumb style={{ marginBottom: 16 }}>
+    <Card
+      title="View Contacts"
+      bordered={false}
+      style={{ margin: 20, overflowX: "auto" }}
+      bodyStyle={{ padding: 10 }}
+    >
+      <Breadcrumb style={{ marginBottom: 16, fontSize: "14px" }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>Contacts</Breadcrumb.Item>
         <Breadcrumb.Item>View Contacts</Breadcrumb.Item>
@@ -230,8 +218,10 @@ const ViewContact = () => {
         dataSource={list}
         loading={loading}
         rowKey="id"
-        pagination={{ pageSize: 10 }}
+        pagination={{ pageSize: 10, showSizeChanger: true, responsive: true }}
         bordered
+        scroll={{ x: "max-content" }}
+        style={{ overflowX: "auto" }}
       />
     </Card>
   );

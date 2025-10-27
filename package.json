@@ -2,7 +2,7 @@
   "name": "bty",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zinabumolla27.github.io/bty",
+  "homepage": ".",
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
     "@reduxjs/toolkit": "^2.6.1",
@@ -31,6 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
+    "postbuild": "copy .htaccess build\\",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {

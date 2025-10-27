@@ -14,21 +14,52 @@ const { Content } = Layout;
 function App() {
   const location = useLocation();
 
-  // Define routes where the footer and social icons should be hidden
+  // Define routes where footer and social icons are hidden
   const noFooterRoutes = [
     "/upload",
     "/viewContact",
     "/viewUsers",
     "/createUsers",
     "/login",
-    "/ForgotPasswordForm",
+    "/forgot-password",
+    "/reset-password",
   ];
 
-  const hideFooter = noFooterRoutes.includes(location.pathname);
+  // Define all valid routes in your app (used to detect 404 pages)
+  const validRoutes = [
+    "/",
+    "/about",
+    "/servicesandproducts",
+    "/import",
+    "/export",
+    "/oilseeds",
+    "/coffeeandtea",
+    "/pulses",
+    "/spices",
+    "/chat",
+    "/cereals",
+    "/contact",
+    "/news",
+    "/companyprofile",
+    "/faq",
+    "/services",
+    "/minerals",
+    "/cleaningservice",
+    "/miningandquarrying",
+    "/manufacturing",
+    "/construction",
+    "/agriculture",
+    "/transportation",
+  ];
+
+  // Hide footer & icons if route is in `noFooterRoutes` or not found in `validRoutes`
+  const hideFooter =
+    noFooterRoutes.includes(location.pathname) ||
+    !validRoutes.includes(location.pathname);
 
   return (
     <Provider store={store}>
-      <Layout>
+      <Layout style={{ minHeight: "100vh", background: "#fff" }}>
         <AppHeader />
         <Content>
           <AppContent />

@@ -78,7 +78,7 @@ const Cereals = () => {
   return (
     <div
       style={{
-        maxWidth: "1400px",
+        maxWidth: "1000%",
         margin: "0 auto",
         paddingTop: "50px",
         minHeight: "100vh",
@@ -163,7 +163,7 @@ const Cereals = () => {
                 maxWidth: "320px",
                 boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)",
                 transition: "all 0.3s ease",
-                margin: "5px", // Added margin instead of padding
+                margin: "5px",
               }}
             >
               <Title
