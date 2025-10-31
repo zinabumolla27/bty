@@ -40,34 +40,25 @@ function Login() {
   return (
     <div className="login-page">
       {contextHolder}
-      <div className="login-content">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 16,
-            marginBottom: 24,
-            color: "white",
-          }}
-        >
-          <div style={{ width: 90, height: 2, backgroundColor: "blue" }} />
 
+      <div className="login-card">
+        <div className="login-header">
+          <div className="line" />
           <Avatar size={64} src={mlogo} />
-
-          <div style={{ width: 90, height: 2, backgroundColor: "blue" }} />
+          <div className="line" />
         </div>
+
         <Form
           name="login"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
           layout="vertical"
+          onFinish={onFinish}
+          initialValues={{ remember: true }}
           className="login-form"
         >
           <Form.Item
-            label={<span style={{ color: "white" }}>Email</span>}
+            label={<span className="login-label">Email</span>}
             name="email"
-            rules={[{ required: true, message: "Please input your username!" }]}
+            rules={[{ required: true, message: "Please input your email!" }]}
           >
             <Input
               prefix={<UserOutlined />}
@@ -78,7 +69,7 @@ function Login() {
           </Form.Item>
 
           <Form.Item
-            label={<span style={{ color: "white" }}>Password</span>}
+            label={<span className="login-label">Password</span>}
             name="password"
             rules={[{ required: true, message: "Please input your password!" }]}
           >
@@ -97,13 +88,14 @@ function Login() {
               htmlType="submit"
               className="login-button"
               loading={loading}
+              block
             >
-              {loading ? "Authenticating..." : " Login"}
+              {loading ? "Authenticating..." : "Login"}
             </Button>
           </Form.Item>
+
           <Form.Item>
             <Button
-              style={{ color: "white" }}
               type="link"
               className="forgot-password"
               onClick={() => navigate("/forgot-password")}
