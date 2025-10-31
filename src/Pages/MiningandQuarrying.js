@@ -58,7 +58,7 @@ export default function MiningandQuarrying() {
       color: palette.subtext,
       maxWidth: "850px",
       margin: "0 auto",
-      textAlign: "justify",
+      textAlign: width < 640 ? "left" : "justify",
     },
     imageSection: {
       marginTop: 40,

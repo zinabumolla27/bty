@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import agri from "../Assets/agri.jpg";
+
 function Agriculture() {
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = width < 768;
+
   const styles = {
     page: {
       fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
@@ -9,24 +22,24 @@ function Agriculture() {
     },
     hero: {
       display: "flex",
-      flexDirection: "row",
+      flexDirection: isMobile ? "column" : "row",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: "50px 20px",
+      padding: isMobile ? "30px 20px" : "50px 20px",
       background: "linear-gradient(135deg, #4e6880ff, #365d6dff)",
       color: "#fff",
-      flexWrap: "wrap",
+      textAlign: isMobile ? "center" : "left",
     },
     heroText: {
       flex: 1,
       padding: "20px",
     },
     heroTitle: {
-      fontSize: "2.5rem",
+      fontSize: isMobile ? "2rem" : "2.5rem",
       marginBottom: "20px",
     },
     heroDesc: {
-      fontSize: "1.2rem",
+      fontSize: isMobile ? "1rem" : "1.2rem",
       marginBottom: "20px",
     },
     button: {
@@ -40,9 +53,9 @@ function Agriculture() {
       fontWeight: "bold",
     },
     heroImg: {
-      flex: "1",
-      maxWidth: "400px",
-      margin: "20px auto",
+      flex: 1,
+      maxWidth: isMobile ? "90%" : "400px",
+      margin: isMobile ? "20px auto 0" : "20px 0 0 20px",
       borderRadius: "12px",
       boxShadow: "0 6px 15px rgba(0,0,0,0.2)",
     },
@@ -51,24 +64,14 @@ function Agriculture() {
       textAlign: "center",
     },
     sectionTitle: {
-      fontSize: "2rem",
+      fontSize: isMobile ? "1.8rem" : "2rem",
       marginBottom: "20px",
       color: "#2f6547",
     },
     sectionDesc: {
-      fontSize: "1.1rem",
+      fontSize: isMobile ? "1rem" : "1.1rem",
       maxWidth: "800px",
       margin: "0 auto",
-    },
-    // Responsive
-    "@media (max-width: 768px)": {
-      hero: {
-        flexDirection: "column",
-        textAlign: "center",
-      },
-      heroImg: {
-        maxWidth: "90%",
-      },
     },
   };
 

@@ -196,10 +196,10 @@ const Home = () => {
             <Paragraph
               className="subtitle"
               style={{
-                color: "rgba(26, 227, 220, 0.95)",
+                color: "rgba(255, 255, 255, 0.9)", // off-white
                 ...fontStyles.subtitle,
-                textShadow: "0 1px 5px rgba(0, 0, 0, 0.5)",
-                fontWeight: "bold",
+                textShadow: "0 2px 10px rgba(0, 0, 0, 0.6)",
+                fontWeight: "600",
               }}
             >
               Exporting Ethiopia's Finest Agricultural Products Worldwide
@@ -248,8 +248,9 @@ const Home = () => {
                 textAlign: "justify",
                 lineHeight: "1.6",
                 color: "#444",
-                // hyphens: "auto",
+                hyphens: "auto",
                 textJustify: "inter-word",
+                overflowWrap: "break-word",
               }}
             >
               BTY TRADING PLC, established in 2011, is a premier import export
